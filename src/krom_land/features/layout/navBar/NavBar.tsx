@@ -8,7 +8,7 @@ import ToolBarStyled from './styledComponents/ToolBarStyled';
 const NavBar = () => {
   return (
     <NavBarStyled className='start-style'>
-      <ToolBarStyled className='toolbar'>
+      <ToolBarStyled>
         <Logo />
         <MainMenu />
         <MobileMenu />

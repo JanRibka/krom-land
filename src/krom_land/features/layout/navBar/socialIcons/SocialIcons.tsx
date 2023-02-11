@@ -10,7 +10,7 @@ const SocialIcons = () => {
     <SocialIconsStyled
       spacing={2}
       direction='row'
-      sx={{ display: { xs: "none", md: "flex" } }}
+      sx={{ display: { xs: "none", lg: "flex" } }}
     >
       <Box
         component='a'

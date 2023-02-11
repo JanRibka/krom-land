@@ -3,7 +3,7 @@ import MainMenuStyled from './styledComponents/MainMenuStyled';
 
 const MainMenu = () => {
   return (
-    <MainMenuStyled>
+    <MainMenuStyled sx={{ display: { xs: "none", md: "flex" } }}>
       <NavLinks />
     </MainMenuStyled>
   );

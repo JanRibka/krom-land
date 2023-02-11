@@ -9,7 +9,7 @@ const NavLinks = () => {
   return (
     <NavLinksStyled component='nav' className='nav-links-wrapper'>
       <Box component='ul'>
-        <Box component='li'>
+        <Box component='li' className='active'>
           <Link to={AppRoute.Home}>Úvod</Link>
         </Box>
         <Box component='li'>

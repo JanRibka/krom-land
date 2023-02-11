@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 
+import Footer from './footer/Footer';
 import NavBar from './navBar/NavBar';
 import LayoutStyled from './styledComponents/LayoutStyled';
 
@@ -12,6 +13,7 @@ const Layout = (props: IProps) => {
     <LayoutStyled>
       <NavBar />
       {props.children}
+      <Footer />
     </LayoutStyled>
   );
 };

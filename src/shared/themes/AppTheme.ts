@@ -8,18 +8,20 @@ const paletteSecondaryMain = "rgb(238, 238, 238)";
 const paletteSecondaryDark = "rgb(214, 214, 214)";
 const paletteTextPrimary = "rgb(9, 0, 4)";
 const paletteTextSecondary = "rgb(42, 42, 42)";
-const paletteCustomThirdLight = "rgb(184, 103, 33)";
-const paletteCustomThirdMain = "rgb(163, 91, 29)";
-const paletteCustomThirdDark = "rgb(140, 78, 25)";
+const paletteCustomPurpleMain = "rgb(208, 149, 217)";
+const paletteCustomPurpleDark = "rgb(106, 60, 135)";
+const paletteCustomRedMain = "rgb(229, 0, 105)";
 
 // Custom theme
 // Colors
 declare module "@mui/material/styles/createPalette" {
   interface CommonColors {
-    third: {
-      light: string;
+    purple: {
       main: string;
       dark: string;
+    };
+    red: {
+      main: string;
     };
   }
 }
@@ -59,10 +61,12 @@ const AppThemePalette = createTheme(AppThemeComponents, {
       secondary: paletteTextSecondary,
     },
     common: {
-      third: {
-        light: paletteCustomThirdLight,
-        main: paletteCustomThirdMain,
-        dark: paletteCustomThirdDark,
+      purple: {
+        main: paletteCustomPurpleMain,
+        dark: paletteCustomPurpleDark,
+      },
+      red: {
+        main: paletteCustomRedMain,
       },
     },
   },
