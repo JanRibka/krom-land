@@ -7,14 +7,18 @@ import SocialIconsStyled from './styledComponents/SocialIconstStyled';
 const SocialIcons = () => {
   // TODO: Pokud zmensim obrazovku bude skryto
   return (
-    <SocialIconsStyled spacing={2} direction='row'>
+    <SocialIconsStyled
+      spacing={2}
+      direction='row'
+      sx={{ display: { xs: "none", md: "flex" } }}
+    >
       <Box
         component='a'
         title='Facebook'
         href='https://www.facebook.com/profile.php?id=100088439655254'
         target='_blank'
       >
-        <FacebookIcon fontSize='large' />
+        <FacebookIcon fontSize='small' />
       </Box>
 
       <Box
@@ -23,7 +27,7 @@ const SocialIcons = () => {
         href='https://www.instagram.com/krom.land/'
         target='_blank'
       >
-        <InstagramIcon fontSize='large' />
+        <InstagramIcon fontSize='small' />
       </Box>
     </SocialIconsStyled>
   );
