@@ -9,6 +9,9 @@ import TextField from '@mui/material/TextField';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 import SectionTitle from '../../../../shared/components/sectionTitle/SectionTitle';
+import AppSnackbar from '../../../../shared/components/snackbar/AppSnackbar';
+import AppSnackBarOpenDataModel from '../../../../shared/components/snackbar/AppSnackBarModel';
+import HttpStatusCode from '../../../../shared/enums/HttpStatusCode';
 import { sendEmail } from '../../../../shared/helpers/emailHelper';
 import WriteToUsStyled from './styledComponents/WriteToUsStyled';
 
@@ -29,6 +32,12 @@ const WritetoUs = () => {
     confirm_data: false,
   };
   // State
+  const [messageOpenData, setMessageOpenData] =
+    useState<AppSnackBarOpenDataModel>({
+      open: false,
+      message: "",
+      severity: undefined,
+    });
   const [formData, setFormData] = useState<{
     user_name: string;
     user_email: string;
@@ -46,18 +55,32 @@ const WritetoUs = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleFormOnSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleFormOnSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    sendEmail(
-      formData.user_name,
-      formData.user_email,
-      formData.subject,
-      formData.message
-    );
-    console.log(process.env.REACT_APP_EMAIL_SERVICE_ID);
-    console.log(process.env.REACT_APP_EMAIL_TEMPLATE_ID);
-    console.log(process.env.REACT_APP_EMAIL_PUBLIC_KEY);
+    // const result: any = await sendEmail(
+    //   formData.user_name,
+    //   formData.user_email,
+    //   formData.subject,
+    //   formData.message
+    // );
+    // debugger;
+    // if ((result as any) === "OK") {
+    //   setMessageOpenData({
+    //     open: true,
+    //     message: "Vaše zpráva byla úspěšně odeslána",
+    //     severity: "success",
+    //   });
+    // } else {
+    //   setMessageOpenData({
+    //     open: true,
+    //     message: "Chyba při odesílání zprávy. Zkuste to prosím později.",
+    //     severity: "error",
+    //   });
+    // }
+
+    // event.currentTarget.reset();
+
     emailjs
       .sendForm(
         process.env.REACT_APP_EMAIL_SERVICE_ID ?? "",
@@ -68,14 +91,32 @@ const WritetoUs = () => {
       .then(
         (result) => {
           console.log(result.text);
+          if (result.status === HttpStatusCode.OK) {
+            setMessageOpenData({
+              open: true,
+              message: "Vaše zpráva byla úspěšně odeslána",
+              severity: "success",
+            });
+          } else {
+            setMessageOpenData({
+              open: true,
+              message: "Chyba při odesílání zprávy. Zkuste to prosím později.",
+              severity: "error",
+            });
+          }
         },
         (error) => {
           console.log(error.text);
+          setMessageOpenData({
+            open: true,
+            message: "Chyba při odesílání zprávy. Zkuste to prosím později.",
+            severity: "error",
+          });
         }
       );
 
-    setFormData(formDataInitit);
     e.currentTarget.reset();
+    setFormData(formDataInitit);
   };
 
   return (
@@ -147,6 +188,10 @@ const WritetoUs = () => {
           </Stack>
         </form>
       </Stack>
+      <AppSnackbar
+        openData={messageOpenData}
+        setOpenData={setMessageOpenData}
+      />
     </WriteToUsStyled>
   );
 };

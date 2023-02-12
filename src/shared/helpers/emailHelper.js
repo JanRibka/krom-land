@@ -1,8 +1,6 @@
-export const sendEmail = (name, from, subject, message) => {
+export const sendEmail = async (name, from, subject, message) => {
   if (!!window.Email) {
-    let result;
-
-    window.Email.send({
+    const result = await window.Email.send({
       //   Host: "smtp.elasticemail.com",
       //   Username: "weby.ribka@gmail.com",
       //   Password: "4134C13D23400ED635D1D7B31E997CF8398D",
@@ -14,9 +12,9 @@ export const sendEmail = (name, from, subject, message) => {
       Subject: subject,
       Body: contactEmailBody(name, from, message),
     }).then((message) => {
-      result = message;
-      debugger;
       console.log("Zpráva po odeslání mailu", message);
+
+      return message;
     });
 
     return result;
