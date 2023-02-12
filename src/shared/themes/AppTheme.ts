@@ -13,6 +13,7 @@ const paletteTextSecondary = "rgb(238, 238, 238)";
 const paletteCustomPurpleMain = "rgb(208, 149, 217)";
 const paletteCustomPurpleDark = "rgb(106, 60, 135)";
 const paletteCustomRedMain = "rgb(229, 0, 105)";
+const paletteCustomRedDark = "rgb(255, 0, 0)";
 
 // Custom theme
 // Colors
@@ -24,6 +25,7 @@ declare module "@mui/material/styles/createPalette" {
     };
     red: {
       main: string;
+      dark: string;
     };
   }
 }
@@ -77,6 +79,7 @@ const AppThemePalette = createTheme(AppThemeComponents, {
       },
       red: {
         main: paletteCustomRedMain,
+        dark: paletteCustomRedDark,
       },
     },
   },

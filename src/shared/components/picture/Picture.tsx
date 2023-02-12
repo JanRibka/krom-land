@@ -11,6 +11,7 @@ interface IProps {
 const Picture = (props: IProps) => {
   return (
     <PictureStyled>
+      <Box className='image-overlay'></Box>
       <Box component='img' src={props.image} alt={props.alt} loading='lazy' />
       <VisibilityOutlinedIcon />
     </PictureStyled>

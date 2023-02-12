@@ -10,18 +10,34 @@ const PictureStyled = styled(Box)(
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  margin: 25px;
 
   &:hover {
+    .image-overlay {        
+        background-color: ${theme.palette.common.purple.main};
+    }
+      
     svg {
         opacity: 1;
         animation: bounce 500ms ease;
     }
   }
 
+  .image-overlay {
+    width: inherit;
+    height: inherit;
+    aspect-ratio: inherit;
+    border-radius: 15px;
+    background-color: transparent;
+    z-index: 1;
+    opacity: 0.2;
+    transition: all 300ms ease
+  }
+
   img {
     width: inherit;
     height: inherit;
-    aspect-ratio: 16/9;
+    aspect-ratio: inherit;
     position: absolute;
     border-radius: 15px;
   }
@@ -31,7 +47,7 @@ const PictureStyled = styled(Box)(
     font-size: xx-large;
     opacity: 0;
     transform: scale(1.3);
-    color: ${theme.palette.common.purple.dark};
+    color: ${theme.palette.common.red.dark};
   }
 
   @keyframes bounce {
