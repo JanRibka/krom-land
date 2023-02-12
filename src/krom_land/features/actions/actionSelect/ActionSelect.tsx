@@ -2,7 +2,9 @@ import { useRef } from 'react';
 
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
+import { useTheme } from '@mui/material/styles';
 
+import Action from '../action/Action';
 import ActionSelectStyled from './styledComponents/ActionSelectStyled';
 
 const ActionSelect = () => {
@@ -13,6 +15,9 @@ const ActionSelect = () => {
   const refTabFirst = useRef<HTMLDivElement>(null);
   const refTabSecond = useRef<HTMLDivElement>(null);
   const refTabThird = useRef<HTMLDivElement>(null);
+
+  // Constants
+  const theme = useTheme();
 
   // Other
   const handleOnCLick = (value: number) => {
@@ -79,16 +84,23 @@ const ActionSelect = () => {
           </Box>
         </>
         <>
-          <Box className='tabs-wrapper'>
-            <Box ref={refTabFirst} className='action-tab active'>
-              Květen
-            </Box>
-            <Box ref={refTabSecond} className='action-tab'>
-              Červen
-            </Box>
-            <Box ref={refTabThird} className='action-tab'>
-              Červenec
-            </Box>
+          <Box>
+            <Action
+              ref={refTabFirst}
+              className='active'
+              name='Květen'
+              backgroundColor={theme.palette.secondary.main}
+            />
+            <Action
+              ref={refTabSecond}
+              name='Červen'
+              backgroundColor={theme.palette.primary.main}
+            />
+            <Action
+              ref={refTabThird}
+              name='Červenec'
+              backgroundColor={theme.palette.common.purple.main}
+            />
           </Box>
         </>
       </Stack>

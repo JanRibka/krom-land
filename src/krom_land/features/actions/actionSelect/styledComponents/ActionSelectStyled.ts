@@ -6,6 +6,7 @@ const ActionSelectStyled = styled(Box)(({ theme }) => ({
     display: "flex",
     listStyleType: "none",
     alignItems: "center",
+    marginBottom: 0,
 
     li: {
       backfaceVisibility: "hidden",
@@ -52,16 +53,6 @@ const ActionSelectStyled = styled(Box)(({ theme }) => ({
         position: "absolute",
         transform: "rotate(-10deg)",
         transformOrigin: "center",
-      },
-    },
-  },
-
-  ".tabs-wrapper": {
-    ".action-tab": {
-      display: "none",
-
-      "&.active": {
-        display: "block",
       },
     },
   },
