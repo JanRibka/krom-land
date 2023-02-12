@@ -3,7 +3,7 @@ import { styled } from '@mui/material/styles';
 
 const FooterStyled = styled(Box)(({ theme }) => ({
   backgroundColor: theme.palette.primary.light,
-  padding: "50px 0",
+  padding: "80px 0 50px 0",
 
   ".footer-wrapper": {
     alignItems: "center",

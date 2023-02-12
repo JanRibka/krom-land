@@ -25,20 +25,20 @@ const MainMenuStyled = styled(Box)(({ theme }) => ({
       alignItems: "center",
       marginLeft: "-15px",
 
-      "&:nth-child(1)": {
+      "&:nth-of-type(1)": {
         backgroundColor: theme.palette.secondary.main,
       },
 
-      "&:nth-child(2)": {
+      "&:nth-of-type(2)": {
         backgroundColor: theme.palette.primary.main,
       },
 
-      "&:nth-child(3)": {
+      "&:nth-of-type(3)": {
         width: "130px",
         backgroundColor: theme.palette.common.red.main,
       },
 
-      "&:nth-child(4)": {
+      "&:nth-of-type(4)": {
         width: "150px",
         backgroundColor: theme.palette.common.purple.main,
       },
