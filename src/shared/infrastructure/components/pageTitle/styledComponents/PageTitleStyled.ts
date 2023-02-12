@@ -10,15 +10,27 @@ const TitleStyled = styled(Box)(({ theme }) => ({
   img: {
     width: "100%",
     maxHeight: "350px",
-    minHeight: "175px",
+    minHeight: "350px",
     objectFit: "cover",
+
+    [theme.breakpoints.down("md")]: {
+      minHeight: "175px",
+    },
   },
 
   h1: {
     position: "absolute",
     color: theme.palette.text.secondary,
-    fontSize: "100px",
+    fontSize: "6rem",
     fontFamily: "Eater",
+
+    [theme.breakpoints.down("lg")]: {
+      fontSize: "5rem",
+    },
+
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "3rem",
+    },
   },
 }));
 

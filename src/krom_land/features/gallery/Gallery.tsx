@@ -7,6 +7,7 @@ import Picture from '../../../shared/components/picture/Picture';
 import PageTitle from '../../../shared/infrastructure/components/pageTitle/PageTitle';
 import TopBackground from './img/contact_top_bg.webp';
 import pict01 from './img/post-2-copyright.jpg';
+import ImageGridWrapperStyled from './styledComponents/ImageGridWrapperStyled';
 
 const Gallery = () => {
   return (
@@ -18,7 +19,7 @@ const Gallery = () => {
           alt='Úvodní fotka stránky Galerie'
         />
       </>
-      <Box sx={{ padding: "0 25px" }}>
+      <ImageGridWrapperStyled>
         <>
           <GridContainer>
             <GridItem xs={12} sm={6} lg={3}>
@@ -67,7 +68,7 @@ const Gallery = () => {
             </GridItem>
           </GridContainer>
         </>
-      </Box>
+      </ImageGridWrapperStyled>
     </Stack>
   );
 };
