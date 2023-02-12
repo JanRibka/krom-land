@@ -1,7 +1,12 @@
+import Actions from '../actions/Actions';
 import PageStyled from './styledComponents/PageStyled';
 
 const ActionsPage = () => {
-  return <PageStyled component='main'>Akce</PageStyled>;
+  return (
+    <PageStyled component='main'>
+      <Actions />
+    </PageStyled>
+  );
 };
 
 export default ActionsPage;
