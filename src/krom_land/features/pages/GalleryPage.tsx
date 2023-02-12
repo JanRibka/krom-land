@@ -3,6 +3,7 @@ import TopBackground from './img/contact_top_bg.webp';
 import PageStyled from './styledComponents/PageStyled';
 
 const GalleryPage = () => {
+  // TODO: Po přechodu na stranku se udělá scroll to top
   return (
     <PageStyled component='main'>
       {" "}
