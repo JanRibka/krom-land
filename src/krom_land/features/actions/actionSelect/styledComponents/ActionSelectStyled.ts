@@ -1,14 +1,14 @@
 import Box from '@mui/material/Box';
 import { styled } from '@mui/material/styles';
 
-const MainMenuStyled = styled(Box)(({ theme }) => ({
-  flexGrow: 1,
-  justifyContent: "end",
-
+const ActionSelectStyled = styled(Box)(({ theme }) => ({
   ul: {
+    display: "flex",
+    listStyleType: "none",
     alignItems: "center",
 
     li: {
+      backfaceVisibility: "hidden",
       color: theme.palette.text.primary,
       padding: "15px",
       fontSize: "1.1em",
@@ -18,15 +18,18 @@ const MainMenuStyled = styled(Box)(({ theme }) => ({
       textTransform: "uppercase",
       position: "relative",
       width: "100px",
-      height: "55px",
-      borderRadius: "50%",
+      minWidth: "150px",
+      height: "70px",
+      borderRadius: "140px 140px 0 0",
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
       marginLeft: "-15px",
+      cursor: "pointer",
 
       "&:nth-of-type(1)": {
         backgroundColor: theme.palette.secondary.main,
+        marginLeft: 0,
       },
 
       "&:nth-of-type(2)": {
@@ -34,27 +37,34 @@ const MainMenuStyled = styled(Box)(({ theme }) => ({
       },
 
       "&:nth-of-type(3)": {
-        width: "130px",
-        backgroundColor: theme.palette.common.purple.main,
-      },
-
-      "&:nth-of-type(4)": {
         width: "150px",
-        backgroundColor: theme.palette.common.red.main,
+        backgroundColor: theme.palette.common.purple.main,
       },
 
       "&:hover, &.active": {
         zIndex: 1,
-        transform: "scale(1.1)",
+        transform: "scale(1.05)",
       },
 
-      a: {
+      span: {
+        textDecoration: "none",
+        color: "inherit",
         position: "absolute",
         transform: "rotate(-10deg)",
         transformOrigin: "center",
       },
     },
   },
+
+  ".tabs-wrapper": {
+    ".action-tab": {
+      display: "none",
+
+      "&.active": {
+        display: "block",
+      },
+    },
+  },
 }));
 
-export default MainMenuStyled;
+export default ActionSelectStyled;
