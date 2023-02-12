@@ -10,6 +10,7 @@ interface IProps {
 }
 
 const PageTitle = (props: IProps) => {
+  // TODO: Při načítání obrázku chvíli není nic vidět, dát tam nějaké pozadí
   return (
     <PageTitleStyled>
       <Box component='img' src={props.image} alt={props.alt} loading='lazy' />

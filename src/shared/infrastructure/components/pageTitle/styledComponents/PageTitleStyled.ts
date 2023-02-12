@@ -23,6 +23,7 @@ const TitleStyled = styled(Box)(({ theme }) => ({
     color: theme.palette.text.secondary,
     fontSize: "6rem",
     fontFamily: "Eater",
+    textAlign: "center",
 
     [theme.breakpoints.down("lg")]: {
       fontSize: "5rem",
