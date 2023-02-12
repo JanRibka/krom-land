@@ -1,6 +1,7 @@
 import Stack from '@mui/material/Stack';
 
 import PageTitle from '../../../shared/infrastructure/components/pageTitle/PageTitle';
+import ActionSelect from './actionSelect/ActionSelect';
 import TopBackground from './img/contact_top_bg.webp';
 
 const Actions = () => {
@@ -9,9 +10,12 @@ const Actions = () => {
       <>
         <PageTitle
           image={TopBackground}
-          title='Připravované akce'
+          title='Nadcházející akce'
           alt='Úvodní fotka stránky Akce'
         />
+      </>
+      <>
+        <ActionSelect />
       </>
     </Stack>
   );

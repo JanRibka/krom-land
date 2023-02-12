@@ -10,7 +10,6 @@ const NavLinksStyled = styled(Box)(({ theme }) => ({
       backfaceVisibility: "hidden",
 
       a: {
-        position: "relative",
         textDecoration: "none",
         color: "inherit",
       },
