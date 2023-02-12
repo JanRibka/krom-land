@@ -1,7 +1,20 @@
+import PageTitle from '../../../shared/infrastructure/components/pageTitle/PageTitle';
+import TopBackground from './img/contact_top_bg.webp';
 import PageStyled from './styledComponents/PageStyled';
 
 const GalleryPage = () => {
-  return <PageStyled component='main'>Galerie</PageStyled>;
+  return (
+    <PageStyled component='main'>
+      {" "}
+      <>
+        <PageTitle
+          image={TopBackground}
+          title='Galerie'
+          alt='Úvodní fotka stránky Galerie'
+        />
+      </>
+    </PageStyled>
+  );
 };
 
 export default GalleryPage;
