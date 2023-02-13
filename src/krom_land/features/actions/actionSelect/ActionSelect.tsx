@@ -5,6 +5,7 @@ import Stack from '@mui/material/Stack';
 import { useTheme } from '@mui/material/styles';
 
 import Action from '../action/Action';
+import ActionFirstImage from '../img/img_4-copyright.png';
 import ActionSelectStyled from './styledComponents/ActionSelectStyled';
 
 const ActionSelect = () => {
@@ -88,18 +89,29 @@ const ActionSelect = () => {
             <Action
               ref={refTabFirst}
               className='active'
-              name='Květen'
+              name='Akce na květen'
+              description='Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Fusce dui leo, imperdiet in, aliquam sit amet, feugiat eu, orci. Maecenas aliquet accumsan leo. Integer imperdiet lectus quis justo. Integer tempor. Suspendisse nisl. Integer malesuada. Aenean placerat. Suspendisse nisl. Nulla turpis magna, cursus sit amet, suscipit a, interdum id, felis. In convallis.'
               backgroundColor={theme.palette.secondary.main}
+              image={ActionFirstImage}
+              imageAlt='Alt'
+              videoUrl='https://www.youtube.com/watch?v=YSHDBB6id4A'
             />
             <Action
               ref={refTabSecond}
-              name='Červen'
+              name='Akce na červen'
+              description='Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Fusce dui leo, imperdiet in, aliquam sit amet, feugiat eu, orci. Maecenas aliquet accumsan leo. Integer imperdiet lectus quis justo. Integer tempor. Suspendisse nisl. Integer malesuada. Aenean placerat. Suspendisse nisl. Nulla turpis magna, cursus sit amet, suscipit a, interdum id, felis. In convallis.'
               backgroundColor={theme.palette.primary.main}
+              image={ActionFirstImage}
+              imageAlt='Alt'
+              videoUrl='https://www.youtube.com/watch?v=3fnPwj1AMpo'
             />
             <Action
               ref={refTabThird}
-              name='Červenec'
+              name='Akce na červenec'
+              description='Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Fusce dui leo, imperdiet in, aliquam sit amet, feugiat eu, orci. Maecenas aliquet accumsan leo. Integer imperdiet lectus quis justo. Integer tempor. Suspendisse nisl. Integer malesuada. Aenean placerat. Suspendisse nisl. Nulla turpis magna, cursus sit amet, suscipit a, interdum id, felis. In convallis.'
               backgroundColor={theme.palette.common.purple.main}
+              image={ActionFirstImage}
+              imageAlt='Alt'
             />
           </Box>
         </>

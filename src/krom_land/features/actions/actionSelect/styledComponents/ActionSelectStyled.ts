@@ -8,6 +8,11 @@ const ActionSelectStyled = styled(Box)(({ theme }) => ({
     alignItems: "center",
     marginBottom: 0,
 
+    [theme.breakpoints.down("md")]: {
+      paddingLeft: "0",
+      alignSelf: "center",
+    },
+
     li: {
       backfaceVisibility: "hidden",
       color: theme.palette.text.primary,
@@ -18,7 +23,7 @@ const ActionSelectStyled = styled(Box)(({ theme }) => ({
       transition: "all 200ms ease-in-out",
       textTransform: "uppercase",
       position: "relative",
-      width: "100px",
+      width: "150px",
       minWidth: "150px",
       height: "70px",
       borderRadius: "140px 140px 0 0",
@@ -27,6 +32,7 @@ const ActionSelectStyled = styled(Box)(({ theme }) => ({
       alignItems: "center",
       marginLeft: "-15px",
       cursor: "pointer",
+      paddingBottom: "5px",
 
       "&:nth-of-type(1)": {
         backgroundColor: theme.palette.secondary.main,
@@ -38,13 +44,23 @@ const ActionSelectStyled = styled(Box)(({ theme }) => ({
       },
 
       "&:nth-of-type(3)": {
-        width: "150px",
         backgroundColor: theme.palette.common.purple.main,
       },
 
       "&:hover, &.active": {
         zIndex: 1,
         transform: "scale(1.05)",
+      },
+
+      "&.active": {
+        zIndex: 2,
+      },
+
+      [theme.breakpoints.down("md")]: {
+        width: "100px",
+        minWidth: "100px",
+        height: "50px",
+        fontSize: "0.9em",
       },
 
       span: {
