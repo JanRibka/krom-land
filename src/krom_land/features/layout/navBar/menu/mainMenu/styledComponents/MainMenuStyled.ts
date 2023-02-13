@@ -43,7 +43,11 @@ const MainMenuStyled = styled(Box)(({ theme }) => ({
         backgroundColor: theme.palette.common.red.main,
       },
 
-      "&:hover, &.active": {
+      "&:hover": {
+        transform: "scale(1.1)",
+      },
+
+      "&.active": {
         zIndex: 1,
         transform: "scale(1.1)",
       },
