@@ -10,7 +10,6 @@ const MobileMenuStyled = styled(Box)(({ theme }) => ({
   width: "400px",
   transition: "all 800ms cubic-bezier(.8, 0, .33, 1)",
   borderRadius: "0% 0% 50% 100%",
-  display: "flex !important",
   alignItems: "center",
   justifyContent: "center",
 

@@ -3,15 +3,12 @@ import { styled } from '@mui/material/styles';
 
 const NavLinksStyled = styled(Box)(({ theme }) => ({
   position: "absolute",
-  // top: "53%",
-  // left: "0",
   display: "block",
   width: "100%",
   padding: "0",
   margin: "0",
   zIndex: 6,
   textAlign: "center",
-  transform: "translateY(-50%)",
 
   "& .nav-links-wrapper": {
     display: "flex",

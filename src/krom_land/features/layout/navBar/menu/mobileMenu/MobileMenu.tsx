@@ -68,7 +68,7 @@ const MobileMenu = (props: IProps) => {
   return (
     <MobileMenuStyled
       ref={refMobileMenu}
-      display={{ xs: "block", md: "none" }}
+      display={{ xs: "flex", md: "none" }}
       className='mobile-menu'
     >
       {/* Hamburger icon */}
