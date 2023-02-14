@@ -107,8 +107,8 @@ const ActionSelect = () => {
               image={ActionFirstImage}
               imageAlt='Alt2'
               videoUrl='https://www.youtube.com/watch?v=3fnPwj1AMpo'
-              kdy='Kobeřice'
-              kde='Zítra'
+              kdy='Zítra'
+              kde='Kobeřice'
               cena='555'
             />
             <Action
@@ -118,8 +118,8 @@ const ActionSelect = () => {
               backgroundColor={theme.palette.common.purple.main}
               image={ActionFirstImage}
               imageAlt='Alt3'
-              kdy='Kobeřice'
-              kde='Zítra'
+              kdy='ZítraKobeřice'
+              kde='Kobeřice'
               cena='555'
             />
           </Box>

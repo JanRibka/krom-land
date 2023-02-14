@@ -11,7 +11,7 @@ const DetailInfo = (props: IProps) => {
   return (
     <DetailInfoStyled className={props.className}>
       <p>
-        Kdy: {props.kde}&nbsp;&nbsp;&nbsp;&nbsp;Kdy: {props.kdy}
+        Kde: {props.kde}&nbsp;&nbsp;&nbsp;&nbsp;Kdy: {props.kdy}
       </p>
       <p>Cena: {props.cena} Kč</p>
     </DetailInfoStyled>
