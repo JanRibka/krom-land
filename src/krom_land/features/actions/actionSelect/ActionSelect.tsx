@@ -95,6 +95,9 @@ const ActionSelect = () => {
               image={ActionFirstImage}
               imageAlt='Alt'
               videoUrl='https://www.youtube.com/watch?v=YSHDBB6id4A'
+              kdy='13.10.-14.10.2023'
+              kde='Hradec nad Moravicí'
+              cena='3 333'
             />
             <Action
               ref={refTabSecond}
@@ -102,8 +105,11 @@ const ActionSelect = () => {
               description='Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Fusce dui leo, imperdiet in, aliquam sit amet, feugiat eu, orci. Maecenas aliquet accumsan leo. Integer imperdiet lectus quis justo. Integer tempor. Suspendisse nisl. Integer malesuada. Aenean placerat. Suspendisse nisl. Nulla turpis magna, cursus sit amet, suscipit a, interdum id, felis. In convallis.'
               backgroundColor={theme.palette.primary.main}
               image={ActionFirstImage}
-              imageAlt='Alt'
+              imageAlt='Alt2'
               videoUrl='https://www.youtube.com/watch?v=3fnPwj1AMpo'
+              kdy='Kobeřice'
+              kde='Zítra'
+              cena='555'
             />
             <Action
               ref={refTabThird}
@@ -111,7 +117,10 @@ const ActionSelect = () => {
               description='Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Fusce dui leo, imperdiet in, aliquam sit amet, feugiat eu, orci. Maecenas aliquet accumsan leo. Integer imperdiet lectus quis justo. Integer tempor. Suspendisse nisl. Integer malesuada. Aenean placerat. Suspendisse nisl. Nulla turpis magna, cursus sit amet, suscipit a, interdum id, felis. In convallis.'
               backgroundColor={theme.palette.common.purple.main}
               image={ActionFirstImage}
-              imageAlt='Alt'
+              imageAlt='Alt3'
+              kdy='Kobeřice'
+              kde='Zítra'
+              cena='555'
             />
           </Box>
         </>
