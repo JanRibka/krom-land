@@ -5,5 +5,9 @@ const PageStyled = styled(Box)(({ theme }) => ({
   overflow: "hidden",
   marginTop: "110px",
   marginBottom: "80px",
+
+  [theme.breakpoints.down("md")]: {
+    marginTop: "80px",
+  },
 }));
 export default PageStyled;
