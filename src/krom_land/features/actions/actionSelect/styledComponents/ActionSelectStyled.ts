@@ -61,6 +61,7 @@ const ActionSelectStyled = styled(Box)(({ theme }) => ({
         minWidth: "100px",
         height: "50px",
         fontSize: "0.9em",
+        marginLeft: "-5px",
       },
 
       span: {

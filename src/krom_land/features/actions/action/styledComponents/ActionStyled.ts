@@ -40,6 +40,27 @@ const ActionStyled = styled(Box)(({ theme }) => ({
 
   ".description-wrapper": {
     maxWidth: "500px",
+    display: "inline-block",
+    height: "100%",
+
+    "& > div": {
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "space-between",
+      alignItems: "center",
+      height: "100%",
+    },
+
+    ".button-wrapper": {
+      alignSelf: "center",
+      paddingTop: "15px",
+      width: "100%",
+
+      ".second, .third": {
+        backgroundColor: theme.palette.secondary.main,
+        color: theme.palette.text.primary,
+      },
+    },
 
     [theme.breakpoints.down("md")]: {
       width: "90%",
@@ -63,18 +84,6 @@ const ActionStyled = styled(Box)(({ theme }) => ({
     div: {
       width: "100%",
       maxWidth: "100%",
-    },
-  },
-
-  ".button-wrapper": {
-    alignSelf: "center",
-    width: "90%",
-    maxWidth: "90%",
-    paddingTop: "15px",
-
-    ".second, .third": {
-      backgroundColor: theme.palette.secondary.main,
-      color: theme.palette.text.primary,
     },
   },
 }));

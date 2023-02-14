@@ -18,6 +18,12 @@ const NavBarStyled = styled(AppBar)(({ theme }) => ({
     },
   },
 
+  [theme.breakpoints.down("md")]: {
+    "& .MuiToolbar-root": {
+      height: "80px !important",
+    },
+  },
+
   "& .MuiToolbar-root": {
     transition: "all 300ms ease",
   },
