@@ -68,7 +68,7 @@ const ActionStyled = styled(Box)(({ theme }) => ({
     },
 
     p: {
-      textAlign: "justify",
+      textAlign: "center",
       textAlignLast: "center",
     },
   },
