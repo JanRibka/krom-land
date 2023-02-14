@@ -1,3 +1,4 @@
+import { forwardRef, Ref } from 'react';
 import { Link } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
@@ -5,9 +6,9 @@ import Box from '@mui/material/Box';
 import { AppRoute } from '../../../../../../shared/infrastructure/router/appRoutes';
 import NavLinksStyled from './styledComponents/NavLinksStyled';
 
-const NavLinks = () => {
+const NavLinks = forwardRef((props: any, ref: Ref<HTMLDivElement>) => {
   return (
-    <NavLinksStyled component='nav' className='nav-links-wrapper'>
+    <NavLinksStyled ref={ref} component='nav' className='nav-links-wrapper'>
       <Box component='ul'>
         <Box component='li' className='active'>
           <Link to={AppRoute.Home}>Úvod</Link>
@@ -24,6 +25,6 @@ const NavLinks = () => {
       </Box>
     </NavLinksStyled>
   );
-};
+});
 
 export default NavLinks;
