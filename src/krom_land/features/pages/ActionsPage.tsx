@@ -1,9 +1,10 @@
-import Actions from '../actions/Actions';
-import PageStyled from './styledComponents/PageStyled';
+import Actions from "../actions/Actions";
+import PageStyled from "./styledComponents/PageStyled";
 
 const ActionsPage = () => {
   return (
     <PageStyled component='main'>
+      <div className='top-space'></div>
       <Actions />
     </PageStyled>
   );

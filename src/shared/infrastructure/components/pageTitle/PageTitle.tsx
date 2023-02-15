@@ -1,7 +1,7 @@
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
 
-import PageTitleStyled from './styledComponents/PageTitleStyled';
+import PageTitleStyled from "./styledComponents/PageTitleStyled";
 
 interface IProps {
   image: string;
@@ -10,7 +10,6 @@ interface IProps {
 }
 
 const PageTitle = (props: IProps) => {
-  // TODO: Při načítání obrázku chvíli není nic vidět, dát tam nějaké pozadí
   return (
     <PageTitleStyled>
       <Box component='img' src={props.image} alt={props.alt} loading='lazy' />

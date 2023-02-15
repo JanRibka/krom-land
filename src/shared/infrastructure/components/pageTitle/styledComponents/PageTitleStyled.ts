@@ -1,4 +1,5 @@
 import Box from "@mui/material/Box";
+import { grey } from "@mui/material/colors";
 import { styled } from "@mui/material/styles";
 
 const TitleStyled = styled(Box)(({ theme }) => ({
@@ -6,6 +7,7 @@ const TitleStyled = styled(Box)(({ theme }) => ({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
+  backgroundColor: grey[500],
 
   img: {
     width: "100%",

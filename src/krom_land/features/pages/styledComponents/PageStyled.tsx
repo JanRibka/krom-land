@@ -1,13 +1,13 @@
-import Box from '@mui/material/Box';
-import { styled } from '@mui/material/styles';
+import Box from "@mui/material/Box";
+import { styled } from "@mui/material/styles";
 
 const PageStyled = styled(Box)(({ theme }) => ({
   overflow: "hidden",
-  marginTop: "110px",
-  marginBottom: "80px",
 
-  [theme.breakpoints.down("md")]: {
-    marginTop: "80px",
+  ".top-space": {
+    height: "110px",
+    width: "100%",
+    backgroundColor: theme.palette.primary.light,
   },
 }));
 export default PageStyled;
