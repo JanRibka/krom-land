@@ -1,27 +1,25 @@
-import '@fontsource/roboto/300.css';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css';
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
 
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
 
-import CssBaseline from '@mui/material/CssBaseline';
-import { ThemeProvider } from '@mui/material/styles';
+import CssBaseline from "@mui/material/CssBaseline";
+import { ThemeProvider } from "@mui/material/styles";
 
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { AppTheme } from './shared/themes/AppTheme';
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { AppTheme } from "./shared/themes/AppTheme";
 
-// const urlPrefix = process.env.PUBLIC_URL || "";
-const urlPrefix = undefined;
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <BrowserRouter basename={urlPrefix}>
+    <BrowserRouter>
       <ThemeProvider theme={AppTheme}>
         <CssBaseline />
         <App />

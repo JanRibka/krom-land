@@ -1,9 +1,9 @@
-import { MouseEvent, useEffect, useRef, useState } from 'react';
+import { MouseEvent, useEffect, useRef, useState } from "react";
 
-import NavLinks from '../navLinks/NavLinks';
-import HamburgerIcon from './hamburgerIcon/HamburgerIcon';
-import NavLinksStyled from './navLinks/styledComponents/NavLinksStyled';
-import MobileMenuStyled from './styledComponents/MobileMenuStyled';
+import NavLinks from "../navLinks/NavLinks";
+import HamburgerIcon from "./hamburgerIcon/HamburgerIcon";
+import NavLinksStyled from "./navLinks/styledComponents/NavLinksStyled";
+import MobileMenuStyled from "./styledComponents/MobileMenuStyled";
 
 interface IProps {
   // onClickAction: (event: MouseEvent<HTMLLIElement> | undefined) => void;
@@ -77,8 +77,7 @@ const MobileMenu = (props: IProps) => {
       <NavLinksStyled ref={refNavLinksWrapper}>
         <NavLinks
           ref={refNavLinks}
-          // handleOnClick={HandleOnClickAction}
-          // seldTab={props.seldTab}
+          innerWrapperName='nav-links-inner-wrapper-mobile'
         />
       </NavLinksStyled>
     </MobileMenuStyled>

@@ -1,10 +1,10 @@
-import NavLinks from '../navLinks/NavLinks';
-import MainMenuStyled from './styledComponents/MainMenuStyled';
+import NavLinks from "../navLinks/NavLinks";
+import MainMenuStyled from "./styledComponents/MainMenuStyled";
 
 const MainMenu = () => {
   return (
     <MainMenuStyled sx={{ display: { xs: "none", md: "flex" } }}>
-      <NavLinks />
+      <NavLinks innerWrapperName='nav-links-inner-wrapper' />
     </MainMenuStyled>
   );
 };
