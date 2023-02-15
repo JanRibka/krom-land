@@ -1,5 +1,5 @@
-import Box from '@mui/material/Box';
-import { styled } from '@mui/material/styles';
+import Box from "@mui/material/Box";
+import { styled } from "@mui/material/styles";
 
 const ActionStyled = styled(Box)(({ theme }) => ({
   display: "none",
@@ -51,6 +51,13 @@ const ActionStyled = styled(Box)(({ theme }) => ({
       height: "100%",
     },
 
+    ".description-inner-wrapper": {
+      p: {
+        textAlign: "justify",
+        textAlignLast: "center",
+      },
+    },
+
     ".button-wrapper": {
       alignSelf: "center",
       paddingTop: "15px",
@@ -60,16 +67,16 @@ const ActionStyled = styled(Box)(({ theme }) => ({
         backgroundColor: theme.palette.secondary.main,
         color: theme.palette.text.primary,
       },
+
+      p: {
+        textAlign: "center",
+        textAlignLast: "center",
+      },
     },
 
     [theme.breakpoints.down("md")]: {
       width: "90%",
       maxWidth: "90%",
-    },
-
-    p: {
-      textAlign: "center",
-      textAlignLast: "center",
     },
   },
 

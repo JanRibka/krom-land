@@ -1,16 +1,16 @@
-import { forwardRef, HTMLAttributes, Ref } from 'react';
-import ReactPlayer from 'react-player/youtube';
+import { forwardRef, HTMLAttributes, Ref } from "react";
+import ReactPlayer from "react-player/youtube";
 
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Stack from '@mui/material/Stack';
-import { useTheme } from '@mui/material/styles';
-import Typography from '@mui/material/Typography';
-import useMediaQuery from '@mui/material/useMediaQuery';
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
+import { useTheme } from "@mui/material/styles";
+import Typography from "@mui/material/Typography";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
-import SectionTitle from '../../../../shared/components/sectionTitle/SectionTitle';
-import DetailInfo from './detailInfo/DetaulInfo';
-import ActionStyled from './styledComponents/ActionStyled';
+import SectionTitle from "../../../../shared/components/sectionTitle/SectionTitle";
+import DetailInfo from "./detailInfo/DetaulInfo";
+import ActionStyled from "./styledComponents/ActionStyled";
 
 interface IProps extends HTMLAttributes<HTMLDivElement> {
   name: string;
@@ -105,7 +105,7 @@ const Action = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
           {/* Popis */}
           <Box className='description-wrapper'>
             <Box>
-              <Box>
+              <Box className='description-inner-wrapper'>
                 <SectionTitle mainText={props.name} />
                 <Typography>{props.description}</Typography>
               </Box>
