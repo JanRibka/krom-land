@@ -1,13 +1,12 @@
-import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
+import Stack from "@mui/material/Stack";
 
-import GridContainer from '../../../shared/components/gridContainer/GridContainer';
-import GridItem from '../../../shared/components/gridItem/GridItem';
-import Picture from '../../../shared/components/picture/Picture';
-import PageTitle from '../../../shared/infrastructure/components/pageTitle/PageTitle';
-import TopBackground from './img/contact_top_bg.webp';
-import pict01 from './img/post-2-copyright.jpg';
-import ImageGridWrapperStyled from './styledComponents/ImageGridWrapperStyled';
+import GridContainer from "../../../shared/components/gridContainer/GridContainer";
+import GridItem from "../../../shared/components/gridItem/GridItem";
+import Picture from "../../../shared/components/picture/Picture";
+import PageTitle from "../../../shared/infrastructure/components/pageTitle/PageTitle";
+import TopBackground from "./img/contact_top_bg.webp";
+import pict01 from "./img/post-2-copyright.jpg";
+import ImageGridWrapperStyled from "./styledComponents/ImageGridWrapperStyled";
 
 const Gallery = () => {
   return (
