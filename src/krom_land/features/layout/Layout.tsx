@@ -1,13 +1,13 @@
-import { ReactNode, useEffect, useRef } from 'react';
-import { scrollIntoView } from 'seamless-scroll-polyfill';
+import { ReactNode, useEffect, useRef } from "react";
+import { windowScrollTo } from "seamless-scroll-polyfill";
 
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 
-import useScrollPosition from '../../../shared/customHooks/useScrollPosition/useScrollPosition';
-import Footer from './footer/Footer';
-import NavBar from './navBar/NavBar';
-import ButtonUpStyled from './styledComponents/ButtonUpStyled';
-import LayoutStyled from './styledComponents/LayoutStyled';
+import useScrollPosition from "../../../shared/customHooks/useScrollPosition/useScrollPosition";
+import Footer from "./footer/Footer";
+import NavBar from "./navBar/NavBar";
+import ButtonUpStyled from "./styledComponents/ButtonUpStyled";
+import LayoutStyled from "./styledComponents/LayoutStyled";
 
 interface IProps {
   children: ReactNode;
@@ -15,7 +15,6 @@ interface IProps {
 
 const Layout = (props: IProps) => {
   // References
-  const ref = useRef<Object>(null);
   const refBtnUp = useRef<HTMLButtonElement>(null);
 
   // Consts
@@ -52,15 +51,11 @@ const Layout = (props: IProps) => {
   };
 
   const ScrollToTopHandler = () => {
-    if (!!ref) {
-      scrollIntoView(ref.current as Element, {
-        behavior: "smooth",
-      });
-    }
+    windowScrollTo(window, { behavior: "smooth", top: 0 }, {});
   };
 
   return (
-    <LayoutStyled ref={ref}>
+    <LayoutStyled>
       <NavBar />
       {props.children}
       <Footer />
