@@ -1,5 +1,6 @@
-import Box from '@mui/material/Box';
-import { styled } from '@mui/material/styles';
+import Box from "@mui/material/Box";
+import grey from "@mui/material/colors/grey";
+import { styled } from "@mui/material/styles";
 
 const PictureStyled = styled(Box)(
   ({ theme }) => `
@@ -10,7 +11,7 @@ const PictureStyled = styled(Box)(
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  margin: 25px;
+  margin: 25px;  
 
   &:hover {
     .image-overlay {        
@@ -40,6 +41,7 @@ const PictureStyled = styled(Box)(
     aspect-ratio: inherit;
     position: absolute;
     border-radius: 15px;
+    background-color: ${grey[300]}
   }
 
   svg {
