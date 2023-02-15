@@ -1,16 +1,11 @@
-import { MouseEvent, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import NavLinks from "../navLinks/NavLinks";
 import HamburgerIcon from "./hamburgerIcon/HamburgerIcon";
 import NavLinksStyled from "./navLinks/styledComponents/NavLinksStyled";
 import MobileMenuStyled from "./styledComponents/MobileMenuStyled";
 
-interface IProps {
-  // onClickAction: (event: MouseEvent<HTMLLIElement> | undefined) => void;
-  // seldTab: number;
-}
-
-const MobileMenu = (props: IProps) => {
+const MobileMenu = () => {
   // References
   const refMobileMenu = useRef<HTMLDivElement>(null);
   const refNavLinksWrapper = useRef<HTMLDivElement>(null);
@@ -55,15 +50,6 @@ const MobileMenu = (props: IProps) => {
   const HandleIsOpnd = () => {
     setIsOpnd(!isOpnd);
   };
-
-  // const HandleOnClickAction = (
-  //   event: MouseEvent<HTMLLIElement> | undefined
-  // ) => {
-  //   setIsOpnd(false);
-  //   setTimeout(() => {
-  //     props.onClickAction(event);
-  //   }, 800);
-  // };
 
   return (
     <MobileMenuStyled
