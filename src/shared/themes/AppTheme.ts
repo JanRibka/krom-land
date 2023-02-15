@@ -1,6 +1,4 @@
-import createTheme from '@mui/material/styles/createTheme';
-
-import Eater_Regular from '../fonts/Eater-Regular.ttf';
+import createTheme from "@mui/material/styles/createTheme";
 
 // Colors
 const palettePrimaryLight = "rgb(254, 205, 210)";
@@ -33,7 +31,7 @@ declare module "@mui/material/styles/createPalette" {
 // Typography theme
 const AppThemeTypography = createTheme({
   typography: {
-    // fontFamily: "'Didact Gothic', sans-serif",
+    // fontFamily: "'Roboto', sans-serif",
   },
 });
 
@@ -44,14 +42,6 @@ const AppThemeComponents = createTheme(AppThemeTypography, {
       styleOverrides: {
         root: {},
       },
-    },
-    MuiCssBaseline: {
-      styleOverrides: `
-        @font-face {
-          font-family: 'Eater';
-          src: local('Eater'), local('Eater-Regular'), url(${Eater_Regular}), format('truetype');
-        }
-      `,
     },
   },
 });
