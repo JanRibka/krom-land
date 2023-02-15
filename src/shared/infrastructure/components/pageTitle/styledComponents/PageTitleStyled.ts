@@ -1,5 +1,5 @@
-import Box from '@mui/material/Box';
-import { styled } from '@mui/material/styles';
+import Box from "@mui/material/Box";
+import { styled } from "@mui/material/styles";
 
 const TitleStyled = styled(Box)(({ theme }) => ({
   position: "relative",
@@ -22,7 +22,7 @@ const TitleStyled = styled(Box)(({ theme }) => ({
     position: "absolute",
     color: theme.palette.text.secondary,
     fontSize: "6rem",
-    fontFamily: "Eater",
+    fontFamily: "'Eater', 'Helvetica','Arial','sans-serif'",
     textAlign: "center",
 
     [theme.breakpoints.down("lg")]: {
