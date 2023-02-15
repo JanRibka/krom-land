@@ -5,15 +5,18 @@ import ActionsPage from "../../../krom_land/features/pages/ActionsPage";
 import ContactPage from "../../../krom_land/features/pages/ContactPage";
 import GalleryPage from "../../../krom_land/features/pages/GalleryPage";
 import HomePage from "../../../krom_land/features/pages/HomePage";
+import usePrevious from "../../customHooks/usePrevious/usePrevious";
 import { AppRoute } from "./appRoutes";
 
 const AppRouter = () => {
   // Constants
   const { pathname } = useLocation();
+  let previousRoute = usePrevious<string | undefined>(pathname);
 
   // Change route detection
   useEffect(() => {
     changeMenuActiveButton();
+    scrollToTop();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
 
@@ -51,6 +54,10 @@ const AppRouter = () => {
       .childNodes[0] as HTMLDivElement;
 
     if (hamburgerIcon.classList.contains("is-opened")) hamburgerIcon.click();
+  };
+
+  const scrollToTop = () => {
+    if (!!previousRoute) window.scrollTo(0, 0);
   };
 
   return (
