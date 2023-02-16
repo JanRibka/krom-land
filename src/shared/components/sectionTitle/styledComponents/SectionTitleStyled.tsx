@@ -10,15 +10,17 @@ const SectionTitleStyled = styled(Box)(
   flex-direction: column;
 
   & .main-text {
-    font-weight: 400;
-    font-size: 2.125rem;
+    font-family: 'Eater', 'Helvetica','Arial','sans-serif';
+    font-size: 2rem;
     line-height: 1.235;
     letter-spacing: 0.00735em;
+    text-align: center;
+    text-align-last: center;
     color: ${theme.palette.text.primary}
   }
 
   & .secondary-text {
-    font-family: "Caveat", cursive;
+    font-family: 'Marck Script', 'Helvetica','Arial','sans-serif';
     font-size: 1.5rem;
     color: ${theme.palette.common.purple.main}
   }
