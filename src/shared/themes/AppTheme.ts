@@ -1,3 +1,4 @@
+import { csCZ } from "@mui/material/locale";
 import createTheme from "@mui/material/styles/createTheme";
 
 // Colors
@@ -29,11 +30,14 @@ declare module "@mui/material/styles/createPalette" {
 }
 
 // Typography theme
-const AppThemeTypography = createTheme({
-  typography: {
-    // fontFamily: "'Roboto', sans-serif",
+const AppThemeTypography = createTheme(
+  {
+    typography: {
+      // fontFamily: "'Roboto', sans-serif",
+    },
   },
-});
+  csCZ
+);
 
 // Components theme
 const AppThemeComponents = createTheme(AppThemeTypography, {

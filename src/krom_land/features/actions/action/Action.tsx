@@ -1,4 +1,4 @@
-import { forwardRef, HTMLAttributes, Ref } from "react";
+import { forwardRef, HTMLAttributes, Ref, useState } from "react";
 import ReactPlayer from "react-player/youtube";
 
 import Box from "@mui/material/Box";
@@ -9,6 +9,9 @@ import Typography from "@mui/material/Typography";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
 import SectionTitle from "../../../../shared/components/sectionTitle/SectionTitle";
+import AppSnackbar from "../../../../shared/components/snackbar/AppSnackbar";
+import AppSnackBarOpenDataModel from "../../../../shared/components/snackbar/AppSnackBarModel";
+import ActionRegistrationDialog from "../actionRegistrationDialog/ActionRegistrationDialog";
 import DetailInfo from "./detailInfo/DetaulInfo";
 import ActionStyled from "./styledComponents/ActionStyled";
 
@@ -25,9 +28,29 @@ interface IProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 const Action = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
+  // State
+  const [open, setOpen] = useState<boolean>(false);
+  const [messageOpenData, setMessageOpenData] =
+    useState<AppSnackBarOpenDataModel>({
+      open: false,
+      message: "",
+      severity: undefined,
+    });
+
   // Constants
   const theme = useTheme();
-  const { name, backgroundColor, ...restProps } = props;
+  const {
+    name,
+    description,
+    backgroundColor,
+    image,
+    imageAlt,
+    videoUrl,
+    kdy,
+    kde,
+    cena,
+    ...restProps
+  } = props;
   const mdDwn = useMediaQuery(theme.breakpoints.down("md"));
   const pistDescWrapperDirection = mdDwn ? "column" : "row";
 
@@ -36,29 +59,35 @@ const Action = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
     return (
       <Stack className='button-wrapper' direction='column' spacing={2}>
         {(() => {
-          switch (props.backgroundColor) {
+          switch (backgroundColor) {
             case theme.palette.secondary.main:
               return (
                 <>
                   <DetailInfo
-                    kdy={props.kdy}
-                    kde={props.kde}
-                    cena={props.cena}
+                    kdy={kdy}
+                    kde={kde}
+                    cena={cena}
                     className='detail-info'
                   />
-                  <Button variant='contained'>Chci se registrovat</Button>
+                  <Button variant='contained' onClick={() => setOpen(true)}>
+                    Chci se registrovat
+                  </Button>
                 </>
               );
             case theme.palette.primary.main:
               return (
                 <>
                   <DetailInfo
-                    kdy={props.kdy}
-                    kde={props.kde}
-                    cena={props.cena}
+                    kdy={kdy}
+                    kde={kde}
+                    cena={cena}
                     className='second'
                   />
-                  <Button variant='contained' className='detail-info second'>
+                  <Button
+                    variant='contained'
+                    className='detail-info second'
+                    onClick={() => setOpen(true)}
+                  >
                     Chci se registrovat
                   </Button>
                 </>
@@ -67,18 +96,26 @@ const Action = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
               return (
                 <>
                   <DetailInfo
-                    kdy={props.kdy}
-                    kde={props.kde}
-                    cena={props.cena}
+                    kdy={kdy}
+                    kde={kde}
+                    cena={cena}
                     className='third'
                   />
-                  <Button variant='contained' className='detail-info third'>
+                  <Button
+                    variant='contained'
+                    className='detail-info third'
+                    onClick={() => setOpen(true)}
+                  >
                     Chci se registrovat
                   </Button>
                 </>
               );
             default:
-              return <Button variant='contained'>Chci se registrovat</Button>;
+              return (
+                <Button variant='contained' onClick={() => setOpen(true)}>
+                  Chci se registrovat
+                </Button>
+              );
           }
         })()}
       </Stack>
@@ -87,7 +124,7 @@ const Action = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
 
   return (
     <ActionStyled
-      sx={{ backgroundColor: props.backgroundColor }}
+      sx={{ backgroundColor: backgroundColor }}
       ref={ref}
       {...restProps}
     >
@@ -96,8 +133,8 @@ const Action = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
         <Stack spacing={10} direction={pistDescWrapperDirection}>
           <Box
             component='img'
-            src={props.image}
-            alt={props.imageAlt}
+            src={image}
+            alt={imageAlt}
             loading='lazy'
             className='action-image'
           />
@@ -106,8 +143,8 @@ const Action = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
           <Box className='description-wrapper'>
             <Box>
               <Box className='description-inner-wrapper'>
-                <SectionTitle mainText={props.name} />
-                <Typography>{props.description}</Typography>
+                <SectionTitle mainText={name} />
+                <Typography>{description}</Typography>
               </Box>
 
               {/* Registrační tlačítko */}
@@ -117,13 +154,25 @@ const Action = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
         </Stack>
 
         {/* Přehrávač */}
-        {!!props.videoUrl && (
+        {!!videoUrl && (
           <Stack className='player-wrapper'>
             <SectionTitle mainText='Upoutávka na akci' />
-            <ReactPlayer url={props.videoUrl} />
+            <ReactPlayer url={videoUrl} />
           </Stack>
         )}
       </Stack>
+      {/* Registrační dialog */}
+      <ActionRegistrationDialog
+        open={open}
+        setOpen={setOpen}
+        actionNam={name}
+        setMessageOpenData={setMessageOpenData}
+      />
+      {/* Informační hláška */}
+      <AppSnackbar
+        openData={messageOpenData}
+        setOpenData={setMessageOpenData}
+      />
     </ActionStyled>
   );
 });
