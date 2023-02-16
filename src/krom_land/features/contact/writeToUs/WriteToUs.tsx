@@ -1,19 +1,18 @@
-import { ChangeEvent, FormEvent, useRef, useState } from 'react';
+import { ChangeEvent, FormEvent, useRef, useState } from "react";
 
-import emailjs from '@emailjs/browser';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Stack from '@mui/material/Stack';
-import { useTheme } from '@mui/material/styles';
-import TextField from '@mui/material/TextField';
-import useMediaQuery from '@mui/material/useMediaQuery';
+import emailjs from "@emailjs/browser";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
+import { useTheme } from "@mui/material/styles";
+import TextField from "@mui/material/TextField";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
-import SectionTitle from '../../../../shared/components/sectionTitle/SectionTitle';
-import AppSnackbar from '../../../../shared/components/snackbar/AppSnackbar';
-import AppSnackBarOpenDataModel from '../../../../shared/components/snackbar/AppSnackBarModel';
-import HttpStatusCode from '../../../../shared/enums/HttpStatusCode';
-import { sendEmail } from '../../../../shared/helpers/emailHelper';
-import WriteToUsStyled from './styledComponents/WriteToUsStyled';
+import SectionTitle from "../../../../shared/components/sectionTitle/SectionTitle";
+import AppSnackbar from "../../../../shared/components/snackbar/AppSnackbar";
+import AppSnackBarOpenDataModel from "../../../../shared/components/snackbar/AppSnackBarModel";
+import HttpStatusCode from "../../../../shared/enums/HttpStatusCode";
+import WriteToUsStyled from "./styledComponents/WriteToUsStyled";
 
 // Uděláno podle https://www.youtube.com/watch?v=wUK40U6sPH0 a https://smtpjs.com/
 
@@ -58,33 +57,10 @@ const WritetoUs = () => {
   const handleFormOnSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // const result: any = await sendEmail(
-    //   formData.user_name,
-    //   formData.user_email,
-    //   formData.subject,
-    //   formData.message
-    // );
-    // debugger;
-    // if ((result as any) === "OK") {
-    //   setMessageOpenData({
-    //     open: true,
-    //     message: "Vaše zpráva byla úspěšně odeslána",
-    //     severity: "success",
-    //   });
-    // } else {
-    //   setMessageOpenData({
-    //     open: true,
-    //     message: "Chyba při odesílání zprávy. Zkuste to prosím později.",
-    //     severity: "error",
-    //   });
-    // }
-
-    // event.currentTarget.reset();
-
     emailjs
       .sendForm(
         process.env.REACT_APP_EMAIL_SERVICE_ID ?? "",
-        process.env.REACT_APP_EMAIL_TEMPLATE_ID ?? "",
+        process.env.REACT_APP_EMAIL_TEMPLATE_ID_QUESTION ?? "",
         refForm.current as HTMLFormElement,
         process.env.REACT_APP_EMAIL_PUBLIC_KEY ?? ""
       )
