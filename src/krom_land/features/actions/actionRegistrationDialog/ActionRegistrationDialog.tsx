@@ -1,25 +1,34 @@
-import { parse as dateParse } from 'date-fns';
-import dayjs, { Dayjs } from 'dayjs';
-import { MuiTelInputInfo } from 'mui-tel-input';
-import { ChangeEvent, Dispatch, FormEvent, SetStateAction, useRef, useState } from 'react';
-
-import emailjs from '@emailjs/browser';
-import CloseIcon from '@mui/icons-material/Close';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogTitle from '@mui/material/DialogTitle';
-import IconButton from '@mui/material/IconButton';
-
-import AppSnackBarOpenDataModel from '../../../../shared/components/snackbar/AppSnackBarModel';
-import HttpStatusCode from '../../../../shared/enums/HttpStatusCode';
+import { parse as dateParse } from "date-fns";
+import dayjs, { Dayjs } from "dayjs";
+import { MuiTelInputInfo } from "mui-tel-input";
 import {
-    addTimeZoneOffset, dateTimeToString, parseDateTime
-} from '../../../../shared/helpers/dateTimeHelper';
-import DialogContentForm from './dialogContent/DialogContentForm';
-import DialogContentFormModel from './models/DialogContentFormModel';
-import ActionRegistrationDialogStyled from './styledComponents/ActionRegistrationDialogStyled';
+  ChangeEvent,
+  Dispatch,
+  FormEvent,
+  SetStateAction,
+  useRef,
+  useState,
+} from "react";
+
+import emailjs from "@emailjs/browser";
+import CloseIcon from "@mui/icons-material/Close";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogTitle from "@mui/material/DialogTitle";
+import IconButton from "@mui/material/IconButton";
+
+import AppSnackBarOpenDataModel from "../../../../shared/components/snackbar/AppSnackBarModel";
+import HttpStatusCode from "../../../../shared/enums/HttpStatusCode";
+import {
+  addTimeZoneOffset,
+  dateTimeToString,
+  parseDateTime,
+} from "../../../../shared/helpers/dateTimeHelper";
+import DialogContentForm from "./dialogContent/DialogContentForm";
+import DialogContentFormModel from "./models/DialogContentFormModel";
+import ActionRegistrationDialogStyled from "./styledComponents/ActionRegistrationDialogStyled";
 
 interface IProps {
   open: boolean;
@@ -89,6 +98,13 @@ const ActionRegistrationDialog = (props: IProps) => {
 
   const handleOnClickRegister = () => {
     refForm.current?.submit();
+  };
+
+  const handleOnChangeRadio = (e: ChangeEvent<HTMLInputElement>) => {
+    const name = e.target.name;
+    const value = e.target.value;
+
+    setFormData({ ...formData, [name]: value });
   };
 
   const handleFormOnSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -163,6 +179,7 @@ const ActionRegistrationDialog = (props: IProps) => {
           handleOnChangeDatePipcker={handleOnChangeDatePicker}
           handleOnChangeTelInput={handleOnChangeTelInput}
           handleFormOnSubmit={handleFormOnSubmit}
+          handleOnChangeRadio={handleOnChangeRadio}
         />
       </DialogContent>
       <DialogActions>

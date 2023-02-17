@@ -1,28 +1,27 @@
-import { parse as dateParse } from 'date-fns';
-import cslocale from 'date-fns/locale/cs';
-import { Dayjs } from 'dayjs';
-import { MuiTelInput } from 'mui-tel-input';
-import { MuiTelInputInfo } from 'mui-tel-input/dist/index.types';
-import { ChangeEvent, FormEvent, forwardRef, Ref } from 'react';
+import { parse as dateParse } from "date-fns";
+import cslocale from "date-fns/locale/cs";
+import { Dayjs } from "dayjs";
+import { MuiTelInputInfo } from "mui-tel-input/dist/index.types";
+import { ChangeEvent, FormEvent, forwardRef, Ref } from "react";
 
-import FormControl from '@mui/material/FormControl';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormLabel from '@mui/material/FormLabel';
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import Stack from '@mui/material/Stack';
-import { useTheme } from '@mui/material/styles';
-import TextField from '@mui/material/TextField';
-import Typography from '@mui/material/Typography';
-import useMediaQuery from '@mui/material/useMediaQuery';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
+import FormControl from "@mui/material/FormControl";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormLabel from "@mui/material/FormLabel";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import Stack from "@mui/material/Stack";
+import { useTheme } from "@mui/material/styles";
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
 
-import { nameof } from '../../../../../nameof';
-import DialogContentFormModel from '../models/DialogContentFormModel';
-import DialogContentStyled from './styledComponents/DilogContentFormStyled';
+import { nameof } from "../../../../../nameof";
+import DialogContentFormModel from "../models/DialogContentFormModel";
+import DialogContentStyled from "./styledComponents/DilogContentFormStyled";
 
 interface IProps {
   formData: DialogContentFormModel;
@@ -39,6 +38,7 @@ interface IProps {
     info: MuiTelInputInfo,
     name: string
   ) => void;
+  handleOnChangeRadio: (e: ChangeEvent<HTMLInputElement>) => void;
   handleFormOnSubmit: (e: FormEvent<HTMLFormElement>) => void;
 }
 
@@ -121,6 +121,7 @@ const DialogContentForm = forwardRef(
                       <TextField
                         {...params}
                         required
+                        error={false}
                         name={nameof<DialogContentFormModel>("child_birthday")}
                       />
                     )}
@@ -141,6 +142,7 @@ const DialogContentForm = forwardRef(
                       <TextField
                         {...params}
                         required
+                        error={false}
                         name={nameof<DialogContentFormModel>("child_birthday")}
                       />
                     )}
@@ -180,24 +182,19 @@ const DialogContentForm = forwardRef(
                   onChange={props.handleTextFieldOnChange}
                 />
               </Stack>
-              <MuiTelInput
-                value={props.formData.first_representative_phone_number}
+              <TextField
+                label='Telefon'
                 required
                 fullWidth
                 variant='outlined'
-                name='tel'
+                type='tel'
+                autoComplete='off'
                 placeholder='xxx xxx xxx'
-                onlyCountries={["CZ", "SK", "PL", "AT", "DE"]}
-                langOfCountryName='CZ'
-                onChange={(value, info) =>
-                  props.handleOnChangeTelInput(
-                    value,
-                    info,
-                    nameof<DialogContentFormModel>(
-                      "first_representative_phone_number"
-                    )
-                  )
-                }
+                name={nameof<DialogContentFormModel>(
+                  "first_representative_phone_number"
+                )}
+                value={props.formData.first_representative_phone_number}
+                onChange={props.handleTextFieldOnChange}
               />
             </>
             <>
@@ -230,24 +227,18 @@ const DialogContentForm = forwardRef(
                   onChange={props.handleTextFieldOnChange}
                 />
               </Stack>
-              <MuiTelInput
-                value={props.formData.second_representative_phone_number}
-                required
+              <TextField
+                label='Telefon'
                 fullWidth
                 variant='outlined'
-                name='tel'
-                placeholder='xxx xxx xxx'
-                onlyCountries={["CZ", "SK", "PL", "AT", "DE"]}
-                langOfCountryName='CZ'
-                onChange={(value, info) =>
-                  props.handleOnChangeTelInput(
-                    value,
-                    info,
-                    nameof<DialogContentFormModel>(
-                      "second_representative_phone_number"
-                    )
-                  )
-                }
+                type='tel'
+                autoComplete='off'
+                // placeholder='xxx xxx xxx'
+                name={nameof<DialogContentFormModel>(
+                  "second_representative_phone_number"
+                )}
+                value={props.formData.second_representative_phone_number}
+                onChange={props.handleTextFieldOnChange}
               />
             </>
             <>
@@ -331,27 +322,31 @@ const DialogContentForm = forwardRef(
                 value={props.formData.other_hendicap}
                 onChange={props.handleTextFieldOnChange}
               />
-              <FormControl>
+              <FormControl required>
                 <FormLabel>
                   Souhlasíte s focením Vašeho dítěte při akcích a poté
                   zveřejnění na sociálních sítích? (instagram, facebook)
                 </FormLabel>
                 <RadioGroup
                   row
-                  aria-required
                   name={nameof<DialogContentFormModel>("other_photos")}
                   value={props.formData.other_photos}
+                  onChange={props.handleOnChangeRadio}
                 >
                   <FormControlLabel
                     value='Ano'
-                    control={<Radio />}
+                    control={<Radio required />}
                     label='Ano'
                   />
-                  <FormControlLabel value='Ne' control={<Radio />} label='Ne' />
+                  <FormControlLabel
+                    value='Ne'
+                    control={<Radio required />}
+                    label='Ne'
+                  />
                 </RadioGroup>
               </FormControl>
 
-              <FormControl>
+              <FormControl required>
                 <FormLabel>Jak bude dítě z akce odcházet?</FormLabel>
                 <RadioGroup
                   row
@@ -360,15 +355,16 @@ const DialogContentForm = forwardRef(
                     "other_how_children_arrives"
                   )}
                   value={props.formData.other_how_children_arrives}
+                  onChange={props.handleOnChangeRadio}
                 >
                   <FormControlLabel
                     value='Vyzvednu si jej'
-                    control={<Radio />}
+                    control={<Radio required />}
                     label='Vyzvednu si jej'
                   />
                   <FormControlLabel
                     value='Může odcházet po akci samo domů'
-                    control={<Radio />}
+                    control={<Radio required />}
                     label='Může odcházet po akci samo domů'
                   />
                 </RadioGroup>
@@ -392,22 +388,23 @@ const DialogContentForm = forwardRef(
                 />
               )}
 
-              <FormControl>
+              <FormControl required>
                 <FormLabel>Jak budete platit?</FormLabel>
                 <RadioGroup
                   row
                   aria-required
                   name={nameof<DialogContentFormModel>("other_pay_method")}
                   value={props.formData.other_pay_method}
+                  onChange={props.handleOnChangeRadio}
                 >
                   <FormControlLabel
                     value='Přes účet'
-                    control={<Radio />}
+                    control={<Radio required />}
                     label='Přes účet'
                   />
                   <FormControlLabel
                     value='Hotově při prvním dni víkendu'
-                    control={<Radio />}
+                    control={<Radio required />}
                     label='Hotově při prvním dni víkendu'
                   />
                 </RadioGroup>
@@ -434,7 +431,12 @@ const DialogContentForm = forwardRef(
             type='hidden'
             name={nameof<DialogContentFormModel>("subject")}
             value={props.formData.subject}
-          ></input>
+          />
+          <input
+            type='hidden'
+            name={nameof<DialogContentFormModel>("action_name")}
+            value={props.formData.action_name}
+          />
         </form>
       </DialogContentStyled>
     );

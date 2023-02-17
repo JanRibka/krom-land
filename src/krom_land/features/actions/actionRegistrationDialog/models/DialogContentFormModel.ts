@@ -7,10 +7,10 @@ class DialogContentFormModel {
   child_birthday: string = "";
   first_representative_name: string = "";
   first_representative_last_name: string = "";
-  first_representative_phone_number: string = "+420";
+  first_representative_phone_number: string = "";
   second_representative_name: string = "";
   second_representative_last_name: string = "";
-  second_representative_phone_number: string = "+420";
+  second_representative_phone_number: string = "";
   address_name: string = "";
   address_last_name: string = "";
   address_street_cp: string = "";
