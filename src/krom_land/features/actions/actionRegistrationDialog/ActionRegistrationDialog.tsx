@@ -1,34 +1,25 @@
-import { parse as dateParse } from "date-fns";
-import dayjs, { Dayjs } from "dayjs";
-import { MuiTelInputInfo } from "mui-tel-input";
-import {
-  ChangeEvent,
-  Dispatch,
-  FormEvent,
-  SetStateAction,
-  useRef,
-  useState,
-} from "react";
+import { parse as dateParse } from 'date-fns';
+import dayjs, { Dayjs } from 'dayjs';
+import { MuiTelInputInfo } from 'mui-tel-input';
+import { ChangeEvent, Dispatch, FormEvent, SetStateAction, useRef, useState } from 'react';
 
-import emailjs from "@emailjs/browser";
-import CloseIcon from "@mui/icons-material/Close";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogTitle from "@mui/material/DialogTitle";
-import IconButton from "@mui/material/IconButton";
+import emailjs from '@emailjs/browser';
+import CloseIcon from '@mui/icons-material/Close';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
+import IconButton from '@mui/material/IconButton';
 
-import AppSnackBarOpenDataModel from "../../../../shared/components/snackbar/AppSnackBarModel";
-import HttpStatusCode from "../../../../shared/enums/HttpStatusCode";
+import AppSnackBarOpenDataModel from '../../../../shared/components/snackbar/AppSnackBarModel';
+import HttpStatusCode from '../../../../shared/enums/HttpStatusCode';
 import {
-  addTimeZoneOffset,
-  dateTimeToString,
-  parseDateTime,
-} from "../../../../shared/helpers/dateTimeHelper";
-import DialogContentForm from "./dialogContent/DialogContentForm";
-import DialogContentFormModel from "./models/DialogContentFormModel";
-import ActionRegistrationDialogStyled from "./styledComponents/ActionRegistrationDialogStyled";
+    addTimeZoneOffset, dateTimeToString, parseDateTime
+} from '../../../../shared/helpers/dateTimeHelper';
+import DialogContentForm from './dialogContent/DialogContentForm';
+import DialogContentFormModel from './models/DialogContentFormModel';
+import ActionRegistrationDialogStyled from './styledComponents/ActionRegistrationDialogStyled';
 
 interface IProps {
   open: boolean;

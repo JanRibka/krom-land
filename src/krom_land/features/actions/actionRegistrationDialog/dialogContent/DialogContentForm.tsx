@@ -1,28 +1,28 @@
-import { parse as dateParse } from "date-fns";
-import cslocale from "date-fns/locale/cs";
-import { Dayjs } from "dayjs";
-import { MuiTelInput } from "mui-tel-input";
-import { MuiTelInputInfo } from "mui-tel-input/dist/index.types";
-import { ChangeEvent, FormEvent, forwardRef, Ref } from "react";
+import { parse as dateParse } from 'date-fns';
+import cslocale from 'date-fns/locale/cs';
+import { Dayjs } from 'dayjs';
+import { MuiTelInput } from 'mui-tel-input';
+import { MuiTelInputInfo } from 'mui-tel-input/dist/index.types';
+import { ChangeEvent, FormEvent, forwardRef, Ref } from 'react';
 
-import FormControl from "@mui/material/FormControl";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import FormLabel from "@mui/material/FormLabel";
-import Radio from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
-import Stack from "@mui/material/Stack";
-import { useTheme } from "@mui/material/styles";
-import TextField from "@mui/material/TextField";
-import Typography from "@mui/material/Typography";
-import useMediaQuery from "@mui/material/useMediaQuery";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
+import FormControl from '@mui/material/FormControl';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormLabel from '@mui/material/FormLabel';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import Stack from '@mui/material/Stack';
+import { useTheme } from '@mui/material/styles';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 
-import { nameof } from "../../../../../nameof";
-import DialogContentFormModel from "../models/DialogContentFormModel";
-import DialogContentStyled from "./styledComponents/DilogContentFormStyled";
+import { nameof } from '../../../../../nameof';
+import DialogContentFormModel from '../models/DialogContentFormModel';
+import DialogContentStyled from './styledComponents/DilogContentFormStyled';
 
 interface IProps {
   formData: DialogContentFormModel;
@@ -117,7 +117,13 @@ const DialogContentForm = forwardRef(
                         nameof<DialogContentFormModel>("child_birthday")
                       )
                     }
-                    renderInput={(params) => <TextField {...params} required />}
+                    renderInput={(params) => (
+                      <TextField
+                        {...params}
+                        required
+                        name={nameof<DialogContentFormModel>("child_birthday")}
+                      />
+                    )}
                   />
                 ) : (
                   <DesktopDatePicker
@@ -131,7 +137,13 @@ const DialogContentForm = forwardRef(
                         nameof<DialogContentFormModel>("child_birthday")
                       )
                     }
-                    renderInput={(params) => <TextField {...params} required />}
+                    renderInput={(params) => (
+                      <TextField
+                        {...params}
+                        required
+                        name={nameof<DialogContentFormModel>("child_birthday")}
+                      />
+                    )}
                   />
                 )}
               </LocalizationProvider>
@@ -417,6 +429,12 @@ const DialogContentForm = forwardRef(
             </>
           </Stack>
           <button type='submit'>submit</button>
+          {/* Hiddens */}
+          <input
+            type='hidden'
+            name={nameof<DialogContentFormModel>("subject")}
+            value={props.formData.subject}
+          ></input>
         </form>
       </DialogContentStyled>
     );
