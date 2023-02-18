@@ -52,7 +52,7 @@ const Action = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
     ...restProps
   } = props;
   const mdDwn = useMediaQuery(theme.breakpoints.down("md"));
-  const pistDescWrapperDirection = mdDwn ? "column" : "row";
+  const pictDescWrapperDirection = mdDwn ? "column" : "row";
 
   // Other
   const renderRegistrationButton = () => {
@@ -130,7 +130,7 @@ const Action = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
     >
       <Stack spacing={5} direction='column' sx={{ width: "100%" }}>
         {/* Obrázek */}
-        <Stack spacing={10} direction={pistDescWrapperDirection}>
+        <Stack spacing={10} direction={pictDescWrapperDirection}>
           <Box
             component='img'
             src={image}

@@ -1,25 +1,25 @@
 import Stack from "@mui/material/Stack";
 
 import PageTitle from "../../../shared/infrastructure/components/pageTitle/PageTitle";
-import ActionSelect from "./actionSelect/ActionSelect";
-import TopBackground from "./img/contact_top_bg.webp";
+import AboutUs from "./aboutUs/AboutUs";
+import TopBackground from "./img/post-5-copyright.jpg";
 
-const Actions = () => {
+const Home = () => {
   return (
     <Stack spacing={10} direction='column'>
       <>
         <PageTitle
           image={TopBackground}
-          title='Nadcházející akce'
+          title='KROM Land'
+          titleSecondary='Stravte skvěůý víkend'
           alt='Úvodní fotka stránky Akce'
-          imhHeight={350}
+          imhHeight={760}
+          enbFadeEffect
         />
-      </>
-      <>
-        <ActionSelect />
+        <AboutUs />
       </>
     </Stack>
   );
 };
 
-export default Actions;
+export default Home;

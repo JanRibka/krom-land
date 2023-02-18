@@ -16,6 +16,7 @@ const Gallery = () => {
           image={TopBackground}
           title='Galerie'
           alt='Úvodní fotka stránky Galerie'
+          imhHeight={350}
         />
       </>
       <ImageGridWrapperStyled>

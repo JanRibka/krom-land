@@ -11,8 +11,6 @@ const TitleStyled = styled(Box)(({ theme }) => ({
 
   img: {
     width: "100%",
-    maxHeight: "350px",
-    minHeight: "350px",
     objectFit: "cover",
 
     [theme.breakpoints.down("md")]: {
@@ -20,19 +18,39 @@ const TitleStyled = styled(Box)(({ theme }) => ({
     },
   },
 
-  h1: {
+  ".animation-effect": {
     position: "absolute",
-    color: theme.palette.text.secondary,
-    fontSize: "6rem",
-    fontFamily: "'Eater', 'Helvetica','Arial','sans-serif'",
-    textAlign: "center",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    width: "100%",
+    height: "100%",
 
-    [theme.breakpoints.down("lg")]: {
-      fontSize: "5rem",
-    },
+    ".title-wrapper": {
+      position: "absolute",
+      display: "flex",
+      alignItems: "center",
 
-    [theme.breakpoints.down("sm")]: {
-      fontSize: "3rem",
+      h1: {
+        color: theme.palette.text.secondary,
+        fontSize: "6rem",
+        fontFamily: "'Eater', 'Helvetica','Arial','sans-serif'",
+        textAlign: "center",
+
+        [theme.breakpoints.down("lg")]: {
+          fontSize: "5rem",
+        },
+
+        [theme.breakpoints.down("sm")]: {
+          fontSize: "3rem",
+        },
+      },
+
+      h6: {
+        fontFamily: "'Marck Script', 'Helvetica','Arial','sans-serif'",
+        fontSize: "2rem",
+        color: theme.palette.secondary.light,
+      },
     },
   },
 }));
