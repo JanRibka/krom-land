@@ -27,7 +27,7 @@ const ActionStyled = styled(Box)(({ theme }) => ({
     objectFit: "cover",
     borderRadius: "30px",
 
-    [theme.breakpoints.down("xl")]: {
+    [theme.breakpoints.down("lg")]: {
       maxWidth: "440px",
     },
 

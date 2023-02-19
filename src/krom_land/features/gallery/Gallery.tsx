@@ -23,48 +23,48 @@ const Gallery = () => {
         <>
           <GridContainer>
             <GridItem xs={12} sm={6} lg={3}>
-              <Picture image={pict01} alt='dfgf' />
+              <Picture image={pict01} alt='dfgf' enbHover />
             </GridItem>
             <GridItem xs={12} sm={6} lg={3}>
-              <Picture image={pict01} alt='dfgf' />
+              <Picture image={pict01} alt='dfgf' enbHover />
             </GridItem>
             <GridItem xs={12} sm={6} lg={3}>
-              <Picture image={pict01} alt='dfgf' />
+              <Picture image={pict01} alt='dfgf' enbHover />
             </GridItem>
             <GridItem xs={12} sm={6} lg={3}>
-              <Picture image={pict01} alt='dfgf' />
-            </GridItem>
-          </GridContainer>
-        </>
-        <>
-          <GridContainer>
-            <GridItem xs={12} sm={6} lg={3}>
-              <Picture image={pict01} alt='dfgf' />
-            </GridItem>
-            <GridItem xs={12} sm={6} lg={3}>
-              <Picture image={pict01} alt='dfgf' />
-            </GridItem>
-            <GridItem xs={12} sm={6} lg={3}>
-              <Picture image={pict01} alt='dfgf' />
-            </GridItem>
-            <GridItem xs={12} sm={6} lg={3}>
-              <Picture image={pict01} alt='dfgf' />
+              <Picture image={pict01} alt='dfgf' enbHover />
             </GridItem>
           </GridContainer>
         </>
         <>
           <GridContainer>
             <GridItem xs={12} sm={6} lg={3}>
-              <Picture image={pict01} alt='dfgf' />
+              <Picture image={pict01} alt='dfgf' enbHover />
             </GridItem>
             <GridItem xs={12} sm={6} lg={3}>
-              <Picture image={pict01} alt='dfgf' />
+              <Picture image={pict01} alt='dfgf' enbHover />
             </GridItem>
             <GridItem xs={12} sm={6} lg={3}>
-              <Picture image={pict01} alt='dfgf' />
+              <Picture image={pict01} alt='dfgf' enbHover />
             </GridItem>
             <GridItem xs={12} sm={6} lg={3}>
-              <Picture image={pict01} alt='dfgf' />
+              <Picture image={pict01} alt='dfgf' enbHover />
+            </GridItem>
+          </GridContainer>
+        </>
+        <>
+          <GridContainer>
+            <GridItem xs={12} sm={6} lg={3}>
+              <Picture image={pict01} alt='dfgf' enbHover />
+            </GridItem>
+            <GridItem xs={12} sm={6} lg={3}>
+              <Picture image={pict01} alt='dfgf' enbHover />
+            </GridItem>
+            <GridItem xs={12} sm={6} lg={3}>
+              <Picture image={pict01} alt='dfgf' enbHover />
+            </GridItem>
+            <GridItem xs={12} sm={6} lg={3}>
+              <Picture image={pict01} alt='dfgf' enbHover />
             </GridItem>
           </GridContainer>
         </>

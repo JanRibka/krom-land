@@ -10,10 +10,10 @@ const PictureStyled = styled(Box)(
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
-  margin: 25px;  
 
-  &:hover {
+  &.enb-hover:hover {
+    cursor: pointer;
+
     .image-overlay {        
         background-color: ${theme.palette.common.purple.main};
     }

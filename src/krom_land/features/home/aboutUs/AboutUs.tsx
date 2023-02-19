@@ -4,6 +4,7 @@ import { useTheme } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
+import Picture from "../../../../shared/components/picture/Picture";
 import SectionTitle from "../../../../shared/components/sectionTitle/SectionTitle";
 import image from "../img/img_4-copyright.png";
 import AboutUsStyled from "./styledComponents/AboutUsStyled";
@@ -22,17 +23,25 @@ const AboutUs = () => {
           <Box
             component='img'
             src={image}
-            alt={"asdf"}
+            alt='kh'
             loading='lazy'
-            className='action-image'
+            className='about-us-image'
           />
 
           {/* Popis */}
           <Box className='description-wrapper'>
             <Box>
               <Box className='description-inner-wrapper'>
-                <SectionTitle mainText={"asdf"} />
-                <Typography>{"sdf"}</Typography>
+                <SectionTitle mainText={"O nás"} />
+                <Typography>
+                  Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
+                  Fusce dui leo, imperdiet in, aliquam sit amet, feugiat eu,
+                  orci. Maecenas aliquet accumsan leo. Integer imperdiet lectus
+                  quis justo. Integer tempor. Suspendisse nisl. Integer
+                  malesuada. Aenean placerat. Suspendisse nisl. Nulla turpis
+                  magna, cursus sit amet, suscipit a, interdum id, felis. In
+                  convallis.
+                </Typography>
               </Box>
             </Box>
           </Box>

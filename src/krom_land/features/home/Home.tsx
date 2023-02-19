@@ -11,7 +11,7 @@ const Home = () => {
         <PageTitle
           image={TopBackground}
           title='KROM Land'
-          titleSecondary='Stravte skvěůý víkend'
+          titleSecondary='Stravte skvěůý víkend s'
           alt='Úvodní fotka stránky Akce'
           imhHeight={760}
           enbFadeEffect
