@@ -37,6 +37,7 @@ const AboutUsStyled = styled(Box)(({ theme }) => ({
     maxWidth: "500px",
     display: "inline-block",
     height: "100%",
+    padding: "15px 0",
 
     "& > div": {
       display: "flex",
@@ -47,9 +48,40 @@ const AboutUsStyled = styled(Box)(({ theme }) => ({
     },
 
     ".description-inner-wrapper": {
-      p: {
+      height: "100%",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "space-between",
+
+      "& > p": {
         textAlign: "justify",
         textAlignLast: "center",
+      },
+
+      ".service-icon": {
+        marginTop: "20px",
+
+        ".service-icon-inner-wrapper": {
+          backgroundColor: theme.palette.primary.light,
+          borderRadius: "20px",
+          width: "100%",
+          minHeight: "210px",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+
+          h4: {
+            fontSize: "1em",
+            fontWeight: 700,
+            textAlign: "center",
+            lineHeight: "1.58em",
+
+            "&:first-of-type": {
+              marginTop: "20px",
+            },
+          },
+        },
       },
     },
 

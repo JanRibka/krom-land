@@ -1,4 +1,4 @@
-import Reveal, { Fade } from "react-awesome-reveal";
+import Reveal from "react-awesome-reveal";
 
 import { keyframes } from "@emotion/react";
 import Box from "@mui/material/Box";

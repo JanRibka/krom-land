@@ -42,6 +42,7 @@ const ActionStyled = styled(Box)(({ theme }) => ({
     maxWidth: "500px",
     display: "inline-block",
     height: "100%",
+    padding: "15px 0",
 
     "& > div": {
       display: "flex",
