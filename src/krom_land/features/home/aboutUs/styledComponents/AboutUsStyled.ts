@@ -53,7 +53,7 @@ const AboutUsStyled = styled(Box)(({ theme }) => ({
       flexDirection: "column",
       justifyContent: "space-between",
 
-      "& > p": {
+      p: {
         textAlign: "justify",
         textAlignLast: "center",
       },
