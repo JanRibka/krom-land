@@ -1,19 +1,19 @@
-import { forwardRef, HTMLAttributes, Ref, useState } from "react";
-import ReactPlayer from "react-player/youtube";
+import { forwardRef, HTMLAttributes, Ref, useState } from 'react';
+import ReactPlayer from 'react-player/youtube';
 
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Stack from "@mui/material/Stack";
-import { useTheme } from "@mui/material/styles";
-import Typography from "@mui/material/Typography";
-import useMediaQuery from "@mui/material/useMediaQuery";
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
+import { useTheme } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
-import SectionTitle from "../../../../shared/components/sectionTitle/SectionTitle";
-import AppSnackbar from "../../../../shared/components/snackbar/AppSnackbar";
-import AppSnackBarOpenDataModel from "../../../../shared/components/snackbar/AppSnackBarModel";
-import ActionRegistrationDialog from "../actionRegistrationDialog/ActionRegistrationDialog";
-import DetailInfo from "./detailInfo/DetaulInfo";
-import ActionStyled from "./styledComponents/ActionStyled";
+import SectionTitle from '../../../../shared/components/sectionTitle/SectionTitle';
+import AppSnackbar from '../../../../shared/components/snackbar/AppSnackbar';
+import AppSnackBarOpenDataModel from '../../../../shared/components/snackbar/AppSnackBarModel';
+import ActionRegistrationDialog from '../actionRegistrationDialog/ActionRegistrationDialog';
+import DetailInfo from './detailInfo/DetaulInfo';
+import ActionStyled from './styledComponents/ActionStyled';
 
 interface IProps extends HTMLAttributes<HTMLDivElement> {
   name: string;
@@ -51,8 +51,11 @@ const Action = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
     cena,
     ...restProps
   } = props;
+  const xlDwn = useMediaQuery(theme.breakpoints.down("xl"));
+  const lgDwn = useMediaQuery(theme.breakpoints.down("lg"));
   const mdDwn = useMediaQuery(theme.breakpoints.down("md"));
   const pictDescWrapperDirection = mdDwn ? "column" : "row";
+  const pictDescWrapperSpacing = lgDwn ? 10 : xlDwn ? 20 : 30;
 
   // Other
   const renderRegistrationButton = () => {
@@ -130,7 +133,10 @@ const Action = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
     >
       <Stack spacing={5} direction='column' sx={{ width: "100%" }}>
         {/* Obrázek */}
-        <Stack spacing={10} direction={pictDescWrapperDirection}>
+        <Stack
+          spacing={pictDescWrapperSpacing}
+          direction={pictDescWrapperDirection}
+        >
           <Box
             component='img'
             src={image}

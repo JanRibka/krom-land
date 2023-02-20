@@ -1,5 +1,5 @@
-import Box from "@mui/material/Box";
-import { styled } from "@mui/material/styles";
+import Box from '@mui/material/Box';
+import { styled } from '@mui/material/styles';
 
 const ActionStyled = styled(Box)(({ theme }) => ({
   display: "none",
@@ -7,7 +7,7 @@ const ActionStyled = styled(Box)(({ theme }) => ({
   zIndex: 1,
   justifyContent: "center",
   height: "auto",
-  padding: "50px 0",
+  padding: "80px 0",
   width: "100%",
 
   "& > div > div": {

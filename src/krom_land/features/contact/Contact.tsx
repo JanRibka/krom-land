@@ -1,13 +1,12 @@
-import Stack from "@mui/material/Stack";
-
-import PageTitle from "../../../shared/infrastructure/components/pageTitle/PageTitle";
-import GoogleMaps from "./googleMaps/GoogleMaps";
-import TopBackground from "./img/contact_top_bg.webp";
-import WritetoUs from "./writeToUs/WriteToUs";
+import PageTitle from '../../../shared/infrastructure/components/pageTitle/PageTitle';
+import GoogleMaps from './googleMaps/GoogleMaps';
+import TopBackground from './img/contact_top_bg.webp';
+import ContactStyled from './styledComponents/ContactStyled';
+import WritetoUs from './writeToUs/WriteToUs';
 
 const Contact = () => {
   return (
-    <Stack spacing={10} direction='column'>
+    <ContactStyled spacing={10} direction='column'>
       <>
         <PageTitle
           image={TopBackground}
@@ -22,7 +21,7 @@ const Contact = () => {
       <>
         <GoogleMaps />
       </>
-    </Stack>
+    </ContactStyled>
   );
 };
 
