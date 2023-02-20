@@ -1,5 +1,5 @@
-import Box from "@mui/material/Box";
-import { styled } from "@mui/material/styles";
+import Box from '@mui/material/Box';
+import { styled } from '@mui/material/styles';
 
 const AboutUsStyled = styled(Box)(({ theme }) => ({
   position: "relative",
@@ -60,6 +60,32 @@ const AboutUsStyled = styled(Box)(({ theme }) => ({
 
       ".service-icon": {
         marginTop: "20px",
+
+        "&:first-of-type": {
+          paddingRight: "10px",
+        },
+
+        "&:nth-of-type(2)": {
+          padding: "0 5px",
+        },
+
+        "&:last-of-type": {
+          paddingLeft: "10px",
+        },
+
+        [theme.breakpoints.down("md")]: {
+          "&:first-of-type": {
+            paddingRight: "10px",
+          },
+
+          "&:nth-of-type(2)": {
+            padding: "0 0 0 5px",
+          },
+
+          "&:last-of-type": {
+            paddingLeft: "0px",
+          },
+        },
 
         ".service-icon-inner-wrapper": {
           backgroundColor: theme.palette.primary.light,
