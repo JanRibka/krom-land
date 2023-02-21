@@ -3,6 +3,7 @@ import Stack from "@mui/material/Stack";
 import PageTitle from "../../../shared/infrastructure/components/pageTitle/PageTitle";
 import AboutUs from "./aboutUs/AboutUs";
 import TopBackground from "./img/post-5-copyright.jpg";
+import WhatPeopleSay from "./whatPeopleSay/WhatPeopleSay";
 
 const Home = () => {
   return (
@@ -17,6 +18,7 @@ const Home = () => {
           enbFadeEffect
         />
         <AboutUs />
+        <WhatPeopleSay />
       </>
     </Stack>
   );
