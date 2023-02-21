@@ -1,17 +1,17 @@
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
 
-import { Autoplay, Pagination } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { PaginationOptions } from "swiper/types";
+import { Autoplay, Pagination } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { PaginationOptions } from 'swiper/types';
 
-import { useTheme } from "@mui/material/styles";
-import Typography from "@mui/material/Typography";
+import { useTheme } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
 
-import SectionTitle from "../../../../shared/components/sectionTitle/SectionTitle";
-import SlideContentStyled from "./styledComponents/SlideContentStyled";
-import WhatPeopleSayStyled from "./styledComponents/WhatPeopleSayStyled";
+import SectionTitle from '../../../../shared/components/sectionTitle/SectionTitle';
+import SlideContentStyled from './styledComponents/SlideContentStyled';
+import WhatPeopleSayStyled from './styledComponents/WhatPeopleSayStyled';
 
 const WhatPeopleSay = () => {
   // Contsnts
@@ -33,8 +33,8 @@ const WhatPeopleSay = () => {
         secondaryTextColor={theme.palette.primary.light}
       />
       <Swiper
-        autoplay
         loop
+        autoplay={{ delay: 6000, disableOnInteraction: false }}
         pagination={pagination}
         slidesPerView={1}
         speed={1500}

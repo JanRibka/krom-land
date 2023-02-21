@@ -54,8 +54,12 @@ const AboutUsStyled = styled(Box)(({ theme }) => ({
       justifyContent: "space-between",
 
       p: {
-        textAlign: "justify",
+        textAlign: "center",
         textAlignLast: "center",
+
+        [theme.breakpoints.up("md")]: {
+          fontSize: "1.1em",
+        },
       },
 
       ".service-icon": {

@@ -54,8 +54,12 @@ const ActionStyled = styled(Box)(({ theme }) => ({
 
     ".description-inner-wrapper": {
       p: {
-        textAlign: "justify",
+        textAlign: "center",
         textAlignLast: "center",
+
+        [theme.breakpoints.up("md")]: {
+          fontSize: "1.1em",
+        },
       },
     },
 
