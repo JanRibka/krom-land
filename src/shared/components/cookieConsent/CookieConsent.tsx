@@ -21,7 +21,7 @@ const CookienConsent = () => {
   const [isOpenSettings, setIsOpenSettings] = useState<boolean>(false);
   const [functCookieValue, setFunctCookieValue] = useState<boolean>(true);
   const [diagCookieValue, setDiagCookieValue] = useState<boolean>(true);
-  //TODO: At se sma6e cookie i s teckou v path
+
   // Other
   useEffect(() => {
     if (
