@@ -25,8 +25,31 @@ export class CookieHelper {
     return "";
   }
 
-  Remove(name: string) {
-    console.log(name + "=; max-age=0;");
-    document.cookie = name + "=; max-age=0;";
+  GetNames() {
+    let result: string[] = [];
+    const ca = document.cookie.split(";");
+
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) === " ") {
+        c = c.substring(1);
+      }
+
+      const cookieName: string = c.split("=")[0];
+
+      result.push(cookieName);
+    }
+
+    return result;
+  }
+
+  Remove(name: string, domain?: string) {
+    let auxDomain: string = "";
+
+    if (!!domain) {
+      auxDomain = " domain=" + domain + ";";
+    }
+
+    document.cookie = name + "=;" + auxDomain + " max-age=0;";
   }
 }
