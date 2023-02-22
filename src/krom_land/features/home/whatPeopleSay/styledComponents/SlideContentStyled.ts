@@ -1,5 +1,5 @@
-import Stack from "@mui/material/Stack";
-import { styled } from "@mui/material/styles";
+import Stack from '@mui/material/Stack';
+import { styled } from '@mui/material/styles';
 
 const SlideContentStyled = styled(Stack)(({ theme }) => ({
   alignItems: "center",
@@ -26,7 +26,7 @@ const SlideContentStyled = styled(Stack)(({ theme }) => ({
   },
 
   ".text-third-line": {
-    // paddingTop: "25px",
+    paddingTop: "15px",
     fontSize: "25px",
     color: theme.palette.common.purple.dark,
 
