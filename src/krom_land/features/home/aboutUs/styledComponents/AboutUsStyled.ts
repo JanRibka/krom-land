@@ -83,7 +83,7 @@ const AboutUsStyled = styled(Box)(({ theme }) => ({
           },
 
           "&:nth-of-type(2)": {
-            padding: "0 0 0 5px",
+            padding: "0 0 0 10px",
           },
 
           "&:last-of-type": {
