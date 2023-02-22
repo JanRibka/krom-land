@@ -46,7 +46,7 @@ const PhotosDialog = (props: IProps) => {
 
     return result;
   };
-
+  // TODO: Při otevření na mobilu musí jít do fullscreen
   return (
     <DialogStyled open={props.openData.Open} disableScrollLock={false}>
       <DialogTitleWrapperStyled>
