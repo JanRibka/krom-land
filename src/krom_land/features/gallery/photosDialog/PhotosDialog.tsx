@@ -4,12 +4,14 @@ import 'swiper/css/pagination';
 import 'swiper/css/bundle';
 import 'swiper/css/zoom';
 
-import { Dispatch } from 'react';
+import { Dispatch, useEffect } from 'react';
 import PhotoModel from 'shared/models/PhotoModel';
 import { Keyboard, Mousewheel, Navigation, Pagination, Zoom } from 'swiper';
 
 import CloseIcon from '@mui/icons-material/Close';
+import { useMediaQuery } from '@mui/material';
 import IconButton from '@mui/material/IconButton';
+import { useTheme } from '@mui/material/styles';
 
 import OpenDialogModel from './OpenDialoModel';
 import DialogContentStyled from './styledComponents/DialogContentStyled';
@@ -25,7 +27,26 @@ interface IProps {
 }
 
 const PhotosDialog = (props: IProps) => {
+  // Constants
+  const theme = useTheme();
+  const mdDwn = useMediaQuery(theme.breakpoints.down("md"));
+
   // Other
+  useEffect(() => {
+    requestFullScreenMode();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.openData.Open]);
+
+  const requestFullScreenMode = () => {
+    if (mdDwn) {
+      if (props.openData.Open) {
+        document.body.requestFullscreen();
+      } else {
+        document.exitFullscreen();
+      }
+    }
+  };
+
   const RenderPhotos = () => {
     let result: JSX.Element[] = [];
 
