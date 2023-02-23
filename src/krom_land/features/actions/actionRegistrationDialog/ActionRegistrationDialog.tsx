@@ -1,6 +1,7 @@
 import { parse as dateParse } from "date-fns";
 import dayjs, { Dayjs } from "dayjs";
 import { MuiTelInputInfo } from "mui-tel-input";
+import { nameof } from "nameof";
 import {
   ChangeEvent,
   Dispatch,
@@ -11,21 +12,14 @@ import {
 } from "react";
 
 import emailjs from "@emailjs/browser";
-import CloseIcon from "@mui/icons-material/Close";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
-import IconButton from "@mui/material/IconButton";
 
 import AppSnackBarOpenDataModel from "../../../../shared/components/snackbar/AppSnackBarModel";
 import HttpStatusCode from "../../../../shared/enums/HttpStatusCode";
-import {
-  addTimeZoneOffset,
-  dateTimeToString,
-  parseDateTime,
-} from "../../../../shared/helpers/dateTimeHelper";
 import DialogContentForm from "./dialogContent/DialogContentForm";
 import DialogContentFormModel from "./models/DialogContentFormModel";
 import ActionRegistrationDialogStyled from "./styledComponents/ActionRegistrationDialogStyled";
@@ -61,10 +55,8 @@ const ActionRegistrationDialog = (props: IProps) => {
     keyboardInputValue: string | undefined,
     name: string
   ) => {
-    debugger;
-    const dateFormat = "dd.MM.yyyy";
     let newDate = date?.toDate();
-
+    debugger;
     // Aby se nevytvarel rok po zadani prvniho cisla napr 0002
 
     if (keyboardInputValue !== undefined) {
@@ -85,9 +77,11 @@ const ActionRegistrationDialog = (props: IProps) => {
       }.${newDate.getUTCFullYear()}`;
 
       setFormData({ ...formData, [name]: resultDate });
+    } else if (!!!newDate) {
+      setFormData({ ...formData, [name]: "" });
     }
   };
-
+  console.log(formData);
   const handleOnChangeTelInput = (
     value: string,
     info: MuiTelInputInfo,
@@ -97,14 +91,31 @@ const ActionRegistrationDialog = (props: IProps) => {
   };
 
   const handleOnClickRegister = () => {
-    refForm.current?.submit();
+    // refForm.current?.submit();
+    const submitButton = document.getElementsByClassName(
+      "registration-submit-button"
+    );
+
+    if (submitButton.length > 0) {
+      const button = submitButton[0] as HTMLButtonElement;
+      button.click();
+    }
   };
 
   const handleOnChangeRadio = (e: ChangeEvent<HTMLInputElement>) => {
     const name = e.target.name;
     const value = e.target.value;
+    let data: Partial<DialogContentFormModel> = {
+      [name]: value,
+    };
+    if (
+      name === nameof<DialogContentFormModel>("other_how_children_arrives") &&
+      value === "Může odcházet po akci samo domů"
+    ) {
+      data = { ...data, other_pickup_person: "" };
+    }
 
-    setFormData({ ...formData, [name]: value });
+    setFormData({ ...formData, ...data });
   };
 
   const handleFormOnSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -148,7 +159,6 @@ const ActionRegistrationDialog = (props: IProps) => {
     setFormData(new DialogContentFormModel());
   };
 
-  console.log(formData);
   return (
     <ActionRegistrationDialogStyled
       open={props.open}
@@ -157,7 +167,7 @@ const ActionRegistrationDialog = (props: IProps) => {
       <Box className='title-wrapper'>
         <DialogTitle>
           Registrace na {props.actionNam}
-          <IconButton
+          {/* <IconButton
             aria-label='close'
             onClick={() => props.setOpen(false)}
             sx={{
@@ -168,7 +178,7 @@ const ActionRegistrationDialog = (props: IProps) => {
             }}
           >
             <CloseIcon />
-          </IconButton>
+          </IconButton> */}
         </DialogTitle>
       </Box>
       <DialogContent>

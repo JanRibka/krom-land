@@ -4,6 +4,7 @@ import { Dayjs } from "dayjs";
 import { MuiTelInputInfo } from "mui-tel-input/dist/index.types";
 import { ChangeEvent, FormEvent, forwardRef, Ref } from "react";
 
+import Button from "@mui/material/Button";
 import FormControl from "@mui/material/FormControl";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormLabel from "@mui/material/FormLabel";
@@ -104,10 +105,10 @@ const DialogContentForm = forwardRef(
                 {mdDwn ? (
                   <MobileDatePicker
                     label='Datum narození'
-                    inputFormat='mm.DD.yyyy'
+                    inputFormat='DD.MM.YYYY'
                     value={dateParse(
                       props.formData.child_birthday,
-                      "mm.DD.yyyy",
+                      "dd.mm.yyyy",
                       new Date()
                     )}
                     onChange={(date: any, keyboardInputValue) =>
@@ -122,6 +123,7 @@ const DialogContentForm = forwardRef(
                         {...params}
                         required
                         error={false}
+                        placeholder='dd.mm.rrrr'
                         name={nameof<DialogContentFormModel>("child_birthday")}
                       />
                     )}
@@ -130,7 +132,11 @@ const DialogContentForm = forwardRef(
                   <DesktopDatePicker
                     label='Datum narození'
                     inputFormat='DD.MM.YYYY'
-                    value={props.formData.child_birthday}
+                    value={dateParse(
+                      props.formData.child_birthday,
+                      "dd.mm.yyyy",
+                      new Date()
+                    )}
                     onChange={(date: any, keyboardInputValue) =>
                       props.handleOnChangeDatePipcker(
                         date,
@@ -143,6 +149,7 @@ const DialogContentForm = forwardRef(
                         {...params}
                         required
                         error={false}
+                        placeholder='dd.mm.rrrr'
                         name={nameof<DialogContentFormModel>("child_birthday")}
                       />
                     )}
@@ -425,7 +432,13 @@ const DialogContentForm = forwardRef(
               />
             </>
           </Stack>
-          <button type='submit'>submit</button>
+          <Button
+            type='submit'
+            className='registration-submit-button'
+            sx={{ display: "none" }}
+          >
+            submit
+          </Button>
           {/* Hiddens */}
           <input
             type='hidden'
