@@ -1,12 +1,12 @@
-import Dialog from "@mui/material/Dialog";
-import { styled } from "@mui/material/styles";
+import Dialog from '@mui/material/Dialog';
+import { styled } from '@mui/material/styles';
 
 const ActionRegistrationDialogStyled = styled(Dialog)(({ theme }) => ({
   ".MuiPaper-root": {
     [theme.breakpoints.down("sm")]: {
       margin: 0,
-      height: "100vh",
-      maxHeight: "100vh",
+      height: "100%",
+      maxHeight: "100%",
     },
   },
 
