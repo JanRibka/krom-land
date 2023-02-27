@@ -1,17 +1,17 @@
-import Box from '@mui/material/Box';
-import Divider from '@mui/material/Divider';
-import Stack from '@mui/material/Stack';
-import { useTheme } from '@mui/material/styles';
-import Typography from '@mui/material/Typography';
-import useMediaQuery from '@mui/material/useMediaQuery';
+import Box from "@mui/material/Box";
+import Divider from "@mui/material/Divider";
+import Stack from "@mui/material/Stack";
+import { useTheme } from "@mui/material/styles";
+import Typography from "@mui/material/Typography";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
-import Copyright from './copyright/Copyright';
-import AboutUs from './img/about-us.webp';
-import Address from './img/address.webp';
-import Constct from './img/contact.webp';
-import InfoItem from './infoItem/InfoItem';
-import SocialIcons from './socialIcons/SocialIcons';
-import FooterStyled from './styledComponents/FooterStyled';
+import Copyright from "./copyright/Copyright";
+import AboutUs from "./img/about-us.webp";
+import Address from "./img/address.webp";
+import Constct from "./img/contact.webp";
+import InfoItem from "./infoItem/InfoItem";
+import SocialIcons from "./socialIcons/SocialIcons";
+import FooterStyled from "./styledComponents/FooterStyled";
 
 const Footer = () => {
   // Constants
@@ -57,7 +57,7 @@ const Footer = () => {
           href='tel:778752663'
           className='reference align-center'
         >
-          Telefn: 778 752 663
+          Telefon: 778 752 663
         </Box>
         <Box
           component='a'
