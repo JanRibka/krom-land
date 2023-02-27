@@ -1,8 +1,10 @@
-import FacebookIcon from '@mui/icons-material/Facebook';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import Box from '@mui/material/Box';
+import TikTokIcon from "shared/icons/TikTokIcon";
 
-import SocialIconsStyled from './styledComponents/SocialIconstStyled';
+import FacebookIcon from "@mui/icons-material/Facebook";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import Box from "@mui/material/Box";
+
+import SocialIconsStyled from "./styledComponents/SocialIconstStyled";
 
 const SocialIcons = () => {
   // TODO: Pokud zmensim obrazovku bude skryto
@@ -24,6 +26,15 @@ const SocialIcons = () => {
         target='_blank'
       >
         <InstagramIcon fontSize='small' />
+      </Box>
+
+      <Box
+        component='a'
+        title='Tik Tok'
+        href='https://www.instagram.com/krom.land/'
+        target='_blank'
+      >
+        <TikTokIcon title='Tik Tok' />
       </Box>
     </SocialIconsStyled>
   );
