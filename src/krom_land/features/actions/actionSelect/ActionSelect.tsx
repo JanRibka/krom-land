@@ -1,21 +1,24 @@
-import { useRef } from 'react';
+import { useRef } from "react";
 
-import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
-import { useTheme } from '@mui/material/styles';
+import Box from "@mui/material/Box";
+import Stack from "@mui/material/Stack";
+import { useTheme } from "@mui/material/styles";
 
-import Action from '../action/Action';
-import ActionFirstImage from '../img/img_4-copyright.png';
-import ActionSelectStyled from './styledComponents/ActionSelectStyled';
+import Action from "../action/Action";
+import Documents from "../documents/Documents";
+import ActionFirstImage from "../img/img_4-copyright.png";
+import ActionSelectStyled from "./styledComponents/ActionSelectStyled";
 
 const ActionSelect = () => {
   // References
   const refButtonFirst = useRef<HTMLLIElement>(null);
   const refButtonSecond = useRef<HTMLLIElement>(null);
   const refButtonThird = useRef<HTMLLIElement>(null);
+  const refButtonFourth = useRef<HTMLLIElement>(null);
   const refTabFirst = useRef<HTMLDivElement>(null);
   const refTabSecond = useRef<HTMLDivElement>(null);
   const refTabThird = useRef<HTMLDivElement>(null);
+  const refTabFourth = useRef<HTMLDivElement>(null);
 
   // Constants
   const theme = useTheme();
@@ -27,31 +30,49 @@ const ActionSelect = () => {
       refButtonFirst.current?.classList.add("active");
       refButtonSecond.current?.classList.remove("active");
       refButtonThird.current?.classList.remove("active");
+      refButtonFourth.current?.classList.remove("active");
 
       // Tabs
       refTabFirst.current?.classList.add("active");
       refTabSecond.current?.classList.remove("active");
       refTabThird.current?.classList.remove("active");
+      refTabFourth.current?.classList.remove("active");
     } else if (value === 1) {
       // MenuButtons
       refButtonSecond.current?.classList.add("active");
       refButtonFirst.current?.classList.remove("active");
       refButtonThird.current?.classList.remove("active");
+      refButtonFourth.current?.classList.remove("active");
 
       // Tabs
       refTabSecond.current?.classList.add("active");
       refTabFirst.current?.classList.remove("active");
       refTabThird.current?.classList.remove("active");
+      refTabFourth.current?.classList.remove("active");
     } else if (value === 2) {
       // MenuButtons
       refButtonThird.current?.classList.add("active");
       refButtonFirst.current?.classList.remove("active");
       refButtonSecond.current?.classList.remove("active");
+      refButtonFourth.current?.classList.remove("active");
 
       // Tabs
       refTabThird.current?.classList.add("active");
       refTabFirst.current?.classList.remove("active");
       refTabSecond.current?.classList.remove("active");
+      refTabFourth.current?.classList.remove("active");
+    } else if (value === 3) {
+      // MenuButtons
+      refButtonFourth.current?.classList.add("active");
+      refButtonFirst.current?.classList.remove("active");
+      refButtonSecond.current?.classList.remove("active");
+      refButtonThird.current?.classList.remove("active");
+
+      // Tabs
+      refTabFourth.current?.classList.add("active");
+      refTabFirst.current?.classList.remove("active");
+      refTabSecond.current?.classList.remove("active");
+      refTabThird.current?.classList.remove("active");
     }
   };
 
@@ -81,6 +102,13 @@ const ActionSelect = () => {
               onClick={() => handleOnCLick(2)}
             >
               <Box component='span'>Červenec</Box>
+            </Box>
+            <Box
+              ref={refButtonFourth}
+              component='li'
+              onClick={() => handleOnCLick(3)}
+            >
+              <Box component='span'>Dokumenty</Box>
             </Box>
           </Box>
         </>
@@ -122,6 +150,7 @@ const ActionSelect = () => {
               kde='Kobeřice'
               cena='555'
             />
+            <Documents ref={refTabFourth} />
           </Box>
         </>
       </Stack>

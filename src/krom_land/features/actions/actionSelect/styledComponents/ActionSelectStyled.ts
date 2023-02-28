@@ -1,5 +1,5 @@
-import Box from '@mui/material/Box';
-import { styled } from '@mui/material/styles';
+import Box from "@mui/material/Box";
+import { styled } from "@mui/material/styles";
 
 const ActionSelectStyled = styled(Box)(({ theme }) => ({
   ul: {
@@ -47,6 +47,10 @@ const ActionSelectStyled = styled(Box)(({ theme }) => ({
         backgroundColor: theme.palette.common.purple.main,
       },
 
+      "&:nth-of-type(4)": {
+        backgroundColor: theme.palette.common.red.main,
+      },
+
       "&:hover, &.active": {
         zIndex: 1,
         transform: "scale(1.05)",
@@ -60,7 +64,7 @@ const ActionSelectStyled = styled(Box)(({ theme }) => ({
         width: "100px",
         minWidth: "100px",
         height: "50px",
-        fontSize: "0.9em",
+        fontSize: "0.8em",
         marginLeft: "-5px",
       },
 
