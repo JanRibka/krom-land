@@ -8,7 +8,7 @@ function apiError($msg)
 {
   echo JSON([
     "error" => true,
-    "reason" => "No method specified",
+    "reason" => $msg,
   ]);
 }
 
