@@ -1,6 +1,7 @@
+import PageTitle from "shared/components/pageTitle/PageTitle";
+
 import Stack from "@mui/material/Stack";
 
-import PageTitle from "../../../shared/infrastructure/components/pageTitle/PageTitle";
 import ActionSelect from "./actionSelect/ActionSelect";
 import TopBackground from "./img/contact_top_bg.webp";
 

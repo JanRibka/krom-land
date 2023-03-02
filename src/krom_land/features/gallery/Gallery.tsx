@@ -1,16 +1,16 @@
-import { useState } from 'react';
+import { useState } from "react";
+import PageTitle from "shared/components/pageTitle/PageTitle";
 
-import Stack from '@mui/material/Stack';
+import Stack from "@mui/material/Stack";
 
-import GridContainer from '../../../shared/components/gridContainer/GridContainer';
-import GridItem from '../../../shared/components/gridItem/GridItem';
-import Picture from '../../../shared/components/picture/Picture';
-import PageTitle from '../../../shared/infrastructure/components/pageTitle/PageTitle';
-import TopBackground from './img/contact_top_bg.webp';
-import photos from './PhotosDeclaration';
-import OpenDialogModel from './photosDialog/OpenDialoModel';
-import PhotosDialog from './photosDialog/PhotosDialog';
-import ImageGridWrapperStyled from './styledComponents/ImageGridWrapperStyled';
+import GridContainer from "../../../shared/components/gridContainer/GridContainer";
+import GridItem from "../../../shared/components/gridItem/GridItem";
+import Picture from "../../../shared/components/picture/Picture";
+import TopBackground from "./img/contact_top_bg.webp";
+import photos from "./PhotosDeclaration";
+import OpenDialogModel from "./photosDialog/OpenDialoModel";
+import PhotosDialog from "./photosDialog/PhotosDialog";
+import ImageGridWrapperStyled from "./styledComponents/ImageGridWrapperStyled";
 
 const Gallery = () => {
   // State

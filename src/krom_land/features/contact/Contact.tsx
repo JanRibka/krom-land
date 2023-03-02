@@ -1,8 +1,9 @@
-import PageTitle from '../../../shared/infrastructure/components/pageTitle/PageTitle';
-import GoogleMaps from './googleMaps/GoogleMaps';
-import TopBackground from './img/contact_top_bg.webp';
-import ContactStyled from './styledComponents/ContactStyled';
-import WritetoUs from './writeToUs/WriteToUs';
+import PageTitle from "shared/components/pageTitle/PageTitle";
+
+import GoogleMaps from "./googleMaps/GoogleMaps";
+import TopBackground from "./img/contact_top_bg.webp";
+import ContactStyled from "./styledComponents/ContactStyled";
+import WritetoUs from "./writeToUs/WriteToUs";
 
 const Contact = () => {
   return (
