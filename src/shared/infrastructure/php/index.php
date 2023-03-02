@@ -25,5 +25,5 @@ try {
 } catch (Exception $ex) {
   apiError("Method doen't exist!");
 }
-
+// TODO: Vytvořit classu pro vraciná dat ze serveru. Po vzoru MGU
 ?>
