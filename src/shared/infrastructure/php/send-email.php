@@ -7,9 +7,9 @@ class Email
   {
     if (isset($_POST["submit"])) {
       $to = $_POST["to"];
+      $headers = $_POST["headers"];
       $subject = $_POST["subject"];
       $message = $_POST["message"];
-      $headers = $_POST["headers"];
 
       // Send the email using yhe mail() function
       if (mail($to, $subject, $message, $headers)) {
