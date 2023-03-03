@@ -26,6 +26,7 @@ export default class RepositoryKL {
       user_name: btoa(user_name),
       message: btoa(message),
     };
+    // TODO: S btoa nelze použít čárka
 
     const formData = new FormData();
 
@@ -44,6 +45,7 @@ export default class RepositoryKL {
     console.log("response", response);
     if (response.status === HttpStatusCode.OK) {
       AppNotification("Úspěch", "Zpráva byla úspěšně odslaná", "success");
+      //TODO" Pokud vrátí chybu, musí se zahlástit pomocí notifikace
     } else {
       AppNotification("Chyba", "Zprávu se nepodařilo odeslat", "danger");
     }
