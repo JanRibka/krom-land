@@ -1,19 +1,17 @@
-import { forwardRef, HTMLAttributes, Ref, useState } from 'react';
-import ReactPlayer from 'react-player/youtube';
+import { forwardRef, HTMLAttributes, Ref, useState } from "react";
+import ReactPlayer from "react-player/youtube";
 
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Stack from '@mui/material/Stack';
-import { useTheme } from '@mui/material/styles';
-import Typography from '@mui/material/Typography';
-import useMediaQuery from '@mui/material/useMediaQuery';
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
+import { useTheme } from "@mui/material/styles";
+import Typography from "@mui/material/Typography";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
-import SectionTitle from '../../../../shared/components/sectionTitle/SectionTitle';
-import AppSnackbar from '../../../../shared/components/snackbar/AppSnackbar';
-import AppSnackBarOpenDataModel from '../../../../shared/components/snackbar/AppSnackBarModel';
-import ActionRegistrationDialog from '../actionRegistrationDialog/ActionRegistrationDialog';
-import DetailInfo from './detailInfo/DetaulInfo';
-import ActionStyled from './styledComponents/ActionStyled';
+import SectionTitle from "../../../../shared/components/sectionTitle/SectionTitle";
+import ActionRegistrationDialog from "../actionRegistrationDialog/ActionRegistrationDialog";
+import DetailInfo from "./detailInfo/DetaulInfo";
+import ActionStyled from "./styledComponents/ActionStyled";
 
 interface IProps extends HTMLAttributes<HTMLDivElement> {
   name: string;
@@ -30,12 +28,6 @@ interface IProps extends HTMLAttributes<HTMLDivElement> {
 const Action = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
   // State
   const [open, setOpen] = useState<boolean>(false);
-  const [messageOpenData, setMessageOpenData] =
-    useState<AppSnackBarOpenDataModel>({
-      open: false,
-      message: "",
-      severity: undefined,
-    });
 
   // Constants
   const theme = useTheme();
@@ -172,12 +164,6 @@ const Action = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
         open={open}
         setOpen={setOpen}
         actionNam={name}
-        setMessageOpenData={setMessageOpenData}
-      />
-      {/* Informační hláška */}
-      <AppSnackbar
-        openData={messageOpenData}
-        setOpenData={setMessageOpenData}
       />
     </ActionStyled>
   );

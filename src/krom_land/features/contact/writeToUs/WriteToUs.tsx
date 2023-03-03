@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useRef, useState } from "react";
+import RepositoryKL from "shared/infrastructure/repositiory/RepositoryKL";
 
-import emailjs from "@emailjs/browser";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
@@ -9,9 +9,6 @@ import TextField from "@mui/material/TextField";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
 import SectionTitle from "../../../../shared/components/sectionTitle/SectionTitle";
-import AppSnackbar from "../../../../shared/components/snackbar/AppSnackbar";
-import AppSnackBarOpenDataModel from "../../../../shared/components/snackbar/AppSnackBarModel";
-import HttpStatusCode from "../../../../shared/enums/HttpStatusCode";
 import WriteToUsStyled from "./styledComponents/WriteToUsStyled";
 
 // Uděláno podle https://www.youtube.com/watch?v=wUK40U6sPH0 a https://smtpjs.com/
@@ -21,6 +18,7 @@ const WritetoUs = () => {
   const refForm = useRef<HTMLFormElement>(null);
 
   // Constants
+  const _repoKL = new RepositoryKL();
   const theme = useTheme();
   const smDwn = useMediaQuery(theme.breakpoints.down("sm"));
   const formDataInitit = {
@@ -31,12 +29,6 @@ const WritetoUs = () => {
     confirm_data: false,
   };
   // State
-  const [messageOpenData, setMessageOpenData] =
-    useState<AppSnackBarOpenDataModel>({
-      open: false,
-      message: "",
-      severity: undefined,
-    });
   const [formData, setFormData] = useState<{
     user_name: string;
     user_email: string;
@@ -56,40 +48,13 @@ const WritetoUs = () => {
 
   const handleFormOnSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    emailjs
-      .sendForm(
-        process.env.REACT_APP_EMAIL_SERVICE_ID ?? "",
-        process.env.REACT_APP_EMAIL_TEMPLATE_ID_QUESTION ?? "",
-        refForm.current as HTMLFormElement,
-        process.env.REACT_APP_EMAIL_PUBLIC_KEY ?? ""
-      )
-      .then(
-        (result) => {
-          console.log(result.text);
-          if (result.status === HttpStatusCode.OK) {
-            setMessageOpenData({
-              open: true,
-              message: "Vaše zpráva byla úspěšně odeslána",
-              severity: "success",
-            });
-          } else {
-            setMessageOpenData({
-              open: true,
-              message: "Chyba při odesílání zprávy. Zkuste to prosím později.",
-              severity: "error",
-            });
-          }
-        },
-        (error) => {
-          console.log(error.text);
-          setMessageOpenData({
-            open: true,
-            message: "Chyba při odesílání zprávy. Zkuste to prosím později.",
-            severity: "error",
-          });
-        }
-      );
+    // TOTO: Vytvořit šablony tady a posílat enkodo vany text na server
+    _repoKL.sendEmail(
+      formData.user_email,
+      formData.user_name,
+      formData.message,
+      "send_message"
+    );
 
     e.currentTarget.reset();
     setFormData(formDataInitit);
@@ -164,10 +129,6 @@ const WritetoUs = () => {
           </Stack>
         </form>
       </Stack>
-      <AppSnackbar
-        openData={messageOpenData}
-        setOpenData={setMessageOpenData}
-      />
     </WriteToUsStyled>
   );
 };

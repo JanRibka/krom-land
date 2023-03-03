@@ -1,26 +1,29 @@
-import { Dayjs } from 'dayjs';
-import { MuiTelInputInfo } from 'mui-tel-input';
-import { nameof } from 'nameof';
-import { ChangeEvent, Dispatch, FormEvent, SetStateAction, useRef, useState } from 'react';
+import { Dayjs } from "dayjs";
+import { MuiTelInputInfo } from "mui-tel-input";
+import { nameof } from "nameof";
+import {
+  ChangeEvent,
+  Dispatch,
+  FormEvent,
+  SetStateAction,
+  useRef,
+  useState,
+} from "react";
 
-import emailjs from '@emailjs/browser';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogTitle from '@mui/material/DialogTitle';
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogTitle from "@mui/material/DialogTitle";
 
-import AppSnackBarOpenDataModel from '../../../../shared/components/snackbar/AppSnackBarModel';
-import HttpStatusCode from '../../../../shared/enums/HttpStatusCode';
-import DialogContentForm from './dialogContent/DialogContentForm';
-import DialogContentFormModel from './models/DialogContentFormModel';
-import ActionRegistrationDialogStyled from './styledComponents/ActionRegistrationDialogStyled';
+import DialogContentForm from "./dialogContent/DialogContentForm";
+import DialogContentFormModel from "./models/DialogContentFormModel";
+import ActionRegistrationDialogStyled from "./styledComponents/ActionRegistrationDialogStyled";
 
 interface IProps {
   open: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
   actionNam: string;
-  setMessageOpenData: Dispatch<SetStateAction<AppSnackBarOpenDataModel>>;
 }
 
 const ActionRegistrationDialog = (props: IProps) => {
@@ -113,39 +116,39 @@ const ActionRegistrationDialog = (props: IProps) => {
   const handleFormOnSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    emailjs
-      .sendForm(
-        process.env.REACT_APP_EMAIL_SERVICE_ID ?? "",
-        process.env.REACT_APP_EMAIL_TEMPLATE_ID_REGISTRATION ?? "",
-        refForm.current as HTMLFormElement,
-        process.env.REACT_APP_EMAIL_PUBLIC_KEY ?? ""
-      )
-      .then(
-        (result) => {
-          console.log(result.text);
-          if (result.status === HttpStatusCode.OK) {
-            props.setMessageOpenData({
-              open: true,
-              message: "Vaše zpráva byla úspěšně odeslána",
-              severity: "success",
-            });
-          } else {
-            props.setMessageOpenData({
-              open: true,
-              message: "Chyba při odesílání zprávy. Zkuste to prosím později.",
-              severity: "error",
-            });
-          }
-        },
-        (error) => {
-          console.log(error.text);
-          props.setMessageOpenData({
-            open: true,
-            message: "Chyba při odesílání zprávy. Zkuste to prosím později.",
-            severity: "error",
-          });
-        }
-      );
+    // emailjs
+    //   .sendForm(
+    //     process.env.REACT_APP_EMAIL_SERVICE_ID ?? "",
+    //     process.env.REACT_APP_EMAIL_TEMPLATE_ID_REGISTRATION ?? "",
+    //     refForm.current as HTMLFormElement,
+    //     process.env.REACT_APP_EMAIL_PUBLIC_KEY ?? ""
+    //   )
+    //   .then(
+    //     (result) => {
+    //       console.log(result.text);
+    //       if (result.status === HttpStatusCode.OK) {
+    //         props.setMessageOpenData({
+    //           open: true,
+    //           message: "Vaše zpráva byla úspěšně odeslána",
+    //           severity: "success",
+    //         });
+    //       } else {
+    //         props.setMessageOpenData({
+    //           open: true,
+    //           message: "Chyba při odesílání zprávy. Zkuste to prosím později.",
+    //           severity: "error",
+    //         });
+    //       }
+    //     },
+    //     (error) => {
+    //       console.log(error.text);
+    //       props.setMessageOpenData({
+    //         open: true,
+    //         message: "Chyba při odesílání zprávy. Zkuste to prosím později.",
+    //         severity: "error",
+    //       });
+    //     }
+    //   );
 
     e.currentTarget.reset();
     setFormData(new DialogContentFormModel());

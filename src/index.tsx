@@ -5,6 +5,7 @@ import "@fontsource/roboto/700.css";
 
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { ReactNotifications } from "react-notifications-component";
 import { BrowserRouter } from "react-router-dom";
 
 import CssBaseline from "@mui/material/CssBaseline";
@@ -22,6 +23,7 @@ root.render(
     <BrowserRouter>
       <ThemeProvider theme={AppTheme}>
         <CssBaseline />
+        <ReactNotifications />
         <App />
       </ThemeProvider>
     </BrowserRouter>

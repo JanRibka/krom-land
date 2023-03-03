@@ -3,7 +3,7 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: *");
 header("Content-Type: application/json");
 require __DIR__ . "/core.php";
-require __DIR__ . "/send-email.php";
+require __DIR__ . "/email.php";
 
 if (!isset($_GET["action"])) {
   apiError("No method specified!");
