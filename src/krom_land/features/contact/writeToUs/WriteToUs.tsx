@@ -24,15 +24,12 @@ const WritetoUs = () => {
   const formDataInitit = {
     user_name: "",
     user_email: "",
-    subject: "KromLand - Dotaz",
     message: "",
-    confirm_data: false,
   };
   // State
   const [formData, setFormData] = useState<{
     user_name: string;
     user_email: string;
-    subject: string;
     message: string;
   }>(formDataInitit);
 
