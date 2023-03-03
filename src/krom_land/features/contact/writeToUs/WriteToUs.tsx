@@ -47,8 +47,7 @@ const WritetoUs = () => {
     _repoKL.sendEmail(
       formData.user_email,
       formData.user_name,
-      formData.message,
-      "send_message"
+      formData.message
     );
 
     e.currentTarget.reset();

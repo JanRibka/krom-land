@@ -17,8 +17,7 @@ export default class RepositoryKL {
   public async sendEmail(
     user_email: string,
     user_name: string,
-    message: string,
-    message_type: "send_message" | "send_registration"
+    message: string
   ) {
     const data: SendEmailModel = {
       to: btoa(process.env.REACT_APP_SEND_EMAIL_TO ?? ""),
@@ -38,7 +37,7 @@ export default class RepositoryKL {
       url: process.env.REACT_APP_API_URL ?? "",
       params: new URLSearchParams({
         action: "email",
-        type: message_type,
+        type: "send",
       }),
       data: formData,
     });

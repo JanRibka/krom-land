@@ -1,9 +1,9 @@
 <?php
-$allowed_methods = ["send_message"];
+$allowed_methods = ["send"];
 
 class Email
 {
-  public static function SendMessage()
+  public static function Send()
   {
     $to = $_POST["to"];
     $user_email = $_POST["user_email"];
