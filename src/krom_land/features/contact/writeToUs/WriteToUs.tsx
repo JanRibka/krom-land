@@ -11,8 +11,6 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import SectionTitle from "../../../../shared/components/sectionTitle/SectionTitle";
 import WriteToUsStyled from "./styledComponents/WriteToUsStyled";
 
-// Uděláno podle https://www.youtube.com/watch?v=wUK40U6sPH0 a https://smtpjs.com/
-
 const WritetoUs = () => {
   // References
   const refForm = useRef<HTMLFormElement>(null);
@@ -93,15 +91,6 @@ const WritetoUs = () => {
                   autoComplete='off'
                   name='user_email'
                   onBlur={handleTextFieldOnBlur}
-                />
-                <TextField
-                  value='KromLand - Dotaz'
-                  label='Předmět'
-                  required
-                  variant='outlined'
-                  type='text'
-                  name='subject'
-                  sx={{ display: "none" }}
                 />
               </Stack>
               <TextField
