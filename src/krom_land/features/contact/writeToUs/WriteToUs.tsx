@@ -1,5 +1,6 @@
 import { ChangeEvent, FormEvent, useRef, useState } from "react";
 import RepositoryKL from "shared/infrastructure/repositiory/RepositoryKL";
+import { messageTemplate } from "shared/templates/messageTemplate";
 
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -43,11 +44,17 @@ const WritetoUs = () => {
 
   const handleFormOnSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // TOTO: Vytvořit šablony tady a posílat enkodo vany text na server
+    let message = messageTemplate;
+
+    Object.keys(formData).forEach((key) => {
+      message = message.replace("@" + key, (formData as any)[key]);
+    });
+    console.log(message);
     _repoKL.sendEmail(
       formData.user_email,
       formData.user_name,
-      formData.message
+      "Zpráva z KROMLand.cz",
+      message
     );
 
     e.currentTarget.reset();

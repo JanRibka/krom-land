@@ -1,5 +1,5 @@
+import { HttpStatusCode } from "axios";
 import AppNotification from "shared/components/notification/AppNotification";
-import HttpStatusCode from "shared/enums/HttpStatusCode";
 import ResultDataDTO from "shared/models/ResultDataDTO";
 import SendEmailModel from "shared/models/SendEmailModel";
 
@@ -17,15 +17,16 @@ export default class RepositoryKL {
   public async sendEmail(
     user_email: string,
     user_name: string,
+    subject: string,
     message: string
   ) {
     const data: SendEmailModel = {
-      to: btoa(process.env.REACT_APP_SEND_EMAIL_TO ?? ""),
-      user_email: btoa(user_email),
-      user_name: btoa(user_name),
-      message: btoa(message),
+      to: btoa(encodeURIComponent(process.env.REACT_APP_SEND_EMAIL_TO ?? "")),
+      user_email: btoa(encodeURIComponent(user_email)),
+      user_name: btoa(encodeURIComponent(user_name)),
+      subject: btoa(encodeURIComponent(subject)),
+      message: btoa(encodeURIComponent(message)),
     };
-    // TODO: S btoa nelze použít čárka
 
     const formData = new FormData();
 
@@ -41,10 +42,21 @@ export default class RepositoryKL {
       }),
       data: formData,
     });
-    console.log("response", response);
-    if (response.status === HttpStatusCode.OK) {
-      AppNotification("Úspěch", "Zpráva byla úspěšně odslaná", "success");
-      //TODO" Pokud vrátí chybu, musí se zahlástit pomocí notifikace
+    console.log(response);
+    if (response.status === HttpStatusCode.Ok) {
+      const dataType = typeof response.data;
+
+      if (dataType === "string") {
+        AppNotification("Chyba", String(response.data), "danger");
+      } else if (dataType === "object") {
+        if (response.data?.Success) {
+          AppNotification("Úspěch", "Zpráva byla úspěšně odslaná", "success");
+        } else {
+          AppNotification("Chyba", response.data?.ErrMsg ?? "", "danger");
+        }
+      } else {
+        AppNotification("Úspěch", "Zpráva byla úspěšně odslaná", "success");
+      }
     } else {
       AppNotification("Chyba", "Zprávu se nepodařilo odeslat", "danger");
     }

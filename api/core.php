@@ -4,11 +4,12 @@ function JSON($arr = [])
   return @json_encode($arr, 128);
 }
 
-function apiError($msg)
+function apiResponse(bool $success, string $msg, $data = null)
 {
   echo JSON([
-    "error" => true,
-    "reason" => $msg,
+    "Success" => $success,
+    "ErrMsg" => $msg,
+    "Data" => $data,
   ]);
 }
 

@@ -1,4 +1,4 @@
-export const messageTemplate = `
+export const registrationTemplate = `
 <html>
   <body>
     <h2 style="font-size: 16px;">Zpráva z KROMLand.cz</h2>

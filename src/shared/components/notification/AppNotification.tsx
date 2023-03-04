@@ -10,7 +10,7 @@ const AppNotification = (
 ) => {
   Store.addNotification({
     title: title,
-    message: message,
+    message: <div dangerouslySetInnerHTML={{ __html: message }}></div>,
     type: type,
     insert: "bottom",
     container: "top-center",
