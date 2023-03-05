@@ -5,7 +5,7 @@ class WebContent
 {
   public static function getAll()
   {
-    $result = dibi::query("SELECT * FROM Test");
+    $result = dibi::query("SELECT * FROM test");
 
     if (!$result) {
       apiResponse(true, "GetAll - chyba", $result);
