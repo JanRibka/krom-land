@@ -1,6 +1,6 @@
 <?php
 
-$allowed_methods = ["create"];
+// $allowed_methods = ["create"];
 
 class Order
 {
