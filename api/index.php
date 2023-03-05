@@ -3,26 +3,37 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: *");
 header("Content-Type: application/json");
 require __DIR__ . "/core.php";
-require __DIR__ . "/email.php";
+require __DIR__ . "/email/email.php";
+require __DIR__ . "/order/order.php";
+require __DIR__ . "/web_content/web_content.php";
 
-if (!isset($_GET["action"])) {
-  apiResponse(false, "No method specified!");
-}
-
-if (!in_array($_GET["type"], $allowed_methods)) {
-  apiResponse(false, "That method is not allowed!");
-}
-
-if (!isset($_GET["type"])) {
-  apiResponse(false, "Either action is missing or is not allowed");
-}
-
+// $allowed_methods = ["send", "getall"];
 $action = $_GET["action"];
 $type = $_GET["type"];
 
+if (!isset($action)) {
+  apiResponse(false, "Metoda '" . $action . "' není specifikovaná");
+  die();
+}
+
+// if (!in_array($type, $allowed_methods)) {
+//   apiResponse(false, "Metoda '" . $type . "' není povolena");
+//   die();
+// }
+
+if (!isset($type)) {
+  apiResponse(false, "Akce '" . $type . "' buď chybí, nebo není povolena");
+  die();
+}
+
 try {
-  call_user_func(camelcase($action) . "::" . camelcase($type));
+  call_user_func(camelcase($action) . "::" . $type);
+  // call_user_func([$action, $type]);
 } catch (Exception $ex) {
-  apiResponse(false, "Method doen't exist!");
+  apiResponse(
+    false,
+    "Metoda '" . camelcase($action) . "::" . $type . "' neexistuje"
+  );
+  die();
 }
 ?>
