@@ -6,11 +6,12 @@ class WebContent
   public static function getAll()
   {
     $result = dibi::query("SELECT * FROM test");
+    $all = $result->fetchAll();
 
     if (!$result) {
-      apiResponse(true, "GetAll - chyba", $result);
+      apiResponse(true, "GetAll - chyba", $all);
     } else {
-      apiResponse(true, "GetAll - ok", $result);
+      apiResponse(true, "GetAll - ok", $all);
     }
   }
 }
