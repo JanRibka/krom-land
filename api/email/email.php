@@ -1,18 +1,16 @@
 <?php
-require_once __DIR__ . "/autoload.php";
+require_once __DIR__ . "/../../vendor/autoload.php";
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-$allowed_methods = ["send"];
-
 class Email
 {
-  public static function Send()
+  public static function send()
   {
     $allowed_servers = ["https://ribkavyvoj.kvalitne.cz/kontakt"];
 
-    if ($_SERVER["HTTP_REFERER"] === $allowed_servers[0]) {
+    if (in_array($_SERVER["HTTP_REFERER"], $allowed_servers)) {
       $to_input = $_POST["to"];
       $user_email_input = $_POST["user_email"];
       $user_name_input = $_POST["user_name"];
