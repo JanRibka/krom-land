@@ -34,6 +34,7 @@ const AboutUsStyled = styled(Box)(({ theme }) => ({
   },
 
   ".description-wrapper": {
+    width: "100%",
     maxWidth: "500px",
     display: "inline-block",
     height: "100%",
@@ -48,6 +49,7 @@ const AboutUsStyled = styled(Box)(({ theme }) => ({
     },
 
     ".description-inner-wrapper": {
+      width: "100%",
       height: "100%",
       display: "flex",
       flexDirection: "column",
@@ -60,6 +62,10 @@ const AboutUsStyled = styled(Box)(({ theme }) => ({
         [theme.breakpoints.up("md")]: {
           fontSize: "1.1em",
         },
+      },
+
+      ".MuiSkeleton-root": {
+        height: "70px",
       },
 
       ".service-icon": {

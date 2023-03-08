@@ -1,10 +1,20 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import AppState from "../AppState";
+import AppState from '../AppState';
 
-export interface HomeModel {}
+export interface HomeModel {
+  AboutUs: string;
+  MainImage: string;
+  MainImageAlt: string;
+  _dataLoaded: boolean;
+}
 
-export const initialState: HomeModel = {};
+export const initialState: HomeModel = {
+  AboutUs: "",
+  MainImage: "",
+  MainImageAlt: "",
+  _dataLoaded: false,
+};
 
 export const homeSlice = createSlice({
   name: "home",

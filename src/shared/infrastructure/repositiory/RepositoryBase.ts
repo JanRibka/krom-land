@@ -1,6 +1,12 @@
-import IRequest from "./IRequest";
+import axios from 'axios';
+
+import IPostResponse from './IPostResponse';
+import IRequest from './IRequest';
 
 export default abstract class RepositoryBase {
+  /**
+   * Get URL
+   */
   protected getUrl(request: IRequest) {
     let url = "";
     let baseUrl = request.baseUrl ?? process.env.PUBLIC_URL;
@@ -22,5 +28,16 @@ export default abstract class RepositoryBase {
     }
 
     return url;
+  }
+
+  protected async postRequest<TResult>(
+    request: IRequest,
+    data: any
+  ): Promise<IPostResponse<TResult>> {
+    return axios.post(this.getUrl(request), data, {
+      cancelToken: request.cancelToken,
+      params: request.params,
+      headers: { ...request.headers },
+    });
   }
 }

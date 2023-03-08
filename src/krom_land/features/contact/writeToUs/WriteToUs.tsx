@@ -1,23 +1,23 @@
-import { ChangeEvent, FormEvent, useRef, useState } from "react";
-import RepositoryKL from "shared/infrastructure/repositiory/RepositoryKL";
-import { messageTemplate } from "shared/templates/messageTemplate";
+import { ChangeEvent, FormEvent, useRef, useState } from 'react';
+import { messageTemplate } from 'shared/templates/messageTemplate';
 
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Stack from "@mui/material/Stack";
-import { useTheme } from "@mui/material/styles";
-import TextField from "@mui/material/TextField";
-import useMediaQuery from "@mui/material/useMediaQuery";
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
+import { useTheme } from '@mui/material/styles';
+import TextField from '@mui/material/TextField';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
-import SectionTitle from "../../../../shared/components/sectionTitle/SectionTitle";
-import WriteToUsStyled from "./styledComponents/WriteToUsStyled";
+import SectionTitle from '../../../../shared/components/sectionTitle/SectionTitle';
+import ContactService from '../ContactService';
+import WriteToUsStyled from './styledComponents/WriteToUsStyled';
 
 const WritetoUs = () => {
   // References
   const refForm = useRef<HTMLFormElement>(null);
 
   // Constants
-  const _repoKL = new RepositoryKL();
+  const _contactService = new ContactService();
   const theme = useTheme();
   const smDwn = useMediaQuery(theme.breakpoints.down("sm"));
   const formDataInitit = {
@@ -50,7 +50,7 @@ const WritetoUs = () => {
       message = message.replace("@" + key, (formData as any)[key]);
     });
     console.log(message);
-    _repoKL.sendEmail(
+    _contactService.sendEmail(
       formData.user_email,
       formData.user_name,
       "Zpráva z KROMLand.cz",

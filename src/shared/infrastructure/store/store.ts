@@ -1,8 +1,7 @@
-import { combineReducers } from "@reduxjs/toolkit";
-import { configureStore } from "@reduxjs/toolkit/dist/configureStore";
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
-import AppState from "./AppState";
-import homeReducer from "./home/homeSlice";
+import AppState from './AppState';
+import homeReducer from './home/homeSlice';
 
 const rootReducer = combineReducers<AppState>({
   home: homeReducer,

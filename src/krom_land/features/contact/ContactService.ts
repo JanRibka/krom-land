@@ -1,16 +1,16 @@
-import { HttpStatusCode } from "axios";
-import AppNotification from "shared/components/notification/AppNotification";
-import ResultDataDTO from "shared/models/ResultDataDTO";
-import SendEmailModel from "shared/models/SendEmailModel";
+import { HttpStatusCode } from 'axios';
+import AppNotification from 'shared/components/notification/AppNotification';
+import Repository from 'shared/infrastructure/repositiory/Repository';
+import ResultDataDTO from 'shared/models/ResultDataDTO';
+import SendEmailModel from 'shared/models/SendEmailModel';
 
-import Repository from "./repositoryBase/Repository";
+export default class ContactService {
+  private _repo = new Repository();
 
-const _repo = new Repository();
-
-export default class RepositoryKL {
   /**
    * Send email
-   * @param email
+   * @param user_email
+   * @param user_name
    * @param message
    * @param subject
    */
@@ -34,7 +34,7 @@ export default class RepositoryKL {
       formData.append(key, (data as any)[key].toString());
     });
 
-    const response = await _repo.post<any, ResultDataDTO<string>>({
+    const response = await this._repo.post<any, ResultDataDTO<string>>({
       url: process.env.REACT_APP_API_URL ?? "",
       params: new URLSearchParams({
         action: "email",
@@ -42,7 +42,7 @@ export default class RepositoryKL {
       }),
       data: formData,
     });
-    console.log(response);
+
     if (response.status === HttpStatusCode.Ok) {
       const dataType = typeof response.data;
 

@@ -3,7 +3,7 @@ require_once __DIR__ . "/../db/db.php";
 
 class WebContent
 {
-  public static function getAll()
+  public static function getHome()
   {
     $result = dibi::query("SELECT * FROM test");
     $all = $result->fetchAll();

@@ -1,4 +1,8 @@
+import { useSelector } from 'react-redux';
+import { selectHome } from 'shared/infrastructure/store/home/homeSlice';
+
 import Box from '@mui/material/Box';
+import Skeleton from '@mui/material/Skeleton';
 import Stack from '@mui/material/Stack';
 import { useTheme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
@@ -14,6 +18,9 @@ import image from '../img/img_4-copyright.png';
 import AboutUsStyled from './styledComponents/AboutUsStyled';
 
 const AboutUs = () => {
+  // Store
+  const home = useSelector(selectHome);
+
   // Constants
   const theme = useTheme();
   const xlDwn = useMediaQuery(theme.breakpoints.down("xl"));
@@ -44,15 +51,14 @@ const AboutUs = () => {
               <Box className='description-inner-wrapper'>
                 <Box>
                   <SectionTitle mainText={"O nás"} />
-                  <Typography>
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                    Fusce dui leo, imperdiet in, aliquam sit amet, feugiat eu,
-                    orci. Maecenas aliquet accumsan leo. Integer imperdiet
-                    lectus quis justo. Integer tempor. Suspendisse nisl. Integer
-                    malesuada. Aenean placerat. Suspendisse nisl. Nulla turpis
-                    magna, cursus sit amet, suscipit a, interdum id, felis. In
-                    convallis.
-                  </Typography>
+                  {home._dataLoaded ? (
+                    <Typography>{home.AboutUs}</Typography>
+                  ) : (
+                    <Stack spacing={1}>
+                      <Skeleton variant='rectangular' />
+                      <Skeleton variant='rectangular' />
+                    </Stack>
+                  )}
                 </Box>
                 <Box>
                   <GridContainer>
@@ -61,9 +67,9 @@ const AboutUs = () => {
                         <Box
                           component='img'
                           src={IconService1}
-                          alt='Zkyšenosti a důvěřivost'
+                          alt='Zkušenosti a důvěřivost'
                         />
-                        <Typography variant='h4'>Zkyšenosti</Typography>
+                        <Typography variant='h4'>Zkušenosti</Typography>
                         <Typography variant='h4'>a důvěřivost</Typography>
                       </Box>
                     </GridItem>
@@ -72,7 +78,7 @@ const AboutUs = () => {
                         <Box
                           component='img'
                           src={IconService2}
-                          alt='Zkyšenosti a důvěřivost'
+                          alt='Probíhá v přírodě'
                         />
                         <Typography variant='h4'>Probíhá v</Typography>
                         <Typography variant='h4'>přírodě</Typography>
@@ -83,7 +89,7 @@ const AboutUs = () => {
                         <Box
                           component='img'
                           src={IconService3}
-                          alt='Zkyšenosti a důvěřivost'
+                          alt='Rozmanitost akcí'
                         />
                         <Typography variant='h4'>Rozmanitost</Typography>
                         <Typography variant='h4'>akcí</Typography>
