@@ -49,7 +49,7 @@ const WritetoUs = () => {
     Object.keys(formData).forEach((key) => {
       message = message.replace("@" + key, (formData as any)[key]);
     });
-    console.log(message);
+
     _contactService.sendEmail(
       formData.user_email,
       formData.user_name,
