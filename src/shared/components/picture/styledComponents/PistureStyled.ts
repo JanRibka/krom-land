@@ -41,7 +41,7 @@ const PictureStyled = styled(Box)(
     aspect-ratio: inherit;
     position: absolute;
     border-radius: 15px;
-    background-color: ${grey[300]}
+    background-color: ${grey[400]}
   }
 
   svg {

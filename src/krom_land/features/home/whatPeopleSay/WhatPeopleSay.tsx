@@ -2,20 +2,27 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
+import { useSelector } from "react-redux";
+import { selectHome } from "shared/infrastructure/store/home/homeSlice";
 import { Autoplay, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { PaginationOptions } from "swiper/types";
 
+import Skeleton from "@mui/material/Skeleton";
 import { useTheme } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 
 import SectionTitle from "../../../../shared/components/sectionTitle/SectionTitle";
+import SlideItem from "./slideItem/SlideItem";
 import SlideContentStyled from "./styledComponents/SlideContentStyled";
 import WhatPeopleSayStyled from "./styledComponents/WhatPeopleSayStyled";
 
 const WhatPeopleSay = () => {
   // Contsnts
   const theme = useTheme();
+
+  // Store
+  const home = useSelector(selectHome);
 
   // Pagination
   const pagination: PaginationOptions = {
@@ -43,43 +50,19 @@ const WhatPeopleSay = () => {
         <SwiperSlide>
           {/* Slide 1 */}
           <SlideContentStyled spacing={2}>
-            <Typography className='text-first-line'>"</Typography>
-            <Typography className='text-second-line'>
-              "Děkujeme vám moc za péči o naše děti během víkendové akce. Nyní
-              netrpělivě čekají na příští akci a jsou nadšení, že se opět
-              setkají se svými kamarády a skvělým personálem. Skvělá práce!"
-            </Typography>
-            <Typography className='text-third-line'>
-              Hanka Štěpánkovice
-            </Typography>
+            <SlideItem text={home.PeopleSay1Text} name={home.PeopleSay1Name} />
           </SlideContentStyled>
         </SwiperSlide>
         <SwiperSlide>
           {/* Slide 2 */}
           <SlideContentStyled spacing={2}>
-            <Typography className='text-first-line'>"</Typography>
-            <Typography className='text-second-line'>
-              "Děkujeme vám moc za péči o naše děti během víkendové akce. Nyní
-              netrpělivě čekají na příští akci a jsou nadšení, že se opět
-              setkají se svými kamarády a skvělým personálem. Skvělá práce!"
-            </Typography>
-            <Typography className='text-third-line'>
-              Hanka Štěpánkovice
-            </Typography>
+            <SlideItem text={home.PeopleSay2Text} name={home.PeopleSay2Name} />
           </SlideContentStyled>
         </SwiperSlide>
         <SwiperSlide>
           {/* Slide 3 */}
           <SlideContentStyled spacing={2}>
-            <Typography className='text-first-line'>"</Typography>
-            <Typography className='text-second-line'>
-              "Děkujeme vám moc za péči o naše děti během víkendové akce. Nyní
-              netrpělivě čekají na příští akci a jsou nadšení, že se opět
-              setkají se svými kamarády a skvělým personálem. Skvělá práce!"
-            </Typography>
-            <Typography className='text-third-line'>
-              Hanka Štěpánkovice
-            </Typography>
+            <SlideItem text={home.PeopleSay3Text} name={home.PeopleSay3Name} />
           </SlideContentStyled>
         </SwiperSlide>
       </Swiper>

@@ -1,21 +1,21 @@
-import { useSelector } from 'react-redux';
-import { selectHome } from 'shared/infrastructure/store/home/homeSlice';
+import { useSelector } from "react-redux";
+import { selectHome } from "shared/infrastructure/store/home/homeSlice";
 
-import Box from '@mui/material/Box';
-import Skeleton from '@mui/material/Skeleton';
-import Stack from '@mui/material/Stack';
-import { useTheme } from '@mui/material/styles';
-import Typography from '@mui/material/Typography';
-import useMediaQuery from '@mui/material/useMediaQuery';
+import Box from "@mui/material/Box";
+import Skeleton from "@mui/material/Skeleton";
+import Stack from "@mui/material/Stack";
+import { useTheme } from "@mui/material/styles";
+import Typography from "@mui/material/Typography";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
-import GridContainer from '../../../../shared/components/gridContainer/GridContainer';
-import GridItem from '../../../../shared/components/gridItem/GridItem';
-import SectionTitle from '../../../../shared/components/sectionTitle/SectionTitle';
-import IconService1 from '../img/icon_services_1.webp';
-import IconService2 from '../img/icon_services_2.webp';
-import IconService3 from '../img/icon_services_3.webp';
-import image from '../img/img_4-copyright.png';
-import AboutUsStyled from './styledComponents/AboutUsStyled';
+import GridContainer from "../../../../shared/components/gridContainer/GridContainer";
+import GridItem from "../../../../shared/components/gridItem/GridItem";
+import SectionTitle from "../../../../shared/components/sectionTitle/SectionTitle";
+import IconService1 from "../img/icon_services_1.webp";
+import IconService2 from "../img/icon_services_2.webp";
+import IconService3 from "../img/icon_services_3.webp";
+import image from "../img/img_4-copyright.png";
+import AboutUsStyled from "./styledComponents/AboutUsStyled";
 
 const AboutUs = () => {
   // Store
@@ -37,13 +37,15 @@ const AboutUs = () => {
           spacing={pictDescWrapperSpacing}
           direction={pictDescWrapperDirection}
         >
-          <Box
-            component='img'
-            src={image}
-            alt='kh'
-            loading='lazy'
-            className='about-us-image'
-          />
+          <Box className='about-us-image-wrapper'>
+            <Box
+              component='img'
+              src={home.AboutUsImagePath}
+              alt={home.AboutUsImageAlt}
+              loading='lazy'
+              className='about-us-image'
+            />
+          </Box>
 
           {/* Popis */}
           <Box className='description-wrapper'>
@@ -51,12 +53,30 @@ const AboutUs = () => {
               <Box className='description-inner-wrapper'>
                 <Box>
                   <SectionTitle mainText={"O nás"} />
-                  {home._dataLoaded ? (
+                  {!!home.AboutUs ? (
                     <Typography>{home.AboutUs}</Typography>
                   ) : (
                     <Stack spacing={1}>
-                      <Skeleton variant='rectangular' />
-                      <Skeleton variant='rectangular' />
+                      <Skeleton
+                        variant='rectangular'
+                        className='skeleton-line'
+                      />
+                      <Skeleton
+                        variant='rectangular'
+                        className='skeleton-line'
+                      />
+                      <Skeleton
+                        variant='rectangular'
+                        className='skeleton-line'
+                      />
+                      <Skeleton
+                        variant='rectangular'
+                        className='skeleton-line'
+                      />
+                      <Skeleton
+                        variant='rectangular'
+                        className='skeleton-paragraph'
+                      />
                     </Stack>
                   )}
                 </Box>

@@ -1,9 +1,9 @@
-import PhotoModel from 'shared/models/PhotoModel';
+import PhotoModel from "shared/models/PhotoModel";
 
-import VisibilityOutlinedIcon from '@mui/icons-material/VisibilityOutlined';
-import Box from '@mui/material/Box';
+import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
+import Box from "@mui/material/Box";
 
-import PictureStyled from './styledComponents/PistureStyled';
+import PictureStyled from "./styledComponents/PistureStyled";
 
 interface IProps {
   photo: PhotoModel;

@@ -1,19 +1,37 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import AppState from '../AppState';
+import AppState from "../AppState";
 
 export interface HomeModel {
-  AboutUs: string;
-  MainImage: string;
+  Title: string;
+  Description: string;
+  MainImagePath: string;
   MainImageAlt: string;
-  _dataLoaded: boolean;
+  AboutUs: string;
+  AboutUsImagePath: string;
+  AboutUsImageAlt: string;
+  PeopleSay1Text: string;
+  PeopleSay1Name: string;
+  PeopleSay2Text: string;
+  PeopleSay2Name: string;
+  PeopleSay3Text: string;
+  PeopleSay3Name: string;
 }
 
 export const initialState: HomeModel = {
-  AboutUs: "",
-  MainImage: "",
+  Title: "",
+  Description: "",
+  MainImagePath: "",
   MainImageAlt: "",
-  _dataLoaded: false,
+  AboutUs: "",
+  AboutUsImagePath: "",
+  AboutUsImageAlt: "",
+  PeopleSay1Text: "",
+  PeopleSay1Name: "",
+  PeopleSay2Text: "",
+  PeopleSay2Name: "",
+  PeopleSay3Text: "",
+  PeopleSay3Name: "",
 };
 
 export const homeSlice = createSlice({

@@ -3,16 +3,26 @@ require_once __DIR__ . "/../db/db.php";
 
 class WebContent
 {
-  public static function getHome()
+  public static function getAll()
   {
-    $result = dibi::query("SELECT * FROM test");
-    $all = $result->fetchAll();
+    $homeId = 0;
+    $result = new ResultModel();
 
-    if (!$result) {
-      apiResponse(true, "GetAll - chyba", $all);
-    } else {
-      apiResponse(true, "GetAll - ok", $all);
+    try {
+      $homeQuery = dibi::query("SELECT * FROM home WHERE id = %i", $homeId);
+      $home = $homeQuery->fetch();
+
+      $result->Home = $home;
+
+      apiResponse(true, "", $result);
+    } catch (Exception $ex) {
+      apiResponse(false, $ex);
     }
   }
+}
+
+class ResultModel
+{
+  public $Home;
 }
 ?>

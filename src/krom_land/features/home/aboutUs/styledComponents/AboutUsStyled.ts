@@ -1,5 +1,6 @@
-import Box from '@mui/material/Box';
-import { styled } from '@mui/material/styles';
+import Box from "@mui/material/Box";
+import { grey } from "@mui/material/colors";
+import { styled } from "@mui/material/styles";
 
 const AboutUsStyled = styled(Box)(({ theme }) => ({
   position: "relative",
@@ -16,11 +17,12 @@ const AboutUsStyled = styled(Box)(({ theme }) => ({
     alignItems: "center",
   },
 
-  ".about-us-image": {
+  ".about-us-image-wrapper": {
     height: "550px",
-    objectFit: "cover",
-    width: "auto",
     borderRadius: "30px",
+    maxWidth: "550px",
+    width: "100%",
+    backgroundColor: grey[400],
 
     [theme.breakpoints.down("lg")]: {
       maxWidth: "440px",
@@ -30,6 +32,13 @@ const AboutUsStyled = styled(Box)(({ theme }) => ({
       height: "300px",
       width: "90%",
       maxWidth: "100%",
+    },
+
+    ".about-us-image": {
+      objectFit: "cover",
+      borderRadius: "30px",
+      width: "100%",
+      height: "100%",
     },
   },
 
@@ -64,7 +73,11 @@ const AboutUsStyled = styled(Box)(({ theme }) => ({
         },
       },
 
-      ".MuiSkeleton-root": {
+      ".skeleton-line": {
+        height: "10px",
+      },
+
+      ".skeleton-paragraph": {
         height: "70px",
       },
 

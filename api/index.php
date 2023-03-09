@@ -5,7 +5,7 @@ header("Content-Type: application/json");
 require __DIR__ . "/core.php";
 require __DIR__ . "/email/email.php";
 require __DIR__ . "/order/order.php";
-require __DIR__ . "/web_content/web_content.php";
+require __DIR__ . "/webContent/webContent.php";
 
 // $allowed_methods = ["send", "getall"];
 $action = $_GET["action"];
