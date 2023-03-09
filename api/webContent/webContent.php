@@ -25,7 +25,7 @@ class WebContent
         "SELECT ad.* FROM actions as a JOIN actionDeatil as ad on a.id = ad.ActionsId WHERE a.id = %i",
         $actionsId
       );
-      // TODO: Bude se tu t59dit detail akce podle poradi. Nebo to dělat pri mapovani v FE
+      // TODO: Bude se tu t59dit detail akce podle poradi. Nebo to dělat pri mapovani v FE. Buded se to tridit selectem
       $actions = new ActionsModel(
         $actions->Id,
         $actions->Title,
