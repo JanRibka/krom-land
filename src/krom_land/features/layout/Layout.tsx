@@ -84,7 +84,7 @@ const Layout = (props: IProps) => {
       Success: false,
       ErrMsg: "",
       Data: {
-        Common: { _dataLoaded: false },
+        Common: {},
         Home: {
           Title: "",
           Description: "",
@@ -100,6 +100,7 @@ const Layout = (props: IProps) => {
           PeopleSay3Text: "",
           PeopleSay3Name: "",
         },
+        Actions: {},
       },
     },
     [],
