@@ -75,6 +75,16 @@ const ActionSelectStyled = styled(Box)(({ theme }) => ({
         transform: "rotate(-10deg)",
         transformOrigin: "center",
       },
+
+      ".skeleton-menu-text": {
+        width: "100px",
+        height: "20px",
+
+        [theme.breakpoints.down("md")]: {
+          width: "70px",
+          height: "15px",
+        },
+      },
     },
   },
 }));

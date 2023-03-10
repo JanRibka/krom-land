@@ -1,4 +1,4 @@
-import PhotoModel from "shared/models/PhotoModel";
+import ImageModel from "shared/models/ImageModel";
 
 import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
 import Box from "@mui/material/Box";
@@ -6,7 +6,8 @@ import Box from "@mui/material/Box";
 import PictureStyled from "./styledComponents/PistureStyled";
 
 interface IProps {
-  photo: PhotoModel;
+  photo: ImageModel;
+  index: number;
   className?: string;
   enbHover?: boolean;
   handleOpenGalleryOnClick?: (index: number | undefined) => void;
@@ -15,7 +16,7 @@ interface IProps {
 const Picture = (props: IProps) => {
   return (
     <PictureStyled
-      onClick={() => props.handleOpenGalleryOnClick?.(props.photo.Index)}
+      onClick={() => props.handleOpenGalleryOnClick?.(props.index)}
       className={
         "picture-wrapper" +
         (props.className || "") +
@@ -25,7 +26,7 @@ const Picture = (props: IProps) => {
       <Box className='image-overlay'></Box>
       <Box
         component='img'
-        src={props.photo.Src}
+        src={props.photo.Path}
         alt={props.photo.Alt}
         loading='lazy'
       />

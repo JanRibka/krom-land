@@ -1,28 +1,28 @@
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/bundle';
-import 'swiper/css/zoom';
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/bundle";
+import "swiper/css/zoom";
 
-import { Dispatch, useEffect } from 'react';
-import PhotoModel from 'shared/models/PhotoModel';
-import { Keyboard, Mousewheel, Navigation, Pagination, Zoom } from 'swiper';
+import { Dispatch, useEffect } from "react";
+import ImageModel from "shared/models/ImageModel";
+import { Keyboard, Mousewheel, Navigation, Pagination, Zoom } from "swiper";
 
-import CloseIcon from '@mui/icons-material/Close';
-import { useMediaQuery } from '@mui/material';
-import IconButton from '@mui/material/IconButton';
-import { useTheme } from '@mui/material/styles';
+import CloseIcon from "@mui/icons-material/Close";
+import { useMediaQuery } from "@mui/material";
+import IconButton from "@mui/material/IconButton";
+import { useTheme } from "@mui/material/styles";
 
-import OpenDialogModel from './OpenDialoModel';
-import DialogContentStyled from './styledComponents/DialogContentStyled';
-import DialogStyled from './styledComponents/DialogStyled';
-import DialogTitleWrapperStyled from './styledComponents/DialogTitleWrapperStyled';
-import SwiperStyled from './swiper/styledComponents/SwiperStyled';
-import SwiperSlideStyled from './swiper/swiperSlide/styledComponents/SwiperSlideStyled';
+import OpenDialogModel from "./OpenDialoModel";
+import DialogContentStyled from "./styledComponents/DialogContentStyled";
+import DialogStyled from "./styledComponents/DialogStyled";
+import DialogTitleWrapperStyled from "./styledComponents/DialogTitleWrapperStyled";
+import SwiperStyled from "./swiper/styledComponents/SwiperStyled";
+import SwiperSlideStyled from "./swiper/swiperSlide/styledComponents/SwiperSlideStyled";
 
 interface IProps {
   openData: OpenDialogModel;
-  photos: PhotoModel[];
+  photos: ImageModel[];
   setOpenData: Dispatch<React.SetStateAction<OpenDialogModel>>;
 }
 
@@ -55,7 +55,7 @@ const PhotosDialog = (props: IProps) => {
         <SwiperSlideStyled key={"dialogImage_" + index}>
           <div className='swiper-zoom-container'>
             <img
-              src={image.Src}
+              src={image.Path}
               alt={image.Alt}
               // className='swiper-lazy'
               // loading='eager'

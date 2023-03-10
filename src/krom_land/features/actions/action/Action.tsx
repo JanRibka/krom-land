@@ -3,6 +3,7 @@ import ReactPlayer from "react-player/youtube";
 
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
+import Skeleton from "@mui/material/Skeleton";
 import Stack from "@mui/material/Stack";
 import { useTheme } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
@@ -129,20 +130,49 @@ const Action = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
           spacing={pictDescWrapperSpacing}
           direction={pictDescWrapperDirection}
         >
-          <Box
-            component='img'
-            src={image}
-            alt={imageAlt}
-            loading='lazy'
-            className='action-image'
-          />
+          <Box className='action-image-wrapper'>
+            <Box
+              component='img'
+              src={image}
+              alt={imageAlt}
+              loading='lazy'
+              className='action-image'
+            />
+          </Box>
 
           {/* Popis */}
           <Box className='description-wrapper'>
             <Box>
               <Box className='description-inner-wrapper'>
-                <SectionTitle mainText={name} />
-                <Typography>{description}</Typography>
+                <Box>
+                  <SectionTitle mainText={name} />
+                  {!!description ? (
+                    <Typography>{description}</Typography>
+                  ) : (
+                    <Stack spacing={1}>
+                      <Skeleton
+                        variant='rectangular'
+                        className='skeleton-line'
+                      />
+                      <Skeleton
+                        variant='rectangular'
+                        className='skeleton-line'
+                      />
+                      <Skeleton
+                        variant='rectangular'
+                        className='skeleton-line'
+                      />
+                      <Skeleton
+                        variant='rectangular'
+                        className='skeleton-line'
+                      />
+                      <Skeleton
+                        variant='rectangular'
+                        className='skeleton-paragraph'
+                      />
+                    </Stack>
+                  )}
+                </Box>
               </Box>
 
               {/* Registrační tlačítko */}

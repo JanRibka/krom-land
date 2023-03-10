@@ -1,4 +1,4 @@
-import DetailInfoStyled from './styledComponents/DetailInfoStyled';
+import DetailInfoStyled from "./styledComponents/DetailInfoStyled";
 
 interface IProps {
   kdy: string;

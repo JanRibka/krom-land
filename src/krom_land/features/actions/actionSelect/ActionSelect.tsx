@@ -1,6 +1,9 @@
 import { useRef } from "react";
+import { useSelector } from "react-redux";
+import { selectActions } from "shared/infrastructure/store/actions/actionsSlice";
 
 import Box from "@mui/material/Box";
+import Skeleton from "@mui/material/Skeleton";
 import Stack from "@mui/material/Stack";
 import { useTheme } from "@mui/material/styles";
 
@@ -19,6 +22,9 @@ const ActionSelect = () => {
   const refTabSecond = useRef<HTMLDivElement>(null);
   const refTabThird = useRef<HTMLDivElement>(null);
   const refTabFourth = useRef<HTMLDivElement>(null);
+
+  // Store
+  const actions = useSelector(selectActions);
 
   // Constants
   const theme = useTheme();
@@ -81,28 +87,44 @@ const ActionSelect = () => {
       <Stack>
         <>
           <Box component='ul'>
+            {/* První záložka */}
             <Box
               ref={refButtonFirst}
               component='li'
               className='active'
               onClick={() => handleOnCLick(0)}
             >
-              <Box component='span'>Květen</Box>
+              {actions.ActionDetails?.[0]?.MonthName ? (
+                <Box component='span'>{actions.ActionDetails[0].MonthName}</Box>
+              ) : (
+                <Skeleton className='skeleton-menu-text' />
+              )}
             </Box>
+            {/* Druhá záložka */}
             <Box
               ref={refButtonSecond}
               component='li'
               onClick={() => handleOnCLick(1)}
             >
-              <Box component='span'>Červen</Box>
+              {actions.ActionDetails?.[1]?.MonthName ? (
+                <Box component='span'>{actions.ActionDetails[1].MonthName}</Box>
+              ) : (
+                <Skeleton className='skeleton-menu-text' />
+              )}
             </Box>
+            {/* Třetí záložka */}
             <Box
               ref={refButtonThird}
               component='li'
               onClick={() => handleOnCLick(2)}
             >
-              <Box component='span'>Červenec</Box>
+              {actions.ActionDetails?.[2]?.MonthName ? (
+                <Box component='span'>{actions.ActionDetails[2].MonthName}</Box>
+              ) : (
+                <Skeleton className='skeleton-menu-text' />
+              )}
             </Box>
+            {/* Čtvrtá záložka */}
             <Box
               ref={refButtonFourth}
               component='li'
@@ -117,38 +139,39 @@ const ActionSelect = () => {
             <Action
               ref={refTabFirst}
               className='active'
-              name='Akce na květen'
-              description='Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Fusce dui leo, imperdiet in, aliquam sit amet, feugiat eu, orci. Maecenas aliquet accumsan leo. Integer imperdiet lectus quis justo. Integer tempor. Suspendisse nisl. Integer malesuada. Aenean placerat. Suspendisse nisl. Nulla turpis magna, cursus sit amet, suscipit a, interdum id, felis. In convallis.'
               backgroundColor={theme.palette.secondary.main}
-              image={ActionFirstImage}
-              imageAlt='Alt'
-              videoUrl='https://www.youtube.com/watch?v=YSHDBB6id4A'
-              kdy='13.10.-14.10.2023'
-              kde='Hradec nad Moravicí'
-              cena='3 333'
+              name={actions.ActionDetails?.[0]?.ActionName}
+              description={actions.ActionDetails?.[0]?.ActionDescritption}
+              image={actions.ActionDetails?.[0]?.ActionImagePath}
+              imageAlt={actions.ActionDetails?.[0]?.ActionImageAlt}
+              videoUrl={actions.ActionDetails?.[0]?.VideoLink}
+              kdy={actions.ActionDetails?.[0]?.Date}
+              kde={actions.ActionDetails?.[0]?.Place}
+              cena={actions.ActionDetails?.[0]?.Price}
             />
             <Action
               ref={refTabSecond}
-              name='Akce na červen'
-              description='Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Fusce dui leo, imperdiet in, aliquam sit amet, feugiat eu, orci. Maecenas aliquet accumsan leo. Integer imperdiet lectus quis justo. Integer tempor. Suspendisse nisl. Integer malesuada. Aenean placerat. Suspendisse nisl. Nulla turpis magna, cursus sit amet, suscipit a, interdum id, felis. In convallis.'
               backgroundColor={theme.palette.primary.main}
-              image={ActionFirstImage}
-              imageAlt='Alt2'
-              videoUrl='https://www.youtube.com/watch?v=3fnPwj1AMpo'
-              kdy='Zítra'
-              kde='Kobeřice'
-              cena='555'
+              name={actions.ActionDetails?.[1]?.ActionName}
+              description={actions.ActionDetails?.[1]?.ActionDescritption}
+              image={actions.ActionDetails?.[1]?.ActionImagePath}
+              imageAlt={actions.ActionDetails?.[1]?.ActionImageAlt}
+              videoUrl={actions.ActionDetails?.[1]?.VideoLink}
+              kdy={actions.ActionDetails?.[1]?.Date}
+              kde={actions.ActionDetails?.[1]?.Place}
+              cena={actions.ActionDetails?.[1]?.Price}
             />
             <Action
               ref={refTabThird}
-              name='Akce na červenec'
-              description='Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Fusce dui leo, imperdiet in, aliquam sit amet, feugiat eu, orci. Maecenas aliquet accumsan leo. Integer imperdiet lectus quis justo. Integer tempor. Suspendisse nisl. Integer malesuada. Aenean placerat. Suspendisse nisl. Nulla turpis magna, cursus sit amet, suscipit a, interdum id, felis. In convallis.'
               backgroundColor={theme.palette.common.purple.main}
-              image={ActionFirstImage}
-              imageAlt='Alt3'
-              kdy='ZítraKobeřice'
-              kde='Kobeřice'
-              cena='555'
+              name={actions.ActionDetails?.[2]?.ActionName}
+              description={actions.ActionDetails?.[2]?.ActionDescritption}
+              image={actions.ActionDetails?.[2]?.ActionImagePath}
+              imageAlt={actions.ActionDetails?.[2]?.ActionImageAlt}
+              videoUrl={actions.ActionDetails?.[2]?.VideoLink}
+              kdy={actions.ActionDetails?.[2]?.Date}
+              kde={actions.ActionDetails?.[2]?.Place}
+              cena={actions.ActionDetails?.[2]?.Price}
             />
             <Documents ref={refTabFourth} />
           </Box>
