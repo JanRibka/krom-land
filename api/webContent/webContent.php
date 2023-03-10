@@ -22,7 +22,7 @@ class WebContent
       $actions = $actinsQuery->fetch();
 
       $actinDeatilsQuery = dibi::query(
-        "SELECT ad.* FROM actions as a JOIN actionDeatil as ad on a.id = ad.ActionsId WHERE a.id = %i",
+        "SELECT ad.* FROM actions as a JOIN actionDeatil as ad on a.id = ad.ActionsId WHERE a.id = %i ORDER BY ad.ActionOrder",
         $actionsId
       );
       // TODO: Bude se tu t59dit detail akce podle poradi. Nebo to dělat pri mapovani v FE
