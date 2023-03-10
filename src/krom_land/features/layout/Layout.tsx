@@ -13,6 +13,7 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import useScrollPosition from "../../../shared/customHooks/useScrollPosition/useScrollPosition";
 import { mapFromHomeDTO } from "../home/save/mapFromHomeDTO";
 import KromLandDTO from "../KromLandDTO";
+import { mapFromCommonDTO } from "../mapFromCommonDTO";
 import Footer from "./footer/Footer";
 import NavBar from "./navBar/NavBar";
 import ButtonUpStyled from "./styledComponents/ButtonUpStyled";
@@ -109,13 +110,11 @@ const Layout = (props: IProps) => {
     (data) => {
       console.log(data.Data);
       if (data.Success) {
-        if (!!data?.Data?.Home) {
-          handleHomeUpdate(mapFromHomeDTO(data?.Data?.Home));
-          handleCommonUpdate({ _dataLoaded: true });
-        }
-      } else {
-        AppNotification("Chyba", data.ErrMsg ?? "", "danger");
+        handleHomeUpdate(mapFromHomeDTO(data?.Data?.Home));
+        handleCommonUpdate(mapFromCommonDTO(data?.Data?.Common));
       }
+
+      AppNotification("Chyba", data.ErrMsg ?? "", "danger");
     }
   );
 
