@@ -30,6 +30,57 @@ const Gallery = () => {
   const handleOpenGalleryOnClick = (index?: number) => {
     setOpenGalleryData({ Open: true, InitialSlide: index ?? 0 });
   };
+
+  const renderImages = () => {
+    let result: JSX.Element[] = [];
+    let pictures: JSX.Element[] = [];
+
+    galleryImages.forEach((image, index) => {
+      if (
+        (index === 0 || index % 4 !== 0) &&
+        index + 1 !== galleryImages.length
+      ) {
+        pictures.push(
+          <GridItem xs={12} sm={6} lg={3}>
+            <Picture
+              photo={image}
+              index={index}
+              enbHover
+              handleOpenGalleryOnClick={handleOpenGalleryOnClick}
+            />
+          </GridItem>
+        );
+      } else if (index + 1 === galleryImages.length) {
+        pictures.push(
+          <GridItem xs={12} sm={6} lg={3}>
+            <Picture
+              photo={image}
+              index={index}
+              enbHover
+              handleOpenGalleryOnClick={handleOpenGalleryOnClick}
+            />
+          </GridItem>
+        );
+
+        result.push(<GridContainer>{pictures}</GridContainer>);
+      } else {
+        result.push(<GridContainer>{pictures}</GridContainer>);
+        pictures = [
+          <GridItem xs={12} sm={6} lg={3}>
+            <Picture
+              photo={image}
+              index={index}
+              enbHover
+              handleOpenGalleryOnClick={handleOpenGalleryOnClick}
+            />
+          </GridItem>,
+        ];
+      }
+    });
+
+    return result;
+  };
+
   return (
     <>
       <Stack spacing={10} direction='column'>
@@ -41,116 +92,7 @@ const Gallery = () => {
             imhHeight={350}
           />
         </>
-        <ImageGridWrapperStyled>
-          <>
-            <GridContainer>
-              <GridItem xs={12} sm={6} lg={3}>
-                <Picture
-                  photo={galleryImages[0]}
-                  index={0}
-                  enbHover
-                  handleOpenGalleryOnClick={handleOpenGalleryOnClick}
-                />
-              </GridItem>
-              <GridItem xs={12} sm={6} lg={3}>
-                <Picture
-                  photo={galleryImages[1]}
-                  index={1}
-                  enbHover
-                  handleOpenGalleryOnClick={handleOpenGalleryOnClick}
-                />
-              </GridItem>
-              <GridItem xs={12} sm={6} lg={3}>
-                <Picture
-                  photo={galleryImages[2]}
-                  index={2}
-                  enbHover
-                  handleOpenGalleryOnClick={handleOpenGalleryOnClick}
-                />
-              </GridItem>
-              <GridItem xs={12} sm={6} lg={3}>
-                <Picture
-                  photo={galleryImages[3]}
-                  index={3}
-                  enbHover
-                  handleOpenGalleryOnClick={handleOpenGalleryOnClick}
-                />
-              </GridItem>
-            </GridContainer>
-          </>
-          <>
-            <GridContainer>
-              <GridItem xs={12} sm={6} lg={3}>
-                <Picture
-                  photo={galleryImages[4]}
-                  index={4}
-                  enbHover
-                  handleOpenGalleryOnClick={handleOpenGalleryOnClick}
-                />
-              </GridItem>
-              <GridItem xs={12} sm={6} lg={3}>
-                <Picture
-                  photo={galleryImages[5]}
-                  index={5}
-                  enbHover
-                  handleOpenGalleryOnClick={handleOpenGalleryOnClick}
-                />
-              </GridItem>
-              <GridItem xs={12} sm={6} lg={3}>
-                <Picture
-                  photo={galleryImages[6]}
-                  index={6}
-                  enbHover
-                  handleOpenGalleryOnClick={handleOpenGalleryOnClick}
-                />
-              </GridItem>
-              <GridItem xs={12} sm={6} lg={3}>
-                <Picture
-                  photo={galleryImages[7]}
-                  index={7}
-                  enbHover
-                  handleOpenGalleryOnClick={handleOpenGalleryOnClick}
-                />
-              </GridItem>
-            </GridContainer>
-          </>
-          <>
-            <GridContainer>
-              <GridItem xs={12} sm={6} lg={3}>
-                <Picture
-                  photo={galleryImages[8]}
-                  index={8}
-                  enbHover
-                  handleOpenGalleryOnClick={handleOpenGalleryOnClick}
-                />
-              </GridItem>
-              <GridItem xs={12} sm={6} lg={3}>
-                <Picture
-                  photo={galleryImages[9]}
-                  index={9}
-                  enbHover
-                  handleOpenGalleryOnClick={handleOpenGalleryOnClick}
-                />
-              </GridItem>
-              <GridItem xs={12} sm={6} lg={3}>
-                <Picture
-                  photo={galleryImages[10]}
-                  index={10}
-                  enbHover
-                  handleOpenGalleryOnClick={handleOpenGalleryOnClick}
-                />
-              </GridItem>
-              <GridItem xs={12} sm={6} lg={3}>
-                <Picture
-                  photo={galleryImages[11]}
-                  index={11}
-                  enbHover
-                  handleOpenGalleryOnClick={handleOpenGalleryOnClick}
-                />
-              </GridItem>
-            </GridContainer>
-          </>
-        </ImageGridWrapperStyled>
+        <ImageGridWrapperStyled>{renderImages()}</ImageGridWrapperStyled>
       </Stack>
       {/* Photos dialog */}
       <PhotosDialog
