@@ -37,15 +37,14 @@ export const useRequest = <T>(
 
     try {
       let result: T;
-      console.log(request);
+
       result = await _repositiory.get<T>(request);
-      console.log(result);
+
       if (result) {
         setData(result);
         afterLoadAction?.(result, false);
       }
     } catch (ex) {
-      console.log(ex);
       setIsError(true);
       afterLoadAction?.(data, true);
     }

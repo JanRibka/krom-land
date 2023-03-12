@@ -3,16 +3,23 @@ import { useSelector } from "react-redux";
 import { windowScrollTo } from "seamless-scroll-polyfill";
 import AppNotification from "shared/components/notification/AppNotification";
 import { useRequest } from "shared/dataAccess/useRequest";
+import { useActionsSlice } from "shared/infrastructure/store/actions/useActionsSlice";
 import { selectCommon } from "shared/infrastructure/store/common/commonSlice";
 import { useCommonSlice } from "shared/infrastructure/store/common/useCommonSlice";
+import { useContactSlice } from "shared/infrastructure/store/contact/useContactSlice";
+import { useGallerySlice } from "shared/infrastructure/store/gallery/useGallerySlice";
 import { useHomeSlice } from "shared/infrastructure/store/home/useHomeSlice";
 import ResultDataDTO from "shared/models/ResultDataDTO";
 
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 
 import useScrollPosition from "../../../shared/customHooks/useScrollPosition/useScrollPosition";
+import { mapFromActionsDTO } from "../actions/save/mapFromActionsDTO";
+import { mapFromContactDTO } from "../contact/save/mapFromContactDTO";
+import { mapFromGalleryDTO } from "../gallery/save/mapFromGalleryDTO";
 import { mapFromHomeDTO } from "../home/save/mapFromHomeDTO";
 import KromLandDTO from "../KromLandDTO";
+import { mapFromCommonDTO } from "../mapFromCommonDTO";
 import Footer from "./footer/Footer";
 import NavBar from "./navBar/NavBar";
 import ButtonUpStyled from "./styledComponents/ButtonUpStyled";
@@ -30,6 +37,9 @@ const Layout = (props: IProps) => {
   const scrollYPosition: number = useScrollPosition();
   const { handleHomeUpdate } = useHomeSlice();
   const { handleCommonUpdate } = useCommonSlice();
+  const { handleActionsUpdate } = useActionsSlice();
+  const { handleGalleryUpdate } = useGallerySlice();
+  const { handleContactUpdate } = useContactSlice();
 
   // Store
   const common = useSelector(selectCommon);
@@ -83,21 +93,47 @@ const Layout = (props: IProps) => {
       Success: false,
       ErrMsg: "",
       Data: {
-        Common: { _dataLoaded: false },
+        Common: {},
         Home: {
-          Title: "",
-          Description: "",
-          MainImagePath: "",
-          MainImageAlt: "",
-          AboutUs: "",
-          AboutUsImagePath: "",
-          AboutUsImageAlt: "",
-          PeopleSay1Text: "",
-          PeopleSay1Name: "",
-          PeopleSay2Text: "",
-          PeopleSay2Name: "",
-          PeopleSay3Text: "",
-          PeopleSay3Name: "",
+          Id: null,
+          Title: null,
+          Description: null,
+          MainImagePath: null,
+          MainImageAlt: null,
+          AboutUs: null,
+          AboutUsImagePath: null,
+          AboutUsImageAlt: null,
+          PeopleSay1Text: null,
+          PeopleSay1Name: null,
+          PeopleSay2Text: null,
+          PeopleSay2Name: null,
+          PeopleSay3Text: null,
+          PeopleSay3Name: null,
+        },
+        Actions: {
+          Id: null,
+          Title: null,
+          Description: null,
+          MainImagePath: null,
+          MainImageAlt: null,
+          ActionDetails: [],
+          DocumentsToDownload: [],
+        },
+        Gallery: {
+          Id: null,
+          Title: null,
+          Description: null,
+          MainImagePath: null,
+          MainImageAlt: null,
+          Images: [],
+        },
+        Contact: {
+          Id: null,
+          Title: null,
+          Description: null,
+          MainImagePath: null,
+          MainImageAlt: null,
+          GoogleMapsUrl: null,
         },
       },
     },
@@ -107,14 +143,20 @@ const Layout = (props: IProps) => {
       condition: () => common._dataLoaded === false,
     },
     (data) => {
-      console.log(data.Data);
-      if (data.Success) {
-        if (!!data?.Data?.Home) {
-          handleHomeUpdate(mapFromHomeDTO(data?.Data?.Home));
-          handleCommonUpdate({ _dataLoaded: true });
-        }
+      const dataType = typeof data;
+
+      if (dataType === "string") {
+        AppNotification("Chyba", String(data), "danger");
       } else {
-        AppNotification("Chyba", data.ErrMsg ?? "", "danger");
+        if (data.Success) {
+          handleCommonUpdate(mapFromCommonDTO(data?.Data?.Common));
+          handleHomeUpdate(mapFromHomeDTO(data?.Data?.Home));
+          handleActionsUpdate(mapFromActionsDTO(data.Data?.Actions));
+          handleGalleryUpdate(mapFromGalleryDTO(data.Data?.Gallery));
+          handleContactUpdate(mapFromContactDTO(data.Data?.Contact));
+        } else {
+          AppNotification("Chyba", data.ErrMsg ?? "", "danger");
+        }
       }
     }
   );

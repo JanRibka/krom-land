@@ -1,4 +1,5 @@
 export interface HomeDTO {
+  Id: number | null;
   Title: string | null;
   Description: string | null;
   MainImagePath: string | null;

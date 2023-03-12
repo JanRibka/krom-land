@@ -1,5 +1,6 @@
-import Box from '@mui/material/Box';
-import { styled } from '@mui/material/styles';
+import Box from "@mui/material/Box";
+import { grey } from "@mui/material/colors";
+import { styled } from "@mui/material/styles";
 
 const ActionStyled = styled(Box)(({ theme }) => ({
   display: "none",
@@ -21,11 +22,12 @@ const ActionStyled = styled(Box)(({ theme }) => ({
     display: "flex",
   },
 
-  ".action-image": {
+  ".action-image-wrapper": {
     height: "550px",
-    width: "auto",
-    objectFit: "cover",
     borderRadius: "30px",
+    maxWidth: "550px",
+    width: "100%",
+    backgroundColor: grey[400],
 
     [theme.breakpoints.down("lg")]: {
       maxWidth: "440px",
@@ -36,9 +38,17 @@ const ActionStyled = styled(Box)(({ theme }) => ({
       width: "90%",
       maxWidth: "100%",
     },
+
+    ".action-image": {
+      objectFit: "cover",
+      borderRadius: "30px",
+      width: "100%",
+      height: "100%",
+    },
   },
 
   ".description-wrapper": {
+    width: "100%",
     maxWidth: "500px",
     display: "inline-block",
     height: "100%",
@@ -53,6 +63,12 @@ const ActionStyled = styled(Box)(({ theme }) => ({
     },
 
     ".description-inner-wrapper": {
+      width: "100%",
+      height: "100%",
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "space-between",
+
       p: {
         textAlign: "center",
         textAlignLast: "center",
@@ -60,6 +76,14 @@ const ActionStyled = styled(Box)(({ theme }) => ({
         [theme.breakpoints.up("md")]: {
           fontSize: "1.1em",
         },
+      },
+
+      ".skeleton-line": {
+        height: "10px",
+      },
+
+      ".skeleton-paragraph": {
+        height: "70px",
       },
     },
 

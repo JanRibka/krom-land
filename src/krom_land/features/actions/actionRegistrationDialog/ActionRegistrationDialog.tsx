@@ -41,7 +41,7 @@ const ActionRegistrationDialog = (props: IProps) => {
   ) => {
     const name: string = e.target.name;
     const value: string = e.target.value;
-    console.log(name, value);
+
     setFormData({ ...formData, [name]: value });
   };
 
@@ -51,9 +51,7 @@ const ActionRegistrationDialog = (props: IProps) => {
     name: string
   ) => {
     let newDate = date?.toDate();
-    debugger;
     // Aby se nevytvarel rok po zadani prvniho cisla napr 0002
-
     if (keyboardInputValue !== undefined) {
       const splitKeyboardInputValue = keyboardInputValue?.split(".");
 
@@ -76,7 +74,7 @@ const ActionRegistrationDialog = (props: IProps) => {
       setFormData({ ...formData, [name]: "" });
     }
   };
-  console.log(formData);
+
   const handleOnChangeTelInput = (
     value: string,
     info: MuiTelInputInfo,

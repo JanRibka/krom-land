@@ -1,22 +1,23 @@
-import '@fontsource/roboto/300.css';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css';
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
 
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { ReactNotifications } from 'react-notifications-component';
-import { Provider } from 'react-redux';
-import { BrowserRouter } from 'react-router-dom';
-import { store } from 'shared/infrastructure/store/store';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { ReactNotifications } from "react-notifications-component";
+import { Provider } from "react-redux";
+import { BrowserRouter } from "react-router-dom";
+import { store } from "shared/infrastructure/store/store";
 
-import CssBaseline from '@mui/material/CssBaseline';
-import { ThemeProvider } from '@mui/material/styles';
+import CssBaseline from "@mui/material/CssBaseline";
+import { ThemeProvider } from "@mui/material/styles";
 
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import { AppTheme } from './shared/themes/AppTheme';
+import App from "./App";
+import reportWebVitals from "./reportWebVitals";
+import { AppTheme } from "./shared/themes/AppTheme";
 
+// TODO: Při nahrávání souboru na server, by se měl do názvy vložit guid, jako je to při buildu
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
