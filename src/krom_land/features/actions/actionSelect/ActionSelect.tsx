@@ -1,16 +1,16 @@
-import { useRef } from "react";
-import { useSelector } from "react-redux";
-import { selectActions } from "shared/infrastructure/store/actions/actionsSlice";
+import { useRef } from 'react';
+import { useSelector } from 'react-redux';
+import { selectActions } from 'shared/infrastructure/store/actions/actionsSlice';
 
-import Box from "@mui/material/Box";
-import Skeleton from "@mui/material/Skeleton";
-import Stack from "@mui/material/Stack";
-import { useTheme } from "@mui/material/styles";
+import Box from '@mui/material/Box';
+import Skeleton from '@mui/material/Skeleton';
+import Stack from '@mui/material/Stack';
+import { useTheme } from '@mui/material/styles';
 
-import Action from "../action/Action";
-import Documents from "../documents/Documents";
-import ActionFirstImage from "../img/img_4-copyright.png";
-import ActionSelectStyled from "./styledComponents/ActionSelectStyled";
+import Action from '../action/Action';
+import Documents from '../documents/Documents';
+import ActionFirstImage from '../img/img_4-copyright.png';
+import ActionSelectStyled from './styledComponents/ActionSelectStyled';
 
 const ActionSelect = () => {
   // References
@@ -83,7 +83,7 @@ const ActionSelect = () => {
   };
 
   return (
-    <ActionSelectStyled>
+    <ActionSelectStyled component='section'>
       <Stack>
         <>
           <Box component='ul'>
