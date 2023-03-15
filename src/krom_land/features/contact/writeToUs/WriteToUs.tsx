@@ -62,7 +62,7 @@ const WritetoUs = () => {
   };
 
   return (
-    <WriteToUsStyled>
+    <WriteToUsStyled component='section'>
       <Stack spacing={3} direction='column' className='write-to-us-wrapper'>
         <>
           <SectionTitle

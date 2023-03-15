@@ -1,4 +1,4 @@
-import GoogleMapsStyled from "./styledComponents/GoogleMapsStyled";
+import GoogleMapsStyled from './styledComponents/GoogleMapsStyled';
 
 interface IProps {
   googleMapsUrl: string;
@@ -6,7 +6,7 @@ interface IProps {
 
 const GoogleMaps = (props: IProps) => {
   return (
-    <GoogleMapsStyled>
+    <GoogleMapsStyled component='section'>
       <iframe
         title='KROM Land - Mapa'
         src={props.googleMapsUrl}
