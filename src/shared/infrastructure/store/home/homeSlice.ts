@@ -1,3 +1,5 @@
+import ImageModel from "shared/models/ImageModel";
+
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import AppState from "../AppState";
@@ -5,11 +7,9 @@ import AppState from "../AppState";
 export interface HomeModel {
   Title: string;
   Description: string;
-  MainImagePath: string;
-  MainImageAlt: string;
+  MainImage: ImageModel;
   AboutUs: string;
-  AboutUsImagePath: string;
-  AboutUsImageAlt: string;
+  AboutUsImage: ImageModel;
   PeopleSay1Text: string;
   PeopleSay1Name: string;
   PeopleSay2Text: string;
@@ -21,11 +21,9 @@ export interface HomeModel {
 export const initialState: HomeModel = {
   Title: "",
   Description: "",
-  MainImagePath: "",
-  MainImageAlt: "",
+  MainImage: new ImageModel(),
   AboutUs: "",
-  AboutUsImagePath: "",
-  AboutUsImageAlt: "",
+  AboutUsImage: new ImageModel(),
   PeopleSay1Text: "",
   PeopleSay1Name: "",
   PeopleSay2Text: "",

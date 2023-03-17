@@ -15,8 +15,8 @@ const Home = () => {
     <Stack spacing={10} direction='column'>
       <>
         <PageTitle
-          image={home.MainImagePath}
-          alt={home.MainImageAlt}
+          image={home.MainImage.Path}
+          alt={home.MainImage.Alt}
           title='KROM Land'
           titleSecondary='Stravte skvěůý víkend s'
           imhHeight={760}

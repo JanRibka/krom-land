@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useEffect } from "react";
 import CookieConsent from "shared/components/cookieConsent/CookieConsent";
 import CookieConstentModel from "shared/components/cookieConsent/CookieConsentModel";

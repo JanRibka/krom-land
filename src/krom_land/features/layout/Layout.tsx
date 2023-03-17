@@ -98,11 +98,9 @@ const Layout = (props: IProps) => {
           Id: null,
           Title: null,
           Description: null,
-          MainImagePath: null,
-          MainImageAlt: null,
+          MainImage: null,
           AboutUs: null,
-          AboutUsImagePath: null,
-          AboutUsImageAlt: null,
+          AboutUsImage: null,
           PeopleSay1Text: null,
           PeopleSay1Name: null,
           PeopleSay2Text: null,
@@ -144,7 +142,7 @@ const Layout = (props: IProps) => {
     },
     (data) => {
       const dataType = typeof data;
-
+      console.log(data);
       if (dataType === "string") {
         AppNotification("Chyba", String(data), "danger");
       } else {

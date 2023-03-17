@@ -14,7 +14,6 @@ import SectionTitle from "../../../../shared/components/sectionTitle/SectionTitl
 import IconService1 from "../img/icon_services_1.webp";
 import IconService2 from "../img/icon_services_2.webp";
 import IconService3 from "../img/icon_services_3.webp";
-import image from "../img/img_4-copyright.png";
 import AboutUsStyled from "./styledComponents/AboutUsStyled";
 
 const AboutUs = () => {
@@ -40,8 +39,8 @@ const AboutUs = () => {
           <Box className='about-us-image-wrapper'>
             <Box
               component='img'
-              src={home.AboutUsImagePath}
-              alt={home.AboutUsImageAlt}
+              src={home.AboutUsImage.Path}
+              alt={home.AboutUsImage.Alt}
               loading='lazy'
               className='about-us-image'
             />

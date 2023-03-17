@@ -19,63 +19,64 @@ class WebContent
       $home = $homeQuery->fetch();
 
       // Actions
-      $actinsQuery = dibi::query(
-        "SELECT * FROM actions as a WHERE a.Id = %i",
-        $actionsId
-      );
-      $actions = $actinsQuery->fetch();
+      // $actinsQuery = dibi::query(
+      //   "SELECT * FROM actions as a WHERE a.Id = %i",
+      //   $actionsId
+      // );
+      // $actions = $actinsQuery->fetch();
 
-      $actinDeatilsQuery = dibi::query(
-        "SELECT ad.* FROM actions as a JOIN actionDeatil as ad on a.Id = ad.ActionsId WHERE a.Id = %i ORDER BY ad.ActionOrder",
-        $actionsId
-      );
+      // $actinDeatilsQuery = dibi::query(
+      //   "SELECT ad.* FROM actions as a JOIN actionDeatil as ad on a.Id = ad.ActionsId WHERE a.Id = %i ORDER BY ad.ActionOrder",
+      //   $actionsId
+      // );
 
-      $documentsToDownloadQuery = dibi::query(
-        "SELECT * FROM documentsToDownload as dtd"
-      );
+      // $documentsToDownloadQuery = dibi::query(
+      //   "SELECT * FROM documentsToDownload as dtd"
+      // );
 
-      $actions = new ActionsModel(
-        $actions->Id,
-        $actions->Title,
-        $actions->Description,
-        $actions->MainImagePath,
-        $actions->MainImageAlt,
-        $actinDeatilsQuery->fetchAll(),
-        $documentsToDownloadQuery->fetchAll()
-      );
+      // $actions = new ActionsModel(
+      //   $actions->Id,
+      //   $actions->Title,
+      //   $actions->Description,
+      //   $actions->MainImagePath,
+      //   $actions->MainImageAlt,
+      //   $actinDeatilsQuery->fetchAll(),
+      //   $documentsToDownloadQuery->fetchAll()
+      // );
 
-      // Gallery
-      $galleryQuery = dibi::query(
-        "SELECT * FROM gallery as g WHERE g.Id = %i",
-        $galleryId
-      );
+      // // Gallery
+      // $galleryQuery = dibi::query(
+      //   "SELECT * FROM gallery as g WHERE g.Id = %i",
+      //   $galleryId
+      // );
 
-      $gallery = $galleryQuery->fetch();
+      // $gallery = $galleryQuery->fetch();
 
-      $galleryImageQuery = dibi::query(
-        "SELECT gi.* FROM gallery as g JOIN galleryImage as gi on g.Id = gi.GalleryId WHERE g.Id = %i",
-        $galleryId
-      );
+      // $galleryImageQuery = dibi::query(
+      //   "SELECT gi.* FROM gallery as g JOIN galleryImage as gi on g.Id = gi.GalleryId WHERE g.Id = %i",
+      //   $galleryId
+      // );
 
-      $gallery = new GalleryModel(
-        $gallery->Id,
-        $gallery->Title,
-        $gallery->Description,
-        $gallery->MainImagePath,
-        $gallery->MainImageAlt,
-        $galleryImageQuery->fetchAll()
-      );
+      // $gallery = new GalleryModel(
+      //   $gallery->Id,
+      //   $gallery->Title,
+      //   $gallery->Description,
+      //   $gallery->MainImagePath,
+      //   $gallery->MainImageAlt,
+      //   $galleryImageQuery->fetchAll()
+      // );
 
-      // Contact
-      $contactQuery = dibi::query(
-        "SELECT * FROM contact as c WHERE c.Id = %i",
-        $contactId
-      );
+      // // Contact
+      // $contactQuery = dibi::query(
+      //   "SELECT * FROM contact as c WHERE c.Id = %i",
+      //   $contactId
+      // );
 
-      $contact = $contactQuery->fetch();
+      // $contact = $contactQuery->fetch();
 
       // Result
-      $result = new ResultModel($home, $actions, $gallery, $contact);
+      // $result = new ResultModel($home, $actions, $gallery, $contact);
+      $result = new ResultModel($home, null, null, null);
 
       apiResponse(true, "", $result);
     } catch (Exception $ex) {
