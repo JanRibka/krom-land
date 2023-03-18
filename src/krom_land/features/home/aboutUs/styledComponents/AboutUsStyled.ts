@@ -25,11 +25,6 @@ const AboutUsStyled = styled(Box)(({ theme }) => ({
     backgroundColor: grey[400],
 
     [theme.breakpoints.down("lg")]: {
-      maxWidth: "440px",
-    },
-
-    [theme.breakpoints.down("md")]: {
-      height: "300px",
       width: "90%",
       maxWidth: "100%",
     },
@@ -44,7 +39,7 @@ const AboutUsStyled = styled(Box)(({ theme }) => ({
 
   ".description-wrapper": {
     width: "100%",
-    maxWidth: "500px",
+    maxWidth: "600px",
     display: "inline-block",
     height: "100%",
     padding: "15px 0",
@@ -65,7 +60,7 @@ const AboutUsStyled = styled(Box)(({ theme }) => ({
       justifyContent: "space-between",
 
       p: {
-        textAlign: "center",
+        textAlign: "justify",
         textAlignLast: "center",
 
         [theme.breakpoints.up("md")]: {
@@ -79,58 +74,6 @@ const AboutUsStyled = styled(Box)(({ theme }) => ({
 
       ".skeleton-paragraph": {
         height: "70px",
-      },
-
-      ".service-icon": {
-        marginTop: "20px",
-
-        "&:first-of-type": {
-          paddingRight: "10px",
-        },
-
-        "&:nth-of-type(2)": {
-          padding: "0 5px",
-        },
-
-        "&:last-of-type": {
-          paddingLeft: "10px",
-        },
-
-        [theme.breakpoints.down("md")]: {
-          "&:first-of-type": {
-            paddingRight: "10px",
-          },
-
-          "&:nth-of-type(2)": {
-            padding: "0 0 0 10px",
-          },
-
-          "&:last-of-type": {
-            paddingLeft: "0px",
-          },
-        },
-
-        ".service-icon-inner-wrapper": {
-          backgroundColor: theme.palette.primary.light,
-          borderRadius: "20px",
-          width: "100%",
-          minHeight: "210px",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-
-          h4: {
-            fontSize: "1em",
-            fontWeight: 700,
-            textAlign: "center",
-            lineHeight: "1.58em",
-
-            "&:first-of-type": {
-              marginTop: "20px",
-            },
-          },
-        },
       },
     },
 
@@ -150,7 +93,7 @@ const AboutUsStyled = styled(Box)(({ theme }) => ({
       },
     },
 
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("lg")]: {
       width: "90%",
       maxWidth: "90%",
     },

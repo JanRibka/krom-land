@@ -1,3 +1,5 @@
+import TeamMemberDTO from "./TeamMemberDTO";
+
 export interface HomeDTO {
   Id: number | null;
   Title: string | null;
@@ -15,4 +17,5 @@ export interface HomeDTO {
   PeopleSay2Name: string | null;
   PeopleSay3Text: string | null;
   PeopleSay3Name: string | null;
+  TeamMembers: TeamMemberDTO[] | null;
 }

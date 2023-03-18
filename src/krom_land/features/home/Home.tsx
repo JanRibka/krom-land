@@ -5,6 +5,7 @@ import { selectHome } from "shared/infrastructure/store/home/homeSlice";
 import Stack from "@mui/material/Stack";
 
 import AboutUs from "./aboutUs/AboutUs";
+import OurTeam from "./ourTeam/OurTeam";
 import WhatPeopleSay from "./whatPeopleSay/WhatPeopleSay";
 
 const Home = () => {
@@ -25,6 +26,7 @@ const Home = () => {
           enbFadeEffect
         />
         <AboutUs />
+        <OurTeam />
         <WhatPeopleSay />
       </>
     </Stack>

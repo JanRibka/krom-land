@@ -1,5 +1,9 @@
 <?php
 require_once __DIR__ . "/../db/db.php";
+require_once __DIR__ . "/./models/actionsModel.php";
+require_once __DIR__ . "/./models/galleryModel.php";
+require_once __DIR__ . "/./models/resultModel.php";
+require_once __DIR__ . "/./models/homeModel.php";
 
 class WebContent
 {
@@ -9,6 +13,7 @@ class WebContent
     $actionsId = 1;
     $galleryId = 1;
     $contactId = 1;
+    $teamMembersId = 1;
 
     try {
       // Home
@@ -17,6 +22,31 @@ class WebContent
         $homeId
       );
       $home = $homeQuery->fetch();
+
+      $teamMembers = dibi::query(
+        "SELECT * FROM teamMembers as tm WHERE tm.Id = %i",
+        $teamMembersId
+      );
+
+      $home = new HomeModel(
+        $home->Id,
+        $home->Title,
+        $home->Description,
+        $home->PageHeaderTextMain,
+        $home->PageHeaderTextMainColor,
+        $home->PageHeaderTextSecondary,
+        $home->PageHeaderTextSecondaryColor,
+        $home->MainImage,
+        $home->AboutUs,
+        $home->AboutUsImage,
+        $home->PeopleSay1Text,
+        $home->PeopleSay1Name,
+        $home->PeopleSay2Text,
+        $home->PeopleSay2Name,
+        $home->PeopleSay3Text,
+        $home->PeopleSay3Name,
+        $teamMembers->fetchAll()
+      );
 
       // Actions
       $actinsQuery = dibi::query(
@@ -81,76 +111,6 @@ class WebContent
     } catch (Exception $ex) {
       apiResponse(false, $ex);
     }
-  }
-}
-
-class ActionsModel
-{
-  public $Id;
-  public $Title;
-  public $Description;
-  public $MainImagePath;
-  public $MainImageAlt;
-  public $ActionDetails;
-  public $DocumentsToDownload;
-
-  public function __construct(
-    $id,
-    $title,
-    $description,
-    $mainImagePath,
-    $mainImageAlt,
-    $actionDetails,
-    $documentsToDownload
-  ) {
-    $this->Id = $id;
-    $this->Title = $title;
-    $this->Description = $description;
-    $this->MainImagePath = $mainImagePath;
-    $this->MainImageAlt = $mainImageAlt;
-    $this->ActionDetails = $actionDetails;
-    $this->DocumentsToDownload = $documentsToDownload;
-  }
-}
-
-class GalleryModel
-{
-  public $Id;
-  public $Title;
-  public $Description;
-  public $MainImagePath;
-  public $MainImageAlt;
-  public $Images;
-
-  public function __construct(
-    $id,
-    $title,
-    $description,
-    $mainImagePath,
-    $mainImageAlt,
-    $images
-  ) {
-    $this->Id = $id;
-    $this->Images = $images;
-    $this->Title = $title;
-    $this->Description = $description;
-    $this->MainImagePath = $mainImagePath;
-    $this->MainImageAlt = $mainImageAlt;
-  }
-}
-class ResultModel
-{
-  public $Home;
-  public $Actions;
-  public $Gallery;
-  public $Contact;
-
-  public function __construct($home, $actions, $gallery, $contact)
-  {
-    $this->Home = $home;
-    $this->Actions = $actions;
-    $this->Gallery = $gallery;
-    $this->Contact = $contact;
   }
 }
 ?>

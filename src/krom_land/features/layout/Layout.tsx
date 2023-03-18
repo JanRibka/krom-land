@@ -111,6 +111,7 @@ const Layout = (props: IProps) => {
           PeopleSay2Name: null,
           PeopleSay3Text: null,
           PeopleSay3Name: null,
+          TeamMembers: null,
         },
         Actions: {
           Id: null,

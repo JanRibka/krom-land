@@ -1,3 +1,4 @@
+import TeamMemberModel from "krom_land/features/home/models/TeamMemberModel";
 import ImageModel from "shared/models/ImageModel";
 
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
@@ -20,6 +21,7 @@ export interface HomeModel {
   PeopleSay2Name: string;
   PeopleSay3Text: string;
   PeopleSay3Name: string;
+  TeamMembers: TeamMemberModel[];
 }
 
 export const initialState: HomeModel = {
@@ -38,6 +40,7 @@ export const initialState: HomeModel = {
   PeopleSay2Name: "",
   PeopleSay3Text: "",
   PeopleSay3Name: "",
+  TeamMembers: [],
 };
 
 export const homeSlice = createSlice({

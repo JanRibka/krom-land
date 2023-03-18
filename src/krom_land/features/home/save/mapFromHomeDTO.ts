@@ -5,6 +5,7 @@ import {
 import ImageModel from "shared/models/ImageModel";
 
 import { HomeDTO } from "../models/HomeDTO";
+import TeamMemberModel from "../models/TeamMemberModel";
 
 export const mapFromHomeDTO = (homeDTO?: HomeDTO | null) => {
   const result: HomeModel = {
@@ -28,6 +29,15 @@ export const mapFromHomeDTO = (homeDTO?: HomeDTO | null) => {
     PeopleSay2Name: homeDTO?.PeopleSay2Name ?? "",
     PeopleSay3Text: homeDTO?.PeopleSay3Text ?? "",
     PeopleSay3Name: homeDTO?.PeopleSay3Name ?? "",
+    TeamMembers:
+      homeDTO?.TeamMembers?.map(
+        (member) =>
+          new TeamMemberModel({
+            Image: !!member.Image ? JSON.parse(member.Image) : new ImageModel(),
+            Name: member.Name,
+            Text: member.Text,
+          })
+      ) ?? [],
   };
 
   return result;
