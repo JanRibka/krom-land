@@ -8,9 +8,7 @@ import { Autoplay, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { PaginationOptions } from "swiper/types";
 
-import Skeleton from "@mui/material/Skeleton";
 import { useTheme } from "@mui/material/styles";
-import Typography from "@mui/material/Typography";
 
 import SectionTitle from "../../../../shared/components/sectionTitle/SectionTitle";
 import SlideItem from "./slideItem/SlideItem";
@@ -37,7 +35,7 @@ const WhatPeopleSay = () => {
       <SectionTitle
         mainText='Říkají o nás'
         secondaryText='Doporučení'
-        secondaryTextColor={theme.palette.primary.light}
+        secondaryTextColor={theme.palette.common.purple.dark}
       />
       <Swiper
         loop
