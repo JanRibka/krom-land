@@ -13,7 +13,6 @@ class WebContent
     $actionsId = 1;
     $galleryId = 1;
     $contactId = 1;
-    $teamMembersId = 1;
 
     try {
       // Home
@@ -23,10 +22,7 @@ class WebContent
       );
       $home = $homeQuery->fetch();
 
-      $teamMembers = dibi::query(
-        "SELECT * FROM teamMembers as tm WHERE tm.Id = %i",
-        $teamMembersId
-      );
+      $teamMembers = dibi::query("SELECT * FROM teamMembers as tm");
 
       $home = new HomeModel(
         $home->Id,

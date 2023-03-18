@@ -16,7 +16,7 @@ const OurTeam = () => {
   const renderMembers = () => {
     let result: JSX.Element[] = [];
     let members: JSX.Element[] = [];
-    let teamMembers: TeamMemberModel[] = home.TeamMembers;
+    let teamMembers: TeamMemberModel[] = [...home.TeamMembers];
 
     teamMembers.forEach((member, index) => {
       if (
