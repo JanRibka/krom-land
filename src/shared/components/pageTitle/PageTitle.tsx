@@ -10,7 +10,9 @@ import PageTitleStyled from "./styledComponents/PageTitleStyled";
 interface IProps {
   image: string;
   title: string;
+  titleColor?: string;
   titleSecondary?: string;
+  titleSecondaryColor?: string;
   alt: string;
   imhHeight: number;
   enbFadeEffect?: boolean;
@@ -51,10 +53,28 @@ const PageTitle = (props: IProps) => {
       >
         <Stack spacing={2} className='title-wrapper'>
           {!!props.titleSecondary && (
-            <Typography variant='h6'>{props.titleSecondary}</Typography>
+            <Typography
+              variant='h6'
+              sx={{
+                color: !!props.titleSecondaryColor
+                  ? props.titleSecondaryColor + " !important"
+                  : undefined,
+              }}
+            >
+              {props.titleSecondary}
+            </Typography>
           )}
 
-          <Typography variant='h1'>{props.title}</Typography>
+          <Typography
+            variant='h1'
+            sx={{
+              color: !!props.titleColor
+                ? props.titleColor + " !important"
+                : undefined,
+            }}
+          >
+            {props.title}
+          </Typography>
         </Stack>
       </Reveal>
     </PageTitleStyled>

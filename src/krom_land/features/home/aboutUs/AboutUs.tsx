@@ -53,7 +53,11 @@ const AboutUs = () => {
                 <Box>
                   <SectionTitle mainText={"O nás"} />
                   {!!home.AboutUs ? (
-                    <Typography>{home.AboutUs}</Typography>
+                    // <Typography>{home.AboutUs}</Typography>
+                    <Box
+                      component='span'
+                      dangerouslySetInnerHTML={{ __html: home.AboutUs }}
+                    ></Box>
                   ) : (
                     <Stack spacing={1}>
                       <Skeleton

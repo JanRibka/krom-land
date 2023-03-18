@@ -2,6 +2,10 @@ export interface HomeDTO {
   Id: number | null;
   Title: string | null;
   Description: string | null;
+  PageHeaderTextMain: string | null;
+  PageHeaderTextMainColor: string | null;
+  PageHeaderTextSecondary: string | null;
+  PageHeaderTextSecondaryColor: string | null;
   MainImage: string | null;
   AboutUs: string | null;
   AboutUsImage: string | null;

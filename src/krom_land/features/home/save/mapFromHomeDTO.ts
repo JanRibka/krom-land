@@ -11,13 +11,17 @@ export const mapFromHomeDTO = (homeDTO?: HomeDTO | null) => {
     ...initialState,
     Title: homeDTO?.Title ?? "",
     Description: homeDTO?.Description ?? "",
-    MainImage: JSON.parse(
-      homeDTO?.MainImage ?? JSON.stringify(new ImageModel())
-    ),
+    PageHeaderTextMain: homeDTO?.PageHeaderTextMain ?? "",
+    PageHeaderTextMainColor: homeDTO?.PageHeaderTextMainColor ?? "",
+    PageHeaderTextSecondary: homeDTO?.PageHeaderTextSecondary ?? "",
+    PageHeaderTextSecondaryColor: homeDTO?.PageHeaderTextSecondaryColor ?? "",
+    MainImage: !!homeDTO?.MainImage
+      ? JSON.parse(homeDTO?.MainImage)
+      : new ImageModel(),
     AboutUs: homeDTO?.AboutUs ?? "",
-    AboutUsImage: JSON.parse(
-      homeDTO?.AboutUsImage ?? JSON.stringify(new ImageModel())
-    ),
+    AboutUsImage: !!homeDTO?.AboutUsImage
+      ? JSON.parse(homeDTO?.AboutUsImage)
+      : new ImageModel(),
     PeopleSay1Text: homeDTO?.PeopleSay1Text ?? "",
     PeopleSay1Name: homeDTO?.PeopleSay1Name ?? "",
     PeopleSay2Text: homeDTO?.PeopleSay2Text ?? "",

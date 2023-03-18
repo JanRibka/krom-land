@@ -17,8 +17,10 @@ const Home = () => {
         <PageTitle
           image={home.MainImage.Path}
           alt={home.MainImage.Alt}
-          title='KROM Land'
-          titleSecondary='Stravte skvěůý víkend s'
+          title={home.PageHeaderTextMain}
+          titleColor={home.PageHeaderTextMainColor}
+          titleSecondary={home.PageHeaderTextSecondary}
+          titleSecondaryColor={home.PageHeaderTextSecondaryColor}
           imhHeight={760}
           enbFadeEffect
         />

@@ -21,7 +21,9 @@ const Seo = () => {
 
   // Other
   useEffect(() => {
-    SetSeo();
+    if (common._dataLoaded) {
+      SetSeo();
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname, common._dataLoaded]);
 

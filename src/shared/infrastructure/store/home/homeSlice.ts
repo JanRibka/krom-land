@@ -7,6 +7,10 @@ import AppState from "../AppState";
 export interface HomeModel {
   Title: string;
   Description: string;
+  PageHeaderTextMain: string;
+  PageHeaderTextMainColor: string;
+  PageHeaderTextSecondary: string;
+  PageHeaderTextSecondaryColor: string;
   MainImage: ImageModel;
   AboutUs: string;
   AboutUsImage: ImageModel;
@@ -21,6 +25,10 @@ export interface HomeModel {
 export const initialState: HomeModel = {
   Title: "",
   Description: "",
+  PageHeaderTextMain: "",
+  PageHeaderTextMainColor: "",
+  PageHeaderTextSecondary: "",
+  PageHeaderTextSecondaryColor: "",
   MainImage: new ImageModel(),
   AboutUs: "",
   AboutUsImage: new ImageModel(),
