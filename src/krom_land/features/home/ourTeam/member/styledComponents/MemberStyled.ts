@@ -10,7 +10,7 @@ const MemberStyled = styled(Box)(({ theme }) => ({
   justifyContent: "center",
   width: "fit-content",
   height: "fit-content",
-  padding: "20px 10px",
+  padding: "20px 20px",
 
   img: {
     height: "350px",
