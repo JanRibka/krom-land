@@ -70,7 +70,7 @@ const ActionStyled = styled(Box)(({ theme }) => ({
       justifyContent: "space-between",
 
       p: {
-        textAlign: "center",
+        textAlign: "justify",
         textAlignLast: "center",
 
         [theme.breakpoints.up("md")]: {

@@ -6,7 +6,6 @@ import Button from "@mui/material/Button";
 import Skeleton from "@mui/material/Skeleton";
 import Stack from "@mui/material/Stack";
 import { useTheme } from "@mui/material/styles";
-import Typography from "@mui/material/Typography";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
 import SectionTitle from "../../../../shared/components/sectionTitle/SectionTitle";
@@ -147,7 +146,10 @@ const Action = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
                 <Box>
                   <SectionTitle mainText={name} />
                   {!!description ? (
-                    <Typography>{description}</Typography>
+                    <Box
+                      component='span'
+                      dangerouslySetInnerHTML={{ __html: description }}
+                    />
                   ) : (
                     <Stack spacing={1}>
                       <Skeleton
