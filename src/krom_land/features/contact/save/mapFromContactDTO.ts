@@ -2,6 +2,7 @@ import {
   ContactModel,
   initialState,
 } from "shared/infrastructure/store/contact/contactSlice";
+import ImageModel from "shared/models/ImageModel";
 
 import ContactDTO from "../models/ContactDTO";
 
@@ -10,8 +11,9 @@ export const mapFromContactDTO = (contactDTO?: ContactDTO | null) => {
     ...initialState,
     Title: contactDTO?.Title ?? "",
     Description: contactDTO?.Description ?? "",
-    MainImagePath: contactDTO?.MainImagePath ?? "",
-    MainImageAlt: contactDTO?.MainImageAlt ?? "",
+    MainImage: !!contactDTO?.MainImage
+      ? JSON.parse(contactDTO?.MainImage)
+      : new ImageModel(),
     GoogleMapsUrl: contactDTO?.GoogleMapsUrl ?? "",
   };
 

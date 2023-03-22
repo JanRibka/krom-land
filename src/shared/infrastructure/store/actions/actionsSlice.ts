@@ -1,5 +1,6 @@
 import ActionDetailModel from "krom_land/features/actions/models/ActionDetailModel";
 import DocumentModel from "shared/models/DocumentModel";
+import ImageModel from "shared/models/ImageModel";
 
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
@@ -8,8 +9,9 @@ import AppState from "../AppState";
 export interface ActionsModel {
   Title: string;
   Description: string;
-  MainImagePath: string;
-  MainImageAlt: string;
+  PageHeaderTextMain: string;
+  PageHeaderTextMainColor: string;
+  MainImage: ImageModel;
   ActionDetails: ActionDetailModel[];
   DocumentsToDownload: DocumentModel[];
 }
@@ -17,8 +19,9 @@ export interface ActionsModel {
 export const initialState: ActionsModel = {
   Title: "",
   Description: "",
-  MainImagePath: "",
-  MainImageAlt: "",
+  PageHeaderTextMain: "",
+  PageHeaderTextMainColor: "",
+  MainImage: new ImageModel(),
   ActionDetails: [],
   DocumentsToDownload: [],
 };

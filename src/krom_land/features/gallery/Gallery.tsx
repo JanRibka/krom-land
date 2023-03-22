@@ -86,9 +86,9 @@ const Gallery = () => {
       <Stack spacing={10} direction='column'>
         <>
           <PageTitle
-            image={gallery.MainImagePath}
+            image={gallery.MainImage.Path}
             title='Galerie'
-            alt={gallery.MainImageAlt}
+            alt={gallery.MainImage.Alt}
             imhHeight={350}
           />
         </>

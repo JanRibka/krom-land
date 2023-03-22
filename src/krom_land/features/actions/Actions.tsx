@@ -14,9 +14,10 @@ const Actions = () => {
     <Stack spacing={10} direction='column'>
       <>
         <PageTitle
-          image={actions.MainImagePath}
-          title='Nadcházející akce'
-          alt={actions.MainImageAlt}
+          image={actions.MainImage.Path}
+          title={actions.PageHeaderTextMain}
+          titleColor={actions.PageHeaderTextMainColor}
+          alt={actions.MainImage.Alt}
           imhHeight={350}
         />
       </>

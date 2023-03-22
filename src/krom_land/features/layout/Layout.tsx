@@ -117,8 +117,9 @@ const Layout = (props: IProps) => {
           Id: null,
           Title: null,
           Description: null,
-          MainImagePath: null,
-          MainImageAlt: null,
+          PageHeaderTextMain: null,
+          PageHeaderTextMainColor: null,
+          MainImage: null,
           ActionDetails: [],
           DocumentsToDownload: [],
         },
@@ -126,16 +127,14 @@ const Layout = (props: IProps) => {
           Id: null,
           Title: null,
           Description: null,
-          MainImagePath: null,
-          MainImageAlt: null,
+          MainImage: null,
           Images: [],
         },
         Contact: {
           Id: null,
           Title: null,
           Description: null,
-          MainImagePath: null,
-          MainImageAlt: null,
+          MainImage: null,
           GoogleMapsUrl: null,
         },
       },
@@ -147,8 +146,7 @@ const Layout = (props: IProps) => {
     },
     (data) => {
       const dataType = typeof data;
-      console.log(data);
-      debugger;
+
       if (dataType === "string") {
         AppNotification("Chyba", String(data), "danger");
       } else {

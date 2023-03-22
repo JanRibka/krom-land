@@ -6,8 +6,9 @@ export default interface ActionsDTO {
   Id: number | null;
   Title: string | null;
   Description: string | null;
-  MainImagePath: string | null;
-  MainImageAlt: string | null;
+  PageHeaderTextMain: string | null;
+  PageHeaderTextMainColor: string | null;
+  MainImage: string | null;
   ActionDetails: ActionDetailDTO[];
   DocumentsToDownload: DocumentDTO[];
 }

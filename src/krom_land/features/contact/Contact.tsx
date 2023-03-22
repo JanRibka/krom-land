@@ -14,9 +14,9 @@ const Contact = () => {
     <ContactStyled spacing={10} direction='column'>
       <>
         <PageTitle
-          image={contact.MainImagePath}
+          image={contact.MainImage.Path}
           title='Kontakt'
-          alt={contact.MainImageAlt}
+          alt={contact.MainImage.Alt}
           imhHeight={350}
         />
       </>

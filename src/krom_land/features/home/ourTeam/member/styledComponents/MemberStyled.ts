@@ -17,6 +17,7 @@ const MemberStyled = styled(Box)(({ theme }) => ({
     maxHeight: "350px",
     width: "210px",
     borderRadius: "10px",
+    objectFit: "cover",
     // backgroundColor: theme.palette.primary.main,
   },
 

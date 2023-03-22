@@ -3,6 +3,7 @@ import {
   initialState,
 } from "shared/infrastructure/store/actions/actionsSlice";
 import DocumentModel from "shared/models/DocumentModel";
+import ImageModel from "shared/models/ImageModel";
 
 import ActionDetailModel from "../models/ActionDetailModel";
 import ActionsDTO from "../models/ActionsDTO";
@@ -12,8 +13,11 @@ export const mapFromActionsDTO = (actionsDTO?: ActionsDTO | null) => {
     ...initialState,
     Title: actionsDTO?.Title ?? "",
     Description: actionsDTO?.Description ?? "",
-    MainImagePath: actionsDTO?.MainImagePath ?? "",
-    MainImageAlt: actionsDTO?.MainImageAlt ?? "",
+    PageHeaderTextMain: actionsDTO?.PageHeaderTextMain ?? "",
+    PageHeaderTextMainColor: actionsDTO?.PageHeaderTextMainColor ?? "",
+    MainImage: !!actionsDTO?.MainImage
+      ? JSON.parse(actionsDTO?.MainImage)
+      : new ImageModel(),
     ActionDetails:
       actionsDTO?.ActionDetails.map(
         (item) =>

@@ -64,8 +64,9 @@ class WebContent
         $actions->Id,
         $actions->Title,
         $actions->Description,
-        $actions->MainImagePath,
-        $actions->MainImageAlt,
+        $actions->PageHeaderTextMain,
+        $actions->PageHeaderTextMainColor,
+        $actions->MainImage,
         $actinDeatilsQuery->fetchAll(),
         $documentsToDownloadQuery->fetchAll()
       );
@@ -87,8 +88,7 @@ class WebContent
         $gallery->Id,
         $gallery->Title,
         $gallery->Description,
-        $gallery->MainImagePath,
-        $gallery->MainImageAlt,
+        $gallery->MainImage,
         $galleryImageQuery->fetchAll()
       );
 

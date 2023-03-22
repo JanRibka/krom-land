@@ -7,16 +7,14 @@ import AppState from "../AppState";
 export interface GalleryModel {
   Title: string;
   Description: string;
-  MainImagePath: string;
-  MainImageAlt: string;
+  MainImage: ImageModel;
   Images: ImageModel[];
 }
 
 export const initialState: GalleryModel = {
   Title: "",
   Description: "",
-  MainImagePath: "",
-  MainImageAlt: "",
+  MainImage: new ImageModel(),
   Images: [],
 };
 
