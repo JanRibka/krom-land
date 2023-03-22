@@ -1,12 +1,9 @@
-import {
-  ActionsModel,
-  initialState,
-} from "shared/infrastructure/store/actions/actionsSlice";
-import DocumentModel from "shared/models/DocumentModel";
-import ImageModel from "shared/models/ImageModel";
+import { ActionsModel, initialState } from 'shared/infrastructure/store/actions/actionsSlice';
+import DocumentModel from 'shared/models/DocumentModel';
+import ImageModel from 'shared/models/ImageModel';
 
-import ActionDetailModel from "../models/ActionDetailModel";
-import ActionsDTO from "../models/ActionsDTO";
+import ActionDetailModel from '../models/ActionDetailModel';
+import ActionsDTO from '../models/ActionsDTO';
 
 export const mapFromActionsDTO = (actionsDTO?: ActionsDTO | null) => {
   const result: ActionsModel = {
@@ -30,6 +27,8 @@ export const mapFromActionsDTO = (actionsDTO?: ActionsDTO | null) => {
             ActionDescritption: item.ActionDescritption ?? "",
             VideoLink: item.VideoLink ?? "",
             Price: item.Price ?? "",
+            IsPriceRemark: item.IsPriceRemark ?? false,
+            PriceRemark: item.PriceRemark ?? "",
             Place: item.Place ?? "",
             Date: item.Date ?? "",
           })
