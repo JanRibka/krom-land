@@ -49,7 +49,7 @@ const AboutUs = () => {
                     <Box
                       component='span'
                       dangerouslySetInnerHTML={{ __html: home.AboutUs }}
-                    ></Box>
+                    />
                   ) : (
                     <Stack spacing={1}>
                       <Skeleton
