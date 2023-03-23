@@ -9,7 +9,6 @@ import { useTheme } from "@mui/material/styles";
 
 import Action from "../action/Action";
 import Documents from "../documents/Documents";
-import ActionFirstImage from "../img/img_4-copyright.png";
 import ActionSelectStyled from "./styledComponents/ActionSelectStyled";
 
 const ActionSelect = () => {
@@ -148,6 +147,8 @@ const ActionSelect = () => {
               kdy={actions.ActionDetails?.[0]?.Date}
               kde={actions.ActionDetails?.[0]?.Place}
               cena={actions.ActionDetails?.[0]?.Price}
+              zdaPoznamkaKCene={actions.ActionDetails?.[0]?.IsPriceRemark}
+              poznamkaKCene={actions.ActionDetails?.[0]?.PriceRemark}
             />
             <Action
               ref={refTabSecond}
@@ -160,6 +161,8 @@ const ActionSelect = () => {
               kdy={actions.ActionDetails?.[1]?.Date}
               kde={actions.ActionDetails?.[1]?.Place}
               cena={actions.ActionDetails?.[1]?.Price}
+              zdaPoznamkaKCene={actions.ActionDetails?.[1]?.IsPriceRemark}
+              poznamkaKCene={actions.ActionDetails?.[1]?.PriceRemark}
             />
             <Action
               ref={refTabThird}
@@ -172,6 +175,8 @@ const ActionSelect = () => {
               kdy={actions.ActionDetails?.[2]?.Date}
               kde={actions.ActionDetails?.[2]?.Place}
               cena={actions.ActionDetails?.[2]?.Price}
+              zdaPoznamkaKCene={actions.ActionDetails?.[2]?.IsPriceRemark}
+              poznamkaKCene={actions.ActionDetails?.[2]?.PriceRemark}
             />
             <Documents ref={refTabFourth} />
           </Box>

@@ -8,7 +8,7 @@ export default interface ActionDetailDTO {
   ActionDescritption: string | null;
   VideoLink: string | null;
   Price: string | null;
-  IsPriceRemark: boolean | null;
+  IsPriceRemark: string | null;
   PriceRemark: string | null;
   Place: string | null;
   Date: string | null;

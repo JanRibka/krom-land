@@ -29,7 +29,7 @@ export const mapFromActionsDTO = (actionsDTO?: ActionsDTO | null) => {
             ActionDescritption: item.ActionDescritption ?? "",
             VideoLink: item.VideoLink ?? "",
             Price: item.Price ?? "",
-            IsPriceRemark: item.IsPriceRemark ?? false,
+            IsPriceRemark: item.IsPriceRemark === "1" ? true : false,
             PriceRemark: item.PriceRemark ?? "",
             Place: item.Place ?? "",
             Date: item.Date ?? "",

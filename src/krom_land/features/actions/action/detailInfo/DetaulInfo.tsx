@@ -4,6 +4,7 @@ interface IProps {
   kdy: string;
   kde: string;
   cena: string;
+  zdaPoznamkaKCene: boolean;
   className?: string;
 }
 
@@ -13,7 +14,9 @@ const DetailInfo = (props: IProps) => {
       <p>
         Kde: {props.kde}&nbsp;&nbsp;&nbsp;&nbsp;Kdy: {props.kdy}
       </p>
-      <p>Cena: {props.cena} Kč</p>
+      <p>
+        Cena: {props.cena} Kč{props.zdaPoznamkaKCene ? " *" : ""}
+      </p>
     </DetailInfoStyled>
   );
 };

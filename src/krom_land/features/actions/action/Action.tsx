@@ -23,6 +23,8 @@ interface IProps extends HTMLAttributes<HTMLDivElement> {
   kdy: string;
   kde: string;
   cena: string;
+  zdaPoznamkaKCene: boolean;
+  poznamkaKCene: string;
 }
 
 const Action = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
@@ -41,6 +43,8 @@ const Action = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
     kdy,
     kde,
     cena,
+    zdaPoznamkaKCene,
+    poznamkaKCene,
     ...restProps
   } = props;
   const xlDwn = useMediaQuery(theme.breakpoints.down("xl"));
@@ -62,6 +66,7 @@ const Action = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
                     kdy={kdy}
                     kde={kde}
                     cena={cena}
+                    zdaPoznamkaKCene={zdaPoznamkaKCene}
                     className='detail-info'
                   />
                   <Button variant='contained' onClick={() => setOpen(true)}>
@@ -76,6 +81,7 @@ const Action = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
                     kdy={kdy}
                     kde={kde}
                     cena={cena}
+                    zdaPoznamkaKCene={zdaPoznamkaKCene}
                     className='second'
                   />
                   <Button
@@ -94,6 +100,7 @@ const Action = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
                     kdy={kdy}
                     kde={kde}
                     cena={cena}
+                    zdaPoznamkaKCene={zdaPoznamkaKCene}
                     className='third'
                   />
                   <Button
@@ -189,6 +196,10 @@ const Action = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
             <SectionTitle mainText='Upoutávka na akci' />
             <ReactPlayer url={videoUrl} />
           </Stack>
+        )}
+
+        {!!props.poznamkaKCene && (
+          <Box className='price-remark'>* {props.poznamkaKCene}</Box>
         )}
       </Stack>
       {/* Registrační dialog */}
