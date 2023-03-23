@@ -1,16 +1,16 @@
-import { useRef } from 'react';
-import { useSelector } from 'react-redux';
-import { selectActions } from 'shared/infrastructure/store/actions/actionsSlice';
+import { useRef } from "react";
+import { useSelector } from "react-redux";
+import { selectActions } from "shared/infrastructure/store/actions/actionsSlice";
 
-import Box from '@mui/material/Box';
-import Skeleton from '@mui/material/Skeleton';
-import Stack from '@mui/material/Stack';
-import { useTheme } from '@mui/material/styles';
+import Box from "@mui/material/Box";
+import Skeleton from "@mui/material/Skeleton";
+import Stack from "@mui/material/Stack";
+import { useTheme } from "@mui/material/styles";
 
-import Action from '../action/Action';
-import Documents from '../documents/Documents';
-import ActionFirstImage from '../img/img_4-copyright.png';
-import ActionSelectStyled from './styledComponents/ActionSelectStyled';
+import Action from "../action/Action";
+import Documents from "../documents/Documents";
+import ActionFirstImage from "../img/img_4-copyright.png";
+import ActionSelectStyled from "./styledComponents/ActionSelectStyled";
 
 const ActionSelect = () => {
   // References
@@ -142,8 +142,8 @@ const ActionSelect = () => {
               backgroundColor={theme.palette.secondary.main}
               name={actions.ActionDetails?.[0]?.ActionName}
               description={actions.ActionDetails?.[0]?.ActionDescritption}
-              image={actions.ActionDetails?.[0]?.ActionImagePath}
-              imageAlt={actions.ActionDetails?.[0]?.ActionImageAlt}
+              image={actions.ActionDetails?.[0]?.Image.Path}
+              imageAlt={actions.ActionDetails?.[0]?.Image.Alt}
               videoUrl={actions.ActionDetails?.[0]?.VideoLink}
               kdy={actions.ActionDetails?.[0]?.Date}
               kde={actions.ActionDetails?.[0]?.Place}
@@ -154,8 +154,8 @@ const ActionSelect = () => {
               backgroundColor={theme.palette.primary.main}
               name={actions.ActionDetails?.[1]?.ActionName}
               description={actions.ActionDetails?.[1]?.ActionDescritption}
-              image={actions.ActionDetails?.[1]?.ActionImagePath}
-              imageAlt={actions.ActionDetails?.[1]?.ActionImageAlt}
+              image={actions.ActionDetails?.[1]?.Image.Path}
+              imageAlt={actions.ActionDetails?.[1]?.Image.Alt}
               videoUrl={actions.ActionDetails?.[1]?.VideoLink}
               kdy={actions.ActionDetails?.[1]?.Date}
               kde={actions.ActionDetails?.[1]?.Place}
@@ -166,8 +166,8 @@ const ActionSelect = () => {
               backgroundColor={theme.palette.common.purple.main}
               name={actions.ActionDetails?.[2]?.ActionName}
               description={actions.ActionDetails?.[2]?.ActionDescritption}
-              image={actions.ActionDetails?.[2]?.ActionImagePath}
-              imageAlt={actions.ActionDetails?.[2]?.ActionImageAlt}
+              image={actions.ActionDetails?.[2]?.Image.Path}
+              imageAlt={actions.ActionDetails?.[2]?.Image.Alt}
               videoUrl={actions.ActionDetails?.[2]?.VideoLink}
               kdy={actions.ActionDetails?.[2]?.Date}
               kde={actions.ActionDetails?.[2]?.Place}

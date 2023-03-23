@@ -116,7 +116,7 @@ const Action = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
       </Stack>
     );
   };
-  //TODO: Pro obr8xek bude pou6ita komponenta picture
+
   return (
     <ActionStyled
       sx={{ backgroundColor: backgroundColor }}

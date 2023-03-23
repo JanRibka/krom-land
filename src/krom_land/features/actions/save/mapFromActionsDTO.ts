@@ -1,9 +1,12 @@
-import { ActionsModel, initialState } from 'shared/infrastructure/store/actions/actionsSlice';
-import DocumentModel from 'shared/models/DocumentModel';
-import ImageModel from 'shared/models/ImageModel';
+import {
+  ActionsModel,
+  initialState,
+} from "shared/infrastructure/store/actions/actionsSlice";
+import DocumentModel from "shared/models/DocumentModel";
+import ImageModel from "shared/models/ImageModel";
 
-import ActionDetailModel from '../models/ActionDetailModel';
-import ActionsDTO from '../models/ActionsDTO';
+import ActionDetailModel from "../models/ActionDetailModel";
+import ActionsDTO from "../models/ActionsDTO";
 
 export const mapFromActionsDTO = (actionsDTO?: ActionsDTO | null) => {
   const result: ActionsModel = {
@@ -21,8 +24,7 @@ export const mapFromActionsDTO = (actionsDTO?: ActionsDTO | null) => {
           new ActionDetailModel({
             ActionOrder: item.ActionOrder ?? 0,
             MonthName: item.MonthName ?? "",
-            ActionImagePath: item.ActionImagePath ?? "",
-            ActionImageAlt: item.ActionImageAlt ?? "",
+            Image: !!item?.Image ? JSON.parse(item.Image) : new ImageModel(),
             ActionName: item.ActionName ?? "",
             ActionDescritption: item.ActionDescritption ?? "",
             VideoLink: item.VideoLink ?? "",

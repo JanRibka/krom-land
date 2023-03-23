@@ -1,8 +1,9 @@
+import ImageModel from "shared/models/ImageModel";
+
 export default class ActionDetailDTO {
   ActionOrder: number = 0;
   MonthName: string = "";
-  ActionImagePath: string = "";
-  ActionImageAlt: string = "";
+  Image: ImageModel = new ImageModel();
   ActionName: string = "";
   ActionDescritption: string = "";
   VideoLink: string = "";

@@ -15,16 +15,45 @@ class WebContent
     $contactId = 1;
 
     try {
-      // Home
-      $homeQuery = dibi::query(
+      // Get Home, Actions, Gallery, and Contact details in separate queries
+      $home = dibi::query(
         "SELECT * FROM home as h WHERE h.Id = %i",
         $homeId
-      );
-      $home = $homeQuery->fetch();
+      )->fetch();
 
-      $teamMembers = dibi::query("SELECT * FROM teamMembers as tm");
+      $teamMembers = dibi::query("SELECT * FROM teamMembers as tm")->fetchAll();
 
-      $home = new HomeModel(
+      $actions = dibi::query(
+        "SELECT * FROM actions as a WHERE a.Id = %i",
+        $actionsId
+      )->fetch();
+
+      $actionDetails = dibi::query(
+        "SELECT ad.* FROM actions as a JOIN actionDetails as ad on a.Id = ad.ActionsId WHERE a.Id = %i ORDER BY ad.ActionOrder",
+        $actionsId
+      )->fetchAll();
+
+      $documentsToDownload = dibi::query(
+        "SELECT * FROM documentsToDownload as dtd"
+      )->fetchAll();
+
+      $gallery = dibi::query(
+        "SELECT * FROM gallery as g WHERE g.Id = %i",
+        $galleryId
+      )->fetch();
+
+      $galleryImages = dibi::query(
+        "SELECT gi.* FROM gallery as g JOIN galleryImage as gi on g.Id = gi.GalleryId WHERE g.Id = %i",
+        $galleryId
+      )->fetchAll();
+
+      $contact = dibi::query(
+        "SELECT * FROM contact as c WHERE c.Id = %i",
+        $contactId
+      )->fetch();
+
+      // Create models using data fetched from queries
+      $homeModel = new HomeModel(
         $home->Id,
         $home->Title,
         $home->Description,
@@ -41,67 +70,35 @@ class WebContent
         $home->PeopleSay2Name,
         $home->PeopleSay3Text,
         $home->PeopleSay3Name,
-        $teamMembers->fetchAll()
+        $teamMembers
       );
 
-      // Actions
-      $actinsQuery = dibi::query(
-        "SELECT * FROM actions as a WHERE a.Id = %i",
-        $actionsId
-      );
-      $actions = $actinsQuery->fetch();
-
-      $actinDeatilsQuery = dibi::query(
-        "SELECT ad.* FROM actions as a JOIN actionDeatil as ad on a.Id = ad.ActionsId WHERE a.Id = %i ORDER BY ad.ActionOrder",
-        $actionsId
-      );
-
-      $documentsToDownloadQuery = dibi::query(
-        "SELECT * FROM documentsToDownload as dtd"
-      );
-
-      $actions = new ActionsModel(
+      $actionsModel = new ActionsModel(
         $actions->Id,
         $actions->Title,
         $actions->Description,
         $actions->PageHeaderTextMain,
         $actions->PageHeaderTextMainColor,
         $actions->MainImage,
-        $actinDeatilsQuery->fetchAll(),
-        $documentsToDownloadQuery->fetchAll()
+        $actionDetails,
+        $documentsToDownload
       );
 
-      // Gallery
-      $galleryQuery = dibi::query(
-        "SELECT * FROM gallery as g WHERE g.Id = %i",
-        $galleryId
-      );
-
-      $gallery = $galleryQuery->fetch();
-
-      $galleryImageQuery = dibi::query(
-        "SELECT gi.* FROM gallery as g JOIN galleryImage as gi on g.Id = gi.GalleryId WHERE g.Id = %i",
-        $galleryId
-      );
-
-      $gallery = new GalleryModel(
+      $galleryModel = new GalleryModel(
         $gallery->Id,
         $gallery->Title,
         $gallery->Description,
         $gallery->MainImage,
-        $galleryImageQuery->fetchAll()
+        $galleryImages
       );
 
-      // Contact
-      $contactQuery = dibi::query(
-        "SELECT * FROM contact as c WHERE c.Id = %i",
-        $contactId
+      // Create Result model using above models
+      $result = new ResultModel(
+        $homeModel,
+        $actionsModel,
+        $galleryModel,
+        $contact
       );
-
-      $contact = $contactQuery->fetch();
-
-      // Result
-      $result = new ResultModel($home, $actions, $gallery, $contact);
 
       apiResponse(true, "", $result);
     } catch (Exception $ex) {
