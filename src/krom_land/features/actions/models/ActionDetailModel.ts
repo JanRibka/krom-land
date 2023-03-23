@@ -7,6 +7,8 @@ export default class ActionDetailDTO {
   ActionDescritption: string = "";
   VideoLink: string = "";
   Price: string = "";
+  IsPriceRemark: boolean = false;
+  PriceRemark: string = "";
   Place: string = "";
   Date: string = "";
 
