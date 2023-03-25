@@ -88,6 +88,8 @@ class WebContent
         $gallery->Id,
         $gallery->Title,
         $gallery->Description,
+        $gallery->PageHeaderTextMain,
+        $gallery->PageHeaderTextMainColor,
         $gallery->MainImage,
         $galleryImages
       );

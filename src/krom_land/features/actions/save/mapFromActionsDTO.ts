@@ -7,6 +7,7 @@ import ImageModel from "shared/models/ImageModel";
 
 import ActionDetailModel from "../models/ActionDetailModel";
 import ActionsDTO from "../models/ActionsDTO";
+import DocumentToDownloadModel from "../models/DocumentToDownloadModel";
 
 export const mapFromActionsDTO = (actionsDTO?: ActionsDTO | null) => {
   const result: ActionsModel = {
@@ -38,9 +39,12 @@ export const mapFromActionsDTO = (actionsDTO?: ActionsDTO | null) => {
     DocumentsToDownload:
       actionsDTO?.DocumentsToDownload.map(
         (item) =>
-          new DocumentModel({
-            Path: item.DocumentPath,
-            Name: item.DocumentName,
+          new DocumentToDownloadModel({
+            Id: item.Id ?? 0,
+            Document: !!item.Document
+              ? JSON.parse(item.Document)
+              : new DocumentModel(),
+            Delete: item.Delete ?? false,
           })
       ) ?? [],
   };

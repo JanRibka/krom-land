@@ -15,7 +15,8 @@ const Contact = () => {
       <>
         <PageTitle
           image={contact.MainImage.Path}
-          title='Kontakt'
+          title={contact.PageHeaderTextMain}
+          titleColor={contact.PageHeaderTextMainColor}
           alt={contact.MainImage.Alt}
           imhHeight={350}
         />

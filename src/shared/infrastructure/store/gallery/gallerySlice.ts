@@ -7,6 +7,8 @@ import AppState from "../AppState";
 export interface GalleryModel {
   Title: string;
   Description: string;
+  PageHeaderTextMain: string;
+  PageHeaderTextMainColor: string;
   MainImage: ImageModel;
   Images: ImageModel[];
 }
@@ -14,6 +16,8 @@ export interface GalleryModel {
 export const initialState: GalleryModel = {
   Title: "",
   Description: "",
+  PageHeaderTextMain: "",
+  PageHeaderTextMainColor: "",
   MainImage: new ImageModel(),
   Images: [],
 };

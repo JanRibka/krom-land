@@ -7,6 +7,8 @@ import AppState from "../AppState";
 export interface ContactModel {
   Title: string;
   Description: string;
+  PageHeaderTextMain: string;
+  PageHeaderTextMainColor: string;
   MainImage: ImageModel;
   GoogleMapsUrl: string;
 }
@@ -14,6 +16,8 @@ export interface ContactModel {
 export const initialState: ContactModel = {
   Title: "",
   Description: "",
+  PageHeaderTextMain: "",
+  PageHeaderTextMainColor: "",
   MainImage: new ImageModel(),
   GoogleMapsUrl: "",
 };

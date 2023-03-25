@@ -21,9 +21,12 @@ const Documents = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
         <Stack>
           <SectionTitle mainText='Dokumenty ke stažení' />
           <Stack spacing={2}>
-            {documentsToDownload.map((document) => {
+            {documentsToDownload.map((documentToDownload) => {
               return (
-                <Document filePath={document.Path} fileName={document.Name} />
+                <Document
+                  filePath={documentToDownload.Document.Path}
+                  fileName={documentToDownload.Document.Name}
+                />
               );
             })}
           </Stack>

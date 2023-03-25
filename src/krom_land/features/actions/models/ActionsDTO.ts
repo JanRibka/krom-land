@@ -1,4 +1,4 @@
-import DocumentDTO from "shared/models/DocumentDTO";
+import DocumentToDownloadDTO from "shared/DTOs/DocumentToDownloadDTO";
 
 import ActionDetailDTO from "./ActionDetailDTO";
 
@@ -10,5 +10,5 @@ export default interface ActionsDTO {
   PageHeaderTextMainColor: string | null;
   MainImage: string | null;
   ActionDetails: ActionDetailDTO[];
-  DocumentsToDownload: DocumentDTO[];
+  DocumentsToDownload: DocumentToDownloadDTO[];
 }

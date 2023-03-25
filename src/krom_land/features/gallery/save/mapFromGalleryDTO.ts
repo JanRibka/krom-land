@@ -11,6 +11,8 @@ export const mapFromGalleryDTO = (galleryDTO?: GalleryDTO | null) => {
     ...initialState,
     Title: galleryDTO?.Title ?? "",
     Description: galleryDTO?.Description ?? "",
+    PageHeaderTextMain: galleryDTO?.PageHeaderTextMain ?? "",
+    PageHeaderTextMainColor: galleryDTO?.PageHeaderTextMainColor ?? "",
     MainImage: !!galleryDTO?.MainImage
       ? JSON.parse(galleryDTO?.MainImage)
       : new ImageModel(),

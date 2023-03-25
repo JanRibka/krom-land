@@ -11,6 +11,8 @@ export const mapFromContactDTO = (contactDTO?: ContactDTO | null) => {
     ...initialState,
     Title: contactDTO?.Title ?? "",
     Description: contactDTO?.Description ?? "",
+    PageHeaderTextMain: contactDTO?.PageHeaderTextMain ?? "",
+    PageHeaderTextMainColor: contactDTO?.PageHeaderTextMainColor ?? "",
     MainImage: !!contactDTO?.MainImage
       ? JSON.parse(contactDTO?.MainImage)
       : new ImageModel(),

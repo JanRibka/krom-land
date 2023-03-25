@@ -1,5 +1,5 @@
 import ActionDetailModel from "krom_land/features/actions/models/ActionDetailModel";
-import DocumentModel from "shared/models/DocumentModel";
+import DocumentToDownloadModel from "krom_land/features/actions/models/DocumentToDownloadModel";
 import ImageModel from "shared/models/ImageModel";
 
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
@@ -13,7 +13,7 @@ export interface ActionsModel {
   PageHeaderTextMainColor: string;
   MainImage: ImageModel;
   ActionDetails: ActionDetailModel[];
-  DocumentsToDownload: DocumentModel[];
+  DocumentsToDownload: DocumentToDownloadModel[];
 }
 
 export const initialState: ActionsModel = {

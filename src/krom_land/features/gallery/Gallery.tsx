@@ -87,7 +87,8 @@ const Gallery = () => {
         <>
           <PageTitle
             image={gallery.MainImage.Path}
-            title='Galerie'
+            title={gallery.PageHeaderTextMain}
+            titleColor={gallery.PageHeaderTextMainColor}
             alt={gallery.MainImage.Alt}
             imhHeight={350}
           />
