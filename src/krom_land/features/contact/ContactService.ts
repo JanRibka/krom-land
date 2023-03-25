@@ -1,8 +1,8 @@
-import { HttpStatusCode } from 'axios';
-import AppNotification from 'shared/components/notification/AppNotification';
-import Repository from 'shared/infrastructure/repositiory/Repository';
-import ResultDataDTO from 'shared/models/ResultDataDTO';
-import SendEmailModel from 'shared/models/SendEmailModel';
+import { HttpStatusCode } from "axios";
+import AppNotification from "shared/components/notification/AppNotification";
+import Repository from "shared/infrastructure/repositiory/Repository";
+import ResultDataDTO from "shared/models/ResultDataDTO";
+import SendEmailModel from "shared/models/SendEmailModel";
 
 export default class ContactService {
   private _repo = new Repository();
@@ -15,13 +15,14 @@ export default class ContactService {
    * @param subject
    */
   public async sendEmail(
+    email_to: string,
     user_email: string,
     user_name: string,
     subject: string,
     message: string
   ) {
     const data: SendEmailModel = {
-      to: btoa(encodeURIComponent(process.env.REACT_APP_SEND_EMAIL_TO ?? "")),
+      to: btoa(encodeURIComponent(email_to)),
       user_email: btoa(encodeURIComponent(user_email)),
       user_name: btoa(encodeURIComponent(user_name)),
       subject: btoa(encodeURIComponent(subject)),

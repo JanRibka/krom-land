@@ -1,16 +1,18 @@
-import { ChangeEvent, FormEvent, useRef, useState } from 'react';
-import { messageTemplate } from 'shared/templates/messageTemplate';
+import { ChangeEvent, FormEvent, useRef, useState } from "react";
+import { useSelector } from "react-redux";
+import { selectContact } from "shared/infrastructure/store/contact/contactSlice";
+import { messageTemplate } from "shared/templates/messageTemplate";
 
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Stack from '@mui/material/Stack';
-import { useTheme } from '@mui/material/styles';
-import TextField from '@mui/material/TextField';
-import useMediaQuery from '@mui/material/useMediaQuery';
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
+import { useTheme } from "@mui/material/styles";
+import TextField from "@mui/material/TextField";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
-import SectionTitle from '../../../../shared/components/sectionTitle/SectionTitle';
-import ContactService from '../ContactService';
-import WriteToUsStyled from './styledComponents/WriteToUsStyled';
+import SectionTitle from "../../../../shared/components/sectionTitle/SectionTitle";
+import ContactService from "../ContactService";
+import WriteToUsStyled from "./styledComponents/WriteToUsStyled";
 
 const WritetoUs = () => {
   // References
@@ -19,6 +21,7 @@ const WritetoUs = () => {
   // Constants
   const _contactService = new ContactService();
   const theme = useTheme();
+  const contact = useSelector(selectContact);
   const smDwn = useMediaQuery(theme.breakpoints.down("sm"));
   const formDataInitit = {
     user_name: "",
@@ -51,6 +54,7 @@ const WritetoUs = () => {
     });
 
     _contactService.sendEmail(
+      contact.Email,
       formData.user_email,
       formData.user_name,
       "Zpráva z KROMLand.cz",

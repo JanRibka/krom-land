@@ -140,6 +140,7 @@ const Layout = (props: IProps) => {
           PageHeaderTextMainColor: null,
           MainImage: null,
           GoogleMapsUrl: null,
+          Email: null,
         },
       },
     },

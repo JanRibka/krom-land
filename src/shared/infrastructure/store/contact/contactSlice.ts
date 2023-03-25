@@ -11,6 +11,7 @@ export interface ContactModel {
   PageHeaderTextMainColor: string;
   MainImage: ImageModel;
   GoogleMapsUrl: string;
+  Email: string;
 }
 
 export const initialState: ContactModel = {
@@ -20,6 +21,7 @@ export const initialState: ContactModel = {
   PageHeaderTextMainColor: "",
   MainImage: new ImageModel(),
   GoogleMapsUrl: "",
+  Email: "",
 };
 
 export const contactSlice = createSlice({

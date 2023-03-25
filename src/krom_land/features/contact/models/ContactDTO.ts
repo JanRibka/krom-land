@@ -6,4 +6,5 @@ export default interface ContactDTO {
   PageHeaderTextMainColor: string | null;
   MainImage: string | null;
   GoogleMapsUrl: string | null;
+  Email: string | null;
 }

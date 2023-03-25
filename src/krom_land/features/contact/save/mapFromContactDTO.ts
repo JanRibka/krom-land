@@ -17,6 +17,7 @@ export const mapFromContactDTO = (contactDTO?: ContactDTO | null) => {
       ? JSON.parse(contactDTO?.MainImage)
       : new ImageModel(),
     GoogleMapsUrl: contactDTO?.GoogleMapsUrl ?? "",
+    Email: contactDTO?.Email ?? "",
   };
 
   return result;
