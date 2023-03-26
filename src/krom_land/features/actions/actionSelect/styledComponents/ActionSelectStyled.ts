@@ -9,13 +9,15 @@ const ActionSelectStyled = styled(Box)(({ theme }) => ({
     listStyleType: "none",
     alignItems: "center",
     marginBottom: 0,
-    overflowX: "auto",
-    overflowY: "hidden",
     paddingTop: "3px",
 
     [theme.breakpoints.down("md")]: {
       paddingLeft: "0",
       alignSelf: "center",
+      justifyContent: "center",
+      width: "100%",
+      overflowX: "auto",
+      overflowY: "hidden",
     },
 
     li: {
