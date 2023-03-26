@@ -1,6 +1,6 @@
-import Box from '@mui/material/Box';
-import { grey } from '@mui/material/colors';
-import { styled } from '@mui/material/styles';
+import Box from "@mui/material/Box";
+import { grey } from "@mui/material/colors";
+import { styled } from "@mui/material/styles";
 
 const ActionStyled = styled(Box)(({ theme }) => ({
   display: "none",
@@ -30,11 +30,6 @@ const ActionStyled = styled(Box)(({ theme }) => ({
     backgroundColor: grey[400],
 
     [theme.breakpoints.down("lg")]: {
-      maxWidth: "440px",
-    },
-
-    [theme.breakpoints.down("md")]: {
-      height: "300px",
       width: "90%",
       maxWidth: "100%",
     },
@@ -49,7 +44,7 @@ const ActionStyled = styled(Box)(({ theme }) => ({
 
   ".description-wrapper": {
     width: "100%",
-    maxWidth: "500px",
+    maxWidth: "600px",
     display: "inline-block",
     height: "100%",
     padding: "15px 0",
@@ -103,7 +98,7 @@ const ActionStyled = styled(Box)(({ theme }) => ({
       },
     },
 
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("lg")]: {
       width: "90%",
       maxWidth: "90%",
     },
@@ -128,7 +123,7 @@ const ActionStyled = styled(Box)(({ theme }) => ({
     textAlignLast: "center",
     alignSelf: "center",
 
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("lg")]: {
       width: "90%",
       maxWidth: "90%",
     },
