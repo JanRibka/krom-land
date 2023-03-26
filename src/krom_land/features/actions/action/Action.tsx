@@ -49,9 +49,8 @@ const Action = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
   } = props;
   const xlDwn = useMediaQuery(theme.breakpoints.down("xl"));
   const lgDwn = useMediaQuery(theme.breakpoints.down("lg"));
-  const mdDwn = useMediaQuery(theme.breakpoints.down("md"));
-  const pictDescWrapperDirection = mdDwn ? "column" : "row";
-  const pictDescWrapperSpacing = lgDwn ? 10 : xlDwn ? 20 : 30;
+  const pictDescWrapperDirection = lgDwn ? "column" : "row";
+  const pictDescWrapperSpacing = lgDwn ? 5 : xlDwn ? 15 : 30;
 
   // Other
   const renderRegistrationButton = () => {
