@@ -1,10 +1,10 @@
-import { forwardRef, Ref } from "react";
-import { Link } from "react-router-dom";
+import { forwardRef, Ref } from 'react';
+import { Link } from 'react-router-dom';
 
-import Box from "@mui/material/Box";
+import Box from '@mui/material/Box';
 
-import { AppRoute } from "../../../../../../shared/infrastructure/router/appRoutes";
-import NavLinksStyled from "./styledComponents/NavLinksStyled";
+import { AppRoute } from '../../../../../../shared/infrastructure/router/appRoutes';
+import NavLinksStyled from './styledComponents/NavLinksStyled';
 
 interface IProps {
   innerWrapperName: string;

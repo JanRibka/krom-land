@@ -8,6 +8,7 @@ const NavLinksStyled = styled(Box)(({ theme }) => ({
 
     li: {
       backfaceVisibility: "hidden",
+      WebkitTapHighlightColor: "transparent",
 
       a: {
         textDecoration: "none",

@@ -2,6 +2,7 @@ import Box from '@mui/material/Box';
 import { styled } from '@mui/material/styles';
 
 const WriteToUsStyled = styled(Box)(({ theme }) => ({
+  padding: "80px 0",
   display: "flex",
   justifyContent: "center",
 

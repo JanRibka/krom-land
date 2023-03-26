@@ -1,12 +1,12 @@
-import { useSelector } from "react-redux";
-import GridContainer from "shared/components/gridContainer/GridContainer";
-import GridItem from "shared/components/gridItem/GridItem";
-import SectionTitle from "shared/components/sectionTitle/SectionTitle";
-import { selectHome } from "shared/infrastructure/store/home/homeSlice";
+import { useSelector } from 'react-redux';
+import GridContainer from 'shared/components/gridContainer/GridContainer';
+import GridItem from 'shared/components/gridItem/GridItem';
+import SectionTitle from 'shared/components/sectionTitle/SectionTitle';
+import { selectHome } from 'shared/infrastructure/store/home/homeSlice';
 
-import TeamMemberModel from "../models/TeamMemberModel";
-import Member from "./member/Member";
-import OurTeamStyled from "./styledComponents/OurTeamStyled";
+import TeamMemberModel from '../models/TeamMemberModel';
+import Member from './member/Member';
+import OurTeamStyled from './styledComponents/OurTeamStyled';
 
 const OurTeam = () => {
   // Store

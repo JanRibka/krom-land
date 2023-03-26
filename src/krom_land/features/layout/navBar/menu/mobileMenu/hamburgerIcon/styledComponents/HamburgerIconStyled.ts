@@ -7,6 +7,7 @@ const HamburgerIconStyled = styled(Box)(({ theme }) => ({
   right: "35px",
   cursor: "pointer",
   zIndex: 7,
+  WebkitTapHighlightColor: "transparent",
 
   "&.is-opened": {
     "& .line-1": {

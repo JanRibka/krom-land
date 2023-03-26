@@ -1,19 +1,19 @@
-import { useSelector } from "react-redux";
-import PageTitle from "shared/components/pageTitle/PageTitle";
-import { selectHome } from "shared/infrastructure/store/home/homeSlice";
+import { useSelector } from 'react-redux';
+import PageTitle from 'shared/components/pageTitle/PageTitle';
+import { selectHome } from 'shared/infrastructure/store/home/homeSlice';
 
-import Stack from "@mui/material/Stack";
+import Stack from '@mui/material/Stack';
 
-import AboutUs from "./aboutUs/AboutUs";
-import OurTeam from "./ourTeam/OurTeam";
-import WhatPeopleSay from "./whatPeopleSay/WhatPeopleSay";
+import AboutUs from './aboutUs/AboutUs';
+import OurTeam from './ourTeam/OurTeam';
+import WhatPeopleSay from './whatPeopleSay/WhatPeopleSay';
 
 const Home = () => {
   // Store
   const home = useSelector(selectHome);
 
   return (
-    <Stack spacing={10} direction='column'>
+    <Stack direction='column'>
       <>
         <PageTitle
           image={home.MainImage.Path}

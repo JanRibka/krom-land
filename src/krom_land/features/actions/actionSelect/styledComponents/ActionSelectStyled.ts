@@ -1,12 +1,17 @@
-import Box from "@mui/material/Box";
-import { styled } from "@mui/material/styles";
+import Box from '@mui/material/Box';
+import { styled } from '@mui/material/styles';
 
 const ActionSelectStyled = styled(Box)(({ theme }) => ({
+  padding: "80px 0",
+
   ul: {
     display: "flex",
     listStyleType: "none",
     alignItems: "center",
     marginBottom: 0,
+    overflowX: "auto",
+    overflowY: "hidden",
+    paddingTop: "3px",
 
     [theme.breakpoints.down("md")]: {
       paddingLeft: "0",
@@ -33,6 +38,7 @@ const ActionSelectStyled = styled(Box)(({ theme }) => ({
       marginLeft: "-15px",
       cursor: "pointer",
       paddingBottom: "5px",
+      WebkitTapHighlightColor: "transparent",
 
       "&:nth-of-type(1)": {
         backgroundColor: theme.palette.secondary.main,

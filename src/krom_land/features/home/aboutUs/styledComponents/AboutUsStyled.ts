@@ -1,14 +1,15 @@
-import Box from "@mui/material/Box";
-import { grey } from "@mui/material/colors";
-import { styled } from "@mui/material/styles";
+import Box from '@mui/material/Box';
+import { grey } from '@mui/material/colors';
+import { styled } from '@mui/material/styles';
 
 const AboutUsStyled = styled(Box)(({ theme }) => ({
   position: "relative",
   justifyContent: "center",
   height: "auto",
-  padding: "50px 0",
+  padding: "80px 0",
   width: "100%",
   display: "flex",
+  backgroundColor: theme.palette.primary.light,
 
   "& > div > div": {
     width: "100%",
@@ -96,6 +97,7 @@ const AboutUsStyled = styled(Box)(({ theme }) => ({
     [theme.breakpoints.down("lg")]: {
       width: "90%",
       maxWidth: "90%",
+      height: "fit-content",
     },
   },
 }));

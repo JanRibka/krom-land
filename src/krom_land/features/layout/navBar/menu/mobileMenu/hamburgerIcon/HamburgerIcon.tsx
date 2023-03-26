@@ -1,7 +1,7 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef } from 'react';
 
-import HamburgerIconLineStyled from "./styledComponents/HamburgerIconLineStyled";
-import HamburgerIconStyled from "./styledComponents/HamburgerIconStyled";
+import HamburgerIconLineStyled from './styledComponents/HamburgerIconLineStyled';
+import HamburgerIconStyled from './styledComponents/HamburgerIconStyled';
 
 interface IProps {
   handleOnClick: () => void;

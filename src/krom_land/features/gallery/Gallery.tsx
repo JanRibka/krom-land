@@ -1,19 +1,18 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
-import PageTitle from "shared/components/pageTitle/PageTitle";
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import PageTitle from 'shared/components/pageTitle/PageTitle';
 import {
-  selectGallery,
-  selectGalleryImages,
-} from "shared/infrastructure/store/gallery/gallerySlice";
+    selectGallery, selectGalleryImages
+} from 'shared/infrastructure/store/gallery/gallerySlice';
 
-import Stack from "@mui/material/Stack";
+import Stack from '@mui/material/Stack';
 
-import GridContainer from "../../../shared/components/gridContainer/GridContainer";
-import GridItem from "../../../shared/components/gridItem/GridItem";
-import Picture from "../../../shared/components/picture/Picture";
-import OpenDialogModel from "./photosDialog/OpenDialoModel";
-import PhotosDialog from "./photosDialog/PhotosDialog";
-import ImageGridWrapperStyled from "./styledComponents/ImageGridWrapperStyled";
+import GridContainer from '../../../shared/components/gridContainer/GridContainer';
+import GridItem from '../../../shared/components/gridItem/GridItem';
+import Picture from '../../../shared/components/picture/Picture';
+import OpenDialogModel from './photosDialog/OpenDialoModel';
+import PhotosDialog from './photosDialog/PhotosDialog';
+import ImageGridWrapperStyled from './styledComponents/ImageGridWrapperStyled';
 
 const Gallery = () => {
   // State
@@ -83,7 +82,7 @@ const Gallery = () => {
 
   return (
     <>
-      <Stack spacing={10} direction='column'>
+      <Stack direction='column'>
         <>
           <PageTitle
             image={gallery.MainImage.Path}

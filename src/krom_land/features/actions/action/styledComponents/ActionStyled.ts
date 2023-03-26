@@ -1,6 +1,6 @@
-import Box from "@mui/material/Box";
-import { grey } from "@mui/material/colors";
-import { styled } from "@mui/material/styles";
+import Box from '@mui/material/Box';
+import { grey } from '@mui/material/colors';
+import { styled } from '@mui/material/styles';
 
 const ActionStyled = styled(Box)(({ theme }) => ({
   display: "none",
@@ -120,6 +120,17 @@ const ActionStyled = styled(Box)(({ theme }) => ({
     div: {
       width: "100%",
       maxWidth: "100%",
+    },
+  },
+
+  ".price-remark": {
+    textAlign: "center",
+    textAlignLast: "center",
+    alignSelf: "center",
+
+    [theme.breakpoints.down("md")]: {
+      width: "90%",
+      maxWidth: "90%",
     },
   },
 }));
