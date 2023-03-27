@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { windowScrollTo } from "seamless-scroll-polyfill";
 import AppNotification from "shared/components/notification/AppNotification";
 import { useRequest } from "shared/dataAccess/useRequest";
+import ConditionsDTO from "shared/DTOs/ConditionsDTO";
 import { useActionsSlice } from "shared/infrastructure/store/actions/useActionsSlice";
 import { selectCommon } from "shared/infrastructure/store/common/commonSlice";
 import { useCommonSlice } from "shared/infrastructure/store/common/useCommonSlice";
@@ -93,7 +94,7 @@ const Layout = (props: IProps) => {
       Success: false,
       ErrMsg: "",
       Data: {
-        Common: {},
+        Common: { Conditions: new ConditionsDTO() },
         Home: {
           Id: null,
           Title: null,

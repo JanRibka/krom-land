@@ -31,7 +31,7 @@ const SocialIcons = () => {
       <Box
         component='a'
         title='Tik Tok'
-        href='https://www.instagram.com/krom.land/'
+        href='https://www.tiktok.com/@kromland?_t=8b088AZDwu6&_r=1'
         target='_blank'
       >
         <TikTokIcon title='Tik Tok' />

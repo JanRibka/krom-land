@@ -4,6 +4,7 @@ require_once __DIR__ . "/./models/actionsModel.php";
 require_once __DIR__ . "/./models/galleryModel.php";
 require_once __DIR__ . "/./models/resultModel.php";
 require_once __DIR__ . "/./models/homeModel.php";
+require_once __DIR__ . "/./models/commonModel.php";
 
 class WebContent
 {
@@ -13,9 +14,10 @@ class WebContent
     $actionsId = 1;
     $galleryId = 1;
     $contactId = 1;
+    $conditionsId = 1;
 
     try {
-      // Get Home, Actions, Gallery, and Contact details in separate queries
+      // Get Home, Actions, Gallery, Contact and Conditions details in separate queries
       $home = dibi::query(
         "SELECT * FROM home as h WHERE h.Id = %i",
         $homeId
@@ -47,6 +49,12 @@ class WebContent
       $contact = dibi::query(
         "SELECT * FROM contact as c WHERE c.Id = %i",
         $contactId
+      )->fetch();
+
+      // Common
+      $conditions = dibi::query(
+        "SELECT * FROM conditions as c WHERE c.Id = %i",
+        $conditionsId
       )->fetch();
 
       // Create models using data fetched from queries
@@ -92,12 +100,15 @@ class WebContent
         $galleryImages
       );
 
+      $common = new CommonModel($conditions);
+
       // Create Result model using above models
       $result = new ResultModel(
         $homeModel,
         $actionsModel,
         $galleryModel,
-        $contact
+        $contact,
+        $common
       );
 
       apiResponse(true, "", $result);

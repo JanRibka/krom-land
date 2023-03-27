@@ -25,10 +25,14 @@ const Footer = () => {
   // Other
   const RenderAboutUsContent = () => {
     return (
-      <Typography className='one-line-text'>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt
-      </Typography>
+      <Stack direction='column'>
+        <Typography className='one-line-text align-center'>
+          IČO: 19116691
+        </Typography>
+        <Typography className='one-line-text align-center'>
+          DIČ: CZ19116691
+        </Typography>
+      </Stack>
     );
   };
 
@@ -36,12 +40,11 @@ const Footer = () => {
     return (
       <Box
         component='a'
-        href='https://goo.gl/maps/rViVNHBd3D4ZFKuY9'
+        href='https://goo.gl/maps/VTBnu2dzb2GtgrvH8'
         target='_balnk'
         className='one-line-text reference'
       >
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt
+        Šípková 686, 747 27, Kobeřice
       </Box>
     );
   };
@@ -49,9 +52,7 @@ const Footer = () => {
   const RenderContactContent = () => {
     return (
       <Stack direction='column'>
-        <Typography className='align-center'>
-          Úřední hodiny: 9:00 - 17:00
-        </Typography>
+        <Typography className='align-center'>Po - Pa: 9:00 - 17:00</Typography>
         <Box
           component='a'
           href='tel:778752663'
@@ -75,7 +76,11 @@ const Footer = () => {
       <Stack spacing={7} direction='column' className='footer-wrapper'>
         <>
           <Stack direction={infoWrapperDirection} spacing={infoWrapperSpacing}>
-            <InfoItem image={AboutUs} alt='O nás' description='O nás'>
+            <InfoItem
+              image={AboutUs}
+              alt='Podnikatelský subjekt'
+              description='Subjekt'
+            >
               {RenderAboutUsContent()}
             </InfoItem>
             <InfoItem image={Address} alt='Adresa' description='Adresa'>
