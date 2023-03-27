@@ -11,6 +11,7 @@ export interface GalleryModel {
   PageHeaderTextMain: string;
   PageHeaderTextMainColor: string;
   MainImage: ImageModel;
+  ExternalGalleryLink: string;
   Images: GalleryImageModel[];
 }
 
@@ -20,6 +21,7 @@ export const initialState: GalleryModel = {
   PageHeaderTextMain: "",
   PageHeaderTextMainColor: "",
   MainImage: new ImageModel(),
+  ExternalGalleryLink: "",
   Images: [],
 };
 

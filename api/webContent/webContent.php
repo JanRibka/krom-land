@@ -88,6 +88,7 @@ class WebContent
         $gallery->PageHeaderTextMain,
         $gallery->PageHeaderTextMainColor,
         $gallery->MainImage,
+        $gallery->ExternalGalleryLink,
         $galleryImages
       );
 

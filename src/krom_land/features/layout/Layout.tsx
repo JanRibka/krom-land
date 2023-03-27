@@ -130,6 +130,7 @@ const Layout = (props: IProps) => {
           PageHeaderTextMain: null,
           PageHeaderTextMainColor: null,
           MainImage: null,
+          ExternalGalleryLink: null,
           Images: [],
         },
         Contact: {

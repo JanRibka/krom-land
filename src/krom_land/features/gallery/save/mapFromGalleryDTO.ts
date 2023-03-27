@@ -17,6 +17,7 @@ export const mapFromGalleryDTO = (galleryDTO?: GalleryDTO | null) => {
     MainImage: !!galleryDTO?.MainImage
       ? JSON.parse(galleryDTO?.MainImage)
       : new ImageModel(),
+    ExternalGalleryLink: galleryDTO?.ExternalGalleryLink ?? "",
     Images:
       galleryDTO?.Images.map(
         (item) =>

@@ -6,11 +6,13 @@ import {
   selectGalleryImages,
 } from "shared/infrastructure/store/gallery/gallerySlice";
 
+import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 
 import GridContainer from "../../../shared/components/gridContainer/GridContainer";
 import GridItem from "../../../shared/components/gridItem/GridItem";
 import Picture from "../../../shared/components/picture/Picture";
+import GoToGallery from "./goToGallery/GoToGallery";
 import OpenDialogModel from "./photosDialog/OpenDialoModel";
 import PhotosDialog from "./photosDialog/PhotosDialog";
 import ImageGridWrapperStyled from "./styledComponents/ImageGridWrapperStyled";
@@ -97,6 +99,7 @@ const Gallery = () => {
           />
         </>
         <ImageGridWrapperStyled>{renderImages()}</ImageGridWrapperStyled>
+        <GoToGallery />
       </Stack>
       {/* Photos dialog */}
       <PhotosDialog

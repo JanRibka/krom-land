@@ -7,6 +7,7 @@ class GalleryModel
   public $PageHeaderTextMain;
   public $PageHeaderTextMainColor;
   public $MainImage;
+  public $ExternalGalleryLink;
   public $Images;
 
   public function __construct(
@@ -16,6 +17,7 @@ class GalleryModel
     $pageHeaderTextMain,
     $pageHeaderTextMainColor,
     $mainImage,
+    $externalGalleryLink,
     $images
   ) {
     $this->Id = $id;
@@ -24,6 +26,7 @@ class GalleryModel
     $this->PageHeaderTextMain = $pageHeaderTextMain;
     $this->PageHeaderTextMainColor = $pageHeaderTextMainColor;
     $this->MainImage = $mainImage;
+    $this->ExternalGalleryLink = $externalGalleryLink;
     $this->Images = $images;
   }
 }

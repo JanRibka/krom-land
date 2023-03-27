@@ -7,5 +7,6 @@ export default interface GalleryDTO {
   PageHeaderTextMain: string | null;
   PageHeaderTextMainColor: string | null;
   MainImage: string | null;
+  ExternalGalleryLink: string | null;
   Images: GalleryImageDTO[];
 }
