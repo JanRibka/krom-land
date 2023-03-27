@@ -1,18 +1,19 @@
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
-import PageTitle from 'shared/components/pageTitle/PageTitle';
+import { useState } from "react";
+import { useSelector } from "react-redux";
+import PageTitle from "shared/components/pageTitle/PageTitle";
 import {
-    selectGallery, selectGalleryImages
-} from 'shared/infrastructure/store/gallery/gallerySlice';
+  selectGallery,
+  selectGalleryImages,
+} from "shared/infrastructure/store/gallery/gallerySlice";
 
-import Stack from '@mui/material/Stack';
+import Stack from "@mui/material/Stack";
 
-import GridContainer from '../../../shared/components/gridContainer/GridContainer';
-import GridItem from '../../../shared/components/gridItem/GridItem';
-import Picture from '../../../shared/components/picture/Picture';
-import OpenDialogModel from './photosDialog/OpenDialoModel';
-import PhotosDialog from './photosDialog/PhotosDialog';
-import ImageGridWrapperStyled from './styledComponents/ImageGridWrapperStyled';
+import GridContainer from "../../../shared/components/gridContainer/GridContainer";
+import GridItem from "../../../shared/components/gridItem/GridItem";
+import Picture from "../../../shared/components/picture/Picture";
+import OpenDialogModel from "./photosDialog/OpenDialoModel";
+import PhotosDialog from "./photosDialog/PhotosDialog";
+import ImageGridWrapperStyled from "./styledComponents/ImageGridWrapperStyled";
 
 const Gallery = () => {
   // State
@@ -24,6 +25,9 @@ const Gallery = () => {
   // Store
   const gallery = useSelector(selectGallery);
   const galleryImages = useSelector(selectGalleryImages);
+  const imageCollection = galleryImages.map(
+    (galleryImage) => galleryImage.Image
+  );
 
   // Other
   const handleOpenGalleryOnClick = (index?: number) => {
@@ -34,7 +38,7 @@ const Gallery = () => {
     let result: JSX.Element[] = [];
     let pictures: JSX.Element[] = [];
 
-    galleryImages.forEach((image, index) => {
+    galleryImages.forEach((galleryImage, index) => {
       if (
         (index === 0 || index % 4 !== 0) &&
         index + 1 !== galleryImages.length
@@ -42,7 +46,7 @@ const Gallery = () => {
         pictures.push(
           <GridItem xs={12} sm={6} lg={3}>
             <Picture
-              photo={image}
+              photo={galleryImage.Image}
               index={index}
               enbHover
               handleOpenGalleryOnClick={handleOpenGalleryOnClick}
@@ -53,7 +57,7 @@ const Gallery = () => {
         pictures.push(
           <GridItem xs={12} sm={6} lg={3}>
             <Picture
-              photo={image}
+              photo={galleryImage.Image}
               index={index}
               enbHover
               handleOpenGalleryOnClick={handleOpenGalleryOnClick}
@@ -67,7 +71,7 @@ const Gallery = () => {
         pictures = [
           <GridItem xs={12} sm={6} lg={3}>
             <Picture
-              photo={image}
+              photo={galleryImage.Image}
               index={index}
               enbHover
               handleOpenGalleryOnClick={handleOpenGalleryOnClick}
@@ -98,7 +102,7 @@ const Gallery = () => {
       <PhotosDialog
         openData={openGalleryData}
         setOpenData={setOpenGalleryData}
-        photos={galleryImages}
+        photos={imageCollection}
       />
     </>
   );

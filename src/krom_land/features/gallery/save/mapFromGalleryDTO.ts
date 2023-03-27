@@ -5,6 +5,7 @@ import {
 import ImageModel from "shared/models/ImageModel";
 
 import GalleryDTO from "../models/GalleryDTO";
+import GalleryImageModel from "../models/GalleryImageModel";
 
 export const mapFromGalleryDTO = (galleryDTO?: GalleryDTO | null) => {
   const result: GalleryModel = {
@@ -19,9 +20,12 @@ export const mapFromGalleryDTO = (galleryDTO?: GalleryDTO | null) => {
     Images:
       galleryDTO?.Images.map(
         (item) =>
-          new ImageModel({
-            Path: item.ImagePath,
-            Alt: item.ImageAlt,
+          new GalleryImageModel({
+            Id: item?.Id ?? 0,
+            Image: !!item?.Image
+              ? JSON.parse(item.Image)
+              : new GalleryImageModel(),
+            Delete: item?.Delete ?? false,
           })
       ) ?? [],
   };

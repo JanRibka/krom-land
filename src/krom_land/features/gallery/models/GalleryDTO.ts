@@ -1,4 +1,4 @@
-import ImageDTO from "shared/models/ImageDTO";
+import GalleryImageDTO from "./GalleryImageDTO";
 
 export default interface GalleryDTO {
   Id: number | null;
@@ -7,5 +7,5 @@ export default interface GalleryDTO {
   PageHeaderTextMain: string | null;
   PageHeaderTextMainColor: string | null;
   MainImage: string | null;
-  Images: ImageDTO[];
+  Images: GalleryImageDTO[];
 }

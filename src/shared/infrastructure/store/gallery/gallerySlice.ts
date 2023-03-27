@@ -1,3 +1,4 @@
+import GalleryImageModel from "krom_land/features/gallery/models/GalleryImageModel";
 import ImageModel from "shared/models/ImageModel";
 
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
@@ -10,7 +11,7 @@ export interface GalleryModel {
   PageHeaderTextMain: string;
   PageHeaderTextMainColor: string;
   MainImage: ImageModel;
-  Images: ImageModel[];
+  Images: GalleryImageModel[];
 }
 
 export const initialState: GalleryModel = {

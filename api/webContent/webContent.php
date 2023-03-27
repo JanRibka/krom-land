@@ -42,10 +42,7 @@ class WebContent
         $galleryId
       )->fetch();
 
-      $galleryImages = dibi::query(
-        "SELECT gi.* FROM gallery as g JOIN galleryImage as gi on g.Id = gi.GalleryId WHERE g.Id = %i",
-        $galleryId
-      )->fetchAll();
+      $galleryImages = dibi::query("SELECT * FROM galleryImages")->fetchAll();
 
       $contact = dibi::query(
         "SELECT * FROM contact as c WHERE c.Id = %i",
