@@ -1,9 +1,11 @@
+import CloseIcon from "@mui/icons-material/Close";
 import {
   Box,
   Button,
   DialogActions,
   DialogContent,
   DialogTitle,
+  IconButton,
 } from "@mui/material";
 
 import DialogStyled from "./styledComponents/DialogStyled";
@@ -13,6 +15,7 @@ interface Props {
   title: string;
   okButtonTitle?: string;
   content: JSX.Element;
+  isClosable?: boolean;
   onClickOkButton: () => void;
 }
 
@@ -23,7 +26,19 @@ const OkDialog = (props: Props) => {
 
   return (
     <DialogStyled open={props.isOpen}>
-      <DialogTitle>{props.title}</DialogTitle>
+      <DialogTitle>
+        {props.title}
+        {props.isClosable && (
+          <Box>
+            <IconButton
+              aria-label='close'
+              onClick={() => props.onClickOkButton()}
+            >
+              <CloseIcon />
+            </IconButton>
+          </Box>
+        )}
+      </DialogTitle>
 
       <DialogContent>
         <Box sx={{ marginTop: "1rem" }}>{props.content}</Box>

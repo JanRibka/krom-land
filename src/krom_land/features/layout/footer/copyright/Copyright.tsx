@@ -65,6 +65,7 @@ const Copyright = () => {
           setDialogData({ open: false, title: "", content: "" })
         }
         title={dialogData.title}
+        isClosable
         content={
           <Box
             component='span'
