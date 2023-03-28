@@ -10,20 +10,23 @@ import {
   useState,
 } from "react";
 
+import CheckIcon from "@mui/icons-material/Check";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
+import Typography from "@mui/material/Typography";
 
 import DialogContentForm from "./dialogContent/DialogContentForm";
 import DialogContentFormModel from "./models/DialogContentFormModel";
 import ActionRegistrationDialogStyled from "./styledComponents/ActionRegistrationDialogStyled";
+import DialogActionsStyled from "./styledComponents/DialogActionsStyled";
 
 interface IProps {
   open: boolean;
+  actionName: string;
   setOpen: Dispatch<SetStateAction<boolean>>;
-  actionNam: string;
+  handleOnClickTermsOfConditions: () => void;
 }
 
 const ActionRegistrationDialog = (props: IProps) => {
@@ -113,41 +116,6 @@ const ActionRegistrationDialog = (props: IProps) => {
 
   const handleFormOnSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    // emailjs
-    //   .sendForm(
-    //     process.env.REACT_APP_EMAIL_SERVICE_ID ?? "",
-    //     process.env.REACT_APP_EMAIL_TEMPLATE_ID_REGISTRATION ?? "",
-    //     refForm.current as HTMLFormElement,
-    //     process.env.REACT_APP_EMAIL_PUBLIC_KEY ?? ""
-    //   )
-    //   .then(
-    //     (result) => {
-    //       console.log(result.text);
-    //       if (result.status === HttpStatusCode.OK) {
-    //         props.setMessageOpenData({
-    //           open: true,
-    //           message: "Vaše zpráva byla úspěšně odeslána",
-    //           severity: "success",
-    //         });
-    //       } else {
-    //         props.setMessageOpenData({
-    //           open: true,
-    //           message: "Chyba při odesílání zprávy. Zkuste to prosím později.",
-    //           severity: "error",
-    //         });
-    //       }
-    //     },
-    //     (error) => {
-    //       console.log(error.text);
-    //       props.setMessageOpenData({
-    //         open: true,
-    //         message: "Chyba při odesílání zprávy. Zkuste to prosím později.",
-    //         severity: "error",
-    //       });
-    //     }
-    //   );
-
     e.currentTarget.reset();
     setFormData(new DialogContentFormModel());
   };
@@ -159,7 +127,7 @@ const ActionRegistrationDialog = (props: IProps) => {
     >
       <Box className='title-wrapper'>
         <DialogTitle>
-          Registrace na {props.actionNam}
+          Registrace na: {props.actionName}
           {/* <IconButton
             aria-label='close'
             onClick={() => props.setOpen(false)}
@@ -185,18 +153,31 @@ const ActionRegistrationDialog = (props: IProps) => {
           handleOnChangeRadio={handleOnChangeRadio}
         />
       </DialogContent>
-      <DialogActions>
-        <Button
-          onClick={() => {
-            props.setOpen(false);
-          }}
-        >
-          Zvařít
-        </Button>
-        <Button variant='contained' onClick={handleOnClickRegister}>
-          Registrivat
-        </Button>
-      </DialogActions>
+      <DialogActionsStyled>
+        <Typography>
+          Potvrzením registrace souhlasíte s{" "}
+          <Box component='a' onClick={props.handleOnClickTermsOfConditions}>
+            obchodními podmínkami
+          </Box>
+          .
+        </Typography>
+        <Box className='buttons-wrapper'>
+          <Button
+            onClick={() => {
+              props.setOpen(false);
+            }}
+          >
+            Zvařít
+          </Button>
+          <Button
+            variant='contained'
+            onClick={handleOnClickRegister}
+            startIcon={<CheckIcon />}
+          >
+            Potvrdit registraci
+          </Button>
+        </Box>
+      </DialogActionsStyled>
     </ActionRegistrationDialogStyled>
   );
 };

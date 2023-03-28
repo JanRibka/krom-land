@@ -1,5 +1,8 @@
 import { forwardRef, HTMLAttributes, Ref, useState } from "react";
 import ReactPlayer from "react-player/youtube";
+import { useSelector } from "react-redux";
+import OkDialog from "shared/dialogs/OkDialog";
+import { selectCommon } from "shared/infrastructure/store/common/commonSlice";
 
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -28,8 +31,13 @@ interface IProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 const Action = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
+  // Store
+  const common = useSelector(selectCommon);
+
   // State
   const [open, setOpen] = useState<boolean>(false);
+  const [termOfConditionsDialogOpen, setTermOfConditionsDialogOpen] =
+    useState<boolean>(false);
 
   // Constants
   const theme = useTheme();
@@ -204,8 +212,26 @@ const Action = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
       {/* Registrační dialog */}
       <ActionRegistrationDialog
         open={open}
+        actionName={name}
         setOpen={setOpen}
-        actionNam={name}
+        handleOnClickTermsOfConditions={() =>
+          setTermOfConditionsDialogOpen(true)
+        }
+      />
+      {/* Term of donditions */}
+      <OkDialog
+        isOpen={termOfConditionsDialogOpen}
+        onClickOkButton={() => setTermOfConditionsDialogOpen(false)}
+        title={common.Conditions.TermsOfConditionsLabel}
+        isClosable
+        content={
+          <Box
+            component='span'
+            dangerouslySetInnerHTML={{
+              __html: common.Conditions.TermsOfConditionsText,
+            }}
+          />
+        }
       />
     </ActionStyled>
   );

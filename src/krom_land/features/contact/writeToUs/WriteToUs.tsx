@@ -144,7 +144,7 @@ const WritetoUs = () => {
                 name={nameof<WriteToUsFormModel>("gdpr_consent")}
                 label={
                   <Box component='span'>
-                    Soublasím se zpracováním{" "}
+                    Souhlasím se zpracováním{" "}
                     <Box component='a' onClick={handleOnClickGdpr}>
                       osobních údajů
                     </Box>

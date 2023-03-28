@@ -5,6 +5,8 @@ require_once __DIR__ . "/./models/galleryModel.php";
 require_once __DIR__ . "/./models/resultModel.php";
 require_once __DIR__ . "/./models/homeModel.php";
 require_once __DIR__ . "/./models/commonModel.php";
+require_once __DIR__ . "/./models/TablesOfKeysModel.php";
+require_once __DIR__ . "/../auxFunctions/auxFunctions.php";
 
 class WebContent
 {
@@ -100,7 +102,14 @@ class WebContent
         $galleryImages
       );
 
-      $common = new CommonModel($conditions);
+      // Tables of keys
+      $auxFunctions = new AuxFunctions();
+      $paymentMethods = $auxFunctions->getTableOfKeyByGroupKey(
+        "PAYMENT_METHOD"
+      );
+      $tablesOfKeys = new TablesOfKeys($paymentMethods);
+
+      $common = new CommonModel($conditions, $tablesOfKeys);
 
       // Create Result model using above models
       $result = new ResultModel(
@@ -113,7 +122,7 @@ class WebContent
 
       apiResponse(true, "", $result);
     } catch (Exception $ex) {
-      apiResponse(false, $ex);
+      apiResponse(false, $ex->getMessage());
     }
   }
 }
