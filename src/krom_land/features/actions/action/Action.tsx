@@ -30,6 +30,38 @@ interface IProps extends HTMLAttributes<HTMLDivElement> {
   poznamkaKCene: string;
 }
 
+// TODO: Ano, existuje několik způsobů, jak přehrát video z TikTok v React JS. Jedním z alternativních způsobů je použití iframe, který je podporován v React JS.
+
+// Nejprve získáte embed kód videa z TikTok. K tomu můžete přejít na stránku videa v prohlížeči a kliknout na tlačítko "Share" (dílítko) a poté na tlačítko "Embed". Zkopírujte kód do schránky.
+
+// Poté můžete vytvořit komponentu TikTokVideo s použitím iframe tagu, která bude mít jako src atribut TikTok embed kód. Například:
+
+// jsx
+// Copy code
+// import React from "react";
+
+// function TikTokVideo() {
+//   const embedCode = "<paste your TikTok embed code here>";
+//   return (
+//     <div>
+//       <h1>My TikTok Video</h1>
+//       <iframe
+//         title="TikTok Video"
+//         src={embedCode}
+//         width="500"
+//         height="500"
+//         frameBorder="0"
+//         allowFullScreen
+//       ></iframe>
+//     </div>
+//   );
+// }
+
+// export default TikTokVideo;
+// Tento kód vytvoří komponentu TikTokVideo, která zobrazí video z TikTok v iframe tagu. V src atributu je potřeba vložit embed kód videa, který jste zkopírovali v prvním kroku.
+
+// Poznámka: Pokud použijete tento způsob, musíte mít na paměti, že výsledný vzhled přehrávače videa bude záviset na embed kódu, který poskytuje TikTok. Pokud potřebujete přizpůsobit vzhled přehrávače, musíte použít jinou metodu, například vlastní komponentu pro přehrávání videa s využitím některé z knihoven jako react-player nebo react-media-player.
+
 const Action = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
   // Store
   const common = useSelector(selectCommon);
