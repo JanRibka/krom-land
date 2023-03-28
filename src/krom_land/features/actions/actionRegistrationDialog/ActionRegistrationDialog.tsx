@@ -1,26 +1,19 @@
-import { Dayjs } from "dayjs";
-import { MuiTelInputInfo } from "mui-tel-input";
-import { nameof } from "nameof";
-import {
-  ChangeEvent,
-  Dispatch,
-  FormEvent,
-  SetStateAction,
-  useRef,
-  useState,
-} from "react";
+import { Dayjs } from 'dayjs';
+import { MuiTelInputInfo } from 'mui-tel-input';
+import { nameof } from 'nameof';
+import { ChangeEvent, Dispatch, FormEvent, SetStateAction, useRef, useState } from 'react';
 
-import CheckIcon from "@mui/icons-material/Check";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import DialogContent from "@mui/material/DialogContent";
-import DialogTitle from "@mui/material/DialogTitle";
-import Typography from "@mui/material/Typography";
+import CheckIcon from '@mui/icons-material/Check';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
+import Typography from '@mui/material/Typography';
 
-import DialogContentForm from "./dialogContent/DialogContentForm";
-import DialogContentFormModel from "./models/DialogContentFormModel";
-import ActionRegistrationDialogStyled from "./styledComponents/ActionRegistrationDialogStyled";
-import DialogActionsStyled from "./styledComponents/DialogActionsStyled";
+import DialogContentForm from './dialogContent/DialogContentForm';
+import DialogContentFormModel from './models/DialogContentFormModel';
+import ActionRegistrationDialogStyled from './styledComponents/ActionRegistrationDialogStyled';
+import DialogActionsStyled from './styledComponents/DialogActionsStyled';
 
 interface IProps {
   open: boolean;
@@ -28,7 +21,7 @@ interface IProps {
   setOpen: Dispatch<SetStateAction<boolean>>;
   handleOnClickTermsOfConditions: () => void;
 }
-
+// TODO: Při zavření dialogu zmazat data z dialogu
 const ActionRegistrationDialog = (props: IProps) => {
   // References
   const refForm = useRef<HTMLFormElement>(null);
