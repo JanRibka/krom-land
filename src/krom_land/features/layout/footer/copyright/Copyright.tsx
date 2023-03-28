@@ -31,7 +31,7 @@ const Copyright = () => {
     });
   };
 
-  const handleOnClickTermOfGdpr = () => {
+  const handleOnClickGdpr = () => {
     setDialogData({
       open: true,
       title: common.Conditions.GdprLabel,
@@ -55,7 +55,7 @@ const Copyright = () => {
         <Box component='a' onClick={handleOnClickTermOfConditions}>
           OBCHODNí PODMÍNKY
         </Box>
-        <Box component='a' onClick={handleOnClickTermOfGdpr}>
+        <Box component='a' onClick={handleOnClickGdpr}>
           GDPR
         </Box>
       </Box>

@@ -1,6 +1,9 @@
+import { nameof } from "nameof";
 import { ChangeEvent, FormEvent, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import AppCheckbox from "shared/components/checkbox/AppCheckbox";
+import OkDialog from "shared/dialogs/OkDialog";
+import { selectCommon } from "shared/infrastructure/store/common/commonSlice";
 import { selectContact } from "shared/infrastructure/store/contact/contactSlice";
 import { messageTemplate } from "shared/templates/messageTemplate";
 
@@ -13,31 +16,30 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 
 import SectionTitle from "../../../../shared/components/sectionTitle/SectionTitle";
 import ContactService from "../ContactService";
+import WriteToUsFormModel from "../models/WriteToUsFormModel";
 import WriteToUsStyled from "./styledComponents/WriteToUsStyled";
 
 const WritetoUs = () => {
   // References
   const refForm = useRef<HTMLFormElement>(null);
 
+  // Store
+  const common = useSelector(selectCommon);
+
   // Constants
   const _contactService = new ContactService();
   const theme = useTheme();
   const contact = useSelector(selectContact);
   const smDwn = useMediaQuery(theme.breakpoints.down("sm"));
-  const formDataInitit = {
-    user_name: "",
-    user_email: "",
-    message: "",
-  };
+
   // State
-  const [formData, setFormData] = useState<{
-    user_name: string;
-    user_email: string;
-    message: string;
-  }>(formDataInitit);
+  const [dialogOpen, setDialogOpen] = useState<boolean>(false);
+  const [formData, setFormData] = useState<WriteToUsFormModel>(
+    new WriteToUsFormModel()
+  );
 
   // Other
-  const handleTextFieldOnBlur = (
+  const handleTextFieldOnChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const name: string = e.target.name;
@@ -63,9 +65,25 @@ const WritetoUs = () => {
     );
 
     e.currentTarget.reset();
-    setFormData(formDataInitit);
+    setFormData(new WriteToUsFormModel());
   };
 
+  const handleOnClickGdpr = (
+    e: React.MouseEvent<HTMLAnchorElement | MouseEvent>
+  ) => {
+    e.preventDefault();
+    setDialogOpen(true);
+  };
+
+  const handleCheckboxOnChange = (
+    e: ChangeEvent<HTMLInputElement>,
+    checked: boolean
+  ) => {
+    const name: string = e.target.name;
+
+    setFormData({ ...formData, [name]: checked });
+  };
+  console.log(formData);
   return (
     <WriteToUsStyled component='section'>
       <Stack spacing={3} direction='column' className='write-to-us-wrapper'>
@@ -90,8 +108,9 @@ const WritetoUs = () => {
                   type='text'
                   className='first-row-input'
                   autoComplete='off'
-                  name='user_name'
-                  onBlur={handleTextFieldOnBlur}
+                  name={nameof<WriteToUsFormModel>("user_name")}
+                  value={formData.user_name}
+                  onChange={handleTextFieldOnChange}
                 />
                 <TextField
                   label='E-mail'
@@ -100,8 +119,9 @@ const WritetoUs = () => {
                   type='email'
                   className='first-row-input'
                   autoComplete='off'
-                  name='user_email'
-                  onBlur={handleTextFieldOnBlur}
+                  name={nameof<WriteToUsFormModel>("user_email")}
+                  value={formData.user_email}
+                  onChange={handleTextFieldOnChange}
                 />
               </Stack>
               <TextField
@@ -112,13 +132,27 @@ const WritetoUs = () => {
                 multiline
                 rows={4}
                 autoComplete='off'
-                name='message'
-                onBlur={handleTextFieldOnBlur}
+                name={nameof<WriteToUsFormModel>("message")}
+                value={formData.message}
+                onChange={handleTextFieldOnChange}
               />
             </>
-            <>
-              <AppCheckbox label={"Soublasím se zpracováním "} />
-            </>
+            <Box className='gdpr-consent'>
+              <AppCheckbox
+                required
+                checked={formData.gdpr_consent}
+                name={nameof<WriteToUsFormModel>("gdpr_consent")}
+                label={
+                  <Box component='span'>
+                    Soublasím se zpracováním{" "}
+                    <Box component='a' onClick={handleOnClickGdpr}>
+                      osobních údajů
+                    </Box>
+                  </Box>
+                }
+                onChange={handleCheckboxOnChange}
+              />
+            </Box>
             <>
               <Box className='button-wrapper'>
                 <Button variant='contained' type='submit'>
@@ -128,6 +162,19 @@ const WritetoUs = () => {
             </>
           </Stack>
         </form>
+
+        <OkDialog
+          isOpen={dialogOpen}
+          onClickOkButton={() => setDialogOpen(false)}
+          title={common.Conditions.GdprLabel}
+          isClosable
+          content={
+            <Box
+              component='span'
+              dangerouslySetInnerHTML={{ __html: common.Conditions.GdprText }}
+            />
+          }
+        />
       </Stack>
     </WriteToUsStyled>
   );

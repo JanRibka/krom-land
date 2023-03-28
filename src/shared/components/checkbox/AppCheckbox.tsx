@@ -1,8 +1,8 @@
-import { Checkbox, FormControl } from '@mui/material';
+import { Checkbox, FormControl } from "@mui/material";
 
-import AppCheckboxProps from './AppCheckboxProps';
-import AppCheckoboxStyled from './styledComponents/AppCheckboxStyled';
-import FormGroupStyled from './styledComponents/FormGroupStyled';
+import AppCheckboxProps from "./AppCheckboxProps";
+import AppCheckoboxStyled from "./styledComponents/AppCheckboxStyled";
+import FormGroupStyled from "./styledComponents/FormGroupStyled";
 
 const AppCheckbox = (props: AppCheckboxProps) => {
   const { label, useFormGroup, formGroupProps, error, ...checkboxProps } =

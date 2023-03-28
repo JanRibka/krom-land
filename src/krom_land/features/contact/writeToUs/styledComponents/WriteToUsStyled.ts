@@ -1,5 +1,5 @@
-import Box from '@mui/material/Box';
-import { styled } from '@mui/material/styles';
+import Box from "@mui/material/Box";
+import { styled } from "@mui/material/styles";
 
 const WriteToUsStyled = styled(Box)(({ theme }) => ({
   padding: "80px 0",
@@ -34,6 +34,15 @@ const WriteToUsStyled = styled(Box)(({ theme }) => ({
         ".MuiCheckbox-root:not(.Mui-checked)": {
           ".MuiSvgIcon-root": {
             color: theme.palette.text.primary,
+          },
+        },
+
+        ".gdpr-consent": {
+          a: {
+            textDecoration: "underline",
+            cursor: "pointer",
+            pointerEvents: "all",
+            color: theme.palette.primary.main,
           },
         },
       },
