@@ -29,7 +29,7 @@ interface IProps extends HTMLAttributes<HTMLDivElement> {
   zdaPoznamkaKCene: boolean;
   poznamkaKCene: string;
 }
-
+//TODO: Bude tu možnost zakázat registravi a zobrazí ze hláška že je plná kapacita
 // TODO: Ano, existuje několik způsobů, jak přehrát video z TikTok v React JS. Jedním z alternativních způsobů je použití iframe, který je podporován v React JS.
 
 // Nejprve získáte embed kód videa z TikTok. K tomu můžete přejít na stránku videa v prohlížeči a kliknout na tlačítko "Share" (dílítko) a poté na tlačítko "Embed". Zkopírujte kód do schránky.
