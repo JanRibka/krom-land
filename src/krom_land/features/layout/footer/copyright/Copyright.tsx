@@ -53,7 +53,7 @@ const Copyright = () => {
 
       <Box className='right'>
         <Box component='a' onClick={handleOnClickTermOfConditions}>
-          OBCHODNí PODMÍNKY
+          OBCHODNÍ PODMÍNKY
         </Box>
         <Box component='a' onClick={handleOnClickGdpr}>
           GDPR
