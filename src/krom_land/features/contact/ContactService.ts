@@ -1,7 +1,7 @@
 import { HttpStatusCode } from "axios";
 import AppNotification from "shared/components/notification/AppNotification";
+import ResultDataDTO from "shared/DTOs/ResultDataDTO";
 import Repository from "shared/infrastructure/repositiory/Repository";
-import ResultDataDTO from "shared/models/ResultDataDTO";
 import SendEmailModel from "shared/models/SendEmailModel";
 
 export default class ContactService {

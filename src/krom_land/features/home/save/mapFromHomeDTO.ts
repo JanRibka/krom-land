@@ -4,7 +4,7 @@ import {
 } from "shared/infrastructure/store/home/homeSlice";
 import ImageModel from "shared/models/ImageModel";
 
-import { HomeDTO } from "../models/HomeDTO";
+import HomeDTO from "../models/HomeDTO";
 import TeamMemberModel from "../models/TeamMemberModel";
 
 export const mapFromHomeDTO = (homeDTO?: HomeDTO | null) => {

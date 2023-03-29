@@ -4,6 +4,9 @@ import { windowScrollTo } from "seamless-scroll-polyfill";
 import AppNotification from "shared/components/notification/AppNotification";
 import { useRequest } from "shared/dataAccess/useRequest";
 import ConditionsDTO from "shared/DTOs/ConditionsDTO";
+import KromLandDTO from "shared/DTOs/KromLandDTO";
+import { mapFromCommonDTO } from "shared/DTOs/mapFromCommonDTO";
+import ResultDataDTO from "shared/DTOs/ResultDataDTO";
 import TableOfKeysDTO from "shared/DTOs/TableOfKeysDTO";
 import { useActionsSlice } from "shared/infrastructure/store/actions/useActionsSlice";
 import { selectCommon } from "shared/infrastructure/store/common/commonSlice";
@@ -11,7 +14,6 @@ import { useCommonSlice } from "shared/infrastructure/store/common/useCommonSlic
 import { useContactSlice } from "shared/infrastructure/store/contact/useContactSlice";
 import { useGallerySlice } from "shared/infrastructure/store/gallery/useGallerySlice";
 import { useHomeSlice } from "shared/infrastructure/store/home/useHomeSlice";
-import ResultDataDTO from "shared/models/ResultDataDTO";
 
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 
@@ -20,8 +22,6 @@ import { mapFromActionsDTO } from "../actions/save/mapFromActionsDTO";
 import { mapFromContactDTO } from "../contact/save/mapFromContactDTO";
 import { mapFromGalleryDTO } from "../gallery/save/mapFromGalleryDTO";
 import { mapFromHomeDTO } from "../home/save/mapFromHomeDTO";
-import KromLandDTO from "../KromLandDTO";
-import { mapFromCommonDTO } from "../mapFromCommonDTO";
 import Footer from "./footer/Footer";
 import NavBar from "./navBar/NavBar";
 import ButtonUpStyled from "./styledComponents/ButtonUpStyled";

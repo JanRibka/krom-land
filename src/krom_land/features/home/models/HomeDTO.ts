@@ -1,6 +1,6 @@
 import TeamMemberDTO from "./TeamMemberDTO";
 
-export interface HomeDTO {
+export default interface HomeDTO {
   Id: number | null;
   Title: string | null;
   Description: string | null;

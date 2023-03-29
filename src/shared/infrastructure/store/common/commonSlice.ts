@@ -1,4 +1,5 @@
 import ConditionsModel from "shared/models/ConditionsModel";
+import TableOfKeysModel from "shared/models/TableOfKeysModel";
 
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
@@ -6,11 +7,13 @@ import AppState from "../AppState";
 
 export interface CommonModel {
   Conditions: ConditionsModel;
+  TableOfKeys: TableOfKeysModel;
   _dataLoaded: boolean;
 }
 
 export const initialState: CommonModel = {
   Conditions: new ConditionsModel(),
+  TableOfKeys: new TableOfKeysModel(),
   _dataLoaded: false,
 };
 
