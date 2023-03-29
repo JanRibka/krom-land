@@ -1,5 +1,4 @@
 class DialogContentFormModel {
-  subject: string = "KROM Land - Registrace na akci";
   action_name: string = "";
   user_email: string = "";
   child_name: string = "";

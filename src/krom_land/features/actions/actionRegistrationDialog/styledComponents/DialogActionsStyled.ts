@@ -8,7 +8,7 @@ const DialogActionsStyled = styled(DialogActions)(({ theme }) => ({
   margin: "0 15px",
 
   [theme.breakpoints.down("md")]: {
-    flexDirection: "column",
+    flexDirection: "column-reverse",
     justifyContent: "center",
 
     p: {
@@ -17,7 +17,7 @@ const DialogActionsStyled = styled(DialogActions)(({ theme }) => ({
     },
 
     ".buttons-wrapper": {
-      marginTop: "10px",
+      marginBottom: "10px",
     },
   },
 

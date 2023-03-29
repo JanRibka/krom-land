@@ -1,8 +1,8 @@
-import { parse as dateParse } from "date-fns";
-import cslocale from "date-fns/locale/cs";
 import { Dayjs } from "dayjs";
 import { MuiTelInputInfo } from "mui-tel-input/dist/index.types";
 import { ChangeEvent, FormEvent, forwardRef, Ref } from "react";
+import { useSelector } from "react-redux";
+import { selectCommon } from "shared/infrastructure/store/common/commonSlice";
 
 import Button from "@mui/material/Button";
 import FormControl from "@mui/material/FormControl";
@@ -15,10 +15,6 @@ import { useTheme } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
 
 import { nameof } from "../../../../../nameof";
 import DialogContentFormModel from "../models/DialogContentFormModel";
@@ -45,9 +41,11 @@ interface IProps {
 
 const DialogContentForm = forwardRef(
   (props: IProps, ref: Ref<HTMLFormElement>) => {
+    // Store
+    const common = useSelector(selectCommon);
+
     // Constants
     const theme = useTheme();
-    const mdDwn = useMediaQuery(theme.breakpoints.down("md"));
     const smDwn = useMediaQuery(theme.breakpoints.down("sm"));
     const rowDirection = smDwn ? "column" : "row";
 
@@ -98,64 +96,18 @@ const DialogContentForm = forwardRef(
               </Stack>
             </>
             <>
-              <LocalizationProvider
-                dateAdapter={AdapterDayjs}
-                adapterLocale={cslocale}
-              >
-                {mdDwn ? (
-                  <MobileDatePicker
-                    label='Datum narození'
-                    inputFormat='DD.MM.YYYY'
-                    value={dateParse(
-                      props.formData.child_birthday,
-                      "dd.mm.yyyy",
-                      new Date()
-                    )}
-                    onChange={(date: any, keyboardInputValue) =>
-                      props.handleOnChangeDatePipcker(
-                        date,
-                        keyboardInputValue,
-                        nameof<DialogContentFormModel>("child_birthday")
-                      )
-                    }
-                    renderInput={(params) => (
-                      <TextField
-                        {...params}
-                        required
-                        error={false}
-                        placeholder='dd.mm.rrrr'
-                        name={nameof<DialogContentFormModel>("child_birthday")}
-                      />
-                    )}
-                  />
-                ) : (
-                  <DesktopDatePicker
-                    label='Datum narození'
-                    inputFormat='DD.MM.YYYY'
-                    value={dateParse(
-                      props.formData.child_birthday,
-                      "dd.mm.yyyy",
-                      new Date()
-                    )}
-                    onChange={(date: any, keyboardInputValue) =>
-                      props.handleOnChangeDatePipcker(
-                        date,
-                        keyboardInputValue,
-                        nameof<DialogContentFormModel>("child_birthday")
-                      )
-                    }
-                    renderInput={(params) => (
-                      <TextField
-                        {...params}
-                        required
-                        error={false}
-                        placeholder='dd.mm.rrrr'
-                        name={nameof<DialogContentFormModel>("child_birthday")}
-                      />
-                    )}
-                  />
-                )}
-              </LocalizationProvider>
+              <TextField
+                label='Datum narození'
+                placeholder='dd.mm.rrrr'
+                required
+                fullWidth
+                variant='outlined'
+                type='text'
+                autoComplete='off'
+                name={nameof<DialogContentFormModel>("child_birthday")}
+                value={props.formData.child_birthday}
+                onChange={props.handleTextFieldOnChange}
+              />
             </>
             <>
               <Typography variant='h6' className='label'>
@@ -404,16 +356,14 @@ const DialogContentForm = forwardRef(
                   value={props.formData.other_pay_method}
                   onChange={props.handleOnChangeRadio}
                 >
-                  <FormControlLabel
-                    value='Přes účet'
-                    control={<Radio required />}
-                    label='Přes účet'
-                  />
-                  <FormControlLabel
-                    value='Hotově při prvním dni víkendu'
-                    control={<Radio required />}
-                    label='Hotově při prvním dni víkendu'
-                  />
+                  {common.TablesOfKeys.PaymentMethodts.map((item, index) => (
+                    <FormControlLabel
+                      key={"paymentMethod_" + index}
+                      value={item.Key}
+                      control={<Radio required disabled={!item.Enabled} />}
+                      label={item.Name}
+                    />
+                  ))}
                 </RadioGroup>
               </FormControl>
 
@@ -440,11 +390,6 @@ const DialogContentForm = forwardRef(
             submit
           </Button>
           {/* Hiddens */}
-          <input
-            type='hidden'
-            name={nameof<DialogContentFormModel>("subject")}
-            value={props.formData.subject}
-          />
           <input
             type='hidden'
             name={nameof<DialogContentFormModel>("action_name")}

@@ -1,7 +1,7 @@
 import ConditionsDTO from "shared/DTOs/ConditionsDTO";
-import TableOfKeysDTO from "shared/DTOs/TableOfKeysDTO";
+import TablesOfKeysModel from "shared/models/TablesOfKeysModel";
 
 export default interface CommonDTO {
   Conditions: ConditionsDTO | null;
-  TableOfKeys: TableOfKeysDTO | null;
+  TablesOfKeys: TablesOfKeysModel | null;
 }

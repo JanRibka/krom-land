@@ -11,6 +11,9 @@ export const mapFromCommonDTO = (commonDTO?: CommonDTO | null) => {
         commonDTO?.Conditions?.TermsOfConditionsLabel ?? "",
       TermsOfConditionsText: commonDTO?.Conditions?.TermsOfConditionsText ?? "",
     },
+    TablesOfKeys: {
+      PaymentMethodts: commonDTO?.TablesOfKeys?.PaymentMethodts ?? [],
+    },
     _dataLoaded: true,
   };
 

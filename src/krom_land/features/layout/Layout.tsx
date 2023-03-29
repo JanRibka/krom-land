@@ -7,13 +7,13 @@ import ConditionsDTO from "shared/DTOs/ConditionsDTO";
 import KromLandDTO from "shared/DTOs/KromLandDTO";
 import { mapFromCommonDTO } from "shared/DTOs/mapFromCommonDTO";
 import ResultDataDTO from "shared/DTOs/ResultDataDTO";
-import TableOfKeysDTO from "shared/DTOs/TableOfKeysDTO";
 import { useActionsSlice } from "shared/infrastructure/store/actions/useActionsSlice";
 import { selectCommon } from "shared/infrastructure/store/common/commonSlice";
 import { useCommonSlice } from "shared/infrastructure/store/common/useCommonSlice";
 import { useContactSlice } from "shared/infrastructure/store/contact/useContactSlice";
 import { useGallerySlice } from "shared/infrastructure/store/gallery/useGallerySlice";
 import { useHomeSlice } from "shared/infrastructure/store/home/useHomeSlice";
+import TablesOfKeysModel from "shared/models/TablesOfKeysModel";
 
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 
@@ -97,7 +97,7 @@ const Layout = (props: IProps) => {
       Data: {
         Common: {
           Conditions: new ConditionsDTO(),
-          TableOfKeys: new TableOfKeysDTO(),
+          TablesOfKeys: new TablesOfKeysModel(),
         },
         Home: {
           Id: null,
@@ -162,11 +162,11 @@ const Layout = (props: IProps) => {
         AppNotification("Chyba", String(data), "danger");
       } else {
         if (data.Success) {
-          handleCommonUpdate(mapFromCommonDTO(data?.Data?.Common));
           handleHomeUpdate(mapFromHomeDTO(data?.Data?.Home));
           handleActionsUpdate(mapFromActionsDTO(data.Data?.Actions));
           handleGalleryUpdate(mapFromGalleryDTO(data.Data?.Gallery));
           handleContactUpdate(mapFromContactDTO(data.Data?.Contact));
+          handleCommonUpdate(mapFromCommonDTO(data?.Data?.Common));
         } else {
           AppNotification("Chyba", data.ErrMsg ?? "", "danger");
         }

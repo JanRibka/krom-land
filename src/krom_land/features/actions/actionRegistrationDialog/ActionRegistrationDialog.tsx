@@ -1,25 +1,34 @@
-import { Dayjs } from 'dayjs';
-import { MuiTelInputInfo } from 'mui-tel-input';
-import { nameof } from 'nameof';
-import { ChangeEvent, Dispatch, FormEvent, SetStateAction, useRef, useState } from 'react';
+import { Dayjs } from "dayjs";
+import { MuiTelInputInfo } from "mui-tel-input";
+import { nameof } from "nameof";
+import {
+  ChangeEvent,
+  Dispatch,
+  FormEvent,
+  SetStateAction,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
-import CheckIcon from '@mui/icons-material/Check';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import DialogContent from '@mui/material/DialogContent';
-import DialogTitle from '@mui/material/DialogTitle';
-import Typography from '@mui/material/Typography';
+import CheckIcon from "@mui/icons-material/Check";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import DialogContent from "@mui/material/DialogContent";
+import DialogTitle from "@mui/material/DialogTitle";
+import Typography from "@mui/material/Typography";
 
-import DialogContentForm from './dialogContent/DialogContentForm';
-import DialogContentFormModel from './models/DialogContentFormModel';
-import ActionRegistrationDialogStyled from './styledComponents/ActionRegistrationDialogStyled';
-import DialogActionsStyled from './styledComponents/DialogActionsStyled';
+import DialogContentForm from "./dialogContent/DialogContentForm";
+import DialogContentFormModel from "./models/DialogContentFormModel";
+import ActionRegistrationDialogStyled from "./styledComponents/ActionRegistrationDialogStyled";
+import DialogActionsStyled from "./styledComponents/DialogActionsStyled";
 
 interface IProps {
   open: boolean;
   actionName: string;
   setOpen: Dispatch<SetStateAction<boolean>>;
   handleOnClickTermsOfConditions: () => void;
+  handleOnAfterFormSubmit: (formData: DialogContentFormModel) => void;
 }
 // TODO: Při zavření dialogu zmazat data z dialogu
 const ActionRegistrationDialog = (props: IProps) => {
@@ -32,6 +41,18 @@ const ActionRegistrationDialog = (props: IProps) => {
   );
 
   // Other
+  useEffect(() => {
+    setActionName();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.actionName]);
+
+  const setActionName = () => {
+    setFormData({
+      ...formData,
+      action_name: props.actionName,
+    });
+  };
+
   const handleTextFieldOnChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -110,9 +131,10 @@ const ActionRegistrationDialog = (props: IProps) => {
   const handleFormOnSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     e.currentTarget.reset();
+    props.handleOnAfterFormSubmit(formData);
     setFormData(new DialogContentFormModel());
   };
-
+  console.log(formData);
   return (
     <ActionRegistrationDialogStyled
       open={props.open}

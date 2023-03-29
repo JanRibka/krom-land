@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . "/../../vendor/autoload.php";
 
+// Vývoj
 dibi::connect([
   "driver" => "mysqli",
   "host" => "sql5.webzdarma.cz",
