@@ -27,6 +27,8 @@ interface IProps {
   open: boolean;
   id: number;
   actionName: string;
+  actionPrice: string;
+  actionDate: string;
   setOpen: Dispatch<SetStateAction<boolean>>;
   handleOnClickTermsOfConditions: () => void;
   handleOnAfterFormSubmit: (formData: DialogContentFormModel) => void;
@@ -52,6 +54,8 @@ const ActionRegistrationDialog = (props: IProps) => {
       ...formData,
       action_id: props.id,
       action_name: props.actionName,
+      action_price: props.actionPrice,
+      action_date: props.actionDate,
     });
   };
 
@@ -147,6 +151,8 @@ const ActionRegistrationDialog = (props: IProps) => {
       ...new DialogContentFormModel(),
       action_id: props.id,
       action_name: props.actionName,
+      action_price: props.actionPrice,
+      action_date: props.actionDate,
     };
     setFormData(newFormDat);
   };

@@ -1,10 +1,12 @@
 <?php
 require_once __DIR__ . "/../db/db.php";
+require_once __DIR__ . "/../email/email.php";
 
 class Registrations
 {
   public static function create()
   {
+    $email = new Email();
     $allowed_servers = ["https://ribkavyvoj.kvalitne.cz/akce"];
 
     if (in_array($_SERVER["HTTP_REFERER"], $allowed_servers)) {
@@ -67,6 +69,8 @@ class Registrations
         $registration_date = date("Y-m-d H:i:s");
         $payed = false;
         $state = "";
+        $action_price = $registrationData->action_price;
+        $action_date = $registrationData->action_date;
 
         $arr = [
           "id_action" => $id_action,
@@ -101,6 +105,20 @@ class Registrations
         dibi::query("INSERT INTO registrations", $arr);
 
         // Odeslání emailu zákazníkovi
+        $email->sendInternally(
+          $user_email,
+          "Potvrzení registrace",
+          "Dobrý den, tímto emailem potvrzujeme přijetí vaší registrace na " .
+            $action_name .
+            " Akce proběhne ve dnech " .
+            $action_date .
+            "Jako způsob úhrady byla zvolena hotovostní platba při předání dítěte." .
+            "Cena " .
+            $action_price .
+            "Objednávka #" .
+            $variableSymbol .
+            "Děkujeme Vám za projevenou důveru. S pozdravem KROM Land Tento email byl vygenerován automaticky, prosíme, nedpovídejte na něj"
+        );
 
         // Odeslání emailu do KROM Land
 

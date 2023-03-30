@@ -39,7 +39,7 @@ class Email
         $mail->CharSet = "UTF-8";
         $mail->ContentType = "text/html; charset=UTF-8";
         $mail->addAddress($to, "KROM Land");
-        $mail->setFrom($user_email, $user_name);
+        $mail->setFrom("info@ribkavyvoj.kvalitne.cz");
         $mail->addReplyTo($user_email, $user_name);
         $mail->Subject = $subject;
         $mail->isHTML(true);
@@ -55,6 +55,23 @@ class Email
     } else {
       apiResponse(false, "Z tohoto serveru nemůžete odesílat zprávy.");
     }
+  }
+
+  public function sendInternally($to, $subject, $message)
+  {
+    $mail = new PHPMailer();
+
+    // Konfigurace
+    $mail->CharSet = "UTF-8";
+    $mail->ContentType = "text/html; charset=UTF-8";
+    $mail->addAddress($to);
+    $mail->setFrom("info@ribkavyvoj.kvalitne.cz");
+    $mail->Subject = $subject;
+    $mail->isHTML(true);
+    $mail->Body = $message;
+
+    // Odeslání emailu
+    $mail->send();
   }
 }
 ?>
