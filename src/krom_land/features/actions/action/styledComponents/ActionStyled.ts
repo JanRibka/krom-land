@@ -101,6 +101,7 @@ const ActionStyled = styled(Box)(({ theme }) => ({
     [theme.breakpoints.down("lg")]: {
       width: "90%",
       maxWidth: "90%",
+      height: "unset",
     },
   },
 

@@ -31,6 +31,7 @@ interface IProps extends HTMLAttributes<HTMLDivElement> {
   cena: string;
   zdaPoznamkaKCene: boolean;
   poznamkaKCene: string;
+  capacityFull: boolean;
 }
 //TODO: Bude tu možnost zakázat registravi a zobrazí ze hláška že je plná kapacita
 // TODO: Ano, existuje několik způsobů, jak přehrát video z TikTok v React JS. Jedním z alternativních způsobů je použití iframe, který je podporován v React JS.
@@ -90,6 +91,7 @@ const Action = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
     cena,
     zdaPoznamkaKCene,
     poznamkaKCene,
+    capacityFull,
     ...restProps
   } = props;
   const xlDwn = useMediaQuery(theme.breakpoints.down("xl"));
@@ -117,10 +119,13 @@ const Action = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
                     cena={cena}
                     zdaPoznamkaKCene={zdaPoznamkaKCene}
                     className='detail-info'
+                    capacityFull={capacityFull}
                   />
-                  <Button variant='contained' onClick={() => setOpen(true)}>
-                    Chci se registrovat
-                  </Button>
+                  {!capacityFull && (
+                    <Button variant='contained' onClick={() => setOpen(true)}>
+                      Chci se registrovat
+                    </Button>
+                  )}
                 </>
               );
             case theme.palette.primary.main:
@@ -132,14 +137,17 @@ const Action = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
                     cena={cena}
                     zdaPoznamkaKCene={zdaPoznamkaKCene}
                     className='second'
+                    capacityFull={capacityFull}
                   />
-                  <Button
-                    variant='contained'
-                    className='detail-info second'
-                    onClick={() => setOpen(true)}
-                  >
-                    Chci se registrovat
-                  </Button>
+                  {!capacityFull && (
+                    <Button
+                      variant='contained'
+                      className='detail-info second'
+                      onClick={() => setOpen(true)}
+                    >
+                      Chci se registrovat
+                    </Button>
+                  )}
                 </>
               );
             case theme.palette.common.purple.main:
@@ -151,21 +159,26 @@ const Action = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
                     cena={cena}
                     zdaPoznamkaKCene={zdaPoznamkaKCene}
                     className='third'
+                    capacityFull={capacityFull}
                   />
-                  <Button
-                    variant='contained'
-                    className='detail-info third'
-                    onClick={() => setOpen(true)}
-                  >
-                    Chci se registrovat
-                  </Button>
+                  {!capacityFull && (
+                    <Button
+                      variant='contained'
+                      className='detail-info third'
+                      onClick={() => setOpen(true)}
+                    >
+                      Chci se registrovat
+                    </Button>
+                  )}
                 </>
               );
             default:
               return (
-                <Button variant='contained' onClick={() => setOpen(true)}>
-                  Chci se registrovat
-                </Button>
+                !capacityFull && (
+                  <Button variant='contained' onClick={() => setOpen(true)}>
+                    Chci se registrovat
+                  </Button>
+                )
               );
           }
         })()}

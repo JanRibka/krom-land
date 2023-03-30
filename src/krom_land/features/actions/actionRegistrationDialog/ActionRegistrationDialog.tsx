@@ -150,7 +150,7 @@ const ActionRegistrationDialog = (props: IProps) => {
     };
     setFormData(newFormDat);
   };
-  console.log(formData);
+
   return (
     <ActionRegistrationDialogStyled
       open={props.open}

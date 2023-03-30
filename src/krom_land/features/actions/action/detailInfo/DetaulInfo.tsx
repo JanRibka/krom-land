@@ -6,6 +6,7 @@ interface IProps {
   cena: string;
   zdaPoznamkaKCene: boolean;
   className?: string;
+  capacityFull: boolean;
 }
 
 const DetailInfo = (props: IProps) => {
@@ -14,9 +15,13 @@ const DetailInfo = (props: IProps) => {
       <p>
         Kde: {props.kde}&nbsp;&nbsp;&nbsp;&nbsp;Kdy: {props.kdy}
       </p>
-      <p>
-        Cena: {props.cena} Kč{props.zdaPoznamkaKCene ? " *" : ""}
-      </p>
+      {props.capacityFull ? (
+        <p>!!Kapacita je naplněná!!</p>
+      ) : (
+        <p>
+          Cena: {props.cena} Kč{props.zdaPoznamkaKCene ? " *" : ""}
+        </p>
+      )}
     </DetailInfoStyled>
   );
 };

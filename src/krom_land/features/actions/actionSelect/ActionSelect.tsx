@@ -150,6 +150,7 @@ const ActionSelect = () => {
               cena={actions.ActionDetails?.[0]?.Price}
               zdaPoznamkaKCene={actions.ActionDetails?.[0]?.IsPriceRemark}
               poznamkaKCene={actions.ActionDetails?.[0]?.PriceRemark}
+              capacityFull={actions.ActionDetails?.[0]?.CapacityFull}
             />
             <Action
               ref={refTabSecond}
@@ -165,6 +166,7 @@ const ActionSelect = () => {
               cena={actions.ActionDetails?.[1]?.Price}
               zdaPoznamkaKCene={actions.ActionDetails?.[1]?.IsPriceRemark}
               poznamkaKCene={actions.ActionDetails?.[1]?.PriceRemark}
+              capacityFull={actions.ActionDetails?.[1]?.CapacityFull}
             />
             <Action
               ref={refTabThird}
@@ -180,6 +182,7 @@ const ActionSelect = () => {
               cena={actions.ActionDetails?.[2]?.Price}
               zdaPoznamkaKCene={actions.ActionDetails?.[2]?.IsPriceRemark}
               poznamkaKCene={actions.ActionDetails?.[2]?.PriceRemark}
+              capacityFull={actions.ActionDetails?.[2]?.CapacityFull}
             />
             <Documents ref={refTabFourth} />
           </Box>
