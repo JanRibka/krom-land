@@ -12,4 +12,5 @@ export default interface ActionDetailDTO {
   PriceRemark: string | null;
   Place: string | null;
   Date: string | null;
+  CapacityFull: string | null;
 }

@@ -19,6 +19,7 @@ import DetailInfo from "./detailInfo/DetaulInfo";
 import ActionStyled from "./styledComponents/ActionStyled";
 
 interface IProps extends HTMLAttributes<HTMLDivElement> {
+  idAction: number;
   name: string;
   description: string;
   backgroundColor: string;
@@ -77,6 +78,7 @@ const Action = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
   const _actionsService = new ActionsService();
   const theme = useTheme();
   const {
+    idAction,
     name,
     description,
     backgroundColor,
@@ -252,6 +254,7 @@ const Action = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
       {/* Registrační dialog */}
       <ActionRegistrationDialog
         open={open}
+        id={idAction}
         actionName={name}
         setOpen={setOpen}
         handleOnClickTermsOfConditions={() =>

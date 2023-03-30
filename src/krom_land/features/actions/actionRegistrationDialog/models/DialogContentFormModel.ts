@@ -1,4 +1,5 @@
 class DialogContentFormModel {
+  action_id: number = 0;
   action_name: string = "";
   user_email: string = "";
   child_name: string = "";
@@ -16,7 +17,7 @@ class DialogContentFormModel {
   address_city: string = "";
   address_psc: string = "";
   other_hendicap: string = "";
-  other_photos: string = "";
+  other_photos: boolean | null = null;
   other_how_children_arrives: string = "";
   other_pickup_person: string = "";
   other_pay_method: string = "";

@@ -6,7 +6,7 @@ import {
   selectGalleryImages,
 } from "shared/infrastructure/store/gallery/gallerySlice";
 
-import Button from "@mui/material/Button";
+import { Typography } from "@mui/material";
 import Stack from "@mui/material/Stack";
 
 import GridContainer from "../../../shared/components/gridContainer/GridContainer";
@@ -40,48 +40,60 @@ const Gallery = () => {
     let result: JSX.Element[] = [];
     let pictures: JSX.Element[] = [];
 
-    galleryImages.forEach((galleryImage, index) => {
-      if (
-        (index === 0 || index % 4 !== 0) &&
-        index + 1 !== galleryImages.length
-      ) {
-        pictures.push(
-          <GridItem xs={12} sm={6} lg={3}>
-            <Picture
-              photo={galleryImage.Image}
-              index={index}
-              enbHover
-              handleOpenGalleryOnClick={handleOpenGalleryOnClick}
-            />
-          </GridItem>
-        );
-      } else if (index + 1 === galleryImages.length) {
-        pictures.push(
-          <GridItem xs={12} sm={6} lg={3}>
-            <Picture
-              photo={galleryImage.Image}
-              index={index}
-              enbHover
-              handleOpenGalleryOnClick={handleOpenGalleryOnClick}
-            />
-          </GridItem>
-        );
+    if (galleryImages.length === 0) {
+      result.push(
+        <Typography
+          variant='h5'
+          key='noPhotos'
+          sx={{ textAlign: "center", marginBottom: "25px" }}
+        >
+          Zatím zde žádná fotografie není, ale budou zde postupně přibývat
+        </Typography>
+      );
+    } else {
+      galleryImages.forEach((galleryImage, index) => {
+        if (
+          (index === 0 || index % 4 !== 0) &&
+          index + 1 !== galleryImages.length
+        ) {
+          pictures.push(
+            <GridItem xs={12} sm={6} lg={3}>
+              <Picture
+                photo={galleryImage.Image}
+                index={index}
+                enbHover
+                handleOpenGalleryOnClick={handleOpenGalleryOnClick}
+              />
+            </GridItem>
+          );
+        } else if (index + 1 === galleryImages.length) {
+          pictures.push(
+            <GridItem xs={12} sm={6} lg={3}>
+              <Picture
+                photo={galleryImage.Image}
+                index={index}
+                enbHover
+                handleOpenGalleryOnClick={handleOpenGalleryOnClick}
+              />
+            </GridItem>
+          );
 
-        result.push(<GridContainer>{pictures}</GridContainer>);
-      } else {
-        result.push(<GridContainer>{pictures}</GridContainer>);
-        pictures = [
-          <GridItem xs={12} sm={6} lg={3}>
-            <Picture
-              photo={galleryImage.Image}
-              index={index}
-              enbHover
-              handleOpenGalleryOnClick={handleOpenGalleryOnClick}
-            />
-          </GridItem>,
-        ];
-      }
-    });
+          result.push(<GridContainer>{pictures}</GridContainer>);
+        } else {
+          result.push(<GridContainer>{pictures}</GridContainer>);
+          pictures = [
+            <GridItem xs={12} sm={6} lg={3}>
+              <Picture
+                photo={galleryImage.Image}
+                index={index}
+                enbHover
+                handleOpenGalleryOnClick={handleOpenGalleryOnClick}
+              />
+            </GridItem>,
+          ];
+        }
+      });
+    }
 
     return result;
   };

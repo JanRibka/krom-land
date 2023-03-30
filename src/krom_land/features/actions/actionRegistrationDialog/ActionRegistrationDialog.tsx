@@ -25,6 +25,7 @@ import DialogActionsStyled from "./styledComponents/DialogActionsStyled";
 
 interface IProps {
   open: boolean;
+  id: number;
   actionName: string;
   setOpen: Dispatch<SetStateAction<boolean>>;
   handleOnClickTermsOfConditions: () => void;
@@ -42,13 +43,14 @@ const ActionRegistrationDialog = (props: IProps) => {
 
   // Other
   useEffect(() => {
-    setActionName();
+    setHiddens();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.actionName]);
+  }, [props.actionName, props.id]);
 
-  const setActionName = () => {
+  const setHiddens = () => {
     setFormData({
       ...formData,
+      action_id: props.id,
       action_name: props.actionName,
     });
   };
@@ -114,15 +116,23 @@ const ActionRegistrationDialog = (props: IProps) => {
 
   const handleOnChangeRadio = (e: ChangeEvent<HTMLInputElement>) => {
     const name = e.target.name;
-    const value = e.target.value;
+    let value: string = e.target.value;
     let data: Partial<DialogContentFormModel> = {
       [name]: value,
     };
+
     if (
       name === nameof<DialogContentFormModel>("other_how_children_arrives") &&
-      value === "Může odcházet po akci samo domů"
+      value === "ALONE"
     ) {
-      data = { ...data, other_pickup_person: "" };
+      data = {
+        ...data,
+        other_pickup_person: "",
+      };
+    } else if (name === nameof<DialogContentFormModel>("other_photos")) {
+      data = {
+        [name]: JSON.parse(value),
+      };
     }
 
     setFormData({ ...formData, ...data });
@@ -132,7 +142,13 @@ const ActionRegistrationDialog = (props: IProps) => {
     e.preventDefault();
     e.currentTarget.reset();
     props.handleOnAfterFormSubmit(formData);
-    setFormData(new DialogContentFormModel());
+
+    const newFormDat: DialogContentFormModel = {
+      ...new DialogContentFormModel(),
+      action_id: props.id,
+      action_name: props.actionName,
+    };
+    setFormData(newFormDat);
   };
   console.log(formData);
   return (

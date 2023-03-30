@@ -23,6 +23,7 @@ export const mapFromActionsDTO = (actionsDTO?: ActionsDTO | null) => {
       actionsDTO?.ActionDetails.map(
         (item) =>
           new ActionDetailModel({
+            Id: item.Id ?? 0,
             ActionOrder: item.ActionOrder ?? 0,
             MonthName: item.MonthName ?? "",
             Image: !!item?.Image ? JSON.parse(item.Image) : new ImageModel(),
@@ -34,6 +35,7 @@ export const mapFromActionsDTO = (actionsDTO?: ActionsDTO | null) => {
             PriceRemark: item.PriceRemark ?? "",
             Place: item.Place ?? "",
             Date: item.Date ?? "",
+            CapacityFull: item.CapacityFull === "1" ? true : false,
           })
       ) ?? [],
     DocumentsToDownload:

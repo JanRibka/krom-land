@@ -1,6 +1,6 @@
-import Box from '@mui/material/Box';
-import { grey } from '@mui/material/colors';
-import { styled } from '@mui/material/styles';
+import Box from "@mui/material/Box";
+import { grey } from "@mui/material/colors";
+import { styled } from "@mui/material/styles";
 
 const AboutUsStyled = styled(Box)(({ theme }) => ({
   position: "relative",
@@ -19,10 +19,12 @@ const AboutUsStyled = styled(Box)(({ theme }) => ({
   },
 
   ".about-us-image-wrapper": {
-    height: "550px",
+    // height: "550px",
+    aspectRatio: "1/1",
     borderRadius: "30px",
     maxWidth: "550px",
     width: "100%",
+    overflow: "hidden",
     backgroundColor: grey[400],
 
     [theme.breakpoints.down("lg")]: {
@@ -32,9 +34,13 @@ const AboutUsStyled = styled(Box)(({ theme }) => ({
 
     ".about-us-image": {
       objectFit: "cover",
-      borderRadius: "30px",
       width: "100%",
       height: "100%",
+      transition: "all 1000ms ease-in-out",
+
+      "&:hover": {
+        scale: "1.2",
+      },
     },
   },
 

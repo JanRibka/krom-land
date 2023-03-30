@@ -11,10 +11,30 @@ class Registrations
       try {
         $registrationDataEncoded = $_POST["registrationData"];
 
+        // Vytvoření variabilního symbolu
+        $actualYear = date("Y");
+        $actualMonth = date("m");
+
+        $symbols = dibi::query(
+          "SELECT vs.variableSymbol FROM variableSymbols as vs WHERE YEAR(Date) = $actualYear AND MONTH(Date) = $actualMonth"
+        )->fetchAll();
+        $symbolsCount = count($symbols);
+        $variableSymbol =
+          $actualYear . $actualMonth . sprintf("%05d", $symbolsCount + 1);
+
+        $arr = [
+          "VariableSymbol" => $variableSymbol,
+          "Date" => date("Y-m-d H:i:s"),
+        ];
+        dibi::query("INSERT INTO variableSymbols", $arr);
+
+        $idvariableSymbol = dibi::getInsertId();
+
         // Uložení registrace do DB
         $registrationDataDecoded = base64_decode($registrationDataEncoded);
         $registrationData = json_decode(urldecode($registrationDataDecoded));
 
+        $id_action = $registrationData->action_id;
         $action_name = $registrationData->action_name;
         $user_email = $registrationData->user_email;
         $child_name = $registrationData->child_name;
@@ -44,11 +64,12 @@ class Registrations
         $other_pickup_person = $registrationData->other_pickup_person;
         $other_pay_method = $registrationData->other_pay_method;
         $other_other_info = $registrationData->other_other_info;
-        $registration_date = date("d.m.Y");
+        $registration_date = date("Y-m-d H:i:s");
         $payed = false;
         $state = "";
 
         $arr = [
+          "id_action" => $id_action,
           "action_name" => $action_name,
           "user_email" => $user_email,
           "child_name" => $child_name,
@@ -74,6 +95,7 @@ class Registrations
           "registration_date" => $registration_date,
           "payed" => $payed,
           "state" => $state,
+          "id_variable_symbol" => $idvariableSymbol,
         ];
 
         dibi::query("INSERT INTO registrations", $arr);

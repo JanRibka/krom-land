@@ -289,16 +289,16 @@ const DialogContentForm = forwardRef(
                 <RadioGroup
                   row
                   name={nameof<DialogContentFormModel>("other_photos")}
-                  value={props.formData.other_photos}
+                  value={String(props.formData.other_photos)}
                   onChange={props.handleOnChangeRadio}
                 >
                   <FormControlLabel
-                    value='Ano'
+                    value={String(true)}
                     control={<Radio required />}
                     label='Ano'
                   />
                   <FormControlLabel
-                    value='Ne'
+                    value={String(false)}
                     control={<Radio required />}
                     label='Ne'
                   />
@@ -317,20 +317,19 @@ const DialogContentForm = forwardRef(
                   onChange={props.handleOnChangeRadio}
                 >
                   <FormControlLabel
-                    value='Vyzvednu si jej'
+                    value='MYSELVE'
                     control={<Radio required />}
                     label='Vyzvednu si jej'
                   />
                   <FormControlLabel
-                    value='Může odcházet po akci samo domů'
+                    value='ALONE'
                     control={<Radio required />}
                     label='Může odcházet po akci samo domů'
                   />
                 </RadioGroup>
               </FormControl>
 
-              {props.formData.other_how_children_arrives ===
-                "Vyzvednu si jej" && (
+              {props.formData.other_how_children_arrives === "MYSELVE" && (
                 <TextField
                   label='Osoby, které si můžou díte vyzvednout'
                   placeholder='Pokud jste zvolili vyzvednutí dítěte, prosím napište osoby, které si můžou dítě vyzvednout a k nim i vztah k dítěti. '
@@ -394,6 +393,11 @@ const DialogContentForm = forwardRef(
             type='hidden'
             name={nameof<DialogContentFormModel>("action_name")}
             value={props.formData.action_name}
+          />
+          <input
+            type='hidden'
+            name={nameof<DialogContentFormModel>("action_id")}
+            value={props.formData.action_id}
           />
         </form>
       </DialogContentStyled>

@@ -1,15 +1,15 @@
-import { useRef } from 'react';
-import { useSelector } from 'react-redux';
-import { selectActions } from 'shared/infrastructure/store/actions/actionsSlice';
+import { useRef } from "react";
+import { useSelector } from "react-redux";
+import { selectActions } from "shared/infrastructure/store/actions/actionsSlice";
 
-import Box from '@mui/material/Box';
-import Skeleton from '@mui/material/Skeleton';
-import Stack from '@mui/material/Stack';
-import { useTheme } from '@mui/material/styles';
+import Box from "@mui/material/Box";
+import Skeleton from "@mui/material/Skeleton";
+import Stack from "@mui/material/Stack";
+import { useTheme } from "@mui/material/styles";
 
-import Action from '../action/Action';
-import Documents from '../documents/Documents';
-import ActionSelectStyled from './styledComponents/ActionSelectStyled';
+import Action from "../action/Action";
+import Documents from "../documents/Documents";
+import ActionSelectStyled from "./styledComponents/ActionSelectStyled";
 
 const ActionSelect = () => {
   // References
@@ -139,6 +139,7 @@ const ActionSelect = () => {
               ref={refTabFirst}
               className='active'
               backgroundColor={theme.palette.secondary.main}
+              idAction={actions.ActionDetails?.[0]?.Id}
               name={actions.ActionDetails?.[0]?.ActionName}
               description={actions.ActionDetails?.[0]?.ActionDescritption}
               image={actions.ActionDetails?.[0]?.Image.Path}
@@ -153,6 +154,7 @@ const ActionSelect = () => {
             <Action
               ref={refTabSecond}
               backgroundColor={theme.palette.primary.main}
+              idAction={actions.ActionDetails?.[1]?.Id}
               name={actions.ActionDetails?.[1]?.ActionName}
               description={actions.ActionDetails?.[1]?.ActionDescritption}
               image={actions.ActionDetails?.[1]?.Image.Path}
@@ -167,6 +169,7 @@ const ActionSelect = () => {
             <Action
               ref={refTabThird}
               backgroundColor={theme.palette.common.purple.main}
+              idAction={actions.ActionDetails?.[2]?.Id}
               name={actions.ActionDetails?.[2]?.ActionName}
               description={actions.ActionDetails?.[2]?.ActionDescritption}
               image={actions.ActionDetails?.[2]?.Image.Path}
