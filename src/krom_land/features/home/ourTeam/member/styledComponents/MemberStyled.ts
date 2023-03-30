@@ -12,13 +12,26 @@ const MemberStyled = styled(Box)(({ theme }) => ({
   height: "fit-content",
   padding: "20px 20px",
 
-  img: {
+  div: {
     height: "350px",
     maxHeight: "350px",
     width: "210px",
     borderRadius: "10px",
-    objectFit: "cover",
-    // backgroundColor: theme.palette.primary.main,
+    overflow: "hidden",
+
+    img: {
+      height: "inherit",
+      maxHeight: "inherit",
+      width: "inherit",
+      objectFit: "cover",
+      transition: "all 1000ms ease-in-out",
+
+      // backgroundColor: theme.palette.primary.main,
+
+      "&:hover": {
+        scale: "1.3",
+      },
+    },
   },
 
   h6: {
