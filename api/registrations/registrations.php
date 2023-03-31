@@ -71,6 +71,7 @@ class Registrations
         $state = "";
         $action_price = $registrationData->action_price;
         $action_date = $registrationData->action_date;
+        $action_place = $registrationData->action_place;
 
         $arr = [
           "id_action" => $id_action,
@@ -112,6 +113,8 @@ class Registrations
             $action_name .
             " Akce proběhne ve dnech " .
             $action_date .
+            " Místo konání akce " .
+            $action_place .
             "Jako způsob úhrady byla zvolena hotovostní platba při předání dítěte." .
             "Cena " .
             $action_price .

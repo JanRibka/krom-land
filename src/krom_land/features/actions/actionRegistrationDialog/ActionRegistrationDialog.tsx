@@ -29,6 +29,7 @@ interface IProps {
   actionName: string;
   actionPrice: string;
   actionDate: string;
+  actionPlace: string;
   setOpen: Dispatch<SetStateAction<boolean>>;
   handleOnClickTermsOfConditions: () => void;
   handleOnAfterFormSubmit: (formData: DialogContentFormModel) => void;
@@ -56,6 +57,7 @@ const ActionRegistrationDialog = (props: IProps) => {
       action_name: props.actionName,
       action_price: props.actionPrice,
       action_date: props.actionDate,
+      action_place: props.actionPlace,
     });
   };
 
@@ -153,6 +155,7 @@ const ActionRegistrationDialog = (props: IProps) => {
       action_name: props.actionName,
       action_price: props.actionPrice,
       action_date: props.actionDate,
+      action_place: props.actionPlace,
     };
     setFormData(newFormDat);
   };
