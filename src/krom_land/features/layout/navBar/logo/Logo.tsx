@@ -1,6 +1,7 @@
-import Box from '@mui/material/Box';
+import Box from "@mui/material/Box";
 
-import LogoStyled from './styledComponents/logoStyled';
+import logo from "../../img/logo.png";
+import LogoStyled from "./styledComponents/logoStyled";
 
 const Logo = () => {
   return (
@@ -11,7 +12,7 @@ const Logo = () => {
         title='KROM LAND'
         target='_self'
       >
-        KROM LAND
+        <img src={logo} alt='Logo KROM Land' loading='lazy' />
       </Box>
     </LogoStyled>
   );

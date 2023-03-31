@@ -106,21 +106,14 @@ class Registrations
         dibi::query("INSERT INTO registrations", $arr);
 
         // Odeslání emailu zákazníkovi
+        $potvrzovaciEmailZakaznik =
+          __DIR__ . "/../../emails/PotvrzovaciEmailZakaznik.html";
+        $email_body = file_get_contents($potvrzovaciEmailZakaznik);
+
         $email->sendInternally(
           $user_email,
           "Potvrzení registrace",
-          "Dobrý den, tímto emailem potvrzujeme přijetí vaší registrace na " .
-            $action_name .
-            " Akce proběhne ve dnech " .
-            $action_date .
-            " Místo konání akce " .
-            $action_place .
-            "Jako způsob úhrady byla zvolena hotovostní platba při předání dítěte." .
-            "Cena " .
-            $action_price .
-            "Objednávka #" .
-            $variableSymbol .
-            "Děkujeme Vám za projevenou důveru. S pozdravem KROM Land Tento email byl vygenerován automaticky, prosíme, nedpovídejte na něj"
+          $email_body
         );
 
         // Odeslání emailu do KROM Land

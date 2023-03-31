@@ -1,20 +1,16 @@
-import Box from '@mui/material/Box';
-import { styled } from '@mui/material/styles';
+import Box from "@mui/material/Box";
+import { styled } from "@mui/material/styles";
 
 const LogoStyled = styled(Box)(({ theme }) => ({
+  height: "100%",
+  padding: "5px 0",
+
   a: {
-    fontSize: "3rem",
-    color: theme.palette.text.primary,
-    fontWeight: "bold",
-    textDecoration: "none",
-    fontStyle: "italic",
+    display: "block",
+    height: "100%",
 
-    [theme.breakpoints.down("lg")]: {
-      fontSize: "2.5rem",
-    },
-
-    [theme.breakpoints.down("md")]: {
-      fontSize: "2rem",
+    img: {
+      height: "100%",
     },
   },
 }));

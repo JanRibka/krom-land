@@ -83,7 +83,7 @@ const WritetoUs = () => {
 
     setFormData({ ...formData, [name]: checked });
   };
-  console.log(formData);
+
   return (
     <WriteToUsStyled component='section'>
       <Stack spacing={3} direction='column' className='write-to-us-wrapper'>
