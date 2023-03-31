@@ -1,14 +1,14 @@
-import { useSelector } from 'react-redux';
-import { selectHome } from 'shared/infrastructure/store/home/homeSlice';
+import { useSelector } from "react-redux";
+import { selectHome } from "shared/infrastructure/store/home/homeSlice";
 
-import Box from '@mui/material/Box';
-import Skeleton from '@mui/material/Skeleton';
-import Stack from '@mui/material/Stack';
-import { useTheme } from '@mui/material/styles';
-import useMediaQuery from '@mui/material/useMediaQuery';
+import Box from "@mui/material/Box";
+import Skeleton from "@mui/material/Skeleton";
+import Stack from "@mui/material/Stack";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
-import SectionTitle from '../../../../shared/components/sectionTitle/SectionTitle';
-import AboutUsStyled from './styledComponents/AboutUsStyled';
+import SectionTitle from "../../../../shared/components/sectionTitle/SectionTitle";
+import AboutUsStyled from "./styledComponents/AboutUsStyled";
 
 const AboutUs = () => {
   // Store
@@ -44,7 +44,11 @@ const AboutUs = () => {
             <Box>
               <Box className='description-inner-wrapper'>
                 <Box>
-                  <SectionTitle mainText={"O nás"} />
+                  <SectionTitle
+                    mainText={"KROM Land"}
+                    mainTextVariant='h1'
+                    secondaryText='O nás'
+                  />
                   {!!home.AboutUs ? (
                     <Box
                       component='span'

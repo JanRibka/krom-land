@@ -4,9 +4,9 @@ import SectionTitleStyled from "./styledComponents/SectionTitleStyled";
 
 interface IProps {
   mainText: string;
+  mainTextVariant?: "h1" | "h2" | "h3";
   secondaryText?: string;
   secondaryTextColor?: string;
-
   textAlign?: "center" | "start";
 }
 
@@ -26,7 +26,7 @@ const SectionTitle: React.FC<IProps> = (props) => {
           {props.secondaryText}
         </Typography>
       )}
-      <Typography className='main-text' variant='h3'>
+      <Typography className='main-text' variant={props.mainTextVariant || "h3"}>
         {props.mainText}
       </Typography>
     </SectionTitleStyled>

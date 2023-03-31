@@ -36,7 +36,7 @@ const AboutUsStyled = styled(Box)(({ theme }) => ({
       objectFit: "cover",
       width: "100%",
       height: "100%",
-      transition: "all 1000ms ease-in-out",
+      transition: "all 1000ms cubic-bezier(.8, 0, .33, 1)",
 
       "&:hover": {
         scale: "1.2",

@@ -23,10 +23,11 @@ const ActionStyled = styled(Box)(({ theme }) => ({
   },
 
   ".action-image-wrapper": {
-    height: "550px",
     borderRadius: "30px",
     maxWidth: "550px",
     width: "100%",
+    aspectRatio: "1/1",
+    overflow: "hidden",
     backgroundColor: grey[400],
 
     [theme.breakpoints.down("lg")]: {
@@ -36,9 +37,13 @@ const ActionStyled = styled(Box)(({ theme }) => ({
 
     ".action-image": {
       objectFit: "cover",
-      borderRadius: "30px",
       width: "100%",
       height: "100%",
+      transition: "all 1000ms cubic-bezier(.8, 0, .33, 1)",
+
+      "&:hover": {
+        scale: "1.2",
+      },
     },
   },
 

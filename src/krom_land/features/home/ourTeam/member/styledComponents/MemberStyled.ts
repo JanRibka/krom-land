@@ -24,7 +24,7 @@ const MemberStyled = styled(Box)(({ theme }) => ({
       maxHeight: "inherit",
       width: "inherit",
       objectFit: "cover",
-      transition: "all 1000ms ease-in-out",
+      transition: "all 1000ms cubic-bezier(.8, 0, .33, 1)",
 
       // backgroundColor: theme.palette.primary.main,
 
