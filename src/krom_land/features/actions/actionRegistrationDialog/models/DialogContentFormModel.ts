@@ -24,6 +24,7 @@ class DialogContentFormModel {
   other_other_info: string = "";
   action_price: string = "";
   action_date: string = "";
+  action_place: string = "";
 
   public constructor(init?: Partial<DialogContentFormModel>) {
     Object.assign(this, init);

@@ -409,6 +409,11 @@ const DialogContentForm = forwardRef(
             name={nameof<DialogContentFormModel>("action_date")}
             value={props.formData.action_date}
           />
+          <input
+            type='hidden'
+            name={nameof<DialogContentFormModel>("action_place")}
+            value={props.formData.action_place}
+          />
         </form>
       </DialogContentStyled>
     );

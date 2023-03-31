@@ -271,6 +271,7 @@ const Action = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
         actionName={name}
         actionPrice={cena}
         actionDate={kdy}
+        actionPlace={kde}
         setOpen={setOpen}
         handleOnClickTermsOfConditions={() =>
           setTermOfConditionsDialogOpen(true)
