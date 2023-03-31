@@ -11,6 +11,7 @@ interface IProps {
   image: string;
   title: string;
   titleColor?: string;
+  titleVariant?: "h1" | "h2" | "h3";
   titleSecondary?: string;
   titleSecondaryColor?: string;
   alt: string;
@@ -66,7 +67,8 @@ const PageTitle = (props: IProps) => {
           )}
 
           <Typography
-            variant='h1'
+            className='main-text'
+            variant={props.titleVariant || "h1"}
             sx={{
               color: !!props.titleColor
                 ? props.titleColor + " !important"

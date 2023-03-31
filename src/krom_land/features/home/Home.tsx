@@ -1,12 +1,12 @@
-import { useSelector } from 'react-redux';
-import PageTitle from 'shared/components/pageTitle/PageTitle';
-import { selectHome } from 'shared/infrastructure/store/home/homeSlice';
+import { useSelector } from "react-redux";
+import PageTitle from "shared/components/pageTitle/PageTitle";
+import { selectHome } from "shared/infrastructure/store/home/homeSlice";
 
-import Stack from '@mui/material/Stack';
+import Stack from "@mui/material/Stack";
 
-import AboutUs from './aboutUs/AboutUs';
-import OurTeam from './ourTeam/OurTeam';
-import WhatPeopleSay from './whatPeopleSay/WhatPeopleSay';
+import AboutUs from "./aboutUs/AboutUs";
+import OurTeam from "./ourTeam/OurTeam";
+import WhatPeopleSay from "./whatPeopleSay/WhatPeopleSay";
 
 const Home = () => {
   // Store
@@ -20,6 +20,7 @@ const Home = () => {
           alt={home.MainImage.Alt}
           title={home.PageHeaderTextMain}
           titleColor={home.PageHeaderTextMainColor}
+          titleVariant='h2'
           titleSecondary={home.PageHeaderTextSecondary}
           titleSecondaryColor={home.PageHeaderTextSecondaryColor}
           imhHeight={760}

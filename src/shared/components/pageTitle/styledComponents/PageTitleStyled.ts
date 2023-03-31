@@ -31,7 +31,7 @@ const TitleStyled = styled(Box)(({ theme }) => ({
       display: "flex",
       alignItems: "center",
 
-      h1: {
+      ".main-text": {
         color: theme.palette.text.secondary,
         fontSize: "6rem",
         fontFamily: "'Eater', 'Helvetica','Arial','sans-serif'",
