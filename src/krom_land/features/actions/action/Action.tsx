@@ -13,8 +13,6 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 
 import SectionTitle from "../../../../shared/components/sectionTitle/SectionTitle";
 import ActionRegistrationDialog from "../actionRegistrationDialog/ActionRegistrationDialog";
-import DialogContentFormModel from "../actionRegistrationDialog/models/DialogContentFormModel";
-import ActionsService from "../ActionsService";
 import DetailInfo from "./detailInfo/DetaulInfo";
 import ActionStyled from "./styledComponents/ActionStyled";
 
@@ -71,12 +69,13 @@ const Action = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
   const common = useSelector(selectCommon);
 
   // State
+
   const [open, setOpen] = useState<boolean>(false);
   const [termOfConditionsDialogOpen, setTermOfConditionsDialogOpen] =
     useState<boolean>(false);
 
   // Constants
-  const _actionsService = new ActionsService();
+
   const theme = useTheme();
   const {
     idAction,
@@ -100,11 +99,6 @@ const Action = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
   const pictDescWrapperSpacing = lgDwn ? 5 : xlDwn ? 15 : 30;
 
   // Other
-  const handleOnAfterFormSubmit = async (formData: DialogContentFormModel) => {
-    await _actionsService.create(formData);
-    setOpen(false);
-  };
-
   const renderRegistrationButton = () => {
     return (
       <Stack className='button-wrapper' direction='column' spacing={2}>
@@ -276,7 +270,6 @@ const Action = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
         handleOnClickTermsOfConditions={() =>
           setTermOfConditionsDialogOpen(true)
         }
-        handleOnAfterFormSubmit={handleOnAfterFormSubmit}
       />
       {/* Term of donditions */}
       <OkDialog

@@ -18,9 +18,9 @@ class DialogContentFormModel {
   address_psc: string = "";
   other_hendicap: string = "";
   other_photos: boolean | null = null;
-  other_how_children_arrives: string = "";
+  other_how_children_arrives: number = 0;
   other_pickup_person: string = "";
-  other_pay_method: string = "";
+  other_pay_method: number = 0;
   other_other_info: string = "";
   action_price: string = "";
   action_date: string = "";

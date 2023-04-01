@@ -48,6 +48,9 @@ const DialogContentForm = forwardRef(
     const theme = useTheme();
     const smDwn = useMediaQuery(theme.breakpoints.down("sm"));
     const rowDirection = smDwn ? "column" : "row";
+    const childArrivesMyselveId = common.TablesOfKeys.ChildArrives.find(
+      (f) => f.Key === "MYSELVE"
+    )?.Id;
 
     return (
       <DialogContentStyled>
@@ -64,6 +67,9 @@ const DialogContentForm = forwardRef(
                 name={nameof<DialogContentFormModel>("user_email")}
                 value={props.formData.user_email}
                 onChange={props.handleTextFieldOnChange}
+                inputProps={{
+                  maxLength: 50,
+                }}
               />
             </>
             <>
@@ -81,6 +87,9 @@ const DialogContentForm = forwardRef(
                   name={nameof<DialogContentFormModel>("child_name")}
                   value={props.formData.child_name}
                   onChange={props.handleTextFieldOnChange}
+                  inputProps={{
+                    maxLength: 50,
+                  }}
                 />
                 <TextField
                   label='Příjmení'
@@ -92,6 +101,9 @@ const DialogContentForm = forwardRef(
                   name={nameof<DialogContentFormModel>("child_last_name")}
                   value={props.formData.child_last_name}
                   onChange={props.handleTextFieldOnChange}
+                  inputProps={{
+                    maxLength: 50,
+                  }}
                 />
               </Stack>
             </>
@@ -107,6 +119,9 @@ const DialogContentForm = forwardRef(
                 name={nameof<DialogContentFormModel>("child_birthday")}
                 value={props.formData.child_birthday}
                 onChange={props.handleTextFieldOnChange}
+                inputProps={{
+                  maxLength: 10,
+                }}
               />
             </>
             <>
@@ -126,6 +141,9 @@ const DialogContentForm = forwardRef(
                   )}
                   value={props.formData.first_representative_name}
                   onChange={props.handleTextFieldOnChange}
+                  inputProps={{
+                    maxLength: 50,
+                  }}
                 />
                 <TextField
                   label='Příjmení'
@@ -139,6 +157,9 @@ const DialogContentForm = forwardRef(
                   )}
                   value={props.formData.first_representative_last_name}
                   onChange={props.handleTextFieldOnChange}
+                  inputProps={{
+                    maxLength: 50,
+                  }}
                 />
               </Stack>
               <TextField
@@ -154,6 +175,9 @@ const DialogContentForm = forwardRef(
                 )}
                 value={props.formData.first_representative_phone_number}
                 onChange={props.handleTextFieldOnChange}
+                inputProps={{
+                  maxLength: 25,
+                }}
               />
             </>
             <>
@@ -172,6 +196,9 @@ const DialogContentForm = forwardRef(
                   )}
                   value={props.formData.second_representative_name}
                   onChange={props.handleTextFieldOnChange}
+                  inputProps={{
+                    maxLength: 50,
+                  }}
                 />
                 <TextField
                   label='Příjmení'
@@ -184,6 +211,9 @@ const DialogContentForm = forwardRef(
                   )}
                   value={props.formData.second_representative_last_name}
                   onChange={props.handleTextFieldOnChange}
+                  inputProps={{
+                    maxLength: 50,
+                  }}
                 />
               </Stack>
               <TextField
@@ -198,6 +228,9 @@ const DialogContentForm = forwardRef(
                 )}
                 value={props.formData.second_representative_phone_number}
                 onChange={props.handleTextFieldOnChange}
+                inputProps={{
+                  maxLength: 25,
+                }}
               />
             </>
             <>
@@ -215,6 +248,9 @@ const DialogContentForm = forwardRef(
                   name={nameof<DialogContentFormModel>("address_name")}
                   value={props.formData.address_name}
                   onChange={props.handleTextFieldOnChange}
+                  inputProps={{
+                    maxLength: 50,
+                  }}
                 />
                 <TextField
                   label='Příjmení'
@@ -226,6 +262,9 @@ const DialogContentForm = forwardRef(
                   name={nameof<DialogContentFormModel>("address_last_name")}
                   value={props.formData.address_last_name}
                   onChange={props.handleTextFieldOnChange}
+                  inputProps={{
+                    maxLength: 50,
+                  }}
                 />
               </Stack>
               <TextField
@@ -238,6 +277,9 @@ const DialogContentForm = forwardRef(
                 name={nameof<DialogContentFormModel>("address_street_cp")}
                 value={props.formData.address_street_cp}
                 onChange={props.handleTextFieldOnChange}
+                inputProps={{
+                  maxLength: 50,
+                }}
               />
               <Stack spacing={2} direction={rowDirection}>
                 <TextField
@@ -250,6 +292,9 @@ const DialogContentForm = forwardRef(
                   name={nameof<DialogContentFormModel>("address_city")}
                   value={props.formData.address_city}
                   onChange={props.handleTextFieldOnChange}
+                  inputProps={{
+                    maxLength: 50,
+                  }}
                 />
                 <TextField
                   label='PSČ'
@@ -261,6 +306,9 @@ const DialogContentForm = forwardRef(
                   name={nameof<DialogContentFormModel>("address_psc")}
                   value={props.formData.address_psc}
                   onChange={props.handleTextFieldOnChange}
+                  inputProps={{
+                    maxLength: 10,
+                  }}
                 />
               </Stack>
             </>
@@ -280,6 +328,9 @@ const DialogContentForm = forwardRef(
                 name={nameof<DialogContentFormModel>("other_hendicap")}
                 value={props.formData.other_hendicap}
                 onChange={props.handleTextFieldOnChange}
+                inputProps={{
+                  maxLength: 500,
+                }}
               />
               <FormControl required>
                 <FormLabel>
@@ -316,20 +367,19 @@ const DialogContentForm = forwardRef(
                   value={props.formData.other_how_children_arrives}
                   onChange={props.handleOnChangeRadio}
                 >
-                  <FormControlLabel
-                    value='MYSELVE'
-                    control={<Radio required />}
-                    label='Vyzvednu si jej'
-                  />
-                  <FormControlLabel
-                    value='ALONE'
-                    control={<Radio required />}
-                    label='Může odcházet po akci samo domů'
-                  />
+                  {common.TablesOfKeys.ChildArrives.map((item, index) => (
+                    <FormControlLabel
+                      key={"achildArrives_" + index}
+                      value={item.Id}
+                      control={<Radio required disabled={!item.Enabled} />}
+                      label={item.Name}
+                    />
+                  ))}
                 </RadioGroup>
               </FormControl>
 
-              {props.formData.other_how_children_arrives === "MYSELVE" && (
+              {props.formData.other_how_children_arrives ===
+                childArrivesMyselveId && (
                 <TextField
                   label='Osoby, které si můžou díte vyzvednout'
                   placeholder='Pokud jste zvolili vyzvednutí dítěte, prosím napište osoby, které si můžou dítě vyzvednout a k nim i vztah k dítěti. '
@@ -343,6 +393,9 @@ const DialogContentForm = forwardRef(
                   name={nameof<DialogContentFormModel>("other_pickup_person")}
                   value={props.formData.other_pickup_person}
                   onChange={props.handleTextFieldOnChange}
+                  inputProps={{
+                    maxLength: 500,
+                  }}
                 />
               )}
 
@@ -358,7 +411,7 @@ const DialogContentForm = forwardRef(
                   {common.TablesOfKeys.PaymentMethodts.map((item, index) => (
                     <FormControlLabel
                       key={"paymentMethod_" + index}
-                      value={item.Key}
+                      value={item.Id}
                       control={<Radio required disabled={!item.Enabled} />}
                       label={item.Name}
                     />
@@ -378,6 +431,9 @@ const DialogContentForm = forwardRef(
                 name={nameof<DialogContentFormModel>("other_other_info")}
                 value={props.formData.other_other_info}
                 onChange={props.handleTextFieldOnChange}
+                inputProps={{
+                  maxLength: 500,
+                }}
               />
             </>
           </Stack>

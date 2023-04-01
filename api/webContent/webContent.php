@@ -107,7 +107,9 @@ class WebContent
       $paymentMethods = $auxFunctions->getTableOfKeyByGroupKey(
         "PAYMENT_METHOD"
       );
-      $tablesOfKeys = new TablesOfKeys($paymentMethods);
+      $childArrives = $auxFunctions->getTableOfKeyByGroupKey("CHILD_ARRIVES");
+
+      $tablesOfKeys = new TablesOfKeys($paymentMethods, $childArrives);
 
       $common = new CommonModel($conditions, $tablesOfKeys);
 

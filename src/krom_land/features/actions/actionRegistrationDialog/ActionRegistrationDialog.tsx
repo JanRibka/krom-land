@@ -10,14 +10,20 @@ import {
   useRef,
   useState,
 } from "react";
+import { useSelector } from "react-redux";
+import AppLoader from "shared/components/loader/AppLoader";
+import { selectCommon } from "shared/infrastructure/store/common/commonSlice";
 
 import CheckIcon from "@mui/icons-material/Check";
+import CloseIcon from "@mui/icons-material/Close";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
+import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 
+import ActionsService from "../ActionsService";
 import DialogContentForm from "./dialogContent/DialogContentForm";
 import DialogContentFormModel from "./models/DialogContentFormModel";
 import ActionRegistrationDialogStyled from "./styledComponents/ActionRegistrationDialogStyled";
@@ -32,17 +38,26 @@ interface IProps {
   actionPlace: string;
   setOpen: Dispatch<SetStateAction<boolean>>;
   handleOnClickTermsOfConditions: () => void;
-  handleOnAfterFormSubmit: (formData: DialogContentFormModel) => void;
 }
 // TODO: Při zavření dialogu zmazat data z dialogu
 const ActionRegistrationDialog = (props: IProps) => {
-  // References
-  const refForm = useRef<HTMLFormElement>(null);
+  // Store
+  const common = useSelector(selectCommon);
 
   // State
+  const [registering, setRegistering] = useState<boolean>(false);
   const [formData, setFormData] = useState<DialogContentFormModel>(
     new DialogContentFormModel()
   );
+
+  // References
+  const refForm = useRef<HTMLFormElement>(null);
+
+  // Constants
+  const _actionsService = new ActionsService();
+  const childArrivesMyselveId = common.TablesOfKeys.ChildArrives.find(
+    (f) => f.Key === "MYSELVE"
+  )?.Id;
 
   // Other
   useEffect(() => {
@@ -123,19 +138,17 @@ const ActionRegistrationDialog = (props: IProps) => {
   const handleOnChangeRadio = (e: ChangeEvent<HTMLInputElement>) => {
     const name = e.target.name;
     let value: string = e.target.value;
-    let data: Partial<DialogContentFormModel> = {
-      [name]: value,
-    };
+    let data: Partial<DialogContentFormModel> = {};
 
     if (
       name === nameof<DialogContentFormModel>("other_how_children_arrives") &&
-      value === "ALONE"
+      JSON.parse(value) === childArrivesMyselveId
     ) {
       data = {
-        ...data,
+        [name]: JSON.parse(value),
         other_pickup_person: "",
       };
-    } else if (name === nameof<DialogContentFormModel>("other_photos")) {
+    } else {
       data = {
         [name]: JSON.parse(value),
       };
@@ -147,17 +160,33 @@ const ActionRegistrationDialog = (props: IProps) => {
   const handleFormOnSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     e.currentTarget.reset();
-    props.handleOnAfterFormSubmit(formData);
+    handleOnAfterFormSubmit(formData);
+  };
 
-    const newFormDat: DialogContentFormModel = {
-      ...new DialogContentFormModel(),
-      action_id: props.id,
-      action_name: props.actionName,
-      action_price: props.actionPrice,
-      action_date: props.actionDate,
-      action_place: props.actionPlace,
-    };
-    setFormData(newFormDat);
+  const handleOnAfterFormSubmit = async (formData: DialogContentFormModel) => {
+    if (registering) return;
+
+    setRegistering(true);
+
+    const result = await _actionsService.create(formData);
+
+    if (result) {
+      setTimeout(() => {
+        const newFormDat: DialogContentFormModel = {
+          ...new DialogContentFormModel(),
+          action_id: props.id,
+          action_name: props.actionName,
+          action_price: props.actionPrice,
+          action_date: props.actionDate,
+          action_place: props.actionPlace,
+        };
+        setFormData(newFormDat);
+        props.setOpen(false);
+        setRegistering(false);
+      }, 2000);
+    } else {
+      setRegistering(false);
+    }
   };
 
   return (
@@ -168,7 +197,7 @@ const ActionRegistrationDialog = (props: IProps) => {
       <Box className='title-wrapper'>
         <DialogTitle>
           Registrace na: {props.actionName}
-          {/* <IconButton
+          <IconButton
             aria-label='close'
             onClick={() => props.setOpen(false)}
             sx={{
@@ -179,7 +208,7 @@ const ActionRegistrationDialog = (props: IProps) => {
             }}
           >
             <CloseIcon />
-          </IconButton> */}
+          </IconButton>
         </DialogTitle>
       </Box>
       <DialogContent>
@@ -192,6 +221,15 @@ const ActionRegistrationDialog = (props: IProps) => {
           handleFormOnSubmit={handleFormOnSubmit}
           handleOnChangeRadio={handleOnChangeRadio}
         />
+
+        {/* Loader */}
+        {registering && (
+          <Box className='loader-wrapper'>
+            <Box>
+              <AppLoader />
+            </Box>
+          </Box>
+        )}
       </DialogContent>
       <DialogActionsStyled>
         <Typography>

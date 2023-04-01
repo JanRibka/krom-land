@@ -21,11 +21,11 @@ class Registrations
           "SELECT vs.variableSymbol FROM variableSymbols as vs WHERE YEAR(Date) = $actualYear AND MONTH(Date) = $actualMonth"
         )->fetchAll();
         $symbolsCount = count($symbols);
-        $variableSymbol =
+        $variable_symbol =
           $actualYear . $actualMonth . sprintf("%05d", $symbolsCount + 1);
 
         $arr = [
-          "VariableSymbol" => $variableSymbol,
+          "VariableSymbol" => $variable_symbol,
           "Date" => date("Y-m-d H:i:s"),
         ];
         dibi::query("INSERT INTO variableSymbols", $arr);
@@ -68,7 +68,7 @@ class Registrations
         $other_other_info = $registrationData->other_other_info;
         $registration_date = date("Y-m-d H:i:s");
         $payed = false;
-        $state = "";
+        $state = 6;
         $action_price = $registrationData->action_price;
         $action_date = $registrationData->action_date;
         $action_place = $registrationData->action_place;
@@ -117,6 +117,43 @@ class Registrations
         );
 
         // Odeslání emailu do KROM Land
+        $auxFunctions = new AuxFunctions();
+        $childArrives = $auxFunctions->getTableOfKeyByGroupKey("CHILD_ARRIVES");
+        $paymentMethods = $auxFunctions->getTableOfKeyByGroupKey(
+          "PAYMENT_METHOD"
+        );
+
+        $other_photos = $other_photos === "1" ? "Ano" : "Ne";
+        $children_arrives_selected = array_filter($childArrives, function (
+          $f
+        ) use ($other_how_children_arrives) {
+          return $f["Id"] === $other_how_children_arrives;
+        });
+
+        $children_arrives_selected = reset($children_arrives_selected);
+        $other_how_children_arrives = $children_arrives_selected->Name;
+
+        $other_pay_method_selected = array_filter($paymentMethods, function (
+          $f
+        ) use ($other_pay_method) {
+          return $f["Id"] === $other_pay_method;
+        });
+
+        $other_pay_method_selected = reset($other_pay_method_selected);
+        $other_pay_method = $other_pay_method_selected->Name;
+
+        $potvrzovaciEmailKromLand =
+          __DIR__ . "/../../emails/PotvrzovaciEmailKromLand.html";
+
+        ob_start();
+        include_once $potvrzovaciEmailKromLand;
+        $email_body = ob_get_clean();
+
+        $email->sendInternally(
+          "weby.ribka@gmail.com",
+          "Potvrzení registrace",
+          $email_body
+        );
 
         apiResponse(true, "");
       } catch (Exception $ex) {

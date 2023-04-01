@@ -11,6 +11,7 @@ export default class ActionsService {
   public async create(data: DialogContentFormModel) {
     const dataEncoded = btoa(encodeURIComponent(JSON.stringify(data)));
     const formData = new FormData();
+    let result = false;
 
     formData.append("registrationData", dataEncoded);
 
@@ -31,14 +32,18 @@ export default class ActionsService {
       } else if (dataType === "object") {
         if (response.data?.Success) {
           AppNotification("Úspěch", "Registrace byla úspěšná", "success");
+          result = true;
         } else {
           AppNotification("Chyba", response.data?.ErrMsg ?? "", "danger");
         }
       } else {
         AppNotification("Úspěch", "Registrace byla úspěšná", "success");
+        result = true;
       }
     } else {
       AppNotification("Chyba", "Chyba při zpracování registrace", "danger");
     }
+
+    return result;
   }
 }
