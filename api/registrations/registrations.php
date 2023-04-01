@@ -149,11 +149,12 @@ class Registrations
         include_once $potvrzovaciEmailKromLand;
         $email_body = ob_get_clean();
 
-        $email->sendInternally(
-          "weby.ribka@gmail.com",
-          "Potvrzení registrace",
-          $email_body
+        $email_to = dibi::query(
+          "SELECT a.EmailKromLand FROM actions AS a WHERE Id = %i",
+          1
         );
+
+        $email->sendInternally($email_to, "Potvrzení registrace", $email_body);
 
         apiResponse(true, "");
       } catch (Exception $ex) {
