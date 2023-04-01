@@ -123,7 +123,7 @@ class Registrations
           "PAYMENT_METHOD"
         );
 
-        $other_photos = $other_photos === "1" ? "Ano" : "Ne";
+        $other_photos = $other_photos === true ? "Ano" : "Ne";
         $children_arrives_selected = array_filter($childArrives, function (
           $f
         ) use ($other_how_children_arrives) {
@@ -150,9 +150,9 @@ class Registrations
         $email_body = ob_get_clean();
 
         $email_to = dibi::query(
-          "SELECT a.EmailKromLand FROM actions AS a WHERE Id = %i",
+          "SELECT a.EmailKromLand FROM actions AS a WHERE a.Id = %i",
           1
-        );
+        )->fetchSingle();
 
         $email->sendInternally($email_to, "Potvrzení registrace", $email_body);
 
