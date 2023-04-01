@@ -73,6 +73,14 @@ class Registrations
         $action_date = $registrationData->action_date;
         $action_place = $registrationData->action_place;
 
+        $auxActionPrice = intval(preg_replace("/\s+/", "", $action_price));
+
+        if (is_numeric($auxActionPrice)) {
+          $action_price = $auxActionPrice;
+        } else {
+          $action_price = 0;
+        }
+
         $arr = [
           "id_action" => $id_action,
           "action_name" => $action_name,
@@ -101,6 +109,7 @@ class Registrations
           "payed" => $payed,
           "state" => $state,
           "id_variable_symbol" => $idvariableSymbol,
+          "action_price" => $action_price,
         ];
 
         dibi::query("INSERT INTO registrations", $arr);
