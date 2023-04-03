@@ -29,9 +29,9 @@ const Footer = () => {
         <Typography className='one-line-text align-center'>
           IČO: 19116691
         </Typography>
-        <Typography className='one-line-text align-center'>
+        {/* <Typography className='one-line-text align-center'>
           DIČ: CZ19116691
-        </Typography>
+        </Typography> */}
       </Stack>
     );
   };
