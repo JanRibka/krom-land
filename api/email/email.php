@@ -43,7 +43,7 @@ class Email
       $mail->ContentType = "text/html; charset=UTF-8";
       $mail->addAddress($to, "KROM Land");
       // $mail->setFrom("info@ribkavyvoj.kvalitne.cz");
-      $mail->setFrom("info@kromland.cz");
+      $mail->setFrom("noreplay@kromland.cz");
       $mail->addReplyTo($user_email, $user_name);
       $mail->Subject = $subject;
       $mail->isHTML(true);
@@ -70,7 +70,7 @@ class Email
     $mail->ContentType = "text/html; charset=UTF-8";
     $mail->addAddress($to);
     // $mail->setFrom("info@ribkavyvoj.kvalitne.cz");
-    $mail->setFrom("info@kromland.cz");
+    $mail->setFrom("noreplay@kromland.cz");
     $mail->Subject = $subject;
     $mail->isHTML(true);
     $mail->Body = $message;

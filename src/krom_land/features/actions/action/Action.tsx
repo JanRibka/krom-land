@@ -1,6 +1,6 @@
 import { forwardRef, HTMLAttributes, Ref, useState } from "react";
+import ReactPlayer from "react-player/youtube";
 import { useSelector } from "react-redux";
-import TikTokPlayer from "shared/components/tikTokPlayer/TikTokPLayer";
 import OkDialog from "shared/dialogs/OkDialog";
 import { selectCommon } from "shared/infrastructure/store/common/commonSlice";
 
@@ -218,7 +218,7 @@ const Action = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
         {!!videoUrl && (
           <Stack className='player-wrapper'>
             <SectionTitle mainText='Upoutávka na akci' />
-            <TikTokPlayer src={videoUrl} title={"Upoutávka na akci " + name} />
+            <ReactPlayer url={videoUrl} />
           </Stack>
         )}
 
