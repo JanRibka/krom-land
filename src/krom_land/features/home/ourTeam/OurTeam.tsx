@@ -28,7 +28,7 @@ const OurTeam = () => {
             <Member
               image={member.Image}
               name={member.Name}
-              text={member.Text}
+              description={member.Description}
             />
           </GridItem>
         );
@@ -38,7 +38,7 @@ const OurTeam = () => {
             <Member
               image={member.Image}
               name={member.Name}
-              text={member.Text}
+              description={member.Description}
             />
           </GridItem>
         );
@@ -51,7 +51,7 @@ const OurTeam = () => {
             <Member
               image={member.Image}
               name={member.Name}
-              text={member.Text}
+              description={member.Description}
             />
           </GridItem>,
         ];

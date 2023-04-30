@@ -1,9 +1,9 @@
-import ImageModel from "shared/models/ImageModel";
+import ImageModel from 'shared/models/ImageModel';
 
 export default class TeamMemberModel {
   Image: ImageModel = new ImageModel();
   Name: string = "";
-  Text: string = "";
+  Description: string = "";
 
   public constructor(init?: Partial<TeamMemberModel>) {
     Object.assign(this, init);

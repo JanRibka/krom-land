@@ -1,14 +1,14 @@
-import ImageModel from "shared/models/ImageModel";
+import ImageModel from 'shared/models/ImageModel';
 
-import { Typography } from "@mui/material";
-import Box from "@mui/material/Box";
+import { Typography } from '@mui/material';
+import Box from '@mui/material/Box';
 
-import MemberStyled from "./styledComponents/MemberStyled";
+import MemberStyled from './styledComponents/MemberStyled';
 
 interface IProps {
   image: ImageModel;
   name: string;
-  text: string;
+  description: string;
 }
 
 const Member = (props: IProps) => {
@@ -23,7 +23,7 @@ const Member = (props: IProps) => {
         />
       </Box>
       <Typography variant='h6'>{props.name}</Typography>
-      <Typography>{props.text}</Typography>
+      <Typography>{props.description}</Typography>
     </MemberStyled>
   );
 };
