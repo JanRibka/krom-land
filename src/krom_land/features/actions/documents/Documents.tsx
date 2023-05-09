@@ -5,6 +5,7 @@ import { selectDocumentsToDownload } from "shared/infrastructure/store/actions/a
 
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
 
 import Document from "./document/Document";
 import DocumentsStyled from "./styledComponents/DocumentsStyled";
@@ -21,6 +22,14 @@ const Documents = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
         <Stack>
           <SectionTitle mainText='Dokumenty ke stažení' />
           <Stack spacing={2}>
+            {documentsToDownload.length === 0 && (
+              <Typography
+                variant='h5'
+                sx={{ textAlign: "center", marginBottom: "25px" }}
+              >
+                Žádné dokumenty ke stažení
+              </Typography>
+            )}
             {documentsToDownload.map((documentToDownload) => {
               return (
                 <Document
