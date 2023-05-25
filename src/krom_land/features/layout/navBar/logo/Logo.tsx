@@ -1,9 +1,14 @@
+import { useSelector } from "react-redux";
+import { selectWebLogos } from "shared/infrastructure/store/webLogos/webLogosSlice";
+
 import Box from "@mui/material/Box";
 
-import logo from "../../img/logo.png";
 import LogoStyled from "./styledComponents/logoStyled";
 
 const Logo = () => {
+  // Store
+  const webLogos = useSelector(selectWebLogos);
+
   return (
     <LogoStyled>
       <Box
@@ -12,7 +17,15 @@ const Logo = () => {
         title='KROM LAND'
         target='_self'
       >
-        <img src={logo} alt='Logo KROM Land' loading='lazy' />
+        <img
+          src={webLogos.HeaderLogo.Path}
+          alt={
+            !!webLogos.HeaderLogo.Alt
+              ? webLogos.HeaderLogo.Alt
+              : "Logo | KROM Land"
+          }
+          loading='lazy'
+        />
       </Box>
     </LogoStyled>
   );

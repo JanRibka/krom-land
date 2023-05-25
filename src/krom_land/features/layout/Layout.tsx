@@ -7,12 +7,16 @@ import ConditionsDTO from "shared/DTOs/ConditionsDTO";
 import KromLandDTO from "shared/DTOs/KromLandDTO";
 import { mapFromCommonDTO } from "shared/DTOs/mapFromCommonDTO";
 import ResultDataDTO from "shared/DTOs/ResultDataDTO";
+import WebLogosDTO from "shared/DTOs/WebLogosDTO";
+import WebSettingsDTO from "shared/DTOs/WebSettingsDTO";
 import { useActionsSlice } from "shared/infrastructure/store/actions/useActionsSlice";
 import { selectCommon } from "shared/infrastructure/store/common/commonSlice";
 import { useCommonSlice } from "shared/infrastructure/store/common/useCommonSlice";
 import { useContactSlice } from "shared/infrastructure/store/contact/useContactSlice";
 import { useGallerySlice } from "shared/infrastructure/store/gallery/useGallerySlice";
 import { useHomeSlice } from "shared/infrastructure/store/home/useHomeSlice";
+import { useWebLogosSlice } from "shared/infrastructure/store/webLogos/useWebLogosSlice";
+import { useWebSettingsSlice } from "shared/infrastructure/store/webSettings/useWebSettingsSlice";
 import TablesOfKeysModel from "shared/models/TablesOfKeysModel";
 
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
@@ -22,6 +26,8 @@ import { mapFromActionsDTO } from "../actions/save/mapFromActionsDTO";
 import { mapFromContactDTO } from "../contact/save/mapFromContactDTO";
 import { mapFromGalleryDTO } from "../gallery/save/mapFromGalleryDTO";
 import { mapFromHomeDTO } from "../home/save/mapFromHomeDTO";
+import { mapFromWebLogosDTO } from "../webLogos/save/mapFromWebLogosDTO";
+import { mapFromWebSettingsDTO } from "../webSettings/save/mapFromWebSettingsDTO";
 import Footer from "./footer/Footer";
 import NavBar from "./navBar/NavBar";
 import ButtonUpStyled from "./styledComponents/ButtonUpStyled";
@@ -42,6 +48,8 @@ const Layout = (props: IProps) => {
   const { handleActionsUpdate } = useActionsSlice();
   const { handleGalleryUpdate } = useGallerySlice();
   const { handleContactUpdate } = useContactSlice();
+  const { handleWebSettingsUpdate } = useWebSettingsSlice();
+  const { handleWebLogosUpdate } = useWebLogosSlice();
 
   // Store
   const common = useSelector(selectCommon);
@@ -95,10 +103,6 @@ const Layout = (props: IProps) => {
       Success: false,
       ErrMsg: "",
       Data: {
-        Common: {
-          Conditions: new ConditionsDTO(),
-          TablesOfKeys: new TablesOfKeysModel(),
-        },
         Home: {
           Id: null,
           Title: null,
@@ -148,6 +152,12 @@ const Layout = (props: IProps) => {
           GoogleMapsUrl: null,
           Email: null,
         },
+        Common: {
+          Conditions: new ConditionsDTO(),
+          TablesOfKeys: new TablesOfKeysModel(),
+        },
+        WebSettings: new WebSettingsDTO(),
+        WebLogos: new WebLogosDTO(),
       },
     },
     [],
@@ -167,6 +177,10 @@ const Layout = (props: IProps) => {
           handleGalleryUpdate(mapFromGalleryDTO(data.Data?.Gallery));
           handleContactUpdate(mapFromContactDTO(data.Data?.Contact));
           handleCommonUpdate(mapFromCommonDTO(data?.Data?.Common));
+          handleWebSettingsUpdate(
+            mapFromWebSettingsDTO(data.Data?.WebSettings)
+          );
+          handleWebLogosUpdate(mapFromWebLogosDTO(data.Data?.WebLogos));
         } else {
           AppNotification("Chyba", data.ErrMsg ?? "", "danger");
         }

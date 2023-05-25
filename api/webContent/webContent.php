@@ -1,131 +1,145 @@
 <?php
-require_once __DIR__ . "/../db/db.php";
-require_once __DIR__ . "/./models/actionsModel.php";
-require_once __DIR__ . "/./models/galleryModel.php";
-require_once __DIR__ . "/./models/resultModel.php";
-require_once __DIR__ . "/./models/homeModel.php";
-require_once __DIR__ . "/./models/commonModel.php";
-require_once __DIR__ . "/./models/TablesOfKeysModel.php";
-require_once __DIR__ . "/../auxFunctions/auxFunctions.php";
+
+require_once __DIR__.'/../db/db.php';
+require_once __DIR__.'/./models/actionsModel.php';
+require_once __DIR__.'/./models/galleryModel.php';
+require_once __DIR__.'/./models/resultModel.php';
+require_once __DIR__.'/./models/homeModel.php';
+require_once __DIR__.'/./models/commonModel.php';
+require_once __DIR__.'/./models/TablesOfKeysModel.php';
+require_once __DIR__.'/../auxFunctions/auxFunctions.php';
 
 class WebContent
 {
-  public static function getAll()
-  {
-    $homeId = 1;
-    $actionsId = 1;
-    $galleryId = 1;
-    $contactId = 1;
-    $conditionsId = 1;
+    public static function getAll()
+    {
+        $homeId = 1;
+        $actionsId = 1;
+        $galleryId = 1;
+        $contactId = 1;
+        $conditionsId = 1;
+        $webSettingsId = 1;
+        $webLogosId = 1;
 
-    try {
-      // Get Home, Actions, Gallery, Contact and Conditions details in separate queries
-      $home = dibi::query(
-        "SELECT * FROM home as h WHERE h.Id = %i",
-        $homeId
-      )->fetch();
+        try {
+            // Get Home, Actions, Gallery, Contact and Conditions details in separate queries
+            $home = dibi::query(
+                'SELECT * FROM home as h WHERE h.Id = %i',
+                $homeId
+            )->fetch();
 
-      $teamMembers = dibi::query("SELECT * FROM teamMembers as tm")->fetchAll();
+            $teamMembers = dibi::query('SELECT * FROM teamMembers as tm')->fetchAll();
 
-      $actions = dibi::query(
-        "SELECT * FROM actions as a WHERE a.Id = %i",
-        $actionsId
-      )->fetch();
+            $actions = dibi::query(
+                'SELECT * FROM actions as a WHERE a.Id = %i',
+                $actionsId
+            )->fetch();
 
-      $actionDetails = dibi::query(
-        "SELECT ad.* FROM actions as a JOIN actionDetails as ad on a.Id = ad.ActionsId WHERE a.Id = %i ORDER BY ad.ActionOrder",
-        $actionsId
-      )->fetchAll();
+            $actionDetails = dibi::query(
+                'SELECT ad.* FROM actions as a JOIN actionDetails as ad on a.Id = ad.ActionsId WHERE a.Id = %i ORDER BY ad.ActionOrder',
+                $actionsId
+            )->fetchAll();
 
-      $documentsToDownload = dibi::query(
-        "SELECT * FROM documentsToDownload as dtd"
-      )->fetchAll();
+            $documentsToDownload = dibi::query(
+                'SELECT * FROM documentsToDownload as dtd'
+            )->fetchAll();
 
-      $gallery = dibi::query(
-        "SELECT * FROM gallery as g WHERE g.Id = %i",
-        $galleryId
-      )->fetch();
+            $gallery = dibi::query(
+                'SELECT * FROM gallery as g WHERE g.Id = %i',
+                $galleryId
+            )->fetch();
 
-      $galleryImages = dibi::query("SELECT * FROM galleryImages")->fetchAll();
+            $galleryImages = dibi::query('SELECT * FROM galleryImages')->fetchAll();
 
-      $contact = dibi::query(
-        "SELECT * FROM contact as c WHERE c.Id = %i",
-        $contactId
-      )->fetch();
+            $contact = dibi::query(
+                'SELECT * FROM contact as c WHERE c.Id = %i',
+                $contactId
+            )->fetch();
 
-      // Common
-      $conditions = dibi::query(
-        "SELECT * FROM conditions as c WHERE c.Id = %i",
-        $conditionsId
-      )->fetch();
+            $webSettings = dibi::query(
+                'SELECT * FROM webSettings as ws WHERE ws.Id = %i',
+                $webSettingsId
+            )->fetch();
 
-      // Create models using data fetched from queries
-      $homeModel = new HomeModel(
-        $home->Id,
-        $home->Title,
-        $home->Description,
-        $home->PageHeaderTextMain,
-        $home->PageHeaderTextMainColor,
-        $home->PageHeaderTextSecondary,
-        $home->PageHeaderTextSecondaryColor,
-        $home->MainImage,
-        $home->AboutUs,
-        $home->AboutUsImage,
-        $home->PeopleSay1Text,
-        $home->PeopleSay1Name,
-        $home->PeopleSay2Text,
-        $home->PeopleSay2Name,
-        $home->PeopleSay3Text,
-        $home->PeopleSay3Name,
-        $teamMembers
-      );
+            $webLogos = dibi::query(
+                'SELECT * FROM webLogos as wl WHERE wl.Id = %i',
+                $webLogosId
+            )->fetch();
 
-      $actionsModel = new ActionsModel(
-        $actions->Id,
-        $actions->Title,
-        $actions->Description,
-        $actions->PageHeaderTextMain,
-        $actions->PageHeaderTextMainColor,
-        $actions->MainImage,
-        $actionDetails,
-        $documentsToDownload
-      );
+            // Common
+            $conditions = dibi::query(
+                'SELECT * FROM conditions as c WHERE c.Id = %i',
+                $conditionsId
+            )->fetch();
 
-      $galleryModel = new GalleryModel(
-        $gallery->Id,
-        $gallery->Title,
-        $gallery->Description,
-        $gallery->PageHeaderTextMain,
-        $gallery->PageHeaderTextMainColor,
-        $gallery->MainImage,
-        $gallery->ExternalGalleryLink,
-        $galleryImages
-      );
+            // Create models using data fetched from queries
+            $homeModel = new HomeModel(
+                $home->Id,
+                $home->Title,
+                $home->Description,
+                $home->PageHeaderTextMain,
+                $home->PageHeaderTextMainColor,
+                $home->PageHeaderTextSecondary,
+                $home->PageHeaderTextSecondaryColor,
+                $home->MainImage,
+                $home->AboutUs,
+                $home->AboutUsImage,
+                $home->PeopleSay1Text,
+                $home->PeopleSay1Name,
+                $home->PeopleSay2Text,
+                $home->PeopleSay2Name,
+                $home->PeopleSay3Text,
+                $home->PeopleSay3Name,
+                $teamMembers
+            );
 
-      // Tables of keys
-      $auxFunctions = new AuxFunctions();
-      $paymentMethods = $auxFunctions->getTableOfKeyByGroupKey(
-        "PAYMENT_METHOD"
-      );
-      $childArrives = $auxFunctions->getTableOfKeyByGroupKey("CHILD_ARRIVES");
+            $actionsModel = new ActionsModel(
+                $actions->Id,
+                $actions->Title,
+                $actions->Description,
+                $actions->PageHeaderTextMain,
+                $actions->PageHeaderTextMainColor,
+                $actions->MainImage,
+                $actionDetails,
+                $documentsToDownload
+            );
 
-      $tablesOfKeys = new TablesOfKeys($paymentMethods, $childArrives);
+            $galleryModel = new GalleryModel(
+                $gallery->Id,
+                $gallery->Title,
+                $gallery->Description,
+                $gallery->PageHeaderTextMain,
+                $gallery->PageHeaderTextMainColor,
+                $gallery->MainImage,
+                $gallery->ExternalGalleryLink,
+                $galleryImages
+            );
 
-      $common = new CommonModel($conditions, $tablesOfKeys);
+            // Tables of keys
+            $auxFunctions = new AuxFunctions();
+            $paymentMethods = $auxFunctions->getTableOfKeyByGroupKey(
+                'PAYMENT_METHOD'
+            );
+            $childArrives = $auxFunctions->getTableOfKeyByGroupKey('CHILD_ARRIVES');
 
-      // Create Result model using above models
-      $result = new ResultModel(
-        $homeModel,
-        $actionsModel,
-        $galleryModel,
-        $contact,
-        $common
-      );
+            $tablesOfKeys = new TablesOfKeys($paymentMethods, $childArrives);
 
-      apiResponse(true, "", $result);
-    } catch (Exception $ex) {
-      apiResponse(false, $ex->getMessage());
+            $common = new CommonModel($conditions, $tablesOfKeys);
+
+            // Create Result model using above models
+            $result = new ResultModel(
+                $homeModel,
+                $actionsModel,
+                $galleryModel,
+                $contact,
+                $webSettings,
+                $webLogos,
+                $common
+            );
+
+            apiResponse(true, '', $result);
+        } catch (Exception $ex) {
+            apiResponse(false, $ex->getMessage());
+        }
     }
-  }
 }
-?>

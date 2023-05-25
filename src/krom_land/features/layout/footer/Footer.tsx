@@ -1,3 +1,6 @@
+import { useSelector } from "react-redux";
+import { selectWebSettings } from "shared/infrastructure/store/webSettings/webSettingsSlice";
+
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import Stack from "@mui/material/Stack";
@@ -14,6 +17,9 @@ import SocialIcons from "./socialIcons/SocialIcons";
 import FooterStyled from "./styledComponents/FooterStyled";
 
 const Footer = () => {
+  // Store
+  const webSettings = useSelector(selectWebSettings);
+
   // Constants
   const theme = useTheme();
   const mdDwn: boolean = useMediaQuery(theme.breakpoints.down("md"));
@@ -27,11 +33,13 @@ const Footer = () => {
     return (
       <Stack direction='column'>
         <Typography className='one-line-text align-center'>
-          IČO: 19116691
+          IČO: {webSettings.SubjectICO}
         </Typography>
-        {/* <Typography className='one-line-text align-center'>
-          DIČ: CZ19116691
-        </Typography> */}
+        {!!webSettings.SubjectDIC && (
+          <Typography className='one-line-text align-center'>
+            DIČ: {webSettings.SubjectDIC}
+          </Typography>
+        )}
       </Stack>
     );
   };
@@ -40,11 +48,11 @@ const Footer = () => {
     return (
       <Box
         component='a'
-        href='https://goo.gl/maps/VTBnu2dzb2GtgrvH8'
+        href={webSettings.AddressLink}
         target='_balnk'
         className='one-line-text reference'
       >
-        Šípková 686, 747 27, Kobeřice
+        {webSettings.AddressAddress}
       </Box>
     );
   };
@@ -52,20 +60,22 @@ const Footer = () => {
   const RenderContactContent = () => {
     return (
       <Stack direction='column'>
-        <Typography className='align-center'>Po - Pa: 9:00 - 17:00</Typography>
+        <Typography className='align-center'>
+          {webSettings.ContactHours}
+        </Typography>
         <Box
           component='a'
-          href='tel:778752663'
+          href={"tel:" + webSettings.ContactTel.replaceAll(" ", "")}
           className='reference align-center'
         >
-          Telefon: 778 752 663
+          Telefon: {webSettings.ContactTel}
         </Box>
         <Box
           component='a'
-          href='mailto:landkrom@gmail.com'
+          href={"mailto:" + webSettings.ContactEmail}
           className='reference align-center'
         >
-          E-mail: landkrom@gmail.com
+          E-mail: {webSettings.ContactEmail}
         </Box>
       </Stack>
     );
@@ -79,14 +89,22 @@ const Footer = () => {
             <InfoItem
               image={AboutUs}
               alt='Podnikatelský subjekt'
-              description='Subjekt'
+              description={webSettings.SubjectName}
             >
               {RenderAboutUsContent()}
             </InfoItem>
-            <InfoItem image={Address} alt='Adresa' description='Adresa'>
+            <InfoItem
+              image={Address}
+              alt='Adresa'
+              description={webSettings.AddressName}
+            >
               {RenderAddressContent()}
             </InfoItem>
-            <InfoItem image={Constct} alt='Kontakt' description='Kontakt'>
+            <InfoItem
+              image={Constct}
+              alt='Kontakt'
+              description={webSettings.ContactName}
+            >
               {RenderContactContent()}
             </InfoItem>
           </Stack>
