@@ -245,7 +245,7 @@ const ActionRegistrationDialog = (props: IProps) => {
               props.setOpen(false);
             }}
           >
-            Zvařít
+            Zavřít
           </Button>
           <Button
             variant='contained'
