@@ -1,3 +1,4 @@
+import NotFoundPage from "krom_land/features/pages/NotFoundPage";
 import { useEffect } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 
@@ -66,6 +67,7 @@ const AppRouter = () => {
       <Route path={AppRoute.Actions} element={<ActionsPage />} />
       <Route path={AppRoute.Gallery} element={<GalleryPage />} />
       <Route path={AppRoute.Contact} element={<ContactPage />} />
+      <Route path='*' element={<NotFoundPage />} />
     </Routes>
   );
 };
