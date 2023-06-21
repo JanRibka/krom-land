@@ -10,6 +10,8 @@ const PictureStyled = styled(Box)(
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
+  border-radius: 15px;
 
   &.enb-hover:hover {
     cursor: pointer;
@@ -36,11 +38,9 @@ const PictureStyled = styled(Box)(
   }
 
   img {
-    width: inherit;
-    height: inherit;
-    aspect-ratio: inherit;
-    position: absolute;
-    border-radius: 15px;
+    width: 100%;
+    height: auto;    
+    position: absolute;    
     background-color: ${grey[400]}
   }
 
