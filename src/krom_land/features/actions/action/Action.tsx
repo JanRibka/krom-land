@@ -2,6 +2,7 @@ import { forwardRef, HTMLAttributes, Ref, useState } from "react";
 import ReactPlayer from "react-player/youtube";
 import { useSelector } from "react-redux";
 import OkDialog from "shared/dialogs/OkDialog";
+import { pushToDataLayer } from "shared/helpers/googleTagManagerHelper";
 import { selectCommon } from "shared/infrastructure/store/common/commonSlice";
 
 import Box from "@mui/material/Box";
@@ -43,7 +44,6 @@ const Action = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
     useState<boolean>(false);
 
   // Constants
-
   const theme = useTheme();
   const {
     idAction,
@@ -67,6 +67,15 @@ const Action = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
   const pictDescWrapperSpacing = lgDwn ? 5 : xlDwn ? 15 : 30;
 
   // Other
+  const handleRegisterOnClick = () => {
+    setOpen(true);
+
+    pushToDataLayer("gtm.click", {
+      buttonName: "action_register",
+      buttonDesc: props.name,
+    });
+  };
+
   const renderRegistrationButton = () => {
     return (
       <Stack className='button-wrapper' direction='column' spacing={2}>
@@ -84,7 +93,7 @@ const Action = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
                     capacityFull={capacityFull}
                   />
                   {!capacityFull && (
-                    <Button variant='contained' onClick={() => setOpen(true)}>
+                    <Button variant='contained' onClick={handleRegisterOnClick}>
                       Chci se registrovat
                     </Button>
                   )}
@@ -105,7 +114,7 @@ const Action = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
                     <Button
                       variant='contained'
                       className='detail-info second'
-                      onClick={() => setOpen(true)}
+                      onClick={handleRegisterOnClick}
                     >
                       Chci se registrovat
                     </Button>
@@ -127,7 +136,7 @@ const Action = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
                     <Button
                       variant='contained'
                       className='detail-info third'
-                      onClick={() => setOpen(true)}
+                      onClick={handleRegisterOnClick}
                     >
                       Chci se registrovat
                     </Button>
@@ -137,7 +146,7 @@ const Action = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
             default:
               return (
                 !capacityFull && (
-                  <Button variant='contained' onClick={() => setOpen(true)}>
+                  <Button variant='contained' onClick={handleRegisterOnClick}>
                     Chci se registrovat
                   </Button>
                 )

@@ -1,10 +1,10 @@
-import { pushToDataLayer } from 'shared/helpers/googleTagManagerHelper';
+import { pushToDataLayer } from "shared/helpers/googleTagManagerHelper";
 
-import FileDownloadIcon from '@mui/icons-material/FileDownload';
-import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Stack from '@mui/material/Stack';
+import FileDownloadIcon from "@mui/icons-material/FileDownload";
+import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Stack from "@mui/material/Stack";
 
 interface IProps {
   filePath: string;
@@ -21,7 +21,7 @@ const Document = (props: IProps) => {
     anchor.download = props.fileName;
     anchor.click();
 
-    pushToDataLayer("button_click", {
+    pushToDataLayer("gtm.click", {
       buttonName: "document_download",
       buttonDesc: props.fileName,
     });

@@ -1,11 +1,10 @@
-import { useSelector } from 'react-redux';
-import GridContainer from 'shared/components/gridContainer/GridContainer';
-import GridItem from 'shared/components/gridItem/GridItem';
-import { pushToDataLayer } from 'shared/helpers/googleTagManagerHelper';
-import { selectGallery } from 'shared/infrastructure/store/gallery/gallerySlice';
+import { useSelector } from "react-redux";
+import GridContainer from "shared/components/gridContainer/GridContainer";
+import GridItem from "shared/components/gridItem/GridItem";
+import { selectGallery } from "shared/infrastructure/store/gallery/gallerySlice";
 
-import Box from '@mui/material/Box';
-import { useTheme } from '@mui/material/styles';
+import Box from "@mui/material/Box";
+import { useTheme } from "@mui/material/styles";
 
 const GoToGallery = () => {
   // Store
@@ -14,15 +13,6 @@ const GoToGallery = () => {
   // Consts
   const theme = useTheme();
 
-  // Other
-  const HandleOnClick = () => {
-    // googleAnalyticsHelper.SendEventToGA("Galerie", "Zobrazení externí galeri");
-    pushToDataLayer("button_click", {
-      buttonName: "goToGallery",
-      buttonDesc: "Zobrazení externí galeri",
-    });
-  };
-
   return (
     <GridContainer sx={{ marginBottom: "80px", justifyContent: "center" }}>
       <GridItem xs={12} justifyContent='center'>
@@ -30,7 +20,6 @@ const GoToGallery = () => {
           component='a'
           href={gallery.ExternalGalleryLink}
           target='_blank'
-          onClick={HandleOnClick}
           sx={{
             borderRadius: "23px",
             height: "46px",

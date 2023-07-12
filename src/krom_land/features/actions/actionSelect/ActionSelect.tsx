@@ -1,16 +1,16 @@
-import { useRef } from 'react';
-import { useSelector } from 'react-redux';
-import { pushToDataLayer } from 'shared/helpers/googleTagManagerHelper';
-import { selectActions } from 'shared/infrastructure/store/actions/actionsSlice';
+import { useRef } from "react";
+import { useSelector } from "react-redux";
+import { pushToDataLayer } from "shared/helpers/googleTagManagerHelper";
+import { selectActions } from "shared/infrastructure/store/actions/actionsSlice";
 
-import Box from '@mui/material/Box';
-import Skeleton from '@mui/material/Skeleton';
-import Stack from '@mui/material/Stack';
-import { useTheme } from '@mui/material/styles';
+import Box from "@mui/material/Box";
+import Skeleton from "@mui/material/Skeleton";
+import Stack from "@mui/material/Stack";
+import { useTheme } from "@mui/material/styles";
 
-import Action from '../action/Action';
-import Documents from '../documents/Documents';
-import ActionSelectStyled from './styledComponents/ActionSelectStyled';
+import Action from "../action/Action";
+import Documents from "../documents/Documents";
+import ActionSelectStyled from "./styledComponents/ActionSelectStyled";
 
 const ActionSelect = () => {
   // References
@@ -45,7 +45,7 @@ const ActionSelect = () => {
       refTabFourth.current?.classList.remove("active");
 
       // Google analytics
-      pushToDataLayer("button_click", {
+      pushToDataLayer("gtm.click", {
         buttonName: "action_select",
         buttonDesc: "Zobrazení detailu akce",
         actionName: actions.ActionDetails[0].ActionName,
@@ -64,7 +64,7 @@ const ActionSelect = () => {
       refTabFourth.current?.classList.remove("active");
 
       // Google analytics
-      pushToDataLayer("button_click", {
+      pushToDataLayer("gtm.click", {
         buttonName: "action_select",
         buttonDesc: "Zobrazení detailu akce",
         actionName: actions.ActionDetails[1].ActionName,
@@ -83,7 +83,7 @@ const ActionSelect = () => {
       refTabFourth.current?.classList.remove("active");
 
       // Google analytics
-      pushToDataLayer("button_click", {
+      pushToDataLayer("gtm.click", {
         buttonName: "action_select",
         buttonDesc: "Zobrazení detailu akce",
         actionName: actions.ActionDetails[2].ActionName,
@@ -102,7 +102,7 @@ const ActionSelect = () => {
       refTabThird.current?.classList.remove("active");
 
       // Google analytics
-      pushToDataLayer("button_click", {
+      pushToDataLayer("gtm.click", {
         buttonName: "document_select",
         buttonDesc: "Zobrazení dokumentů ke stažení",
       });

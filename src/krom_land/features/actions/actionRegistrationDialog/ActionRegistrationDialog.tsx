@@ -12,6 +12,7 @@ import {
 } from "react";
 import { useSelector } from "react-redux";
 import AppLoader from "shared/components/loader/AppLoader";
+import { pushToDataLayer } from "shared/helpers/googleTagManagerHelper";
 import { selectCommon } from "shared/infrastructure/store/common/commonSlice";
 
 import CheckIcon from "@mui/icons-material/Check";
@@ -183,6 +184,19 @@ const ActionRegistrationDialog = (props: IProps) => {
         setFormData(newFormDat);
         props.setOpen(false);
         setRegistering(false);
+
+        // Google analytics
+        pushToDataLayer("gtm.click", {
+          buttonName: "purchase",
+          buttonDesc: "",
+          commerce: {
+            item: {
+              item_name: props.actionName,
+              price: props.actionPrice.replaceAll(" ", ""),
+              quantity: 1,
+            },
+          },
+        });
       }, 2000);
     } else {
       setRegistering(false);

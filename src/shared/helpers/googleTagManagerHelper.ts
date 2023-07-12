@@ -1,6 +1,6 @@
-import TagManager from 'react-gtm-module';
+import TagManager from "react-gtm-module";
 
-import { CookieHelper } from './cookieHelper';
+import { CookieHelper } from "./cookieHelper";
 
 const cookieHelper: CookieHelper = new CookieHelper();
 
@@ -35,5 +35,9 @@ export class GoogleTagManagerHelper {
 
 export const pushToDataLayer = (event: string, data: any) => {
   window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({ event: event, data: data });
+  window.dataLayer.push({
+    event: event,
+    data: data,
+    "gtm.element": "undefined",
+  });
 };
