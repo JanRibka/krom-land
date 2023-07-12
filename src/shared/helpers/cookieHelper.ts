@@ -1,9 +1,10 @@
+import CookieConstentModel from 'shared/components/cookieConsent/CookieConsentModel';
+
 export class CookieHelper {
-  Set(name: string, value: string, exDays: number) {
+  Set(name: string, value: string, exMonths: number) {
     const d = new Date();
-//TDOO: var myDate = new Date();
-//myDate.setFullYear(myDate.getFullYear() + nbYearsToAdd);
-    d.setTime(d.getTime() + exDays * 24 * 60 * 60 * 1000);
+
+    d.setMonth(d.getMonth() + exMonths);
 
     const expires: string = "expires=" + d.toUTCString();
 
@@ -52,5 +53,17 @@ export class CookieHelper {
     }
 
     document.cookie = name + "=;" + auxDomain + " max-age=0;";
+  }
+
+  GetCookieConsentCookieValue() {
+    const cookieHelper: CookieHelper = new CookieHelper();
+    const value: string = cookieHelper.Get("CookieConsent");
+    let result: CookieConstentModel = { funct: false, diag: false };
+
+    if (value !== "") {
+      result = JSON.parse(value);
+    }
+
+    return result;
   }
 }

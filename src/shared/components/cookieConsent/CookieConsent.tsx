@@ -1,6 +1,6 @@
 import { MouseEvent, useEffect, useRef, useState } from 'react';
 import { CookieHelper } from 'shared/helpers/cookieHelper';
-import { GoogleAnalyticsHelper } from 'shared/helpers/googleAnalyticsHelper';
+import { GoogleTagManagerHelper } from 'shared/helpers/googleTagManagerHelper';
 
 import CookieConsentDialog from './cookieConsentDialog/CookieConsentDialog';
 import CookieConstentModel from './CookieConsentModel';
@@ -11,10 +11,10 @@ const CookienConsent = () => {
   const effectRan = useRef<boolean>(false);
 
   // Consts
-  const cookieExpiresIn: number = 180;
+  const cookieExpiresInMonths: number = 6;
   const cookieHelper: CookieHelper = new CookieHelper();
-  const googleAnalyticsHelper: GoogleAnalyticsHelper =
-    new GoogleAnalyticsHelper();
+  const googletagManagerHelper: GoogleTagManagerHelper =
+    new GoogleTagManagerHelper();
 
   // Sate
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -41,7 +41,7 @@ const CookienConsent = () => {
     const value: string = cookieHelper.Get("CookieConsent");
 
     if (value === "") {
-      googleAnalyticsHelper.RemoveGA();
+      googletagManagerHelper.Remove();
       setIsOpen(true);
     }
   };
@@ -49,8 +49,8 @@ const CookienConsent = () => {
   const HandleAccepAllOnClickAction = (
     event: MouseEvent<HTMLButtonElement>
   ) => {
-    if (process.env.REACT_APP_GOOGLE_ANALYTICS_ID) {
-      googleAnalyticsHelper.InitGA(process.env.REACT_APP_GOOGLE_ANALYTICS_ID);
+    if (process.env.REACT_APP_GOOGLE_TAG_MANAGER_ID) {
+      googletagManagerHelper.Init(process.env.REACT_APP_GOOGLE_TAG_MANAGER_ID);
     }
 
     const consent: CookieConstentModel = {
@@ -58,7 +58,11 @@ const CookienConsent = () => {
       diag: diagCookieValue,
     };
 
-    cookieHelper.Set("CookieConsent", JSON.stringify(consent), cookieExpiresIn);
+    cookieHelper.Set(
+      "CookieConsent",
+      JSON.stringify(consent),
+      cookieExpiresInMonths
+    );
     setIsOpen(false);
   };
 
@@ -75,8 +79,8 @@ const CookienConsent = () => {
   const HandleAgreeAllOnClickAction = (
     event: MouseEvent<HTMLButtonElement>
   ) => {
-    if (process.env.REACT_APP_GOOGLE_ANALYTICS_ID) {
-      googleAnalyticsHelper.InitGA(process.env.REACT_APP_GOOGLE_ANALYTICS_ID);
+    if (process.env.REACT_APP_GOOGLE_TAG_MANAGER_ID) {
+      googletagManagerHelper.Init(process.env.REACT_APP_GOOGLE_TAG_MANAGER_ID);
     }
 
     const consent: CookieConstentModel = {
@@ -84,7 +88,11 @@ const CookienConsent = () => {
       diag: true,
     };
 
-    cookieHelper.Set("CookieConsent", JSON.stringify(consent), cookieExpiresIn);
+    cookieHelper.Set(
+      "CookieConsent",
+      JSON.stringify(consent),
+      cookieExpiresInMonths
+    );
     setIsOpenSettings(false);
     setIsOpen(false);
   };
@@ -92,8 +100,8 @@ const CookienConsent = () => {
   const HandleSaveSettingsOnClickAction = (
     event: MouseEvent<HTMLButtonElement>
   ) => {
-    if (diagCookieValue && process.env.REACT_APP_GOOGLE_ANALYTICS_ID) {
-      googleAnalyticsHelper.InitGA(process.env.REACT_APP_GOOGLE_ANALYTICS_ID);
+    if (diagCookieValue && process.env.REACT_APP_GOOGLE_TAG_MANAGER_ID) {
+      googletagManagerHelper.Init(process.env.REACT_APP_GOOGLE_TAG_MANAGER_ID);
     }
 
     const consent: CookieConstentModel = {
@@ -101,7 +109,11 @@ const CookienConsent = () => {
       diag: diagCookieValue,
     };
 
-    cookieHelper.Set("CookieConsent", JSON.stringify(consent), cookieExpiresIn);
+    cookieHelper.Set(
+      "CookieConsent",
+      JSON.stringify(consent),
+      cookieExpiresInMonths
+    );
     setIsOpenSettings(false);
     setIsOpen(false);
   };

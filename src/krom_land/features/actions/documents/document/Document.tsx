@@ -1,8 +1,10 @@
-import FileDownloadIcon from "@mui/icons-material/FileDownload";
-import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Stack from "@mui/material/Stack";
+import { pushToDataLayer } from 'shared/helpers/googleTagManagerHelper';
+
+import FileDownloadIcon from '@mui/icons-material/FileDownload';
+import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
 
 interface IProps {
   filePath: string;
@@ -18,6 +20,11 @@ const Document = (props: IProps) => {
     );
     anchor.download = props.fileName;
     anchor.click();
+
+    pushToDataLayer("button_click", {
+      buttonName: "document_download",
+      buttonDesc: props.fileName,
+    });
   };
 
   const createBlobFromImportedFile = async (pDocument: string) => {
