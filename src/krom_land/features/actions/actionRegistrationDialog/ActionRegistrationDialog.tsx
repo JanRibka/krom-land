@@ -186,15 +186,33 @@ const ActionRegistrationDialog = (props: IProps) => {
         setRegistering(false);
 
         // Google analytics
-        pushToDataLayer("gtm.click", {
-          buttonName: "purchase",
+        const timestamp = Date.now();
+        const random = Math.floor(Math.random() * 1000);
+        const transactionId = `${timestamp}-${random}`;
+
+        pushToDataLayer("purchase", {
+          buttonName: "",
           buttonDesc: "",
           commerce: {
-            item: {
-              item_name: props.actionName,
-              price: props.actionPrice.replaceAll(" ", ""),
-              quantity: 1,
-            },
+            transaction_id: transactionId,
+            affiliation: "Online Store",
+            coupon: "",
+            currency: "CZK",
+            value: props.actionPrice.replaceAll(" ", ""),
+            tax: "21",
+            shipping: "0",
+            items: [
+              {
+                item_id: props.id,
+                item_name: props.actionName,
+                item_bramd: "Krom LAND",
+                item_category: "Leisure",
+                item_variant: "",
+                coupon: "",
+                price: props.actionPrice.replaceAll(" ", ""),
+                quantity: 1,
+              },
+            ],
           },
         });
       }, 2000);
