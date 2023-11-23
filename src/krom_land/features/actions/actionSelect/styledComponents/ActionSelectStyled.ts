@@ -1,5 +1,5 @@
-import Box from '@mui/material/Box';
-import { styled } from '@mui/material/styles';
+import Box from "@mui/material/Box";
+import { styled } from "@mui/material/styles";
 
 const ActionSelectStyled = styled(Box)(({ theme }) => ({
   padding: "80px 0",
@@ -57,6 +57,10 @@ const ActionSelectStyled = styled(Box)(({ theme }) => ({
 
       "&:nth-of-type(4)": {
         backgroundColor: theme.palette.common.red.main,
+      },
+
+      "&:nth-of-type(5)": {
+        backgroundColor: theme.palette.secondary.main,
       },
 
       "&:hover, &.active": {

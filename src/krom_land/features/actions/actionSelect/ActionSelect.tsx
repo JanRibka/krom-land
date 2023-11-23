@@ -10,6 +10,7 @@ import { useTheme } from "@mui/material/styles";
 
 import Action from "../action/Action";
 import Documents from "../documents/Documents";
+import Vouchers from "../vouchers/Vouchers";
 import ActionSelectStyled from "./styledComponents/ActionSelectStyled";
 
 const ActionSelect = () => {
@@ -18,10 +19,12 @@ const ActionSelect = () => {
   const refButtonSecond = useRef<HTMLLIElement>(null);
   const refButtonThird = useRef<HTMLLIElement>(null);
   const refButtonFourth = useRef<HTMLLIElement>(null);
+  const refButtonFifth = useRef<HTMLLIElement>(null);
   const refTabFirst = useRef<HTMLDivElement>(null);
   const refTabSecond = useRef<HTMLDivElement>(null);
   const refTabThird = useRef<HTMLDivElement>(null);
   const refTabFourth = useRef<HTMLDivElement>(null);
+  const refTabFifth = useRef<HTMLDivElement>(null);
 
   // Store
   const actions = useSelector(selectActions);
@@ -37,12 +40,14 @@ const ActionSelect = () => {
       refButtonSecond.current?.classList.remove("active");
       refButtonThird.current?.classList.remove("active");
       refButtonFourth.current?.classList.remove("active");
+      refButtonFifth.current?.classList.remove("active");
 
       // Tabs
       refTabFirst.current?.classList.add("active");
       refTabSecond.current?.classList.remove("active");
       refTabThird.current?.classList.remove("active");
       refTabFourth.current?.classList.remove("active");
+      refTabFifth.current?.classList.remove("active");
 
       // Google analytics
       pushToDataLayer("gtm.click", {
@@ -56,12 +61,14 @@ const ActionSelect = () => {
       refButtonFirst.current?.classList.remove("active");
       refButtonThird.current?.classList.remove("active");
       refButtonFourth.current?.classList.remove("active");
+      refButtonFifth.current?.classList.remove("active");
 
       // Tabs
       refTabSecond.current?.classList.add("active");
       refTabFirst.current?.classList.remove("active");
       refTabThird.current?.classList.remove("active");
       refTabFourth.current?.classList.remove("active");
+      refTabFifth.current?.classList.remove("active");
 
       // Google analytics
       pushToDataLayer("gtm.click", {
@@ -75,12 +82,14 @@ const ActionSelect = () => {
       refButtonFirst.current?.classList.remove("active");
       refButtonSecond.current?.classList.remove("active");
       refButtonFourth.current?.classList.remove("active");
+      refButtonFifth.current?.classList.remove("active");
 
       // Tabs
       refTabThird.current?.classList.add("active");
       refTabFirst.current?.classList.remove("active");
       refTabSecond.current?.classList.remove("active");
       refTabFourth.current?.classList.remove("active");
+      refTabFifth.current?.classList.remove("active");
 
       // Google analytics
       pushToDataLayer("gtm.click", {
@@ -94,70 +103,100 @@ const ActionSelect = () => {
       refButtonFirst.current?.classList.remove("active");
       refButtonSecond.current?.classList.remove("active");
       refButtonThird.current?.classList.remove("active");
+      refButtonFifth.current?.classList.remove("active");
 
       // Tabs
       refTabFourth.current?.classList.add("active");
       refTabFirst.current?.classList.remove("active");
       refTabSecond.current?.classList.remove("active");
       refTabThird.current?.classList.remove("active");
+      refTabFifth.current?.classList.remove("active");
 
       // Google analytics
       pushToDataLayer("gtm.click", {
         buttonName: "document_select",
         buttonDesc: "Zobrazení dokumentů ke stažení",
       });
+    } else if (value === 4) {
+      // MenuButtons
+      refButtonFifth.current?.classList.add("active");
+      refButtonFirst.current?.classList.remove("active");
+      refButtonSecond.current?.classList.remove("active");
+      refButtonThird.current?.classList.remove("active");
+      refButtonFourth.current?.classList.remove("active");
+
+      // Tabs
+      refTabFifth.current?.classList.add("active");
+      refTabFirst.current?.classList.remove("active");
+      refTabSecond.current?.classList.remove("active");
+      refTabThird.current?.classList.remove("active");
+      refTabFourth.current?.classList.remove("active");
+
+      // Google analytics
+      pushToDataLayer("gtm.click", {
+        buttonName: "vouchers_select",
+        buttonDesc: "Zobrazení dárkových poukazů",
+      });
     }
   };
 
   return (
-    <ActionSelectStyled component='section'>
+    <ActionSelectStyled component="section">
       <Stack>
         <>
-          <Box component='ul'>
+          <Box component="ul">
             {/* První záložka */}
             <Box
               ref={refButtonFirst}
-              component='li'
-              className='active'
+              component="li"
+              className="active"
               onClick={() => handleOnCLick(0)}
             >
               {actions.ActionDetails?.[0]?.MonthName ? (
-                <Box component='span'>{actions.ActionDetails[0].MonthName}</Box>
+                <Box component="span">{actions.ActionDetails[0].MonthName}</Box>
               ) : (
-                <Skeleton className='skeleton-menu-text' />
+                <Skeleton className="skeleton-menu-text" />
               )}
             </Box>
             {/* Druhá záložka */}
             <Box
               ref={refButtonSecond}
-              component='li'
+              component="li"
               onClick={() => handleOnCLick(1)}
             >
               {actions.ActionDetails?.[1]?.MonthName ? (
-                <Box component='span'>{actions.ActionDetails[1].MonthName}</Box>
+                <Box component="span">{actions.ActionDetails[1].MonthName}</Box>
               ) : (
-                <Skeleton className='skeleton-menu-text' />
+                <Skeleton className="skeleton-menu-text" />
               )}
             </Box>
             {/* Třetí záložka */}
             <Box
               ref={refButtonThird}
-              component='li'
+              component="li"
               onClick={() => handleOnCLick(2)}
             >
               {actions.ActionDetails?.[2]?.MonthName ? (
-                <Box component='span'>{actions.ActionDetails[2].MonthName}</Box>
+                <Box component="span">{actions.ActionDetails[2].MonthName}</Box>
               ) : (
-                <Skeleton className='skeleton-menu-text' />
+                <Skeleton className="skeleton-menu-text" />
               )}
             </Box>
             {/* Čtvrtá záložka */}
             <Box
               ref={refButtonFourth}
-              component='li'
+              component="li"
               onClick={() => handleOnCLick(3)}
             >
-              <Box component='span'>Dokumenty</Box>
+              <Box component="span">Dokumenty</Box>
+            </Box>
+            {/* Pátá záložka */}
+            <Box
+              ref={refButtonFifth}
+              component="li"
+              onClick={() => handleOnCLick(4)}
+            >
+              <Box component="span">Poukazy</Box>
             </Box>
           </Box>
         </>
@@ -165,7 +204,7 @@ const ActionSelect = () => {
           <Box>
             <Action
               ref={refTabFirst}
-              className='active'
+              className="active"
               backgroundColor={theme.palette.secondary.main}
               idAction={actions.ActionDetails?.[0]?.Id}
               name={actions.ActionDetails?.[0]?.ActionName}
@@ -213,6 +252,7 @@ const ActionSelect = () => {
               capacityFull={actions.ActionDetails?.[2]?.CapacityFull}
             />
             <Documents ref={refTabFourth} />
+            <Vouchers ref={refTabFifth} />
           </Box>
         </>
       </Stack>

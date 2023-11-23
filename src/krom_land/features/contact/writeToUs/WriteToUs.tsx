@@ -19,7 +19,7 @@ import ContactService from "../ContactService";
 import WriteToUsFormModel from "../models/WriteToUsFormModel";
 import WriteToUsStyled from "./styledComponents/WriteToUsStyled";
 
-const WritetoUs = () => {
+const WriteToUs = () => {
   // References
   const refForm = useRef<HTMLFormElement>(null);
 
@@ -85,67 +85,67 @@ const WritetoUs = () => {
   };
 
   return (
-    <WriteToUsStyled component='section'>
-      <Stack spacing={3} direction='column' className='write-to-us-wrapper'>
+    <WriteToUsStyled component="section">
+      <Stack spacing={3} direction="column" className="write-to-us-wrapper">
         <>
           <SectionTitle
-            mainText='Máte nějaký dotaz?'
-            secondaryText='Napište nám'
+            mainText="Máte nějaký dotaz?"
+            secondaryText="Napište nám"
           />
         </>
         <form ref={refForm} onSubmit={handleFormOnSubmit}>
           <Stack
             spacing={3}
-            direction='column'
-            className='write-to-us-form-wrapper'
+            direction="column"
+            className="write-to-us-form-wrapper"
           >
             <>
               <Stack spacing={3} direction={smDwn ? "column" : "row"}>
                 <TextField
-                  label='Vaše jméno'
+                  label="Vaše jméno"
                   required
-                  variant='outlined'
-                  type='text'
-                  className='first-row-input'
-                  autoComplete='off'
+                  variant="outlined"
+                  type="text"
+                  className="first-row-input"
+                  autoComplete="off"
                   name={nameof<WriteToUsFormModel>("user_name")}
                   value={formData.user_name}
                   onChange={handleTextFieldOnChange}
                 />
                 <TextField
-                  label='E-mail'
+                  label="E-mail"
                   required
-                  variant='outlined'
-                  type='email'
-                  className='first-row-input'
-                  autoComplete='off'
+                  variant="outlined"
+                  type="email"
+                  className="first-row-input"
+                  autoComplete="off"
                   name={nameof<WriteToUsFormModel>("user_email")}
                   value={formData.user_email}
                   onChange={handleTextFieldOnChange}
                 />
               </Stack>
               <TextField
-                label='Vaše zpráva'
+                label="Vaše zpráva"
                 required
-                variant='outlined'
-                type='text'
+                variant="outlined"
+                type="text"
                 multiline
                 rows={4}
-                autoComplete='off'
+                autoComplete="off"
                 name={nameof<WriteToUsFormModel>("message")}
                 value={formData.message}
                 onChange={handleTextFieldOnChange}
               />
             </>
-            <Box className='gdpr-consent'>
+            <Box className="gdpr-consent">
               <AppCheckbox
                 required
                 checked={formData.gdpr_consent}
                 name={nameof<WriteToUsFormModel>("gdpr_consent")}
                 label={
-                  <Box component='span'>
+                  <Box component="span">
                     Souhlasím se zpracováním{" "}
-                    <Box component='a' onClick={handleOnClickGdpr}>
+                    <Box component="a" onClick={handleOnClickGdpr}>
                       osobních údajů
                     </Box>
                   </Box>
@@ -154,8 +154,8 @@ const WritetoUs = () => {
               />
             </Box>
             <>
-              <Box className='button-wrapper'>
-                <Button variant='contained' type='submit'>
+              <Box className="button-wrapper">
+                <Button variant="contained" type="submit">
                   Odeslat zprávu
                 </Button>
               </Box>
@@ -170,7 +170,7 @@ const WritetoUs = () => {
           isClosable
           content={
             <Box
-              component='span'
+              component="span"
               dangerouslySetInnerHTML={{ __html: common.Conditions.GdprText }}
             />
           }
@@ -180,4 +180,4 @@ const WritetoUs = () => {
   );
 };
 
-export default WritetoUs;
+export default WriteToUs;

@@ -20,11 +20,11 @@ const Documents = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
     <DocumentsStyled ref={ref}>
       <Box>
         <Stack>
-          <SectionTitle mainText='Dokumenty ke stažení' />
+          <SectionTitle mainText="Dokumenty ke stažení" />
           <Stack spacing={2}>
             {documentsToDownload.length === 0 && (
               <Typography
-                variant='h5'
+                variant="h5"
                 sx={{ textAlign: "center", marginBottom: "25px" }}
               >
                 Žádné dokumenty ke stažení
