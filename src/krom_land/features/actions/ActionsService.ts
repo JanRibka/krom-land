@@ -4,6 +4,7 @@ import ResultDataDTO from "shared/DTOs/ResultDataDTO";
 import Repository from "shared/infrastructure/repositiory/Repository";
 
 import DialogContentFormModel from "./actionRegistrationDialog/models/DialogContentFormModel";
+import VoucherModel from "./vouchers/models/VoucherModel";
 
 export default class ActionsService {
   private _repo = new Repository();
@@ -42,6 +43,45 @@ export default class ActionsService {
       }
     } else {
       AppNotification("Chyba", "Chyba při zpracování registrace", "danger");
+    }
+
+    return result;
+  }
+
+  public async sendVoucher(data: VoucherModel) {
+    const dataEncoded = btoa(encodeURIComponent(JSON.stringify(data)));
+    let result = false;
+    const formData = new FormData();
+
+    formData.append("voucherData", dataEncoded);
+
+    const response = await this._repo.post<any, ResultDataDTO<any>>({
+      url: process.env.REACT_APP_API_URL ?? "",
+      params: new URLSearchParams({
+        action: "vouchers",
+        type: "create",
+      }),
+      data: formData,
+    });
+
+    if (response.status === HttpStatusCode.Ok) {
+      const dataType = typeof response.data;
+
+      if (dataType === "string") {
+        AppNotification("Chyba", String(response.data), "danger");
+      } else if (dataType === "object") {
+        if (response.data?.Success) {
+          AppNotification("Úspěch", "Voucher odeslán", "success");
+          result = true;
+        } else {
+          AppNotification("Chyba", response.data?.ErrMsg ?? "", "danger");
+        }
+      } else {
+        AppNotification("Úspěch", "Voucher odeslán", "success");
+        result = true;
+      }
+    } else {
+      AppNotification("Chyba", "Chyba při odesílání voucheru", "danger");
     }
 
     return result;

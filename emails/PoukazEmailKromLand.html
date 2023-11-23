@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <style>
+      <!--
+       /* Font Definitions */
+       @font-face
+      	{font-family:"Cambria Math";
+      	panose-1:2 4 5 3 5 4 6 3 2 4;}
+      @font-face
+      	{font-family:Calibri;
+      	panose-1:2 15 5 2 2 2 4 3 2 4;}
+      @font-face
+      	{font-family:"Calibri Light";
+      	panose-1:2 15 3 2 2 2 4 3 2 4;}
+       /* Style Definitions */
+       p.MsoNormal, li.MsoNormal, div.MsoNormal
+      	{margin-top:0cm;
+      	margin-right:0cm;
+      	margin-bottom:8.0pt;
+      	margin-left:0cm;
+      	line-height:107%;
+      	font-size:11.0pt;
+        color:#222;
+      	font-family:"Calibri",sans-serif;}
+      h1
+      	{mso-style-link:"Nadpis 1 Char";
+      	margin-top:12.0pt;
+      	margin-right:0cm;
+      	margin-bottom:0cm;
+      	margin-left:0cm;
+      	line-height:107%;
+      	page-break-after:avoid;
+      	font-size:16.0pt;
+      	font-family:"Calibri Light",sans-serif;
+      	color:#2F5496;
+      	font-weight:normal;}
+      h2
+      	{mso-style-link:"Nadpis 2 Char";
+      	margin-top:2.0pt;
+      	margin-right:0cm;
+      	margin-bottom:0cm;
+      	margin-left:0cm;
+      	line-height:107%;
+      	page-break-after:avoid;
+      	font-size:13.0pt;
+      	font-family:"Calibri Light",sans-serif;
+      	color:#2F5496;
+      	font-weight:normal;}
+      span.Nadpis1Char
+      	{mso-style-name:"Nadpis 1 Char";
+      	mso-style-link:"Nadpis 1";
+      	font-family:"Calibri Light",sans-serif;
+      	color:#2F5496;}
+      span.Nadpis2Char
+      	{mso-style-name:"Nadpis 2 Char";
+      	mso-style-link:"Nadpis 2";
+      	font-family:"Calibri Light",sans-serif;
+      	color:#2F5496;}
+      .MsoChpDefault
+      	{font-family:"Calibri",sans-serif;}
+      .MsoPapDefault
+      	{margin-bottom:8.0pt;
+      	line-height:107%;}
+      @page WordSection1
+      	{size:595.3pt 841.9pt;
+      	margin:70.85pt 70.85pt 70.85pt 70.85pt;}
+      div.WordSection1
+      	{page:WordSection1;}
+      -->
+    </style>
+  </head>
+
+  <body lang="CS" style="word-wrap: break-word">
+    <div class="WordSection1">
+      <h1>
+        Dárkový poukaz pro:
+        <span lang="EN-US"><?php echo $voucher_name; ?></span>
+      </h1>
+
+      <p class="MsoNormal">&nbsp;</p>
+
+      <p class="MsoNormal">
+        Jméno:
+        <?php echo $first_name; ?>
+      </p>
+
+      <p class="MsoNormal">
+        Příjmení:
+        <?php echo $last_name; ?>
+      </p>
+
+      <p class="MsoNormal">
+        E-mail:
+        <?php echo $email; ?>
+      </p>
+
+      <p class="MsoNormal">
+        Ulice a č.p.:
+        <?php echo $street_hn; ?>
+      </p>
+
+      <p class="MsoNormal">
+        Obec:
+        <?php echo $city; ?>
+      </p>
+
+      <p class="MsoNormal">
+        PSČ:
+        <?php echo $zip_code; ?>
+      </p>
+
+      <p class="MsoNormal"><span lang="EN-US">&nbsp;</span></p>
+
+      <p class="MsoNormal"><span lang="EN-US">Hezk</span>ý den</p>
+
+      <p class="MsoNormal">KROM Land</p>
+    </div>
+  </body>
+</html>

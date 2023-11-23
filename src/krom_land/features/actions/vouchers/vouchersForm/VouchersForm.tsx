@@ -17,6 +17,7 @@ import { useTheme } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
+import ActionsService from "../../ActionsService";
 import VoucherModel from "../models/VoucherModel";
 import VouchersFormStyled from "./VouchersFormStyled";
 
@@ -33,11 +34,15 @@ const VouchersForm = () => {
 
   // Constants
   const theme = useTheme();
+  const _actionsService = new ActionsService();
   const smDwn = useMediaQuery(theme.breakpoints.down("sm"));
 
   // Other
-  const handleOnSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleOnSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    e.currentTarget.reset();
+
+    await _actionsService.sendVoucher(formData);
 
     setFormData(new VoucherModel());
   };
@@ -107,6 +112,9 @@ const VouchersForm = () => {
             name={nameof<VoucherModel>("email")}
             value={formData.email}
             onChange={handleTextFieldOnChange}
+            inputProps={{
+              maxLength: 50,
+            }}
           />
 
           <Stack spacing={3} direction={smDwn ? "column" : "row"}>
@@ -120,6 +128,9 @@ const VouchersForm = () => {
               name={nameof<VoucherModel>("first_name")}
               value={formData.first_name}
               onChange={handleTextFieldOnChange}
+              inputProps={{
+                maxLength: 50,
+              }}
             />
             <TextField
               label="Příjmení"
@@ -131,6 +142,9 @@ const VouchersForm = () => {
               name={nameof<VoucherModel>("last_name")}
               value={formData.last_name}
               onChange={handleTextFieldOnChange}
+              inputProps={{
+                maxLength: 50,
+              }}
             />
           </Stack>
 
@@ -144,6 +158,9 @@ const VouchersForm = () => {
             name={nameof<VoucherModel>("city")}
             value={formData.city}
             onChange={handleTextFieldOnChange}
+            inputProps={{
+              maxLength: 50,
+            }}
           />
 
           <Stack spacing={3} direction={smDwn ? "column" : "row"}>
@@ -157,6 +174,9 @@ const VouchersForm = () => {
               name={nameof<VoucherModel>("street_hn")}
               value={formData.street_hn}
               onChange={handleTextFieldOnChange}
+              inputProps={{
+                maxLength: 50,
+              }}
             />
             <TextField
               label="PSČ"
@@ -168,6 +188,9 @@ const VouchersForm = () => {
               name={nameof<VoucherModel>("zip_code")}
               value={formData.zip_code}
               onChange={handleTextFieldOnChange}
+              inputProps={{
+                maxLength: 10,
+              }}
             />
           </Stack>
 
