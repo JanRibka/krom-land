@@ -1,13 +1,13 @@
 <?php
 
-require_once __DIR__.'/../db/db.php';
-require_once __DIR__.'/./models/actionsModel.php';
-require_once __DIR__.'/./models/galleryModel.php';
-require_once __DIR__.'/./models/resultModel.php';
-require_once __DIR__.'/./models/homeModel.php';
-require_once __DIR__.'/./models/commonModel.php';
-require_once __DIR__.'/./models/TablesOfKeysModel.php';
-require_once __DIR__.'/../auxFunctions/auxFunctions.php';
+require_once __DIR__ . '/../db/db.php';
+require_once __DIR__ . '/./models/actionsModel.php';
+require_once __DIR__ . '/./models/galleryModel.php';
+require_once __DIR__ . '/./models/resultModel.php';
+require_once __DIR__ . '/./models/homeModel.php';
+require_once __DIR__ . '/./models/commonModel.php';
+require_once __DIR__ . '/./models/TablesOfKeysModel.php';
+require_once __DIR__ . '/../auxFunctions/auxFunctions.php';
 
 class WebContent
 {
@@ -122,7 +122,9 @@ class WebContent
             );
             $childArrives = $auxFunctions->getTableOfKeyByGroupKey('CHILD_ARRIVES');
 
-            $tablesOfKeys = new TablesOfKeys($paymentMethods, $childArrives);
+            $vouchers = $auxFunctions->getTableOfKeyByGroupKey('VOUCHERS');
+
+            $tablesOfKeys = new TablesOfKeys($paymentMethods, $childArrives, $vouchers);
 
             $common = new CommonModel($conditions, $tablesOfKeys);
 

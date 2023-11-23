@@ -14,6 +14,7 @@ export const mapFromCommonDTO = (commonDTO?: CommonDTO | null) => {
     TablesOfKeys: {
       PaymentMethodts: commonDTO?.TablesOfKeys?.PaymentMethodts ?? [],
       ChildArrives: commonDTO?.TablesOfKeys?.ChildArrives ?? [],
+      Vouchers: commonDTO?.TablesOfKeys?.Vouchers ?? [],
     },
     _dataLoaded: true,
   };
