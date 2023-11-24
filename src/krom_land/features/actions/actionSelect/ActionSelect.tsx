@@ -143,7 +143,7 @@ const ActionSelect = () => {
   return (
     <ActionSelectStyled component="section">
       <Stack>
-        <>
+        <Box className="menu-wrapper">
           <Box component="ul">
             {/* První záložka */}
             <Box
@@ -199,7 +199,7 @@ const ActionSelect = () => {
               <Box component="span">Poukazy</Box>
             </Box>
           </Box>
-        </>
+        </Box>
         <>
           <Box>
             <Action
