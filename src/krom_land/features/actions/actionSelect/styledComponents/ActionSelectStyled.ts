@@ -5,7 +5,8 @@ const ActionSelectStyled = styled(Box)(({ theme }) => ({
   padding: "80px 0",
 
   ".menu-wrapper": {
-    overflow: "auto",
+    overflowX: "auto",
+    overflowY: "hidden",
 
     ul: {
       display: "flex",
