@@ -69,6 +69,36 @@ const ActionSelectStyled = styled(Box)(({ theme }) => ({
 
         "&:nth-of-type(5)": {
           backgroundColor: theme.palette.secondary.main,
+          marginLeft: 0,
+        },
+
+        "&:nth-of-type(6)": {
+          backgroundColor: theme.palette.primary.main,
+        },
+
+        "&:nth-of-type(7)": {
+          backgroundColor: theme.palette.common.purple.main,
+        },
+
+        "&:nth-of-type(8)": {
+          backgroundColor: theme.palette.common.red.main,
+        },
+
+        "&:nth-of-type(9)": {
+          backgroundColor: theme.palette.secondary.main,
+          marginLeft: 0,
+        },
+
+        "&:nth-of-type(10)": {
+          backgroundColor: theme.palette.primary.main,
+        },
+
+        "&:nth-of-type(11)": {
+          backgroundColor: theme.palette.common.purple.main,
+        },
+
+        "&:nth-of-type(12)": {
+          backgroundColor: theme.palette.common.red.main,
         },
 
         "&:hover, &.active": {

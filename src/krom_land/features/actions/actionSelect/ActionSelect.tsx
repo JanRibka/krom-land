@@ -15,244 +15,154 @@ import ActionSelectStyled from "./styledComponents/ActionSelectStyled";
 
 const ActionSelect = () => {
   // References
-  const refButtonFirst = useRef<HTMLLIElement>(null);
-  const refButtonSecond = useRef<HTMLLIElement>(null);
-  const refButtonThird = useRef<HTMLLIElement>(null);
-  const refButtonFourth = useRef<HTMLLIElement>(null);
-  const refButtonFifth = useRef<HTMLLIElement>(null);
-  const refTabFirst = useRef<HTMLDivElement>(null);
-  const refTabSecond = useRef<HTMLDivElement>(null);
-  const refTabThird = useRef<HTMLDivElement>(null);
-  const refTabFourth = useRef<HTMLDivElement>(null);
-  const refTabFifth = useRef<HTMLDivElement>(null);
+  const refMenuUlList = useRef<HTMLUListElement>(null);
+  const refActionTabWrapper = useRef<HTMLDivElement>(null);
 
   // Store
   const actions = useSelector(selectActions);
 
   // Constants
   const theme = useTheme();
+  const actionDetailsLength = actions.ActionDetails.length;
+  const colors = [
+    theme.palette.secondary.main,
+    theme.palette.primary.main,
+    theme.palette.common.purple.main,
+    theme.palette.common.red.main,
+  ];
 
   // Other
   const handleOnCLick = (value: number) => {
-    if (value === 0) {
-      // MenuButtons
-      refButtonFirst.current?.classList.add("active");
-      refButtonSecond.current?.classList.remove("active");
-      refButtonThird.current?.classList.remove("active");
-      refButtonFourth.current?.classList.remove("active");
-      refButtonFifth.current?.classList.remove("active");
+    const lis = refMenuUlList.current?.childNodes;
 
-      // Tabs
-      refTabFirst.current?.classList.add("active");
-      refTabSecond.current?.classList.remove("active");
-      refTabThird.current?.classList.remove("active");
-      refTabFourth.current?.classList.remove("active");
-      refTabFifth.current?.classList.remove("active");
+    lis?.forEach((item, index) => {
+      const classList = (item as Element).classList;
+      classList.remove("active");
 
-      // Google analytics
+      if (index === value) classList.add("active");
+    });
+
+    const actionTabs = refActionTabWrapper.current?.childNodes;
+
+    actionTabs?.forEach((item, index) => {
+      const classList = (item as Element).classList;
+      classList.remove("active");
+
+      if (index === value) classList.add("active");
+    });
+
+    if (value === actionDetailsLength) {
       pushToDataLayer("gtm.click", {
         buttonName: "action_select",
         buttonDesc: "Zobrazení detailu akce",
-        actionName: actions.ActionDetails[0].ActionName,
+        actionName: "Zobrazení dokumentů ke stažení",
       });
-    } else if (value === 1) {
-      // MenuButtons
-      refButtonSecond.current?.classList.add("active");
-      refButtonFirst.current?.classList.remove("active");
-      refButtonThird.current?.classList.remove("active");
-      refButtonFourth.current?.classList.remove("active");
-      refButtonFifth.current?.classList.remove("active");
-
-      // Tabs
-      refTabSecond.current?.classList.add("active");
-      refTabFirst.current?.classList.remove("active");
-      refTabThird.current?.classList.remove("active");
-      refTabFourth.current?.classList.remove("active");
-      refTabFifth.current?.classList.remove("active");
-
-      // Google analytics
+    } else if (value === actionDetailsLength + 1) {
       pushToDataLayer("gtm.click", {
         buttonName: "action_select",
         buttonDesc: "Zobrazení detailu akce",
-        actionName: actions.ActionDetails[1].ActionName,
+        actionName: "Zobrazení dárkových poukazů",
       });
-    } else if (value === 2) {
-      // MenuButtons
-      refButtonThird.current?.classList.add("active");
-      refButtonFirst.current?.classList.remove("active");
-      refButtonSecond.current?.classList.remove("active");
-      refButtonFourth.current?.classList.remove("active");
-      refButtonFifth.current?.classList.remove("active");
-
-      // Tabs
-      refTabThird.current?.classList.add("active");
-      refTabFirst.current?.classList.remove("active");
-      refTabSecond.current?.classList.remove("active");
-      refTabFourth.current?.classList.remove("active");
-      refTabFifth.current?.classList.remove("active");
-
-      // Google analytics
+    } else {
       pushToDataLayer("gtm.click", {
         buttonName: "action_select",
         buttonDesc: "Zobrazení detailu akce",
-        actionName: actions.ActionDetails[2].ActionName,
-      });
-    } else if (value === 3) {
-      // MenuButtons
-      refButtonFourth.current?.classList.add("active");
-      refButtonFirst.current?.classList.remove("active");
-      refButtonSecond.current?.classList.remove("active");
-      refButtonThird.current?.classList.remove("active");
-      refButtonFifth.current?.classList.remove("active");
-
-      // Tabs
-      refTabFourth.current?.classList.add("active");
-      refTabFirst.current?.classList.remove("active");
-      refTabSecond.current?.classList.remove("active");
-      refTabThird.current?.classList.remove("active");
-      refTabFifth.current?.classList.remove("active");
-
-      // Google analytics
-      pushToDataLayer("gtm.click", {
-        buttonName: "document_select",
-        buttonDesc: "Zobrazení dokumentů ke stažení",
-      });
-    } else if (value === 4) {
-      // MenuButtons
-      refButtonFifth.current?.classList.add("active");
-      refButtonFirst.current?.classList.remove("active");
-      refButtonSecond.current?.classList.remove("active");
-      refButtonThird.current?.classList.remove("active");
-      refButtonFourth.current?.classList.remove("active");
-
-      // Tabs
-      refTabFifth.current?.classList.add("active");
-      refTabFirst.current?.classList.remove("active");
-      refTabSecond.current?.classList.remove("active");
-      refTabThird.current?.classList.remove("active");
-      refTabFourth.current?.classList.remove("active");
-
-      // Google analytics
-      pushToDataLayer("gtm.click", {
-        buttonName: "vouchers_select",
-        buttonDesc: "Zobrazení dárkových poukazů",
+        actionName: actions.ActionDetails[value].ActionName,
       });
     }
+  };
+
+  const renderBookmarks = () => {
+    const result: JSX.Element[] = [];
+
+    actions.ActionDetails.forEach((item, index) =>
+      result.push(
+        <Box
+          key={`actionBookmark_${index}`}
+          component="li"
+          className={
+            "action-bookmark-" + index + (index === 0 ? " active" : undefined)
+          }
+          onClick={() => handleOnCLick(index)}
+        >
+          {item.MonthName ? (
+            <Box component="span">{item.MonthName}</Box>
+          ) : (
+            <Skeleton className="skeleton-menu-text" />
+          )}
+        </Box>
+      )
+    );
+
+    result.push(
+      <Box
+        component="li"
+        className={"action-bookmark-" + actionDetailsLength}
+        onClick={() => handleOnCLick(actionDetailsLength)}
+      >
+        <Box component="span">Dokumenty</Box>
+      </Box>
+    );
+
+    result.push(
+      <Box
+        component="li"
+        className={"action-bookmark-" + (actionDetailsLength + 1)}
+        onClick={() => handleOnCLick(actionDetailsLength + 1)}
+      >
+        <Box component="span">Poukazy</Box>
+      </Box>
+    );
+
+    return result;
+  };
+
+  const renderActions = () => {
+    return actions.ActionDetails.map((item, index) => {
+      return (
+        <Action
+          key={`actionTab_${index}`}
+          className={"action-tab" + (index === 0 ? " active" : undefined)}
+          backgroundColor={colors[index % colors.length]}
+          idAction={item.Id}
+          name={item.ActionName}
+          description={item.ActionDescritption}
+          image={item.Image.Path}
+          imageAlt={item.Image.Alt}
+          videoUrl={item.VideoLink}
+          kdy={item.Date}
+          kde={item.Place}
+          cena={item.Price}
+          zdaPoznamkaKCene={item.IsPriceRemark}
+          poznamkaKCene={item.PriceRemark}
+          capacityFull={item.CapacityFull}
+        />
+      );
+    });
   };
 
   return (
     <ActionSelectStyled component="section">
       <Stack>
         <Box className="menu-wrapper">
-          <Box component="ul">
-            {/* První záložka */}
-            <Box
-              ref={refButtonFirst}
-              component="li"
-              className="active"
-              onClick={() => handleOnCLick(0)}
-            >
-              {actions.ActionDetails?.[0]?.MonthName ? (
-                <Box component="span">{actions.ActionDetails[0].MonthName}</Box>
-              ) : (
-                <Skeleton className="skeleton-menu-text" />
-              )}
-            </Box>
-            {/* Druhá záložka */}
-            <Box
-              ref={refButtonSecond}
-              component="li"
-              onClick={() => handleOnCLick(1)}
-            >
-              {actions.ActionDetails?.[1]?.MonthName ? (
-                <Box component="span">{actions.ActionDetails[1].MonthName}</Box>
-              ) : (
-                <Skeleton className="skeleton-menu-text" />
-              )}
-            </Box>
-            {/* Třetí záložka */}
-            <Box
-              ref={refButtonThird}
-              component="li"
-              onClick={() => handleOnCLick(2)}
-            >
-              {actions.ActionDetails?.[2]?.MonthName ? (
-                <Box component="span">{actions.ActionDetails[2].MonthName}</Box>
-              ) : (
-                <Skeleton className="skeleton-menu-text" />
-              )}
-            </Box>
-            {/* Čtvrtá záložka */}
-            <Box
-              ref={refButtonFourth}
-              component="li"
-              onClick={() => handleOnCLick(3)}
-            >
-              <Box component="span">Dokumenty</Box>
-            </Box>
-            {/* Pátá záložka */}
-            <Box
-              ref={refButtonFifth}
-              component="li"
-              onClick={() => handleOnCLick(4)}
-            >
-              <Box component="span">Poukazy</Box>
-            </Box>
+          <Box ref={refMenuUlList} component="ul">
+            {renderBookmarks()}
           </Box>
         </Box>
         <>
-          <Box>
-            <Action
-              ref={refTabFirst}
-              className="active"
-              backgroundColor={theme.palette.secondary.main}
-              idAction={actions.ActionDetails?.[0]?.Id}
-              name={actions.ActionDetails?.[0]?.ActionName}
-              description={actions.ActionDetails?.[0]?.ActionDescritption}
-              image={actions.ActionDetails?.[0]?.Image.Path}
-              imageAlt={actions.ActionDetails?.[0]?.Image.Alt}
-              videoUrl={actions.ActionDetails?.[0]?.VideoLink}
-              kdy={actions.ActionDetails?.[0]?.Date}
-              kde={actions.ActionDetails?.[0]?.Place}
-              cena={actions.ActionDetails?.[0]?.Price}
-              zdaPoznamkaKCene={actions.ActionDetails?.[0]?.IsPriceRemark}
-              poznamkaKCene={actions.ActionDetails?.[0]?.PriceRemark}
-              capacityFull={actions.ActionDetails?.[0]?.CapacityFull}
+          <Box ref={refActionTabWrapper}>
+            {renderActions()}
+
+            <Documents
+              className={"action-tab" + actionDetailsLength}
+              backgroundColor={colors[actionDetailsLength % colors.length]}
             />
-            <Action
-              ref={refTabSecond}
-              backgroundColor={theme.palette.primary.main}
-              idAction={actions.ActionDetails?.[1]?.Id}
-              name={actions.ActionDetails?.[1]?.ActionName}
-              description={actions.ActionDetails?.[1]?.ActionDescritption}
-              image={actions.ActionDetails?.[1]?.Image.Path}
-              imageAlt={actions.ActionDetails?.[1]?.Image.Alt}
-              videoUrl={actions.ActionDetails?.[1]?.VideoLink}
-              kdy={actions.ActionDetails?.[1]?.Date}
-              kde={actions.ActionDetails?.[1]?.Place}
-              cena={actions.ActionDetails?.[1]?.Price}
-              zdaPoznamkaKCene={actions.ActionDetails?.[1]?.IsPriceRemark}
-              poznamkaKCene={actions.ActionDetails?.[1]?.PriceRemark}
-              capacityFull={actions.ActionDetails?.[1]?.CapacityFull}
+            <Vouchers
+              className={"action-tab" + actionDetailsLength + 1}
+              backgroundColor={
+                colors[(actionDetailsLength + 1) % colors.length]
+              }
             />
-            <Action
-              ref={refTabThird}
-              backgroundColor={theme.palette.common.purple.main}
-              idAction={actions.ActionDetails?.[2]?.Id}
-              name={actions.ActionDetails?.[2]?.ActionName}
-              description={actions.ActionDetails?.[2]?.ActionDescritption}
-              image={actions.ActionDetails?.[2]?.Image.Path}
-              imageAlt={actions.ActionDetails?.[2]?.Image.Alt}
-              videoUrl={actions.ActionDetails?.[2]?.VideoLink}
-              kdy={actions.ActionDetails?.[2]?.Date}
-              kde={actions.ActionDetails?.[2]?.Place}
-              cena={actions.ActionDetails?.[2]?.Price}
-              zdaPoznamkaKCene={actions.ActionDetails?.[2]?.IsPriceRemark}
-              poznamkaKCene={actions.ActionDetails?.[2]?.PriceRemark}
-              capacityFull={actions.ActionDetails?.[2]?.CapacityFull}
-            />
-            <Documents ref={refTabFourth} />
-            <Vouchers ref={refTabFifth} />
           </Box>
         </>
       </Stack>

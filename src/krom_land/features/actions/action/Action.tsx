@@ -21,7 +21,7 @@ interface IProps extends HTMLAttributes<HTMLDivElement> {
   idAction: number;
   name: string;
   description: string;
-  backgroundColor: string;
+  backgroundColor?: string;
   image: string;
   imageAlt: string;
   videoUrl?: string;
@@ -78,7 +78,7 @@ const Action = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
 
   const renderRegistrationButton = () => {
     return (
-      <Stack className='button-wrapper' direction='column' spacing={2}>
+      <Stack className="button-wrapper" direction="column" spacing={2}>
         {(() => {
           switch (backgroundColor) {
             case theme.palette.secondary.main:
@@ -89,11 +89,11 @@ const Action = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
                     kde={kde}
                     cena={cena}
                     zdaPoznamkaKCene={zdaPoznamkaKCene}
-                    className='detail-info'
+                    className="detail-info"
                     capacityFull={capacityFull}
                   />
                   {!capacityFull && (
-                    <Button variant='contained' onClick={handleRegisterOnClick}>
+                    <Button variant="contained" onClick={handleRegisterOnClick}>
                       Chci se registrovat
                     </Button>
                   )}
@@ -107,13 +107,13 @@ const Action = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
                     kde={kde}
                     cena={cena}
                     zdaPoznamkaKCene={zdaPoznamkaKCene}
-                    className='second'
+                    className="second"
                     capacityFull={capacityFull}
                   />
                   {!capacityFull && (
                     <Button
-                      variant='contained'
-                      className='detail-info second'
+                      variant="contained"
+                      className="detail-info second"
                       onClick={handleRegisterOnClick}
                     >
                       Chci se registrovat
@@ -129,13 +129,13 @@ const Action = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
                     kde={kde}
                     cena={cena}
                     zdaPoznamkaKCene={zdaPoznamkaKCene}
-                    className='third'
+                    className="third"
                     capacityFull={capacityFull}
                   />
                   {!capacityFull && (
                     <Button
-                      variant='contained'
-                      className='detail-info third'
+                      variant="contained"
+                      className="detail-info third"
                       onClick={handleRegisterOnClick}
                     >
                       Chci se registrovat
@@ -146,7 +146,7 @@ const Action = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
             default:
               return (
                 !capacityFull && (
-                  <Button variant='contained' onClick={handleRegisterOnClick}>
+                  <Button variant="contained" onClick={handleRegisterOnClick}>
                     Chci se registrovat
                   </Button>
                 )
@@ -163,54 +163,54 @@ const Action = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
       ref={ref}
       {...restProps}
     >
-      <Stack spacing={5} direction='column' sx={{ width: "100%" }}>
+      <Stack spacing={5} direction="column" sx={{ width: "100%" }}>
         {/* Obrázek */}
         <Stack
           spacing={pictDescWrapperSpacing}
           direction={pictDescWrapperDirection}
         >
-          <Box className='action-image-wrapper'>
+          <Box className="action-image-wrapper">
             <Box
-              component='img'
+              component="img"
               src={image}
               alt={imageAlt}
-              loading='lazy'
-              className='action-image'
+              loading="lazy"
+              className="action-image"
             />
           </Box>
 
           {/* Popis */}
-          <Box className='description-wrapper'>
+          <Box className="description-wrapper">
             <Box>
-              <Box className='description-inner-wrapper'>
+              <Box className="description-inner-wrapper">
                 <Box>
                   <SectionTitle mainText={name} />
                   {!!description ? (
                     <Box
-                      component='span'
+                      component="span"
                       dangerouslySetInnerHTML={{ __html: description }}
                     />
                   ) : (
                     <Stack spacing={1}>
                       <Skeleton
-                        variant='rectangular'
-                        className='skeleton-line'
+                        variant="rectangular"
+                        className="skeleton-line"
                       />
                       <Skeleton
-                        variant='rectangular'
-                        className='skeleton-line'
+                        variant="rectangular"
+                        className="skeleton-line"
                       />
                       <Skeleton
-                        variant='rectangular'
-                        className='skeleton-line'
+                        variant="rectangular"
+                        className="skeleton-line"
                       />
                       <Skeleton
-                        variant='rectangular'
-                        className='skeleton-line'
+                        variant="rectangular"
+                        className="skeleton-line"
                       />
                       <Skeleton
-                        variant='rectangular'
-                        className='skeleton-paragraph'
+                        variant="rectangular"
+                        className="skeleton-paragraph"
                       />
                     </Stack>
                   )}
@@ -225,14 +225,14 @@ const Action = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
 
         {/* Přehrávač */}
         {!!videoUrl && (
-          <Stack className='player-wrapper'>
-            <SectionTitle mainText='Upoutávka na akci' />
+          <Stack className="player-wrapper">
+            <SectionTitle mainText="Upoutávka na akci" />
             <ReactPlayer url={videoUrl} />
           </Stack>
         )}
 
         {!!props.poznamkaKCene && (
-          <Box className='price-remark'>* {props.poznamkaKCene}</Box>
+          <Box className="price-remark">* {props.poznamkaKCene}</Box>
         )}
       </Stack>
       {/* Registrační dialog */}
@@ -256,7 +256,7 @@ const Action = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
         isClosable
         content={
           <Box
-            component='span'
+            component="span"
             dangerouslySetInnerHTML={{
               __html: common.Conditions.TermsOfConditionsText,
             }}

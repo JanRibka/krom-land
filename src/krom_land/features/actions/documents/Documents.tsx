@@ -1,4 +1,4 @@
-import { forwardRef, Ref } from "react";
+import { forwardRef, HtmlHTMLAttributes, Ref } from "react";
 import { useSelector } from "react-redux";
 import SectionTitle from "shared/components/sectionTitle/SectionTitle";
 import { selectDocumentsToDownload } from "shared/infrastructure/store/actions/actionsSlice";
@@ -10,14 +10,21 @@ import Typography from "@mui/material/Typography";
 import Document from "./document/Document";
 import DocumentsStyled from "./styledComponents/DocumentsStyled";
 
-interface IProps {}
+interface IProps extends HtmlHTMLAttributes<HTMLDivElement> {
+  backgroundColor: string;
+}
 
 const Documents = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
   // Constants
   const documentsToDownload = useSelector(selectDocumentsToDownload);
+  const { ...restProps } = props;
 
   return (
-    <DocumentsStyled ref={ref}>
+    <DocumentsStyled
+      ref={ref}
+      {...restProps}
+      sx={{ backgroundColor: props.backgroundColor }}
+    >
       <Box>
         <Stack>
           <SectionTitle mainText="Dokumenty ke stažení" />
