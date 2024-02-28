@@ -109,6 +109,7 @@ const ActionSelect = () => {
         component="li"
         className={"action-bookmark-" + (actionDetailsLength + 1)}
         onClick={() => handleOnCLick(actionDetailsLength + 1)}
+        sx={{ backgroundColor: `${theme.palette.secondary.main} !important` }}
       >
         <Box component="span">Poukazy</Box>
       </Box>
@@ -159,9 +160,7 @@ const ActionSelect = () => {
             />
             <Vouchers
               className={"action-tab" + actionDetailsLength + 1}
-              backgroundColor={
-                colors[(actionDetailsLength + 1) % colors.length]
-              }
+              backgroundColor={theme.palette.secondary.main}
             />
           </Box>
         </>
