@@ -28,7 +28,6 @@ const ActionSelect = () => {
     theme.palette.secondary.main,
     theme.palette.primary.main,
     theme.palette.common.purple.main,
-    theme.palette.common.red.main,
   ];
 
   // Other
@@ -99,6 +98,7 @@ const ActionSelect = () => {
         component="li"
         className={"action-bookmark-" + actionDetailsLength}
         onClick={() => handleOnCLick(actionDetailsLength)}
+        sx={{ backgroundColor: `${theme.palette.common.red.main} !important` }}
       >
         <Box component="span">Dokumenty</Box>
       </Box>
@@ -156,7 +156,7 @@ const ActionSelect = () => {
 
             <Documents
               className={"action-tab" + actionDetailsLength}
-              backgroundColor={colors[actionDetailsLength % colors.length]}
+              backgroundColor={theme.palette.common.red.main}
             />
             <Vouchers
               className={"action-tab" + actionDetailsLength + 1}
