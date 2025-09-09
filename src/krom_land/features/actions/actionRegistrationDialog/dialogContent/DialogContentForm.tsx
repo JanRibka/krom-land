@@ -8,8 +8,11 @@ import Button from "@mui/material/Button";
 import FormControl from "@mui/material/FormControl";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormLabel from "@mui/material/FormLabel";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
 import Stack from "@mui/material/Stack";
 import { useTheme } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
@@ -37,6 +40,8 @@ interface IProps {
   ) => void;
   handleOnChangeRadio: (e: ChangeEvent<HTMLInputElement>) => void;
   handleFormOnSubmit: (e: FormEvent<HTMLFormElement>) => void;
+  handleOnChangeSelect: (event: SelectChangeEvent<string>) => void;
+  displayTShirtSize: boolean;
 }
 
 const DialogContentForm = forwardRef(
@@ -55,15 +60,15 @@ const DialogContentForm = forwardRef(
     return (
       <DialogContentStyled>
         <form ref={ref} onSubmit={props.handleFormOnSubmit}>
-          <Stack spacing={2} direction='column'>
+          <Stack spacing={2} direction="column">
             <>
               <TextField
-                label='E-mail'
+                label="E-mail"
                 required
                 fullWidth
-                variant='outlined'
-                type='email'
-                autoComplete='off'
+                variant="outlined"
+                type="email"
+                autoComplete="off"
                 name={nameof<DialogContentFormModel>("user_email")}
                 value={props.formData.user_email}
                 onChange={props.handleTextFieldOnChange}
@@ -73,17 +78,17 @@ const DialogContentForm = forwardRef(
               />
             </>
             <>
-              <Typography variant='h6' className='label'>
+              <Typography variant="h6" className="label">
                 Informace o dítěti
               </Typography>
               <Stack spacing={2} direction={rowDirection}>
                 <TextField
-                  label='Jméno'
+                  label="Jméno"
                   required
                   fullWidth
-                  variant='outlined'
-                  type='text'
-                  autoComplete='off'
+                  variant="outlined"
+                  type="text"
+                  autoComplete="off"
                   name={nameof<DialogContentFormModel>("child_name")}
                   value={props.formData.child_name}
                   onChange={props.handleTextFieldOnChange}
@@ -92,12 +97,12 @@ const DialogContentForm = forwardRef(
                   }}
                 />
                 <TextField
-                  label='Příjmení'
+                  label="Příjmení"
                   required
                   fullWidth
-                  variant='outlined'
-                  type='text'
-                  autoComplete='off'
+                  variant="outlined"
+                  type="text"
+                  autoComplete="off"
                   name={nameof<DialogContentFormModel>("child_last_name")}
                   value={props.formData.child_last_name}
                   onChange={props.handleTextFieldOnChange}
@@ -109,13 +114,13 @@ const DialogContentForm = forwardRef(
             </>
             <>
               <TextField
-                label='Datum narození'
-                placeholder='dd.mm.rrrr'
+                label="Datum narození"
+                placeholder="dd.mm.rrrr"
                 required
                 fullWidth
-                variant='outlined'
-                type='text'
-                autoComplete='off'
+                variant="outlined"
+                type="text"
+                autoComplete="off"
                 name={nameof<DialogContentFormModel>("child_birthday")}
                 value={props.formData.child_birthday}
                 onChange={props.handleTextFieldOnChange}
@@ -125,17 +130,17 @@ const DialogContentForm = forwardRef(
               />
             </>
             <>
-              <Typography variant='h6' className='label'>
+              <Typography variant="h6" className="label">
                 Informace o prvním zákonném zástupci
               </Typography>
               <Stack spacing={2} direction={rowDirection}>
                 <TextField
-                  label='Jméno'
+                  label="Jméno"
                   required
                   fullWidth
-                  variant='outlined'
-                  type='text'
-                  autoComplete='off'
+                  variant="outlined"
+                  type="text"
+                  autoComplete="off"
                   name={nameof<DialogContentFormModel>(
                     "first_representative_name"
                   )}
@@ -146,12 +151,12 @@ const DialogContentForm = forwardRef(
                   }}
                 />
                 <TextField
-                  label='Příjmení'
+                  label="Příjmení"
                   required
                   fullWidth
-                  variant='outlined'
-                  type='text'
-                  autoComplete='off'
+                  variant="outlined"
+                  type="text"
+                  autoComplete="off"
                   name={nameof<DialogContentFormModel>(
                     "first_representative_last_name"
                   )}
@@ -163,13 +168,13 @@ const DialogContentForm = forwardRef(
                 />
               </Stack>
               <TextField
-                label='Telefon'
+                label="Telefon"
                 required
                 fullWidth
-                variant='outlined'
-                type='tel'
-                autoComplete='off'
-                placeholder='xxx xxx xxx'
+                variant="outlined"
+                type="tel"
+                autoComplete="off"
+                placeholder="xxx xxx xxx"
                 name={nameof<DialogContentFormModel>(
                   "first_representative_phone_number"
                 )}
@@ -181,16 +186,16 @@ const DialogContentForm = forwardRef(
               />
             </>
             <>
-              <Typography variant='h6' className='label'>
+              <Typography variant="h6" className="label">
                 Informace o druhém zákonném zástupci
               </Typography>
               <Stack spacing={2} direction={rowDirection}>
                 <TextField
-                  label='Jméno'
+                  label="Jméno"
                   fullWidth
-                  variant='outlined'
-                  type='text'
-                  autoComplete='off'
+                  variant="outlined"
+                  type="text"
+                  autoComplete="off"
                   name={nameof<DialogContentFormModel>(
                     "second_representative_name"
                   )}
@@ -201,11 +206,11 @@ const DialogContentForm = forwardRef(
                   }}
                 />
                 <TextField
-                  label='Příjmení'
+                  label="Příjmení"
                   fullWidth
-                  variant='outlined'
-                  type='text'
-                  autoComplete='off'
+                  variant="outlined"
+                  type="text"
+                  autoComplete="off"
                   name={nameof<DialogContentFormModel>(
                     "second_representative_last_name"
                   )}
@@ -217,11 +222,11 @@ const DialogContentForm = forwardRef(
                 />
               </Stack>
               <TextField
-                label='Telefon'
+                label="Telefon"
                 fullWidth
-                variant='outlined'
-                type='tel'
-                autoComplete='off'
+                variant="outlined"
+                type="tel"
+                autoComplete="off"
                 // placeholder='xxx xxx xxx'
                 name={nameof<DialogContentFormModel>(
                   "second_representative_phone_number"
@@ -234,17 +239,17 @@ const DialogContentForm = forwardRef(
               />
             </>
             <>
-              <Typography variant='h6' className='label'>
+              <Typography variant="h6" className="label">
                 Adresní informace
               </Typography>
               <Stack spacing={2} direction={rowDirection}>
                 <TextField
-                  label='Jmeno'
+                  label="Jmeno"
                   fullWidth
                   required
-                  variant='outlined'
-                  type='text'
-                  autoComplete='off'
+                  variant="outlined"
+                  type="text"
+                  autoComplete="off"
                   name={nameof<DialogContentFormModel>("address_name")}
                   value={props.formData.address_name}
                   onChange={props.handleTextFieldOnChange}
@@ -253,12 +258,12 @@ const DialogContentForm = forwardRef(
                   }}
                 />
                 <TextField
-                  label='Příjmení'
+                  label="Příjmení"
                   fullWidth
                   required
-                  variant='outlined'
-                  type='text'
-                  autoComplete='off'
+                  variant="outlined"
+                  type="text"
+                  autoComplete="off"
                   name={nameof<DialogContentFormModel>("address_last_name")}
                   value={props.formData.address_last_name}
                   onChange={props.handleTextFieldOnChange}
@@ -268,12 +273,12 @@ const DialogContentForm = forwardRef(
                 />
               </Stack>
               <TextField
-                label='Ulice a č. p.'
+                label="Ulice a č. p."
                 fullWidth
                 required
-                variant='outlined'
-                type='text'
-                autoComplete='off'
+                variant="outlined"
+                type="text"
+                autoComplete="off"
                 name={nameof<DialogContentFormModel>("address_street_cp")}
                 value={props.formData.address_street_cp}
                 onChange={props.handleTextFieldOnChange}
@@ -283,12 +288,12 @@ const DialogContentForm = forwardRef(
               />
               <Stack spacing={2} direction={rowDirection}>
                 <TextField
-                  label='Město'
+                  label="Město"
                   fullWidth
                   required
-                  variant='outlined'
-                  type='text'
-                  autoComplete='off'
+                  variant="outlined"
+                  type="text"
+                  autoComplete="off"
                   name={nameof<DialogContentFormModel>("address_city")}
                   value={props.formData.address_city}
                   onChange={props.handleTextFieldOnChange}
@@ -297,12 +302,12 @@ const DialogContentForm = forwardRef(
                   }}
                 />
                 <TextField
-                  label='PSČ'
+                  label="PSČ"
                   fullWidth
                   required
-                  variant='outlined'
-                  type='text'
-                  autoComplete='off'
+                  variant="outlined"
+                  type="text"
+                  autoComplete="off"
                   name={nameof<DialogContentFormModel>("address_psc")}
                   value={props.formData.address_psc}
                   onChange={props.handleTextFieldOnChange}
@@ -313,18 +318,18 @@ const DialogContentForm = forwardRef(
               </Stack>
             </>
             <>
-              <Typography variant='h6' className='label'>
+              <Typography variant="h6" className="label">
                 Ostatní
               </Typography>
               <TextField
-                label='Zdravotní omezení dítěte'
-                placeholder='(Užívané léky, alergie, omezení po úraze, diety) Prosíme uveďte opravdu všechna omezení. Pokud nemá Vaše dítě žádné zdravotní omezení, nepište nic.'
+                label="Zdravotní omezení dítěte"
+                placeholder="(Užívané léky, alergie, omezení po úraze, diety) Prosíme uveďte opravdu všechna omezení. Pokud nemá Vaše dítě žádné zdravotní omezení, nepište nic."
                 fullWidth
-                variant='outlined'
-                type='text'
+                variant="outlined"
+                type="text"
                 multiline
                 rows={4}
-                autoComplete='off'
+                autoComplete="off"
                 name={nameof<DialogContentFormModel>("other_hendicap")}
                 value={props.formData.other_hendicap}
                 onChange={props.handleTextFieldOnChange}
@@ -332,6 +337,28 @@ const DialogContentForm = forwardRef(
                   maxLength: 500,
                 }}
               />
+
+              {props.displayTShirtSize && (
+                <FormControl required>
+                  <InputLabel id="t-shirt-size-select-label">
+                    Velikost trička
+                  </InputLabel>
+                  <Select
+                    labelId="t-shirt-size-select-label"
+                    name={nameof<DialogContentFormModel>("other_t_shirt_size")}
+                    value={props.formData.other_t_shirt_size}
+                    label="Velikost trička"
+                    onChange={props.handleOnChangeSelect}
+                  >
+                    {common.TShirtSizes?.map((item, index) => (
+                      <MenuItem key={"tShirtSize_" + index} value={item.Key}>
+                        {item.Name}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+              )}
+
               <FormControl required>
                 <FormLabel>
                   Souhlasíte s focením Vašeho dítěte při akcích a poté
@@ -346,12 +373,12 @@ const DialogContentForm = forwardRef(
                   <FormControlLabel
                     value={String(true)}
                     control={<Radio required />}
-                    label='Ano'
+                    label="Ano"
                   />
                   <FormControlLabel
                     value={String(false)}
                     control={<Radio required />}
-                    label='Ne'
+                    label="Ne"
                   />
                 </RadioGroup>
               </FormControl>
@@ -381,15 +408,15 @@ const DialogContentForm = forwardRef(
               {props.formData.other_how_children_arrives ===
                 childArrivesMyselveId && (
                 <TextField
-                  label='Osoby, které si můžou díte vyzvednout'
-                  placeholder='Pokud jste zvolili vyzvednutí dítěte, prosím napište osoby, které si můžou dítě vyzvednout a k nim i vztah k dítěti. '
+                  label="Osoby, které si můžou díte vyzvednout"
+                  placeholder="Pokud jste zvolili vyzvednutí dítěte, prosím napište osoby, které si můžou dítě vyzvednout a k nim i vztah k dítěti. "
                   fullWidth
                   required
-                  variant='outlined'
-                  type='text'
+                  variant="outlined"
+                  type="text"
                   multiline
                   rows={4}
-                  autoComplete='off'
+                  autoComplete="off"
                   name={nameof<DialogContentFormModel>("other_pickup_person")}
                   value={props.formData.other_pickup_person}
                   onChange={props.handleTextFieldOnChange}
@@ -420,14 +447,14 @@ const DialogContentForm = forwardRef(
               </FormControl>
 
               <TextField
-                label='Chcete nám něco sdělit?'
-                placeholder='Tato kolonka slouží i k infu, že je dítě mladší než 5 let. Uveďte prosím jméno staršího sourozence.'
+                label="Chcete nám něco sdělit?"
+                placeholder="Tato kolonka slouží i k infu, že je dítě mladší než 5 let. Uveďte prosím jméno staršího sourozence."
                 fullWidth
-                variant='outlined'
-                type='text'
+                variant="outlined"
+                type="text"
                 multiline
                 rows={4}
-                autoComplete='off'
+                autoComplete="off"
                 name={nameof<DialogContentFormModel>("other_other_info")}
                 value={props.formData.other_other_info}
                 onChange={props.handleTextFieldOnChange}
@@ -438,35 +465,35 @@ const DialogContentForm = forwardRef(
             </>
           </Stack>
           <Button
-            type='submit'
-            className='registration-submit-button'
+            type="submit"
+            className="registration-submit-button"
             sx={{ display: "none" }}
           >
             submit
           </Button>
           {/* Hiddens */}
           <input
-            type='hidden'
+            type="hidden"
             name={nameof<DialogContentFormModel>("action_name")}
             value={props.formData.action_name}
           />
           <input
-            type='hidden'
+            type="hidden"
             name={nameof<DialogContentFormModel>("action_id")}
             value={props.formData.action_id}
           />
           <input
-            type='hidden'
+            type="hidden"
             name={nameof<DialogContentFormModel>("action_price")}
             value={props.formData.action_price}
           />
           <input
-            type='hidden'
+            type="hidden"
             name={nameof<DialogContentFormModel>("action_date")}
             value={props.formData.action_date}
           />
           <input
-            type='hidden'
+            type="hidden"
             name={nameof<DialogContentFormModel>("action_place")}
             value={props.formData.action_place}
           />

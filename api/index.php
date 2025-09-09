@@ -7,12 +7,13 @@ require_once __DIR__ . "/email/email.php";
 require_once __DIR__ . "/webContent/webContent.php";
 require_once __DIR__ . "/registrations/registrations.php";
 require_once __DIR__ . "/vouchers/vouchers.php";
+require_once __DIR__ . "/common/common.php";
 
 // $allowed_methods = ["send", "getall"];
 $action = $_GET["action"];
 $type = $_GET["type"];
 
-if (! isset($action)) {
+if (!isset($action)) {
   apiResponse(false, "Metoda '" . $action . "' není specifikovaná");
   die();
 }
@@ -22,7 +23,7 @@ if (! isset($action)) {
 //   die();
 // }
 
-if (! isset($type)) {
+if (!isset($type)) {
   apiResponse(false, "Akce '" . $type . "' buď chybí, nebo není povolena");
   die();
 }

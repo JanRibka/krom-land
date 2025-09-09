@@ -68,6 +68,7 @@ class Registrations
       $other_pickup_person = $registrationData->other_pickup_person;
       $other_pay_method = $registrationData->other_pay_method;
       $other_other_info = $registrationData->other_other_info;
+      $other_t_shirt_size = $registrationData->other_t_shirt_size;
       $registration_date = date("Y-m-d H:i:s");
       $payed = false;
       $state = 6;
@@ -107,6 +108,7 @@ class Registrations
         "other_pickup_person" => $other_pickup_person,
         "other_pay_method" => $other_pay_method,
         "other_other_info" => $other_other_info,
+        "other_t_shirt_size" => $other_t_shirt_size,
         "registration_date" => $registration_date,
         "payed" => $payed,
         "state" => $state,
@@ -131,18 +133,14 @@ class Registrations
       );
 
       $other_photos = $other_photos === true ? "Ano" : "Ne";
-      $children_arrives_selected = array_filter($childArrives, function (
-        $f
-      ) use ($other_how_children_arrives) {
+      $children_arrives_selected = array_filter($childArrives, function ($f) use ($other_how_children_arrives) {
         return $f["Id"] === $other_how_children_arrives;
       });
 
       $children_arrives_selected = reset($children_arrives_selected);
       $other_how_children_arrives = $children_arrives_selected->Name;
 
-      $other_pay_method_selected = array_filter($paymentMethods, function (
-        $f
-      ) use ($other_pay_method) {
+      $other_pay_method_selected = array_filter($paymentMethods, function ($f) use ($other_pay_method) {
         return $f["Id"] === $other_pay_method;
       });
 

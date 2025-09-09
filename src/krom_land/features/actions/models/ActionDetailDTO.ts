@@ -13,4 +13,5 @@ export default interface ActionDetailDTO {
   Place: string | null;
   Date: string | null;
   CapacityFull: string | null;
+  DisplayTShirtSize: string | null;
 }

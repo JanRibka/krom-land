@@ -14,6 +14,7 @@ export default class ActionDetailDTO {
   Place: string = "";
   Date: string = "";
   CapacityFull: boolean = false;
+  DisplayTShirtSize: boolean = false;
 
   public constructor(init?: Partial<ActionDetailDTO>) {
     Object.assign(this, init);

@@ -20,7 +20,7 @@ const ActionSelect = () => {
 
   // Store
   const actions = useSelector(selectActions);
-
+  console.log(actions);
   // Constants
   const theme = useTheme();
   const actionDetailsLength = actions.ActionDetails.length;
@@ -137,6 +137,7 @@ const ActionSelect = () => {
           zdaPoznamkaKCene={item.IsPriceRemark}
           poznamkaKCene={item.PriceRemark}
           capacityFull={item.CapacityFull}
+          displayTShirtSize={item.DisplayTShirtSize}
         />
       );
     });

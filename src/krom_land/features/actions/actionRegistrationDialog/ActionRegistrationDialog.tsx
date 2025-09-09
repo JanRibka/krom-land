@@ -12,8 +12,13 @@ import {
 } from "react";
 import { useSelector } from "react-redux";
 import AppLoader from "shared/components/loader/AppLoader";
+import AppNotification from "shared/components/notification/AppNotification";
+import { useRequest } from "shared/dataAccess/useRequest";
+import ResultDataDTO from "shared/DTOs/ResultDataDTO";
+import SelectDataDTO from "shared/DTOs/SelectDataDTO";
 import { pushToDataLayer } from "shared/helpers/googleTagManagerHelper";
 import { selectCommon } from "shared/infrastructure/store/common/commonSlice";
+import { useCommonSlice } from "shared/infrastructure/store/common/useCommonSlice";
 
 import CheckIcon from "@mui/icons-material/Check";
 import CloseIcon from "@mui/icons-material/Close";
@@ -22,6 +27,7 @@ import Button from "@mui/material/Button";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import IconButton from "@mui/material/IconButton";
+import { SelectChangeEvent } from "@mui/material/Select";
 import Typography from "@mui/material/Typography";
 
 import ActionsService from "../ActionsService";
@@ -37,6 +43,7 @@ interface IProps {
   actionPrice: string;
   actionDate: string;
   actionPlace: string;
+  displayTShirtSize: boolean;
   setOpen: Dispatch<SetStateAction<boolean>>;
   handleOnClickTermsOfConditions: () => void;
 }
@@ -44,6 +51,7 @@ interface IProps {
 const ActionRegistrationDialog = (props: IProps) => {
   // Store
   const common = useSelector(selectCommon);
+  const { handleTShirtSizesUpdate } = useCommonSlice();
 
   // State
   const [registering, setRegistering] = useState<boolean>(false);
@@ -59,6 +67,40 @@ const ActionRegistrationDialog = (props: IProps) => {
   const childArrivesMyselveId = common.TablesOfKeys.ChildArrives.find(
     (f) => f.Key === "MYSELVE"
   )?.Id;
+
+  // Get t-shirt sizes
+  useRequest<ResultDataDTO<SelectDataDTO[]>>(
+    {
+      url: process.env.REACT_APP_API_URL ?? "",
+      params: new URLSearchParams({
+        action: "common",
+        type: "getTShirtSizes",
+      }),
+    },
+    {
+      Success: false,
+      ErrMsg: "",
+      Data: [] as SelectDataDTO[],
+    },
+    [],
+    {
+      apply: true,
+      condition: () => !common._tShirtSizesLoaded,
+    },
+    (data) => {
+      const dataType = typeof data;
+
+      if (dataType === "string") {
+        AppNotification("Chyba", String(data), "danger");
+      } else {
+        if (data.Success) {
+          handleTShirtSizesUpdate(data?.Data ?? []);
+        } else {
+          AppNotification("Chyba", data.ErrMsg ?? "", "danger");
+        }
+      }
+    }
+  );
 
   // Other
   useEffect(() => {
@@ -121,6 +163,11 @@ const ActionRegistrationDialog = (props: IProps) => {
     info: MuiTelInputInfo,
     name: string
   ) => {
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleOnChangeSelect = (event: SelectChangeEvent<string>) => {
+    const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
   };
 
@@ -226,11 +273,11 @@ const ActionRegistrationDialog = (props: IProps) => {
       open={props.open}
       onClose={() => props.setOpen(false)}
     >
-      <Box className='title-wrapper'>
+      <Box className="title-wrapper">
         <DialogTitle>
           Registrace na: {props.actionName}
           <IconButton
-            aria-label='close'
+            aria-label="close"
             onClick={() => props.setOpen(false)}
             sx={{
               position: "absolute",
@@ -252,11 +299,13 @@ const ActionRegistrationDialog = (props: IProps) => {
           handleOnChangeTelInput={handleOnChangeTelInput}
           handleFormOnSubmit={handleFormOnSubmit}
           handleOnChangeRadio={handleOnChangeRadio}
+          handleOnChangeSelect={handleOnChangeSelect}
+          displayTShirtSize={props.displayTShirtSize}
         />
 
         {/* Loader */}
         {registering && (
-          <Box className='loader-wrapper'>
+          <Box className="loader-wrapper">
             <Box>
               <AppLoader />
             </Box>
@@ -266,12 +315,12 @@ const ActionRegistrationDialog = (props: IProps) => {
       <DialogActionsStyled>
         <Typography>
           Potvrzením registrace souhlasíte s{" "}
-          <Box component='a' onClick={props.handleOnClickTermsOfConditions}>
+          <Box component="a" onClick={props.handleOnClickTermsOfConditions}>
             obchodními podmínkami
           </Box>
           .
         </Typography>
-        <Box className='buttons-wrapper'>
+        <Box className="buttons-wrapper">
           <Button
             onClick={() => {
               props.setOpen(false);
@@ -280,7 +329,7 @@ const ActionRegistrationDialog = (props: IProps) => {
             Zavřít
           </Button>
           <Button
-            variant='contained'
+            variant="contained"
             onClick={handleOnClickRegister}
             startIcon={<CheckIcon />}
           >

@@ -31,6 +31,7 @@ interface IProps extends HTMLAttributes<HTMLDivElement> {
   zdaPoznamkaKCene: boolean;
   poznamkaKCene: string;
   capacityFull: boolean;
+  displayTShirtSize: boolean;
 }
 
 const Action = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
@@ -59,6 +60,7 @@ const Action = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
     zdaPoznamkaKCene,
     poznamkaKCene,
     capacityFull,
+    displayTShirtSize,
     ...restProps
   } = props;
   const xlDwn = useMediaQuery(theme.breakpoints.down("xl"));
@@ -243,6 +245,7 @@ const Action = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
         actionPrice={cena}
         actionDate={kdy}
         actionPlace={kde}
+        displayTShirtSize={displayTShirtSize}
         setOpen={setOpen}
         handleOnClickTermsOfConditions={() =>
           setTermOfConditionsDialogOpen(true)

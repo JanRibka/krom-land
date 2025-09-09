@@ -22,6 +22,7 @@ class DialogContentFormModel {
   other_pickup_person: string = "";
   other_pay_method: number = 0;
   other_other_info: string = "";
+  other_t_shirt_size: string = "";
   action_price: string = "";
   action_date: string = "";
   action_place: string = "";
