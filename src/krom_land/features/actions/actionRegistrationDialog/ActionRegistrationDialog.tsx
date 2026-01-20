@@ -56,7 +56,7 @@ const ActionRegistrationDialog = (props: IProps) => {
   // State
   const [registering, setRegistering] = useState<boolean>(false);
   const [formData, setFormData] = useState<DialogContentFormModel>(
-    new DialogContentFormModel()
+    new DialogContentFormModel(),
   );
 
   // References
@@ -65,12 +65,13 @@ const ActionRegistrationDialog = (props: IProps) => {
   // Constants
   const _actionsService = new ActionsService();
   const childArrivesMyselveId = common.TablesOfKeys.ChildArrives.find(
-    (f) => f.Key === "MYSELVE"
+    (f) => f.Key === "MYSELVE",
   )?.Id;
 
   // Get t-shirt sizes
   useRequest<ResultDataDTO<SelectDataDTO[]>>(
     {
+      baseUrl: process.env.REACT_APP_API_BASE_URL,
       url: process.env.REACT_APP_API_URL ?? "",
       params: new URLSearchParams({
         action: "common",
@@ -99,7 +100,7 @@ const ActionRegistrationDialog = (props: IProps) => {
           AppNotification("Chyba", data.ErrMsg ?? "", "danger");
         }
       }
-    }
+    },
   );
 
   // Other
@@ -120,7 +121,7 @@ const ActionRegistrationDialog = (props: IProps) => {
   };
 
   const handleTextFieldOnChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const name: string = e.target.name;
     const value: string = e.target.value;
@@ -131,7 +132,7 @@ const ActionRegistrationDialog = (props: IProps) => {
   const handleOnChangeDatePicker = (
     date: Dayjs | null,
     keyboardInputValue: string | undefined,
-    name: string
+    name: string,
   ) => {
     let newDate = date?.toDate();
     // Aby se nevytvarel rok po zadani prvniho cisla napr 0002
@@ -161,7 +162,7 @@ const ActionRegistrationDialog = (props: IProps) => {
   const handleOnChangeTelInput = (
     value: string,
     info: MuiTelInputInfo,
-    name: string
+    name: string,
   ) => {
     setFormData({ ...formData, [name]: value });
   };
@@ -174,7 +175,7 @@ const ActionRegistrationDialog = (props: IProps) => {
   const handleOnClickRegister = () => {
     // refForm.current?.submit();
     const submitButton = document.getElementsByClassName(
-      "registration-submit-button"
+      "registration-submit-button",
     );
 
     if (submitButton.length > 0) {

@@ -17,6 +17,7 @@ export default class ActionsService {
     formData.append("registrationData", dataEncoded);
 
     const response = await this._repo.post<any, ResultDataDTO<string>>({
+      baseUrl: process.env.REACT_APP_API_BASE_URL,
       url: process.env.REACT_APP_API_URL ?? "",
       params: new URLSearchParams({
         action: "registrations",
@@ -56,6 +57,7 @@ export default class ActionsService {
     formData.append("voucherData", dataEncoded);
 
     const response = await this._repo.post<any, ResultDataDTO<any>>({
+      baseUrl: process.env.REACT_APP_API_BASE_URL,
       url: process.env.REACT_APP_API_URL ?? "",
       params: new URLSearchParams({
         action: "vouchers",

@@ -93,6 +93,7 @@ const Layout = (props: IProps) => {
    */
   useRequest<ResultDataDTO<KromLandDTO>>(
     {
+      baseUrl: process.env.REACT_APP_API_BASE_URL,
       url: process.env.REACT_APP_API_URL ?? "",
       params: new URLSearchParams({
         action: "webcontent",
@@ -178,14 +179,14 @@ const Layout = (props: IProps) => {
           handleContactUpdate(mapFromContactDTO(data.Data?.Contact));
           handleCommonUpdate(mapFromCommonDTO(data?.Data?.Common));
           handleWebSettingsUpdate(
-            mapFromWebSettingsDTO(data.Data?.WebSettings)
+            mapFromWebSettingsDTO(data.Data?.WebSettings),
           );
           handleWebLogosUpdate(mapFromWebLogosDTO(data.Data?.WebLogos));
         } else {
           AppNotification("Chyba", data.ErrMsg ?? "", "danger");
         }
       }
-    }
+    },
   );
 
   return (

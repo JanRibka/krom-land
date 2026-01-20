@@ -13,7 +13,8 @@ export default class Repository extends RepositoryBase {
         .get(this.getUrl(request), {
           cancelToken: request.cancelToken,
           params: request.params,
-          headers: { "Access-Control-Allow-Origin": "*" },
+          headers: request.headers,
+          // headers: { "Access-Control-Allow-Origin": "*" },
         })
         .then((response: AxiosResponse<T>) => {
           resolve(response.data);
@@ -36,7 +37,7 @@ export default class Repository extends RepositoryBase {
    * @returns
    */
   public post<TRequest, TResult>(
-    postRequest: IPostRequest<TRequest>
+    postRequest: IPostRequest<TRequest>,
   ): Promise<IPostResponse<TResult>> {
     return this.postRequest<TResult>(postRequest, postRequest.data);
   }

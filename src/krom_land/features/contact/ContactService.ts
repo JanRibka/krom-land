@@ -19,7 +19,7 @@ export default class ContactService {
     user_email: string,
     user_name: string,
     subject: string,
-    message: string
+    message: string,
   ) {
     const data: SendEmailModel = {
       to: btoa(encodeURIComponent(email_to)),
@@ -36,6 +36,7 @@ export default class ContactService {
     });
 
     const response = await this._repo.post<any, ResultDataDTO<string>>({
+      baseUrl: process.env.REACT_APP_API_BASE_URL,
       url: process.env.REACT_APP_API_URL ?? "",
       params: new URLSearchParams({
         action: "email",
