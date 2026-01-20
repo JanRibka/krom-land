@@ -1,22 +1,22 @@
-import { useSelector } from 'react-redux';
-import GridContainer from 'shared/components/gridContainer/GridContainer';
-import GridItem from 'shared/components/gridItem/GridItem';
-import SectionTitle from 'shared/components/sectionTitle/SectionTitle';
-import { selectHome } from 'shared/infrastructure/store/home/homeSlice';
+import { useSelector } from "react-redux";
+import GridContainer from "shared/components/gridContainer/GridContainer";
+import GridItem from "shared/components/gridItem/GridItem";
+import SectionTitle from "shared/components/sectionTitle/SectionTitle";
+import { selectHomeTeamMembers } from "shared/infrastructure/store/home/homeSlice";
 
-import TeamMemberModel from '../models/TeamMemberModel';
-import Member from './member/Member';
-import OurTeamStyled from './styledComponents/OurTeamStyled';
+import TeamMemberModel from "../models/TeamMemberModel";
+import Member from "./member/Member";
+import OurTeamStyled from "./styledComponents/OurTeamStyled";
 
 const OurTeam = () => {
   // Store
-  const home = useSelector(selectHome);
+  const homeTeamMembers = useSelector(selectHomeTeamMembers);
 
   // Other
   const renderMembers = () => {
     let result: JSX.Element[] = [];
     let members: JSX.Element[] = [];
-    let teamMembers: TeamMemberModel[] = [...home.TeamMembers];
+    let teamMembers: TeamMemberModel[] = [...(homeTeamMembers ?? [])];
 
     teamMembers.forEach((member, index) => {
       if (
@@ -30,7 +30,7 @@ const OurTeam = () => {
               name={member.Name}
               description={member.Description}
             />
-          </GridItem>
+          </GridItem>,
         );
       } else if (index + 1 === teamMembers.length) {
         members.push(
@@ -40,7 +40,7 @@ const OurTeam = () => {
               name={member.Name}
               description={member.Description}
             />
-          </GridItem>
+          </GridItem>,
         );
 
         result.push(<GridContainer>{members}</GridContainer>);
@@ -63,7 +63,7 @@ const OurTeam = () => {
 
   return (
     <OurTeamStyled>
-      <SectionTitle mainText='Náš tým' secondaryText='Rodina je základ všeho' />
+      <SectionTitle mainText="Náš tým" secondaryText="Rodina je základ všeho" />
       {renderMembers()}
     </OurTeamStyled>
   );

@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { selectHome } from "shared/infrastructure/store/home/homeSlice";
+import { selectHomeAboutUs } from "shared/infrastructure/store/home/homeSlice";
 
 import Box from "@mui/material/Box";
 import Skeleton from "@mui/material/Skeleton";
@@ -12,7 +12,7 @@ import AboutUsStyled from "./styledComponents/AboutUsStyled";
 
 const AboutUs = () => {
   // Store
-  const home = useSelector(selectHome);
+  const homeAboutUs = useSelector(selectHomeAboutUs);
 
   // Constants
   const theme = useTheme();
@@ -23,58 +23,58 @@ const AboutUs = () => {
 
   return (
     <AboutUsStyled>
-      <Stack spacing={5} direction='column' sx={{ width: "100%" }}>
+      <Stack spacing={5} direction="column" sx={{ width: "100%" }}>
         {/* Obrázek */}
         <Stack
           spacing={pictDescWrapperSpacing}
           direction={pictDescWrapperDirection}
         >
-          <Box className='about-us-image-wrapper'>
+          <Box className="about-us-image-wrapper">
             <Box
-              component='img'
-              src={home.AboutUsImage.Path}
-              alt={home.AboutUsImage.Alt}
-              loading='lazy'
-              className='about-us-image'
+              component="img"
+              src={homeAboutUs.aboutUsImagePath ?? ""}
+              alt={homeAboutUs.aboutUsImageAlt ?? ""}
+              loading="lazy"
+              className="about-us-image"
             />
           </Box>
 
           {/* Popis */}
-          <Box className='description-wrapper'>
+          <Box className="description-wrapper">
             <Box>
-              <Box className='description-inner-wrapper'>
+              <Box className="description-inner-wrapper">
                 <Box>
                   <SectionTitle
                     mainText={"KROM Land"}
-                    mainTextVariant='h1'
-                    secondaryText='O nás'
+                    mainTextVariant="h1"
+                    secondaryText="O nás"
                   />
-                  {!!home.AboutUs ? (
+                  {!!homeAboutUs.aboutUs ? (
                     <Box
-                      component='span'
-                      dangerouslySetInnerHTML={{ __html: home.AboutUs }}
+                      component="span"
+                      dangerouslySetInnerHTML={{ __html: homeAboutUs.aboutUs }}
                     />
                   ) : (
                     <Stack spacing={1}>
                       <Skeleton
-                        variant='rectangular'
-                        className='skeleton-line'
+                        variant="rectangular"
+                        className="skeleton-line"
                       />
                       <Skeleton
-                        variant='rectangular'
-                        className='skeleton-line'
+                        variant="rectangular"
+                        className="skeleton-line"
                       />
                       <Skeleton
-                        variant='rectangular'
-                        className='skeleton-line'
+                        variant="rectangular"
+                        className="skeleton-line"
                       />
                       <Skeleton
-                        variant='rectangular'
-                        className='skeleton-line'
+                        variant="rectangular"
+                        className="skeleton-line"
                       />
                       <Skeleton
-                        variant='rectangular'
-                        className='skeleton-paragraph'
+                        variant="rectangular"
+                        className="skeleton-paragraph"
                       />
                     </Stack>
                   )}

@@ -1,26 +1,26 @@
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
-import { useSelector } from 'react-redux';
-import { selectHome } from 'shared/infrastructure/store/home/homeSlice';
-import { Autoplay, Pagination } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { PaginationOptions } from 'swiper/types';
+import { useSelector } from "react-redux";
+import { selectHomeTestimonials } from "shared/infrastructure/store/home/homeSlice";
+import { Autoplay, Pagination } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { PaginationOptions } from "swiper/types";
 
-import { useTheme } from '@mui/material/styles';
+import { useTheme } from "@mui/material/styles";
 
-import SectionTitle from '../../../../shared/components/sectionTitle/SectionTitle';
-import SlideItem from './slideItem/SlideItem';
-import SlideContentStyled from './styledComponents/SlideContentStyled';
-import WhatPeopleSayStyled from './styledComponents/WhatPeopleSayStyled';
+import SectionTitle from "../../../../shared/components/sectionTitle/SectionTitle";
+import SlideItem from "./slideItem/SlideItem";
+import SlideContentStyled from "./styledComponents/SlideContentStyled";
+import WhatPeopleSayStyled from "./styledComponents/WhatPeopleSayStyled";
 
 const WhatPeopleSay = () => {
   // Contsnts
   const theme = useTheme();
 
   // Store
-  const home = useSelector(selectHome);
+  const homeTestimonials = useSelector(selectHomeTestimonials);
 
   // Pagination
   const pagination: PaginationOptions = {
@@ -33,8 +33,8 @@ const WhatPeopleSay = () => {
   return (
     <WhatPeopleSayStyled>
       <SectionTitle
-        mainText='Říkají o nás'
-        secondaryText='Doporučení'
+        mainText="Říkají o nás"
+        secondaryText="Doporučení"
         secondaryTextColor={theme.palette.common.purple.dark}
       />
       <Swiper
@@ -48,19 +48,28 @@ const WhatPeopleSay = () => {
         <SwiperSlide>
           {/* Slide 1 */}
           <SlideContentStyled spacing={2}>
-            <SlideItem text={home.PeopleSay1Text} name={home.PeopleSay1Name} />
+            <SlideItem
+              text={homeTestimonials.peopleSay1Text}
+              name={homeTestimonials.peopleSay1Name}
+            />
           </SlideContentStyled>
         </SwiperSlide>
         <SwiperSlide>
           {/* Slide 2 */}
           <SlideContentStyled spacing={2}>
-            <SlideItem text={home.PeopleSay2Text} name={home.PeopleSay2Name} />
+            <SlideItem
+              text={homeTestimonials.peopleSay2Text}
+              name={homeTestimonials.peopleSay2Name}
+            />
           </SlideContentStyled>
         </SwiperSlide>
         <SwiperSlide>
           {/* Slide 3 */}
           <SlideContentStyled spacing={2}>
-            <SlideItem text={home.PeopleSay3Text} name={home.PeopleSay3Name} />
+            <SlideItem
+              text={homeTestimonials.peopleSay3Text}
+              name={homeTestimonials.peopleSay3Name}
+            />
           </SlideContentStyled>
         </SwiperSlide>
       </Swiper>

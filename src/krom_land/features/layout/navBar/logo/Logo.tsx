@@ -12,19 +12,19 @@ const Logo = () => {
   return (
     <LogoStyled>
       <Box
-        component='a'
+        component="a"
         href={process.env.PUBLIC_URL}
-        title='KROM LAND'
-        target='_self'
+        title="KROM LAND"
+        target="_self"
       >
         <img
-          src={webLogos.HeaderLogo.Path}
+          src={webLogos.HeaderLogo.path}
           alt={
-            !!webLogos.HeaderLogo.Alt
-              ? webLogos.HeaderLogo.Alt
+            !!webLogos.HeaderLogo.alt
+              ? webLogos.HeaderLogo.alt
               : "Logo | KROM Land"
           }
-          loading='lazy'
+          loading="lazy"
         />
       </Box>
     </LogoStyled>

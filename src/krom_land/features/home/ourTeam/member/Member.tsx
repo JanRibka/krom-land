@@ -1,9 +1,9 @@
-import ImageModel from 'shared/models/ImageModel';
+import ImageModel from "shared/models/ImageModel";
 
-import { Typography } from '@mui/material';
-import Box from '@mui/material/Box';
+import { Typography } from "@mui/material";
+import Box from "@mui/material/Box";
 
-import MemberStyled from './styledComponents/MemberStyled';
+import MemberStyled from "./styledComponents/MemberStyled";
 
 interface IProps {
   image: ImageModel;
@@ -16,13 +16,13 @@ const Member = (props: IProps) => {
     <MemberStyled>
       <Box>
         <Box
-          component='img'
-          src={props.image.Path}
-          alt={props.image.Alt}
-          loading='lazy'
+          component="img"
+          src={props.image.path}
+          alt={props.image.alt}
+          loading="lazy"
         />
       </Box>
-      <Typography variant='h6'>{props.name}</Typography>
+      <Typography variant="h6">{props.name}</Typography>
       <Typography>{props.description}</Typography>
     </MemberStyled>
   );

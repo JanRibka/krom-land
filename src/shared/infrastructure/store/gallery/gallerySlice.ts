@@ -3,7 +3,7 @@ import ImageModel from "shared/models/ImageModel";
 
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import AppState from "../AppState";
+import { RootState } from "../store";
 
 export interface GalleryModel {
   Title: string;
@@ -43,5 +43,5 @@ export const actions = gallerySlice.actions;
 export default gallerySlice.reducer;
 
 // Selectors
-export const selectGallery = (state: AppState) => state.gallery;
-export const selectGalleryImages = (state: AppState) => state.gallery.Images;
+export const selectGallery = (state: RootState) => state.gallery;
+export const selectGalleryImages = (state: RootState) => state.gallery.Images;

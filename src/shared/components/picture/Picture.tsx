@@ -23,12 +23,12 @@ const Picture = (props: IProps) => {
         (props.enbHover ? " enb-hover" : "")
       }
     >
-      <Box className='image-overlay'></Box>
+      <Box className="image-overlay"></Box>
       <Box
-        component='img'
-        src={props.photo.Path}
-        alt={props.photo.Alt}
-        loading='lazy'
+        component="img"
+        src={props.photo.path}
+        alt={props.photo.alt}
+        loading="lazy"
       />
       <VisibilityOutlinedIcon />
     </PictureStyled>

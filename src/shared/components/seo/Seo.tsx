@@ -6,14 +6,14 @@ import { selectActions } from "shared/infrastructure/store/actions/actionsSlice"
 import { selectCommon } from "shared/infrastructure/store/common/commonSlice";
 import { selectContact } from "shared/infrastructure/store/contact/contactSlice";
 import { selectGallery } from "shared/infrastructure/store/gallery/gallerySlice";
-import { selectHome } from "shared/infrastructure/store/home/homeSlice";
+import { selectHomeSeo } from "shared/infrastructure/store/home/homeSlice";
 
 import SeoFb from "./img/seo_fb.jpg";
 
 const Seo = () => {
   // Constants
   const { pathname } = useLocation();
-  const home = useSelector(selectHome);
+  const homeSeo = useSelector(selectHomeSeo);
   const actions = useSelector(selectActions);
   const gallery = useSelector(selectGallery);
   const contact = useSelector(selectContact);
@@ -33,8 +33,8 @@ const Seo = () => {
 
     switch (pathname) {
       case AppRoute.Home:
-        title = home.Title;
-        description = home.Description;
+        title = homeSeo.title;
+        description = homeSeo.description;
         break;
       case AppRoute.Actions:
         title = actions.Title;
@@ -67,7 +67,7 @@ const Seo = () => {
     const ogImage = document.querySelector("meta[property='og:image']");
     ogImage?.setAttribute("content", seoFb);
     const ogImageUrl = document.querySelector(
-      "meta[property='og:image:secure_url']"
+      "meta[property='og:image:secure_url']",
     );
     ogImageUrl?.setAttribute("content", seoFb);
   };

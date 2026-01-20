@@ -53,15 +53,15 @@ const PhotosDialog = (props: IProps) => {
     props.photos.forEach((image, index) => {
       result.push(
         <SwiperSlideStyled key={"dialogImage_" + index}>
-          <div className='swiper-zoom-container'>
+          <div className="swiper-zoom-container">
             <img
-              src={image.Path}
-              alt={image.Alt}
+              src={image.path}
+              alt={image.alt}
               // className='swiper-lazy'
               // loading='eager'
             />
           </div>
-        </SwiperSlideStyled>
+        </SwiperSlideStyled>,
       );
     });
 
@@ -73,7 +73,7 @@ const PhotosDialog = (props: IProps) => {
       <DialogTitleWrapperStyled>
         <IconButton
           onClick={() => props.setOpenData({ Open: false, InitialSlide: 0 })}
-          color='secondary'
+          color="secondary"
         >
           <CloseIcon />
         </IconButton>

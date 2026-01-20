@@ -4,7 +4,7 @@ import TablesOfKeysModel from "shared/models/TablesOfKeysModel";
 
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import AppState from "../AppState";
+import { RootState } from "../store";
 
 export interface CommonModel {
   Conditions: ConditionsModel;
@@ -44,4 +44,4 @@ export const actions = commonSlice.actions;
 export default commonSlice.reducer;
 
 // Selectors
-export const selectCommon = (state: AppState) => state.common;
+export const selectCommon = (state: RootState) => state.common;

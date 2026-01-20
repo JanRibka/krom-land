@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import AppState from "../AppState";
+import { RootState } from "../store";
 
 export interface WebSettingsModel {
   FacebookLink: string;
@@ -40,7 +40,7 @@ export const webSettingsSlice = createSlice({
   reducers: {
     webSettingsUpdate: (
       state,
-      action: PayloadAction<Partial<WebSettingsModel>>
+      action: PayloadAction<Partial<WebSettingsModel>>,
     ) => {
       return {
         ...state,
@@ -55,4 +55,4 @@ export const actions = webSettingsSlice.actions;
 export default webSettingsSlice.reducer;
 
 // Selectors
-export const selectWebSettings = (state: AppState) => state.webSettings;
+export const selectWebSettings = (state: RootState) => state.webSettings;

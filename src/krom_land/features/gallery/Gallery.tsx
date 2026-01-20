@@ -28,7 +28,7 @@ const Gallery = () => {
   const gallery = useSelector(selectGallery);
   const galleryImages = useSelector(selectGalleryImages);
   const imageCollection = galleryImages.map(
-    (galleryImage) => galleryImage.Image
+    (galleryImage) => galleryImage.Image,
   );
 
   // Other
@@ -43,12 +43,12 @@ const Gallery = () => {
     if (galleryImages.length === 0) {
       result.push(
         <Typography
-          variant='h5'
-          key='noPhotos'
+          variant="h5"
+          key="noPhotos"
           sx={{ textAlign: "center", marginBottom: "25px" }}
         >
           Zatím zde žádná fotografie není, ale budou zde postupně přibývat
-        </Typography>
+        </Typography>,
       );
     } else {
       galleryImages.forEach((galleryImage, index) => {
@@ -64,7 +64,7 @@ const Gallery = () => {
                 enbHover
                 handleOpenGalleryOnClick={handleOpenGalleryOnClick}
               />
-            </GridItem>
+            </GridItem>,
           );
         } else if (index + 1 === galleryImages.length) {
           pictures.push(
@@ -75,7 +75,7 @@ const Gallery = () => {
                 enbHover
                 handleOpenGalleryOnClick={handleOpenGalleryOnClick}
               />
-            </GridItem>
+            </GridItem>,
           );
 
           result.push(<GridContainer>{pictures}</GridContainer>);
@@ -100,13 +100,13 @@ const Gallery = () => {
 
   return (
     <>
-      <Stack direction='column'>
+      <Stack direction="column">
         <>
           <PageTitle
-            image={gallery.MainImage.Path}
+            image={gallery.MainImage.path}
             title={gallery.PageHeaderTextMain}
             titleColor={gallery.PageHeaderTextMainColor}
-            alt={gallery.MainImage.Alt}
+            alt={gallery.MainImage.alt}
             imhHeight={350}
           />
         </>

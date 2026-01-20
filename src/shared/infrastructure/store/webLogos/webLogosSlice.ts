@@ -2,7 +2,7 @@ import ImageModel from "shared/models/ImageModel";
 
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import AppState from "../AppState";
+import { RootState } from "../store";
 
 export interface WebLogosModel {
   HeaderLogo: ImageModel;
@@ -30,4 +30,4 @@ export const actions = webLogosSlice.actions;
 export default webLogosSlice.reducer;
 
 // Selectors
-export const selectWebLogos = (state: AppState) => state.webLogos;
+export const selectWebLogos = (state: RootState) => state.webLogos;

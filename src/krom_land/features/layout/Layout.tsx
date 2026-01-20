@@ -25,7 +25,7 @@ import useScrollPosition from "../../../shared/customHooks/useScrollPosition/use
 import { mapFromActionsDTO } from "../actions/save/mapFromActionsDTO";
 import { mapFromContactDTO } from "../contact/save/mapFromContactDTO";
 import { mapFromGalleryDTO } from "../gallery/save/mapFromGalleryDTO";
-import { mapFromHomeDTO } from "../home/save/mapFromHomeDTO";
+// import { mapFromHomeDTO } from "../home/save/mapFromHomeDTO";
 import { mapFromWebLogosDTO } from "../webLogos/save/mapFromWebLogosDTO";
 import { mapFromWebSettingsDTO } from "../webSettings/save/mapFromWebSettingsDTO";
 import Footer from "./footer/Footer";
@@ -43,7 +43,6 @@ const Layout = (props: IProps) => {
 
   // Consts
   const scrollYPosition: number = useScrollPosition();
-  const { handleHomeUpdate } = useHomeSlice();
   const { handleCommonUpdate } = useCommonSlice();
   const { handleActionsUpdate } = useActionsSlice();
   const { handleGalleryUpdate } = useGallerySlice();
@@ -173,7 +172,7 @@ const Layout = (props: IProps) => {
         AppNotification("Chyba", String(data), "danger");
       } else {
         if (data.Success) {
-          handleHomeUpdate(mapFromHomeDTO(data?.Data?.Home));
+          // handleHomeUpdate(mapFromHomeDTO(data?.Data?.Home));
           handleActionsUpdate(mapFromActionsDTO(data.Data?.Actions));
           handleGalleryUpdate(mapFromGalleryDTO(data.Data?.Gallery));
           handleContactUpdate(mapFromContactDTO(data.Data?.Contact));

@@ -2,7 +2,7 @@ import ImageModel from "shared/models/ImageModel";
 
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import AppState from "../AppState";
+import { RootState } from "../store";
 
 export interface ContactModel {
   Title: string;
@@ -42,4 +42,4 @@ export const actions = contactSlice.actions;
 export default contactSlice.reducer;
 
 // Selectors
-export const selectContact = (state: AppState) => state.contact;
+export const selectContact = (state: RootState) => state.contact;

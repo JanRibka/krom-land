@@ -89,8 +89,8 @@ const ActionSelect = () => {
           ) : (
             <Skeleton className="skeleton-menu-text" />
           )}
-        </Box>
-      )
+        </Box>,
+      ),
     );
 
     result.push(
@@ -101,7 +101,7 @@ const ActionSelect = () => {
         sx={{ backgroundColor: `${theme.palette.common.red.main} !important` }}
       >
         <Box component="span">Dokumenty</Box>
-      </Box>
+      </Box>,
     );
 
     result.push(
@@ -112,7 +112,7 @@ const ActionSelect = () => {
         sx={{ backgroundColor: `${theme.palette.secondary.main} !important` }}
       >
         <Box component="span">Poukazy</Box>
-      </Box>
+      </Box>,
     );
 
     return result;
@@ -128,8 +128,8 @@ const ActionSelect = () => {
           idAction={item.Id}
           name={item.ActionName}
           description={item.ActionDescritption}
-          image={item.Image.Path}
-          imageAlt={item.Image.Alt}
+          image={item.Image.path}
+          imageAlt={item.Image.alt}
           videoUrl={item.VideoLink}
           kdy={item.Date}
           kde={item.Place}

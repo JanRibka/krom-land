@@ -4,7 +4,7 @@ import ImageModel from "shared/models/ImageModel";
 
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import AppState from "../AppState";
+import { RootState } from "../store";
 
 export interface ActionsModel {
   Title: string;
@@ -44,6 +44,6 @@ export const actions = actionsSlice.actions;
 export default actionsSlice.reducer;
 
 // Selectors
-export const selectActions = (state: AppState) => state.actions;
-export const selectDocumentsToDownload = (state: AppState) =>
+export const selectActions = (state: RootState) => state.actions;
+export const selectDocumentsToDownload = (state: RootState) =>
   state.actions.DocumentsToDownload;
