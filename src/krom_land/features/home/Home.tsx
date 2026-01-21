@@ -1,15 +1,19 @@
 import { useSelector } from "react-redux";
+import { useHomeGetData } from "shared/api/home/hooks/useHomeGetData";
 import PageTitle from "shared/components/pageTitle/PageTitle";
 import { selectHomePageTitle } from "shared/infrastructure/store/home/homeSlice";
 
 import Stack from "@mui/material/Stack";
 
 import AboutUs from "./aboutUs/AboutUs";
+import News from "./news/News";
 import OurTeam from "./ourTeam/OurTeam";
 import WhatPeopleSay from "./whatPeopleSay/WhatPeopleSay";
-import News from "./news/News";
 
 const Home = () => {
+  // Get data
+  useHomeGetData();
+
   // Store
   const homePageTitle = useSelector(selectHomePageTitle);
 
