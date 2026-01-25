@@ -26,9 +26,9 @@ const OurTeam = () => {
         members.push(
           <GridItem xs={12} sm={6} lg={3}>
             <Member
-              image={member.Image}
-              name={member.Name}
-              description={member.Description}
+              image={member.image}
+              name={member.name}
+              description={member.description}
             />
           </GridItem>,
         );
@@ -36,9 +36,9 @@ const OurTeam = () => {
         members.push(
           <GridItem xs={12} sm={6} lg={3}>
             <Member
-              image={member.Image}
-              name={member.Name}
-              description={member.Description}
+              image={member.image}
+              name={member.name}
+              description={member.description}
             />
           </GridItem>,
         );
@@ -49,9 +49,9 @@ const OurTeam = () => {
         members = [
           <GridItem xs={12} sm={6} lg={3}>
             <Member
-              image={member.Image}
-              name={member.Name}
-              description={member.Description}
+              image={member.image}
+              name={member.name}
+              description={member.description}
             />
           </GridItem>,
         ];
