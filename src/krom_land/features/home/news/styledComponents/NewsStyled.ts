@@ -14,20 +14,42 @@ const NewsStyled = styled(Box)(({ theme }) => ({
     padding: "0 24px",
   },
 
-  ".section-image-wrapper": {
-    gridRow: "span 3",
+  ".news-main-layout": {
+    display: "flex",
+    flexDirection: "row",
+    gap: "60px",
+    alignItems: "center",
     width: "100%",
+    marginTop: theme.spacing(4),
+
+    [theme.breakpoints.down("lg")]: {
+      flexDirection: "column-reverse",
+      gap: theme.spacing(5),
+    },
+  },
+
+  ".section-image-wrapper": {
+    flexShrink: 0,
+    width: "100%",
+    maxWidth: "550px",
     aspectRatio: "1/1",
-    borderRadius: "24px",
+    borderRadius: "30px",
     overflow: "hidden",
     position: "relative",
+    backdropFilter: "blur(12px)",
     boxShadow: "0 20px 40px rgba(0, 0, 0, 0.12)",
+    backgroundColor: "rgba(180, 180, 180, 0.4)", // Ochranná poloprůhledná barva
     border: `1px solid ${
       theme.palette.mode === "dark"
-        ? "rgba(255, 255, 255, 0.1)"
-        : "rgba(0, 0, 0, 0.05)"
+        ? "rgba(255, 255, 255, 0.15)"
+        : "rgba(0, 0, 0, 0.1)"
     }`,
     transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
+
+    [theme.breakpoints.down("lg")]: {
+      maxWidth: "100%",
+      alignSelf: "center",
+    },
 
     // Subtle gradient overlay for premium look
     "&::after": {
@@ -42,7 +64,7 @@ const NewsStyled = styled(Box)(({ theme }) => ({
       pointerEvents: "none",
     },
 
-    img: {
+    ".section-image": {
       width: "100%",
       height: "100%",
       objectFit: "cover",
@@ -50,16 +72,11 @@ const NewsStyled = styled(Box)(({ theme }) => ({
     },
 
     "&:hover": {
-      transform: "translateY(-8px)",
+      transform: "translateY(-10px)",
       boxShadow: "0 30px 60px rgba(0, 0, 0, 0.2)",
-      img: {
+      ".section-image": {
         transform: "scale(1.1)",
       },
-    },
-
-    [theme.breakpoints.down("sm")]: {
-      gridRow: "span 2",
-      maxWidth: "100%",
     },
   },
 
@@ -72,22 +89,16 @@ const NewsStyled = styled(Box)(({ theme }) => ({
     minWidth: 0,
   },
 
-  // Masonry grid container
+  // Flexible news container (replaces masonry grid)
   ".masonry-container": {
-    display: "grid",
-    gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
+    display: "flex",
+    flexWrap: "wrap",
     gap: theme.spacing(4),
     width: "100%",
-    gridAutoFlow: "dense",
-    alignItems: "start",
+    alignItems: "stretch",
 
     [theme.breakpoints.down("md")]: {
-      gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
       gap: theme.spacing(3),
-    },
-
-    [theme.breakpoints.down("sm")]: {
-      gridTemplateColumns: "1fr",
     },
   },
 
@@ -95,6 +106,8 @@ const NewsStyled = styled(Box)(({ theme }) => ({
   ".news-item": {
     display: "flex",
     flexDirection: "column",
+    flex: "1 1 340px", // Grow to fill space, basis 340px
+    maxWidth: "100%",
     gap: theme.spacing(2),
     padding: theme.spacing(3),
     borderRadius: "20px",
@@ -113,7 +126,6 @@ const NewsStyled = styled(Box)(({ theme }) => ({
         ? "0 10px 40px rgba(0, 0, 0, 0.4)"
         : "0 10px 30px rgba(0, 0, 0, 0.08)",
     transition: "all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
-    height: "100%",
     overflow: "hidden",
     position: "relative",
 
@@ -132,7 +144,7 @@ const NewsStyled = styled(Box)(({ theme }) => ({
     },
 
     "&:hover": {
-      transform: "translateY(-10px) scale(1.01)",
+      transform: "translateY(-10px)",
       boxShadow:
         theme.palette.mode === "dark"
           ? "0 20px 50px rgba(0, 0, 0, 0.5)"
@@ -147,25 +159,21 @@ const NewsStyled = styled(Box)(({ theme }) => ({
       },
     },
 
-    // Size variations based on row span
+    // Simplified size variations for flex layout
     "&.size-small": {
-      gridRow: "span 2",
+      // Small items can be compact
     },
 
     "&.size-medium": {
-      gridRow: "span 3",
       ".news-text": {
-        WebkitLineClamp: 6,
+        WebkitLineClamp: 8,
       },
     },
 
     "&.size-large": {
-      gridRow: "span 4",
-      [theme.breakpoints.up("md")]: {
-        gridColumn: "span 2",
-      },
+      flex: "1 1 100%", // Large items always take full width
       ".news-text": {
-        WebkitLineClamp: 10,
+        WebkitLineClamp: 15,
       },
     },
 

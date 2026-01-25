@@ -1,5 +1,4 @@
 import Box from "@mui/material/Box";
-import { grey } from "@mui/material/colors";
 import { styled } from "@mui/material/styles";
 
 const AboutUsStyled = styled(Box)(({ theme }) => ({
@@ -11,42 +10,60 @@ const AboutUsStyled = styled(Box)(({ theme }) => ({
   display: "flex",
   backgroundColor: theme.palette.primary.light,
 
-  "& > div > div": {
+  ".about-us-content-wrapper": {
+    width: "100%",
+    maxWidth: "1400px",
+    margin: "0 auto",
+    padding: "0 24px",
+  },
+
+  ".about-us-main-layout": {
     width: "100%",
     display: "flex",
-    justifyContent: "center",
+    flexDirection: "column",
     alignItems: "center",
   },
 
   ".about-us-image-wrapper": {
-    // height: "550px",
     aspectRatio: "1/1",
     borderRadius: "30px",
     maxWidth: "550px",
     width: "100%",
     overflow: "hidden",
-    backgroundColor: grey[400],
+    backgroundColor: "rgba(180, 180, 180, 0.4)",
+    backdropFilter: "blur(12px)",
+    position: "relative",
+    transition: "all 0.5s cubic-bezier(0.4, 0, 0.2, 1)",
+    boxShadow: "0 20px 40px rgba(0, 0, 0, 0.12)",
+    border: `1px solid ${
+      theme.palette.mode === "dark"
+        ? "rgba(255, 255, 255, 0.15)"
+        : "rgba(0, 0, 0, 0.1)"
+    }`,
 
     [theme.breakpoints.down("lg")]: {
-      width: "90%",
       maxWidth: "100%",
+    },
+
+    "&:hover": {
+      transform: "translateY(-10px)",
+      boxShadow: "0 30px 60px rgba(0, 0, 0, 0.2)",
+      ".about-us-image": {
+        transform: "scale(1.1)",
+      },
     },
 
     ".about-us-image": {
       objectFit: "cover",
       width: "100%",
       height: "100%",
-      transition: "all 1000ms cubic-bezier(.8, 0, .33, 1)",
-
-      "&:hover": {
-        scale: "1.2",
-      },
+      transition: "transform 0.8s ease",
     },
   },
 
   ".description-wrapper": {
     width: "100%",
-    maxWidth: "600px",
+    maxWidth: "800px",
     display: "inline-block",
     height: "100%",
     padding: "15px 0",
@@ -64,7 +81,7 @@ const AboutUsStyled = styled(Box)(({ theme }) => ({
       height: "100%",
       display: "flex",
       flexDirection: "column",
-      justifyContent: "space-between",
+      justifyContent: "center",
 
       p: {
         textAlign: "justify",
@@ -101,8 +118,7 @@ const AboutUsStyled = styled(Box)(({ theme }) => ({
     },
 
     [theme.breakpoints.down("lg")]: {
-      width: "90%",
-      maxWidth: "90%",
+      maxWidth: "100%",
       height: "fit-content",
     },
   },

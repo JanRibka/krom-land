@@ -23,67 +23,79 @@ const AboutUs = () => {
 
   return (
     <AboutUsStyled>
-      <Stack spacing={5} direction="column" sx={{ width: "100%" }}>
-        {/* Obrázek */}
+      <Box className="about-us-content-wrapper">
         <Stack
-          spacing={pictDescWrapperSpacing}
-          direction={pictDescWrapperDirection}
+          spacing={5}
+          direction="column"
+          sx={{ width: "100%" }}
+          className="about-us-main-layout"
         >
-          <Box className="about-us-image-wrapper">
-            <Box
-              component="img"
-              src={homeAboutUs.aboutUsImagePath ?? ""}
-              alt={homeAboutUs.aboutUsImageAlt ?? ""}
-              loading="lazy"
-              className="about-us-image"
-            />
-          </Box>
+          <SectionTitle
+            mainText={"KROM Land"}
+            mainTextVariant="h1"
+            secondaryText="O nás"
+          />
 
-          {/* Popis */}
-          <Box className="description-wrapper">
-            <Box>
-              <Box className="description-inner-wrapper">
-                <Box>
-                  <SectionTitle
-                    mainText={"KROM Land"}
-                    mainTextVariant="h1"
-                    secondaryText="O nás"
-                  />
-                  {!!homeAboutUs.aboutUs ? (
-                    <Box
-                      component="span"
-                      dangerouslySetInnerHTML={{ __html: homeAboutUs.aboutUs }}
-                    />
-                  ) : (
-                    <Stack spacing={1}>
-                      <Skeleton
-                        variant="rectangular"
-                        className="skeleton-line"
+          {/* Obrázek a popis */}
+          <Stack
+            spacing={pictDescWrapperSpacing}
+            direction={pictDescWrapperDirection}
+            alignItems="center"
+            sx={{ width: "100%" }}
+          >
+            <Box className="about-us-image-wrapper">
+              <Box
+                component="img"
+                src={homeAboutUs.aboutUsImagePath ?? ""}
+                alt={homeAboutUs.aboutUsImageAlt ?? ""}
+                loading="lazy"
+                className="about-us-image"
+              />
+            </Box>
+
+            {/* Popis */}
+            <Box className="description-wrapper">
+              <Box>
+                <Box className="description-inner-wrapper">
+                  <Box>
+                    {!!homeAboutUs.aboutUs ? (
+                      <Box
+                        component="span"
+                        dangerouslySetInnerHTML={{
+                          __html: homeAboutUs.aboutUs,
+                        }}
                       />
-                      <Skeleton
-                        variant="rectangular"
-                        className="skeleton-line"
-                      />
-                      <Skeleton
-                        variant="rectangular"
-                        className="skeleton-line"
-                      />
-                      <Skeleton
-                        variant="rectangular"
-                        className="skeleton-line"
-                      />
-                      <Skeleton
-                        variant="rectangular"
-                        className="skeleton-paragraph"
-                      />
-                    </Stack>
-                  )}
+                    ) : (
+                      <Stack spacing={1}>
+                        <Skeleton
+                          variant="rectangular"
+                          className="skeleton-line"
+                        />
+                        <Skeleton
+                          variant="rectangular"
+                          className="skeleton-line"
+                        />
+                        <Skeleton
+                          variant="rectangular"
+                          className="skeleton-line"
+                        />
+                        <Skeleton
+                          variant="rectangular"
+                          className="skeleton-line"
+                        />
+                        <Skeleton
+                          variant="rectangular"
+                          className="skeleton-paragraph"
+                        />
+                      </Stack>
+                    )}
+                  </Box>
                 </Box>
               </Box>
             </Box>
-          </Box>
+          </Stack>
         </Stack>
-      </Stack>
+      </Box>
     </AboutUsStyled>
   );
 };

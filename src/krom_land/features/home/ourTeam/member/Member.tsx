@@ -14,16 +14,21 @@ interface IProps {
 const Member = (props: IProps) => {
   return (
     <MemberStyled>
-      <Box>
+      <Box className="member-image-wrapper">
         <Box
           component="img"
           src={props.image.path}
           alt={props.image.alt}
           loading="lazy"
+          className="member-image"
         />
       </Box>
-      <Typography variant="h6">{props.name}</Typography>
-      <Typography>{props.description}</Typography>
+      <Typography variant="h6" className="member-name">
+        {props.name}
+      </Typography>
+      <Typography className="member-description">
+        {props.description}
+      </Typography>
     </MemberStyled>
   );
 };
