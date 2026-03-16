@@ -3,6 +3,8 @@
     "akce",
     "byla",
     "camelcase",
+    "Chyba",
+    "chybí",
     "Čtvrtá",
     "Dárkové",
     "Dárkový",
@@ -15,8 +17,6 @@
     "Druhá",
     "emailu",
     "getall",
-    "Chyba",
-    "chybí",
     "jméno",
     "KROM",
     "Máte",
@@ -38,8 +38,9 @@
     "poukazů",
     "Poukazy",
     "povolena",
-    "První",
     "Příjmení",
+    "První",
+    "Pujcovna",
     "Registrace",
     "Souhlasím",
     "specifikovaná",
@@ -53,12 +54,12 @@
     "úspěšně",
     "Vaše",
     "voucheru",
+    "Žádné",
     "záložka",
     "Zobrazení",
     "zpracování",
     "zpracováním",
     "zpráva",
-    "zprávu",
-    "Žádné"
+    "zprávu"
   ]
 }

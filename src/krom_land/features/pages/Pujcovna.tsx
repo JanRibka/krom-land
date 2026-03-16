@@ -1,7 +1,7 @@
 import Actions from "../actions/Actions";
 import PageStyled from "./styledComponents/PageStyled";
 
-const PujcovnaPage = () => {
+const Pujcovna = () => {
   return (
     <PageStyled component="main">
       <div className="top-space"></div>
@@ -10,4 +10,4 @@ const PujcovnaPage = () => {
   );
 };
 
-export default PujcovnaPage;
+export default Pujcovna;
