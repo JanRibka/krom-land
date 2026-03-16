@@ -14,7 +14,6 @@ import { selectCommon } from "shared/infrastructure/store/common/commonSlice";
 import { useCommonSlice } from "shared/infrastructure/store/common/useCommonSlice";
 import { useContactSlice } from "shared/infrastructure/store/contact/useContactSlice";
 import { useGallerySlice } from "shared/infrastructure/store/gallery/useGallerySlice";
-import { useHomeSlice } from "shared/infrastructure/store/home/useHomeSlice";
 import { useWebLogosSlice } from "shared/infrastructure/store/webLogos/useWebLogosSlice";
 import { useWebSettingsSlice } from "shared/infrastructure/store/webSettings/useWebSettingsSlice";
 import TablesOfKeysModel from "shared/models/TablesOfKeysModel";
@@ -25,7 +24,6 @@ import useScrollPosition from "../../../shared/customHooks/useScrollPosition/use
 import { mapFromActionsDTO } from "../actions/save/mapFromActionsDTO";
 import { mapFromContactDTO } from "../contact/save/mapFromContactDTO";
 import { mapFromGalleryDTO } from "../gallery/save/mapFromGalleryDTO";
-// import { mapFromHomeDTO } from "../home/save/mapFromHomeDTO";
 import { mapFromWebLogosDTO } from "../webLogos/save/mapFromWebLogosDTO";
 import { mapFromWebSettingsDTO } from "../webSettings/save/mapFromWebSettingsDTO";
 import Footer from "./footer/Footer";

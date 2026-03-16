@@ -1,10 +1,10 @@
-import { forwardRef, Ref } from 'react';
-import { Link } from 'react-router-dom';
+import { forwardRef, Ref } from "react";
+import { Link } from "react-router-dom";
 
-import Box from '@mui/material/Box';
+import Box from "@mui/material/Box";
 
-import { AppRoute } from '../../../../../../shared/infrastructure/router/appRoutes';
-import NavLinksStyled from './styledComponents/NavLinksStyled';
+import { AppRoute } from "../../../../../../shared/infrastructure/router/appRoutes";
+import NavLinksStyled from "./styledComponents/NavLinksStyled";
 
 interface IProps {
   innerWrapperName: string;
@@ -12,18 +12,21 @@ interface IProps {
 
 const NavLinks = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
   return (
-    <NavLinksStyled ref={ref} component='nav' className='nav-links-wrapper'>
-      <Box component='ul' id={props.innerWrapperName}>
-        <Box component='li' data-route={AppRoute.Home}>
+    <NavLinksStyled ref={ref} component="nav" className="nav-links-wrapper">
+      <Box component="ul" id={props.innerWrapperName}>
+        <Box component="li" data-route={AppRoute.Home}>
           <Link to={AppRoute.Home}>Úvod</Link>
         </Box>
-        <Box component='li' data-route={AppRoute.Actions}>
+        <Box component="li" data-route={AppRoute.Actions}>
           <Link to={AppRoute.Actions}>Akce</Link>
         </Box>
-        <Box component='li' data-route={AppRoute.Gallery}>
+        <Box component="li" data-route={AppRoute.Pujcovna}>
+          <Link to={AppRoute.Pujcovna}>Půjčovna</Link>
+        </Box>
+        <Box component="li" data-route={AppRoute.Gallery}>
           <Link to={AppRoute.Gallery}>Galerie</Link>
         </Box>
-        <Box component='li' data-route={AppRoute.Contact}>
+        <Box component="li" data-route={AppRoute.Contact}>
           <Link to={AppRoute.Contact}>Kontakt</Link>
         </Box>
       </Box>

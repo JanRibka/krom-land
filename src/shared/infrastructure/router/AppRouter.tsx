@@ -1,4 +1,5 @@
 import NotFoundPage from "krom_land/features/pages/NotFoundPage";
+import PujcovnaPage from "krom_land/features/pages/PujcovnaPage";
 import { useEffect } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 
@@ -37,7 +38,7 @@ const AppRouter = () => {
 
     // Mobile menu
     const navLinksWrapperMobile = document.getElementById(
-      "nav-links-inner-wrapper-mobile"
+      "nav-links-inner-wrapper-mobile",
     );
 
     navLinksWrapperMobile?.childNodes.forEach((item) => {
@@ -65,9 +66,10 @@ const AppRouter = () => {
     <Routes>
       <Route path={AppRoute.Home} element={<HomePage />} />
       <Route path={AppRoute.Actions} element={<ActionsPage />} />
+      <Route path={AppRoute.Pujcovna} element={<PujcovnaPage />} />
       <Route path={AppRoute.Gallery} element={<GalleryPage />} />
       <Route path={AppRoute.Contact} element={<ContactPage />} />
-      <Route path='*' element={<NotFoundPage />} />
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
 };
