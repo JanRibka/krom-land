@@ -1,5 +1,5 @@
 import NotFoundPage from "krom_land/features/pages/NotFoundPage";
-import Pujcovna from "krom_land/features/pages/Pujcovna";
+import RentingPage from "krom_land/features/pages/RentingPage";
 import { useEffect } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 
@@ -66,7 +66,7 @@ const AppRouter = () => {
     <Routes>
       <Route path={AppRoute.Home} element={<HomePage />} />
       <Route path={AppRoute.Actions} element={<ActionsPage />} />
-      <Route path={AppRoute.Pujcovna} element={<Pujcovna />} />
+      <Route path={AppRoute.Renting} element={<RentingPage />} />
       <Route path={AppRoute.Gallery} element={<GalleryPage />} />
       <Route path={AppRoute.Contact} element={<ContactPage />} />
       <Route path="*" element={<NotFoundPage />} />

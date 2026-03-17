@@ -1,0 +1,1 @@
+export { RentingHero } from "./RentingHero";

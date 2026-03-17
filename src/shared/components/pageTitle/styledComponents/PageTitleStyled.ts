@@ -8,6 +8,16 @@ const TitleStyled = styled(Box)(({ theme }) => ({
   justifyContent: "center",
   alignItems: "center",
   backgroundColor: grey[500],
+  overflow: "hidden",
+
+  "&::after": {
+    content: '""',
+    position: "absolute",
+    inset: 0,
+    background:
+      "linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.7) 100%)",
+    pointerEvents: "none",
+  },
 
   img: {
     width: "100%",
@@ -36,6 +46,7 @@ const TitleStyled = styled(Box)(({ theme }) => ({
         fontSize: "6rem",
         fontFamily: "'Eater', 'Helvetica','Arial','sans-serif'",
         textAlign: "center",
+        textShadow: "0 8px 30px rgba(0,0,0,0.7)",
 
         [theme.breakpoints.down("lg")]: {
           fontSize: "5rem",
@@ -50,6 +61,7 @@ const TitleStyled = styled(Box)(({ theme }) => ({
         fontFamily: "'Marck Script', 'Helvetica','Arial','sans-serif'",
         fontSize: "2rem",
         color: theme.palette.secondary.light,
+        textShadow: "0 4px 15px rgba(0,0,0,0.8)",
       },
     },
   },

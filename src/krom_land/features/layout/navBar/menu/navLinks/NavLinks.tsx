@@ -1,9 +1,9 @@
 import { forwardRef, Ref } from "react";
 import { Link } from "react-router-dom";
+import { AppRoute } from "shared/infrastructure/router/appRoutes";
 
 import Box from "@mui/material/Box";
 
-import { AppRoute } from "../../../../../../shared/infrastructure/router/appRoutes";
 import NavLinksStyled from "./styledComponents/NavLinksStyled";
 
 interface IProps {
@@ -20,8 +20,8 @@ const NavLinks = forwardRef((props: IProps, ref: Ref<HTMLDivElement>) => {
         <Box component="li" data-route={AppRoute.Actions}>
           <Link to={AppRoute.Actions}>Akce</Link>
         </Box>
-        <Box component="li" data-route={AppRoute.Pujcovna}>
-          <Link to={AppRoute.Pujcovna}>Půjčovna</Link>
+        <Box component="li" data-route={AppRoute.Renting}>
+          <Link to={AppRoute.Renting}>Půjčovna</Link>
         </Box>
         <Box component="li" data-route={AppRoute.Gallery}>
           <Link to={AppRoute.Gallery}>Galerie</Link>
