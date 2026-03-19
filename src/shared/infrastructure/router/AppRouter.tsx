@@ -1,12 +1,12 @@
-import NotFoundPage from "krom_land/features/pages/NotFoundPage";
-import RentingPage from "krom_land/features/pages/RentingPage";
+import ActionsPage from "pages/ActionsPage";
+import ContactPage from "pages/ContactPage";
+import GalleryPage from "pages/GalleryPage";
+import HomePage from "pages/HomePage";
+import NotFoundPage from "pages/NotFoundPage";
+import RentingPage from "pages/RentingPage";
 import { useEffect } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 
-import ActionsPage from "../../../krom_land/features/pages/ActionsPage";
-import ContactPage from "../../../krom_land/features/pages/ContactPage";
-import GalleryPage from "../../../krom_land/features/pages/GalleryPage";
-import HomePage from "../../../krom_land/features/pages/HomePage";
 import usePrevious from "../../customHooks/usePrevious/usePrevious";
 import { AppRoute } from "./appRoutes";
 
