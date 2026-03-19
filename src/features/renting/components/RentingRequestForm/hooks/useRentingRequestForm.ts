@@ -6,6 +6,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 
 import { selectCommon } from "shared/infrastructure/store/common/commonSlice";
 
+import { useSendRentingRequestMutation } from "features/renting/api/rentingApi";
 import { RentingRequestModel } from "../models/RentingRequestModel";
 import { useState } from "react";
 
@@ -19,13 +20,14 @@ export const useRentingRequestForm = () => {
       defaultValues: new RentingRequestModel(),
     });
 
+  const [sendRentingRequest, { isLoading: isSubmitting, isError }] =
+    useSendRentingRequestMutation();
+
   const [dialogOpen, setDialogOpen] = useState<boolean>(false);
+
   const onSubmit = async (data: RentingRequestModel) => {
     try {
-      debugger;
-      // TODO: Backend call
-      // Example: await actionsService.sendRentingRequest(data);
-      console.log("Form submitted successfully:", data);
+      await sendRentingRequest({ ...data }).unwrap(); // Spread zajistí převod na plain object
       reset(new RentingRequestModel());
     } catch (error) {
       console.error("Form submission error:", error);
@@ -51,5 +53,7 @@ export const useRentingRequestForm = () => {
     setValue,
     isMobile,
     common,
+    isSubmitting,
+    isError,
   };
 };

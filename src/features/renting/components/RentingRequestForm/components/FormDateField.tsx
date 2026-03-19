@@ -3,6 +3,7 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import TextField from "@mui/material/TextField";
+import dayjs from "dayjs";
 import 'dayjs/locale/cs';
 
 interface FormDateFieldProps<T extends FieldValues> {
@@ -25,7 +26,10 @@ export const FormDateField = <T extends FieldValues>({
       render={({ field, fieldState: { error } }) => (
         <DatePicker
           label={label}
-          {...field}
+          value={field.value ? dayjs(field.value) : null}
+          onChange={(date: any) => {
+            field.onChange(date ? (date as dayjs.Dayjs).toISOString() : null);
+          }}
           PaperProps={{
             sx: {
               "& .MuiDayCalendar-weekDayLabel": {
@@ -49,6 +53,7 @@ export const FormDateField = <T extends FieldValues>({
           renderInput={(params) => (
             <TextField
               {...params}
+              onBlur={field.onBlur} // Přesunuto sem
               fullWidth
               required={required}
               error={!!error}
@@ -56,8 +61,6 @@ export const FormDateField = <T extends FieldValues>({
             />
           )}
         />
-
-
       )}
     />
   </LocalizationProvider>

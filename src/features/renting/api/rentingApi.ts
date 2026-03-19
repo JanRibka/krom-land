@@ -1,8 +1,9 @@
 import { mainBaseApi } from "shared/api/mainBaseApi";
 
-import { RentingPageState } from "../store/RentingPageState";
-import { RentingItem } from "../models/RentingItem";
+import { RentingRequestModel } from "../components/RentingRequestForm/models/RentingRequestModel";
 import { RentingDecorationTheme } from "../models/RentingDecorationTheme";
+import { RentingItem } from "../models/RentingItem";
+import { RentingPageState } from "../store/RentingPageState";
 
 const basePath = "renting";
 
@@ -31,6 +32,14 @@ export const rentingApi = mainBaseApi.injectEndpoints({
         body,
       }),
     }),
+
+    sendRentingRequest: build.mutation<void, RentingRequestModel>({
+      query: (body) => ({
+        url: `/${basePath}/sendRentingRequest`,
+        method: "POST",
+        body,
+      }),
+    }),
   }),
 });
 
@@ -38,4 +47,5 @@ export const {
   useGetRentingPageDataQuery,
   useGetRentingItemsQuery,
   useGetRentingDecorationThemesQuery,
+  useSendRentingRequestMutation,
 } = rentingApi;
