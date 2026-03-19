@@ -1,4 +1,4 @@
-import { useGetRentingPageData } from "krom_land/features/renting/api/hooks/useGetRentingPageData";
+import { useGetRentingPageData } from "features/renting/api/hooks/useGetRentingPageData";
 import { RentingHero } from "widgets/Renting/RentingHero";
 import { RentingRequest } from "widgets/Renting/RentingRequest";
 

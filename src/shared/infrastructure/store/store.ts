@@ -3,7 +3,7 @@ import { mainBaseApi } from "shared/api/mainBaseApi";
 
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 
-import rentingPageReducer from "../../../krom_land/features/renting/store/rentingPageSlice";
+import rentingPageReducer from "../../../features/renting/store/rentingPageSlice";
 import actionsReducer from "./actions/actionsSlice";
 import commonReducer from "./common/commonSlice";
 import contactReducer from "./contact/contactSlice";

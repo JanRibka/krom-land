@@ -1,4 +1,4 @@
-import Home from "krom_land/features/home/Home";
+import Home from "features/home/Home";
 
 import PageStyled from "./styledComponents/PageStyled";
 

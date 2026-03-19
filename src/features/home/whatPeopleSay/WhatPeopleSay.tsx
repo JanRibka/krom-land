@@ -3,6 +3,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 import { useSelector } from "react-redux";
+import SectionTitle from "shared/components/sectionTitle/SectionTitle";
 import { selectHomeTestimonials } from "shared/infrastructure/store/home/homeSlice";
 import { Autoplay, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -10,7 +11,6 @@ import { PaginationOptions } from "swiper/types";
 
 import { useTheme } from "@mui/material/styles";
 
-import SectionTitle from "../../../../shared/components/sectionTitle/SectionTitle";
 import SlideItem from "./slideItem/SlideItem";
 import SlideContentStyled from "./styledComponents/SlideContentStyled";
 import WhatPeopleSayStyled from "./styledComponents/WhatPeopleSayStyled";

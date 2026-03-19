@@ -2,6 +2,7 @@ import { ReactNode, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import { windowScrollTo } from "seamless-scroll-polyfill";
 import AppNotification from "shared/components/notification/AppNotification";
+import useScrollPosition from "shared/customHooks/useScrollPosition/useScrollPosition";
 import { useRequest } from "shared/dataAccess/useRequest";
 import ConditionsDTO from "shared/DTOs/ConditionsDTO";
 import KromLandDTO from "shared/DTOs/KromLandDTO";
@@ -20,7 +21,6 @@ import TablesOfKeysModel from "shared/models/TablesOfKeysModel";
 
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 
-import useScrollPosition from "../../../shared/customHooks/useScrollPosition/useScrollPosition";
 import { mapFromActionsDTO } from "../actions/save/mapFromActionsDTO";
 import { mapFromContactDTO } from "../contact/save/mapFromContactDTO";
 import { mapFromGalleryDTO } from "../gallery/save/mapFromGalleryDTO";

@@ -2,6 +2,7 @@ import { nameof } from "nameof";
 import { ChangeEvent, FormEvent, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import AppCheckbox from "shared/components/checkbox/AppCheckbox";
+import SectionTitle from "shared/components/sectionTitle/SectionTitle";
 import OkDialog from "shared/dialogs/OkDialog";
 import { selectCommon } from "shared/infrastructure/store/common/commonSlice";
 import { selectContact } from "shared/infrastructure/store/contact/contactSlice";
@@ -14,7 +15,6 @@ import { useTheme } from "@mui/material/styles";
 import TextField from "@mui/material/TextField";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
-import SectionTitle from "../../../../shared/components/sectionTitle/SectionTitle";
 import ContactService from "../ContactService";
 import WriteToUsFormModel from "../models/WriteToUsFormModel";
 import WriteToUsStyled from "./styledComponents/WriteToUsStyled";
@@ -35,12 +35,12 @@ const WriteToUs = () => {
   // State
   const [dialogOpen, setDialogOpen] = useState<boolean>(false);
   const [formData, setFormData] = useState<WriteToUsFormModel>(
-    new WriteToUsFormModel()
+    new WriteToUsFormModel(),
   );
 
   // Other
   const handleTextFieldOnChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const name: string = e.target.name;
     const value: string = e.target.value;
@@ -61,7 +61,7 @@ const WriteToUs = () => {
       formData.user_email,
       formData.user_name,
       "Zpráva z KROMLand.cz",
-      message
+      message,
     );
 
     e.currentTarget.reset();
@@ -69,7 +69,7 @@ const WriteToUs = () => {
   };
 
   const handleOnClickGdpr = (
-    e: React.MouseEvent<HTMLAnchorElement | MouseEvent>
+    e: React.MouseEvent<HTMLAnchorElement | MouseEvent>,
   ) => {
     e.preventDefault();
     setDialogOpen(true);
@@ -77,7 +77,7 @@ const WriteToUs = () => {
 
   const handleCheckboxOnChange = (
     e: ChangeEvent<HTMLInputElement>,
-    checked: boolean
+    checked: boolean,
   ) => {
     const name: string = e.target.name;
 

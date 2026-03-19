@@ -1,4 +1,4 @@
-import { selectRentingPageData } from "krom_land/features/renting/store/rentingPageSelectors";
+import { selectRentingPageData } from "features/renting/store/rentingPageSelectors";
 import { useSelector } from "react-redux";
 import PageTitle from "shared/components/pageTitle/PageTitle";
 

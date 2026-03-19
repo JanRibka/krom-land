@@ -1,4 +1,4 @@
-import NotFound from "krom_land/features/notFound/NotFound";
+import NotFound from "features/notFound/NotFound";
 
 import PageStyled from "./styledComponents/PageStyled";
 

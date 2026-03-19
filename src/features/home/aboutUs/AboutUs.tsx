@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import SectionTitle from "shared/components/sectionTitle/SectionTitle";
 import { selectHomeAboutUs } from "shared/infrastructure/store/home/homeSlice";
 
 import Box from "@mui/material/Box";
@@ -7,7 +8,6 @@ import Stack from "@mui/material/Stack";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
-import SectionTitle from "../../../../shared/components/sectionTitle/SectionTitle";
 import AboutUsStyled from "./styledComponents/AboutUsStyled";
 
 const AboutUs = () => {

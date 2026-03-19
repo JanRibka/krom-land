@@ -1,4 +1,4 @@
-import Gallery from "krom_land/features/gallery/Gallery";
+import Gallery from "features/gallery/Gallery";
 
 import PageStyled from "./styledComponents/PageStyled";
 

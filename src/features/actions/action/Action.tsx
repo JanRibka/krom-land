@@ -1,6 +1,7 @@
 import { forwardRef, HTMLAttributes, Ref, useState } from "react";
 import ReactPlayer from "react-player/youtube";
 import { useSelector } from "react-redux";
+import SectionTitle from "shared/components/sectionTitle/SectionTitle";
 import OkDialog from "shared/dialogs/OkDialog";
 import { pushToDataLayer } from "shared/helpers/googleTagManagerHelper";
 import { selectCommon } from "shared/infrastructure/store/common/commonSlice";
@@ -12,7 +13,6 @@ import Stack from "@mui/material/Stack";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
-import SectionTitle from "../../../../shared/components/sectionTitle/SectionTitle";
 import ActionRegistrationDialog from "../actionRegistrationDialog/ActionRegistrationDialog";
 import DetailInfo from "./detailInfo/DetaulInfo";
 import ActionStyled from "./styledComponents/ActionStyled";

@@ -1,4 +1,4 @@
-import Contact from "krom_land/features/contact/Contact";
+import Contact from "features/contact/Contact";
 
 import PageStyled from "./styledComponents/PageStyled";
 

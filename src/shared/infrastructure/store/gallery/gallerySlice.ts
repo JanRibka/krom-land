@@ -1,4 +1,4 @@
-import GalleryImageModel from "krom_land/features/gallery/models/GalleryImageModel";
+import GalleryImageModel from "features/gallery/models/GalleryImageModel";
 import ImageModel from "shared/models/ImageModel";
 
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";

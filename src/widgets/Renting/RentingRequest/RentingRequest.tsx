@@ -1,4 +1,4 @@
-import { RentingRequestForm } from "krom_land/features/renting/components/RentingRequestForm/RentingRequestForm";
+import { RentingRequestForm } from "features/renting/components/RentingRequestForm/RentingRequestForm";
 
 import { RentingRequestStyled } from "./components/RentingRequestStyled";
 

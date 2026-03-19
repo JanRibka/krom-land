@@ -1,10 +1,10 @@
-import React from "react";
+import SectionTitle from "shared/components/sectionTitle/SectionTitle";
+
 import Box from "@mui/material/Box";
 
-import NewsStyled from "./styledComponents/NewsStyled";
-import SectionTitle from "../../../../shared/components/sectionTitle/SectionTitle";
-import { useNews } from "./hooks/useNews";
 import NewsCard from "./components/NewsCard";
+import { useNews } from "./hooks/useNews";
+import NewsStyled from "./styledComponents/NewsStyled";
 
 const News = () => {
   const { newsItems, newsImagePath, newsImageAlt, hasNews } = useNews();

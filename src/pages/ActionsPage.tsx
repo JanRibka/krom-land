@@ -1,4 +1,4 @@
-import Actions from "krom_land/features/actions/Actions";
+import Actions from "features/actions/Actions";
 
 import PageStyled from "./styledComponents/PageStyled";
 

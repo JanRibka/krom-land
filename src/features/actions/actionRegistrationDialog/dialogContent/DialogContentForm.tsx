@@ -1,5 +1,6 @@
 import { Dayjs } from "dayjs";
 import { MuiTelInputInfo } from "mui-tel-input/dist/index.types";
+import { nameof } from "nameof";
 import { ChangeEvent, FormEvent, forwardRef, Ref } from "react";
 import { useSelector } from "react-redux";
 import { selectCommon } from "shared/infrastructure/store/common/commonSlice";
@@ -19,24 +20,23 @@ import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
-import { nameof } from "../../../../../nameof";
 import DialogContentFormModel from "../models/DialogContentFormModel";
 import DialogContentStyled from "./styledComponents/DilogContentFormStyled";
 
 interface IProps {
   formData: DialogContentFormModel;
   handleTextFieldOnChange: (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => void;
   handleOnChangeDatePipcker: (
     value: Dayjs | null,
     keyboardInputValue: string | undefined,
-    name: string
+    name: string,
   ) => void;
   handleOnChangeTelInput: (
     value: string,
     info: MuiTelInputInfo,
-    name: string
+    name: string,
   ) => void;
   handleOnChangeRadio: (e: ChangeEvent<HTMLInputElement>) => void;
   handleFormOnSubmit: (e: FormEvent<HTMLFormElement>) => void;
@@ -54,7 +54,7 @@ const DialogContentForm = forwardRef(
     const smDwn = useMediaQuery(theme.breakpoints.down("sm"));
     const rowDirection = smDwn ? "column" : "row";
     const childArrivesMyselveId = common.TablesOfKeys.ChildArrives.find(
-      (f) => f.Key === "MYSELVE"
+      (f) => f.Key === "MYSELVE",
     )?.Id;
 
     return (
@@ -142,7 +142,7 @@ const DialogContentForm = forwardRef(
                   type="text"
                   autoComplete="off"
                   name={nameof<DialogContentFormModel>(
-                    "first_representative_name"
+                    "first_representative_name",
                   )}
                   value={props.formData.first_representative_name}
                   onChange={props.handleTextFieldOnChange}
@@ -158,7 +158,7 @@ const DialogContentForm = forwardRef(
                   type="text"
                   autoComplete="off"
                   name={nameof<DialogContentFormModel>(
-                    "first_representative_last_name"
+                    "first_representative_last_name",
                   )}
                   value={props.formData.first_representative_last_name}
                   onChange={props.handleTextFieldOnChange}
@@ -176,7 +176,7 @@ const DialogContentForm = forwardRef(
                 autoComplete="off"
                 placeholder="xxx xxx xxx"
                 name={nameof<DialogContentFormModel>(
-                  "first_representative_phone_number"
+                  "first_representative_phone_number",
                 )}
                 value={props.formData.first_representative_phone_number}
                 onChange={props.handleTextFieldOnChange}
@@ -197,7 +197,7 @@ const DialogContentForm = forwardRef(
                   type="text"
                   autoComplete="off"
                   name={nameof<DialogContentFormModel>(
-                    "second_representative_name"
+                    "second_representative_name",
                   )}
                   value={props.formData.second_representative_name}
                   onChange={props.handleTextFieldOnChange}
@@ -212,7 +212,7 @@ const DialogContentForm = forwardRef(
                   type="text"
                   autoComplete="off"
                   name={nameof<DialogContentFormModel>(
-                    "second_representative_last_name"
+                    "second_representative_last_name",
                   )}
                   value={props.formData.second_representative_last_name}
                   onChange={props.handleTextFieldOnChange}
@@ -229,7 +229,7 @@ const DialogContentForm = forwardRef(
                 autoComplete="off"
                 // placeholder='xxx xxx xxx'
                 name={nameof<DialogContentFormModel>(
-                  "second_representative_phone_number"
+                  "second_representative_phone_number",
                 )}
                 value={props.formData.second_representative_phone_number}
                 onChange={props.handleTextFieldOnChange}
@@ -389,7 +389,7 @@ const DialogContentForm = forwardRef(
                   row
                   aria-required
                   name={nameof<DialogContentFormModel>(
-                    "other_how_children_arrives"
+                    "other_how_children_arrives",
                   )}
                   value={props.formData.other_how_children_arrives}
                   onChange={props.handleOnChangeRadio}
@@ -500,7 +500,7 @@ const DialogContentForm = forwardRef(
         </form>
       </DialogContentStyled>
     );
-  }
+  },
 );
 
 export default DialogContentForm;

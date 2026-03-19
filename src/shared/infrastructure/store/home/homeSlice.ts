@@ -1,6 +1,6 @@
-import { News } from "krom_land/features/home/models/News";
-import TeamMemberModel from "krom_land/features/home/models/TeamMemberModel";
-import { Testimonial } from "krom_land/features/home/models/Testimonial";
+import { News } from "features/home/models/News";
+import TeamMemberModel from "features/home/models/TeamMemberModel";
+import { Testimonial } from "features/home/models/Testimonial";
 import ImageModel from "shared/models/ImageModel";
 
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";

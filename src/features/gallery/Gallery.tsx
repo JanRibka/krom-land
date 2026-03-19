@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import GridContainer from "shared/components/gridContainer/GridContainer";
+import GridItem from "shared/components/gridItem/GridItem";
 import PageTitle from "shared/components/pageTitle/PageTitle";
+import Picture from "shared/components/picture/Picture";
 import {
   selectGallery,
   selectGalleryImages,
@@ -9,9 +12,6 @@ import {
 import { Typography } from "@mui/material";
 import Stack from "@mui/material/Stack";
 
-import GridContainer from "../../../shared/components/gridContainer/GridContainer";
-import GridItem from "../../../shared/components/gridItem/GridItem";
-import Picture from "../../../shared/components/picture/Picture";
 import GoToGallery from "./goToGallery/GoToGallery";
 import OpenDialogModel from "./photosDialog/OpenDialoModel";
 import PhotosDialog from "./photosDialog/PhotosDialog";
