@@ -23,11 +23,13 @@ export const useRentingDetails = ({ control, setValue }: UseRentingDetailsProps)
   const itemOptions = rentingItems.map((item) => ({
     value: item.code,
     label: item.name,
+    isActive: item.isActive,
   }));
 
   const themeOptions = decorationThemes.map((theme) => ({
     value: theme.code,
     label: theme.name,
+    isActive: theme.isActive,
   }));
 
   // Logic for conditional theme selection

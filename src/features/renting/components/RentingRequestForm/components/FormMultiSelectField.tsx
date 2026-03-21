@@ -13,6 +13,7 @@ const checkedIcon = <CheckBoxIcon fontSize="small" />;
 export interface FormMultiSelectOption {
   value: string | number;
   label: string;
+  isActive?: boolean;
 }
 
 interface FormMultiSelectFieldProps<T extends FieldValues> {
@@ -51,6 +52,7 @@ export const FormMultiSelectField = <T extends FieldValues>({
           disableCloseOnSelect
           getOptionLabel={(option) => option.label}
           isOptionEqualToValue={(option, value) => option.value === value.value}
+          getOptionDisabled={(option) => option.isActive === false}
           value={selectedOptions}
           onChange={(_, newValue) => {
             onChange(newValue.map((v) => v.value));
@@ -67,6 +69,7 @@ export const FormMultiSelectField = <T extends FieldValues>({
                 checkedIcon={checkedIcon}
                 style={{ marginRight: 8 }}
                 checked={selected}
+                disabled={option.isActive === false}
               />
               {option.label}
             </li>
