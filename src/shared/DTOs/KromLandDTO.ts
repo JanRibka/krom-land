@@ -1,7 +1,7 @@
-import ActionsDTO from "krom_land/features/actions/models/ActionsDTO";
-import ContactDTO from "krom_land/features/contact/models/ContactDTO";
-import GalleryDTO from "krom_land/features/gallery/models/GalleryDTO";
-import HomeDTO from "krom_land/features/home/models/HomeDTO";
+import ActionsDTO from "features/actions/models/ActionsDTO";
+import ContactDTO from "features/contact/models/ContactDTO";
+import GalleryDTO from "features/gallery/models/GalleryDTO";
+import HomeDTO from "features/home/models/HomeDTO";
 
 import CommonDTO from "./CommonDTO";
 import WebLogosDTO from "./WebLogosDTO";

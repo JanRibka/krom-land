@@ -3,6 +3,7 @@ import { mainBaseApi } from "shared/api/mainBaseApi";
 
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 
+import rentingPageReducer from "../../../features/renting/store/rentingPageSlice";
 import actionsReducer from "./actions/actionsSlice";
 import commonReducer from "./common/commonSlice";
 import contactReducer from "./contact/contactSlice";
@@ -14,6 +15,7 @@ import webSettingsReducer from "./webSettings/webSettingsSlice";
 const rootReducer = combineReducers({
   home: homeReducer,
   actions: actionsReducer,
+  rentingPage: rentingPageReducer,
   gallery: galleryReducer,
   contact: contactReducer,
   webSettings: webSettingsReducer,

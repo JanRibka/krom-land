@@ -24,12 +24,14 @@ const PageTitle = (props: IProps) => {
   const customAnimation = keyframes`
   from {
     opacity: 0;
-    transform: translateY(200px);
+    transform: translateY(30px) scale(0.95);
+    filter: blur(8px);
   }
 
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
+    filter: blur(0);
   }
 `;
 

@@ -1,11 +1,12 @@
-import NotFoundPage from "krom_land/features/pages/NotFoundPage";
+import ActionsPage from "pages/ActionsPage";
+import ContactPage from "pages/ContactPage";
+import GalleryPage from "pages/GalleryPage";
+import HomePage from "pages/HomePage";
+import NotFoundPage from "pages/NotFoundPage";
+import RentingPage from "pages/RentingPage";
 import { useEffect } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 
-import ActionsPage from "../../../krom_land/features/pages/ActionsPage";
-import ContactPage from "../../../krom_land/features/pages/ContactPage";
-import GalleryPage from "../../../krom_land/features/pages/GalleryPage";
-import HomePage from "../../../krom_land/features/pages/HomePage";
 import usePrevious from "../../customHooks/usePrevious/usePrevious";
 import { AppRoute } from "./appRoutes";
 
@@ -37,7 +38,7 @@ const AppRouter = () => {
 
     // Mobile menu
     const navLinksWrapperMobile = document.getElementById(
-      "nav-links-inner-wrapper-mobile"
+      "nav-links-inner-wrapper-mobile",
     );
 
     navLinksWrapperMobile?.childNodes.forEach((item) => {
@@ -65,9 +66,10 @@ const AppRouter = () => {
     <Routes>
       <Route path={AppRoute.Home} element={<HomePage />} />
       <Route path={AppRoute.Actions} element={<ActionsPage />} />
+      <Route path={AppRoute.Renting} element={<RentingPage />} />
       <Route path={AppRoute.Gallery} element={<GalleryPage />} />
       <Route path={AppRoute.Contact} element={<ContactPage />} />
-      <Route path='*' element={<NotFoundPage />} />
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
 };

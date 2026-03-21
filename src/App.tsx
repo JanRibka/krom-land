@@ -1,12 +1,12 @@
-import { useEffect } from 'react';
-import CookieConsent from 'shared/components/cookieConsent/CookieConsent';
-import CookieConstentModel from 'shared/components/cookieConsent/CookieConsentModel';
-import Seo from 'shared/components/seo/Seo';
-import { CookieHelper } from 'shared/helpers/cookieHelper';
-import { GoogleTagManagerHelper } from 'shared/helpers/googleTagManagerHelper';
+import Layout from "features/layout/Layout";
+import { useEffect } from "react";
+import CookieConsent from "shared/components/cookieConsent/CookieConsent";
+import CookieConstentModel from "shared/components/cookieConsent/CookieConsentModel";
+import Seo from "shared/components/seo/Seo";
+import { CookieHelper } from "shared/helpers/cookieHelper";
+import { GoogleTagManagerHelper } from "shared/helpers/googleTagManagerHelper";
 
-import Layout from './krom_land/features/layout/Layout';
-import AppRouter from './shared/infrastructure/router/AppRouter';
+import AppRouter from "./shared/infrastructure/router/AppRouter";
 
 function App() {
   // Constants
@@ -22,7 +22,7 @@ function App() {
     if (consent.diag === true) {
       if (process.env.REACT_APP_GOOGLE_TAG_MANAGER_ID) {
         googleTagManagerHelper.Init(
-          process.env.REACT_APP_GOOGLE_TAG_MANAGER_ID
+          process.env.REACT_APP_GOOGLE_TAG_MANAGER_ID,
         );
       }
     }

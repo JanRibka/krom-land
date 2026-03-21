@@ -1,5 +1,5 @@
-import ActionDetailModel from "krom_land/features/actions/models/ActionDetailModel";
-import DocumentToDownloadModel from "krom_land/features/actions/models/DocumentToDownloadModel";
+import ActionDetailModel from "features/actions/models/ActionDetailModel";
+import DocumentToDownloadModel from "features/actions/models/DocumentToDownloadModel";
 import ImageModel from "shared/models/ImageModel";
 
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";

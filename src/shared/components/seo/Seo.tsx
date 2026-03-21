@@ -9,12 +9,14 @@ import { selectGallery } from "shared/infrastructure/store/gallery/gallerySlice"
 import { selectHomeSeo } from "shared/infrastructure/store/home/homeSlice";
 
 import SeoFb from "./img/seo_fb.jpg";
+import { selectRentingPageData } from "features/renting/store/rentingPageSelectors";
 
 const Seo = () => {
   // Constants
   const { pathname } = useLocation();
   const homeSeo = useSelector(selectHomeSeo);
   const actions = useSelector(selectActions);
+  const renting = useSelector(selectRentingPageData);
   const gallery = useSelector(selectGallery);
   const contact = useSelector(selectContact);
   const common = useSelector(selectCommon);
@@ -39,6 +41,10 @@ const Seo = () => {
       case AppRoute.Actions:
         title = actions.Title;
         description = actions.Description;
+        break;
+      case AppRoute.Renting:
+        title = renting.title;
+        description = renting.description;
         break;
       case AppRoute.Gallery:
         title = gallery.Title;
