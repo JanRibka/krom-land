@@ -9,6 +9,7 @@ import { selectCommon } from "shared/infrastructure/store/common/commonSlice";
 import { useSendRentingRequestMutation } from "features/renting/api/rentingApi";
 import { RentingRequestModel } from "../models/RentingRequestModel";
 import { useState } from "react";
+import AppNotification from "shared/components/notification/AppNotification";
 
 export const useRentingRequestForm = () => {
   const common = useSelector(selectCommon);
@@ -30,6 +31,7 @@ export const useRentingRequestForm = () => {
       await sendRentingRequest({ ...data }).unwrap(); // Spread zajistí převod na plain object
       reset(new RentingRequestModel());
     } catch (error) {
+      AppNotification("Chyba", "Odeslání poptávky se nezdařilo", "danger");
       console.error("Form submission error:", error);
     }
   };

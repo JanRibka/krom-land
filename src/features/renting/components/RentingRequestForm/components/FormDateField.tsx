@@ -27,6 +27,7 @@ export const FormDateField = <T extends FieldValues>({
         <DatePicker
           label={label}
           value={field.value ? dayjs(field.value) : null}
+          disablePast
           onChange={(date: any) => {
             if (!date) {
               field.onChange(null);
