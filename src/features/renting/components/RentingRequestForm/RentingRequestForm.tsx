@@ -2,6 +2,7 @@ import OkDialog from "shared/dialogs/OkDialog";
 
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
+import CircularProgress from "@mui/material/CircularProgress";
 import Stack from "@mui/material/Stack";
 
 import { PersonalInfoSection } from "./components/PersonalInfoSection";
@@ -27,6 +28,7 @@ export const RentingRequestForm = () => {
     handleCloseTerms,
     dialogOpen,
     common,
+    isSubmitting,
   } = useRentingRequestForm();
 
   return (
@@ -43,8 +45,17 @@ export const RentingRequestForm = () => {
           />
 
           <Box className="button-wrapper">
-            <Button variant="contained" type="submit">
-              Odeslat
+            <Button
+              variant="contained"
+              type="submit"
+              disabled={isSubmitting}
+              startIcon={
+                isSubmitting ? (
+                  <CircularProgress size={20} color="inherit" />
+                ) : undefined
+              }
+            >
+              {isSubmitting ? "Odesílám..." : "Odeslat"}
             </Button>
           </Box>
         </Stack>

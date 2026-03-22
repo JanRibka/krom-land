@@ -28,7 +28,12 @@ export const FormDateField = <T extends FieldValues>({
           label={label}
           value={field.value ? dayjs(field.value) : null}
           onChange={(date: any) => {
-            field.onChange(date ? (date as dayjs.Dayjs).toISOString() : null);
+            if (!date) {
+              field.onChange(null);
+            } else {
+              const d = date as dayjs.Dayjs;
+              field.onChange(d.isValid() ? d.toISOString() : "invalid");
+            }
           }}
           PaperProps={{
             sx: {
