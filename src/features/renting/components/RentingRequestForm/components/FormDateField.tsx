@@ -56,6 +56,26 @@ export const FormDateField = <T extends FieldValues>({
               },
             },
           }}
+          DialogProps={{
+            sx: {
+              "& .MuiDayCalendar-weekDayLabel": {
+                color: "text.primary",
+                opacity: 0.9,
+                fontWeight: 700,
+              },
+              "& .MuiPickersDay-root": {
+                color: "text.primary",
+              },
+              "& .MuiTypography-root": {
+                color: "text.primary",
+              },
+              "& .MuiDayPicker-header .MuiTypography-root": {
+                color: "text.primary",
+                opacity: 0.9,
+                fontWeight: 700,
+              },
+            },
+          }}
           renderInput={(params) => (
             <TextField
               {...params}
