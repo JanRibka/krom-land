@@ -3,13 +3,13 @@ import { mainBaseApi } from "shared/api/mainBaseApi";
 import { RentingRequestModel } from "../components/RentingRequestForm/models/RentingRequestModel";
 import { RentingDecorationTheme } from "../models/RentingDecorationTheme";
 import { RentingItem } from "../models/RentingItem";
-import { RentingPageState } from "../store/RentingPageState";
+import { RentingData } from "../types";
 
 const basePath = "renting";
 
 export const rentingApi = mainBaseApi.injectEndpoints({
   endpoints: (build) => ({
-    getRentingPageData: build.query<RentingPageState, void>({
+    getRentingPageData: build.query<RentingData, void>({
       query: (body) => ({
         url: `/${basePath}/getRentingPageData`,
         method: "GET",

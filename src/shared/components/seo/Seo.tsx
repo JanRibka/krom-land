@@ -27,7 +27,7 @@ const Seo = () => {
       SetSeo();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pathname, common._dataLoaded]);
+  }, [pathname, common._dataLoaded, renting.title, renting.description]);
 
   const SetSeo = () => {
     let title = "";

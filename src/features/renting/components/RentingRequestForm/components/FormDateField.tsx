@@ -33,7 +33,7 @@ export const FormDateField = <T extends FieldValues>({
               field.onChange(null);
             } else {
               const d = date as dayjs.Dayjs;
-              field.onChange(d.isValid() ? d.toISOString() : "invalid");
+              field.onChange(d.isValid() ? d.format('YYYY-MM-DD') : "invalid");
             }
           }}
           PaperProps={{
