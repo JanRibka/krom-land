@@ -7,4 +7,6 @@ export class RentingRequestModel {
   rentedItems: string[] = [];
   decorationThemes: string[] = [];
   termsAndConditionsConsent: boolean = false;
+  totalPrice: number = 0;
+  remark: string = "";
 }

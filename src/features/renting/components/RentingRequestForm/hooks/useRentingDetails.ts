@@ -19,18 +19,38 @@ export const useRentingDetails = ({ control, setValue }: UseRentingDetailsProps)
     name: "rentedItems",
   });
 
-  // Data transformation for selects
+  const decorationThemesSelected = useWatch({
+    control,
+    name: "decorationThemes",
+  });
+
+  // Data transformation for selects/tables
   const itemOptions = rentingItems.map((item) => ({
     value: item.code,
     label: item.name,
     isActive: item.isActive,
+    price: item.price,
+    remark: item.remark,
   }));
 
   const themeOptions = decorationThemes.map((theme) => ({
     value: theme.code,
     label: theme.name,
     isActive: theme.isActive,
+    price: theme.price,
+    remark: theme.remark,
   }));
+
+  // Calculate total price
+  const totalItemsPrice = (rentedItems || [])
+    .map((code) => itemOptions.find((o) => o.value === code)?.price || 0)
+    .reduce((acc, curr) => acc + curr, 0);
+
+  const totalThemesPrice = (decorationThemesSelected || [])
+    .map((code) => themeOptions.find((o) => o.value === code)?.price || 0)
+    .reduce((acc, curr) => acc + curr, 0);
+
+  const totalPrice = totalItemsPrice + totalThemesPrice;
 
   // Logic for conditional theme selection
   const isDecorationSelected = rentedItems?.some((itemCode) =>
@@ -44,10 +64,16 @@ export const useRentingDetails = ({ control, setValue }: UseRentingDetailsProps)
     }
   }, [isDecorationSelected, setValue]);
 
+  // Sync totalPrice to form state
+  useEffect(() => {
+    setValue("totalPrice", totalPrice);
+  }, [totalPrice, setValue]);
+
   return {
     itemOptions,
     themeOptions,
     isDecorationSelected,
+    totalPrice,
     isRentingItemsLoading,
     isDecorationThemesLoading,
   };

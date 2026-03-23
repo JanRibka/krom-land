@@ -84,7 +84,7 @@ const RentingRequestFormStyled = styled(Box)(({ theme }) => ({
         marginTop: theme.spacing(4),
         display: "flex",
         justifyContent: "center",
-        
+
         button: {
           paddingLeft: theme.spacing(6),
           paddingRight: theme.spacing(6),
@@ -99,6 +99,132 @@ const RentingRequestFormStyled = styled(Box)(({ theme }) => ({
           "&:hover": {
             boxShadow: `0 6px 20px 0 ${alpha(theme.palette.primary.main, 0.6)}`,
             transform: "translateY(-2px)",
+          },
+        },
+      },
+
+      ".renting-table-section": {
+        marginBottom: theme.spacing(4),
+
+        ".section-title": {
+          fontWeight: 700,
+          color: theme.palette.primary.main,
+          marginBottom: theme.spacing(2),
+          textTransform: "uppercase",
+          letterSpacing: "0.5px",
+          fontSize: "0.85rem",
+        },
+
+        ".table-container": {
+          border: "1px solid",
+          borderColor: theme.palette.divider,
+          borderRadius: theme.spacing(1.5),
+          overflow: "hidden",
+          backgroundColor: theme.palette.background.paper,
+          boxShadow: "0 2px 12px rgba(0,0,0,0.03)",
+
+          ".table-row": {
+            transition: "all 0.2s ease",
+            "&.Mui-selected": {
+              backgroundColor: alpha(theme.palette.primary.main, 0.08),
+              "&:hover": {
+                backgroundColor: alpha(theme.palette.primary.main, 0.12),
+              },
+            },
+            "&:last-child td": { border: 0 },
+            "&.disabled-row": {
+              opacity: 0.5,
+              cursor: "default",
+              pointerEvents: "none",
+            },
+            "&:not(.disabled-row)": {
+              cursor: "pointer",
+            },
+          },
+
+          ".option-label": {
+            fontSize: "0.95rem",
+            display: "flex",
+            alignItems: "center",
+            gap: theme.spacing(1.5),
+            "&.selected": {
+              fontWeight: 600,
+              color: theme.palette.primary.main,
+            },
+            "&.not-selected": {
+              fontWeight: 500,
+              color: theme.palette.text.primary,
+            },
+          },
+
+          ".price-text": {
+            fontWeight: 700,
+            fontSize: "1rem",
+            "&.selected": {
+              color: theme.palette.primary.main,
+            },
+            "&.not-selected": {
+              color: theme.palette.text.secondary,
+            },
+          },
+
+          ".remark-icon": {
+            fontSize: "1.1rem",
+            color: theme.palette.text.disabled,
+            transition: "color 0.2s",
+            "&:hover": {
+              color: theme.palette.primary.main,
+            },
+          },
+        },
+      },
+
+      ".total-price-container": {
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        padding: theme.spacing(3),
+        backgroundColor: alpha(theme.palette.primary.main, 0.08),
+        borderRadius: theme.spacing(2),
+        border: "2px solid",
+        borderColor: theme.palette.primary.main,
+        marginTop: theme.spacing(4),
+
+        ".label-wrapper": {
+          display: "flex",
+          alignItems: "center",
+          gap: theme.spacing(2),
+          
+          ".icon-wrapper": {
+            backgroundColor: theme.palette.primary.main,
+            color: theme.palette.common.white,
+            padding: theme.spacing(1.5),
+            borderRadius: theme.spacing(1.5),
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            boxShadow: `0 4px 12px ${alpha(theme.palette.primary.main, 0.3)}`,
+          },
+
+          ".price-label": {
+            color: theme.palette.text.primary,
+            textTransform: "uppercase",
+            letterSpacing: "1px",
+            fontWeight: 800,
+            lineHeight: 1.2,
+            opacity: 0.8,
+          },
+        },
+
+        ".price-display": {
+          fontWeight: 900,
+          color: theme.palette.primary.dark,
+          display: "flex",
+          alignItems: "baseline",
+          gap: theme.spacing(1),
+
+          ".currency": {
+            fontWeight: 600,
           },
         },
       },

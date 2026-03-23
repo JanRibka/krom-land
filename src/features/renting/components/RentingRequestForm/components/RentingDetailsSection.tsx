@@ -1,8 +1,11 @@
 import { Control, UseFormSetValue } from "react-hook-form";
 import { RentingRequestModel } from "../models/RentingRequestModel";
 import { FormDateField } from "./FormDateField";
-import { FormMultiSelectField } from "./FormMultiSelectField";
+import { FormTableSelectField } from "./FormTableSelectField";
 import { useRentingDetails } from "../hooks/useRentingDetails";
+import { RentingTotalPrice } from "./RentingTotalPrice";
+import { FormTextField } from "./FormTextField";
+import { Box } from "@mui/material";
 
 interface RentingDetailsSectionProps {
   control: Control<RentingRequestModel>;
@@ -17,6 +20,7 @@ export const RentingDetailsSection = ({
     itemOptions,
     themeOptions,
     isDecorationSelected,
+    totalPrice,
     isRentingItemsLoading,
     isDecorationThemesLoading,
   } = useRentingDetails({ control, setValue });
@@ -29,27 +33,36 @@ export const RentingDetailsSection = ({
         label="Datum zapůjčení"
         required
       />
-      <FormMultiSelectField
+      <FormTableSelectField
         name="rentedItems"
         control={control}
         label="Co si chcete zapůjčit?"
         options={itemOptions}
-        required
         loading={isRentingItemsLoading}
       />
 
-      {isDecorationSelected && (
-        <FormMultiSelectField
-          name="decorationThemes"
+      <FormTableSelectField
+        name="decorationThemes"
+        control={control}
+        label="Vyberte téma výzdoby"
+        options={themeOptions}
+        disabled={!isDecorationSelected}
+        loading={isDecorationThemesLoading}
+      />
+
+      <Box sx={{ mt: 2 }}>
+        <FormTextField
+          name="remark"
           control={control}
-          label="Vyberte téma výzdoby"
-          options={themeOptions}
-          required
-          loading={isDecorationThemesLoading}
+          label="Chcete nám ještě něco sdělit?"
+          multiline
+          rows={4}
+          inputProps={{ maxLength: 1000 }}
+          placeholder="Doplňující informace k vaší poptávce..."
         />
-      )}
+      </Box>
+
+      <RentingTotalPrice totalPrice={totalPrice} />
     </>
   );
 };
-
-
