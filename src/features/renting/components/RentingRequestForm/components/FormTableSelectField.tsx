@@ -30,6 +30,7 @@ interface FormTableSelectFieldProps<T extends FieldValues> {
   options: FormTableSelectOption[];
   disabled?: boolean;
   loading?: boolean;
+  required?: boolean;
 }
 
 export const FormTableSelectField = <T extends FieldValues>({
@@ -39,6 +40,7 @@ export const FormTableSelectField = <T extends FieldValues>({
   options,
   disabled,
   loading,
+  required,
 }: FormTableSelectFieldProps<T>) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -47,6 +49,7 @@ export const FormTableSelectField = <T extends FieldValues>({
     <Controller
       name={name}
       control={control}
+      rules={{ required }}
       render={({ field: { onChange, value } }) => {
         const currentValue = Array.isArray(value) ? (value as (string | number)[]) : [];
 
@@ -69,91 +72,93 @@ export const FormTableSelectField = <T extends FieldValues>({
                 <CircularProgress size={24} />
               </Box>
             ) : (
-              <TableContainer className="table-container">
-                <Table size="medium">
-                  <TableBody>
-                    {options.map((option) => {
-                      const isSelected = currentValue.includes(option.value);
-                      const isRowDisabled = disabled || option.isActive === false;
+              <>
+                <TableContainer className="table-container">
+                  <Table size="medium">
+                    <TableBody>
+                      {options.map((option) => {
+                        const isSelected = currentValue.includes(option.value);
+                        const isRowDisabled = disabled || option.isActive === false;
 
-                      return (
-                        <TableRow
-                          key={option.value}
-                          hover={!isRowDisabled}
-                          onClick={() => !isRowDisabled && handleToggle(option.value)}
-                          selected={isSelected}
-                          className={`table-row ${isRowDisabled ? "disabled-row" : ""}`}
-                        >
-                          <TableCell padding="checkbox" sx={{ width: 56, pl: 2 }}>
-                            <Checkbox
-                              checked={isSelected}
-                              disabled={isRowDisabled}
-                              size="small"
-                              color="primary"
-                            />
-                          </TableCell>
-                          <TableCell sx={{ py: 2 }}>
-                            <Box sx={{ display: "flex", flexDirection: "column" }}>
-                              <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
-                                <Typography
-                                  variant="body1"
-                                  className={`option-label ${isSelected ? "selected" : "not-selected"}`}
-                                >
-                                  {option.label}
-                                </Typography>
-                                {!isMobile && option.remark && (
-                                  <Tooltip title={option.remark} arrow placement="top">
-                                    <InfoOutlinedIcon className="remark-icon" />
-                                  </Tooltip>
+                        return (
+                          <TableRow
+                            key={option.value}
+                            hover={!isRowDisabled}
+                            onClick={() => !isRowDisabled && handleToggle(option.value)}
+                            selected={isSelected}
+                            className={`table-row ${isRowDisabled ? "disabled-row" : ""}`}
+                          >
+                            <TableCell padding="checkbox" sx={{ width: 56, pl: 2 }}>
+                              <Checkbox
+                                checked={isSelected}
+                                disabled={isRowDisabled}
+                                size="small"
+                                color="primary"
+                              />
+                            </TableCell>
+                            <TableCell sx={{ py: 2 }}>
+                              <Box sx={{ display: "flex", flexDirection: "column" }}>
+                                <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
+                                  <Typography
+                                    variant="body1"
+                                    className={`option-label ${isSelected ? "selected" : "not-selected"}`}
+                                  >
+                                    {option.label}
+                                  </Typography>
+                                  {!isMobile && option.remark && (
+                                    <Tooltip title={option.remark} arrow placement="top">
+                                      <InfoOutlinedIcon className="remark-icon" />
+                                    </Tooltip>
+                                  )}
+                                </Box>
+                                {isMobile && option.remark && (
+                                  <Typography
+                                    variant="caption"
+                                    sx={{
+                                      color: "text.secondary",
+                                      mt: 0.5,
+                                      lineHeight: 1.2,
+                                      display: "block",
+                                    }}
+                                  >
+                                    {option.remark}
+                                  </Typography>
                                 )}
                               </Box>
-                              {isMobile && option.remark && (
+                            </TableCell>
+                            <TableCell align="right" sx={{ width: 120, pr: 3 }}>
+                              {option.price !== undefined && option.price > 0 && (
                                 <Typography
-                                  variant="caption"
-                                  sx={{
-                                    color: "text.secondary",
-                                    mt: 0.5,
-                                    lineHeight: 1.2,
-                                    display: "block",
-                                  }}
+                                  variant="body1"
+                                  className={`price-text ${isSelected ? "selected" : "not-selected"}`}
                                 >
-                                  {option.remark}
+                                  {option.price.toLocaleString("cs-CZ")} Kč
                                 </Typography>
                               )}
-                            </Box>
-                          </TableCell>
-                          <TableCell align="right" sx={{ width: 120, pr: 3 }}>
-                            {option.price !== undefined && option.price > 0 && (
-                              <Typography
-                                variant="body1"
-                                className={`price-text ${isSelected ? "selected" : "not-selected"}`}
-                              >
-                                {option.price.toLocaleString("cs-CZ")} Kč
-                              </Typography>
-                            )}
+                            </TableCell>
+                          </TableRow>
+                        );
+                      })}
+                      {options.length === 0 && (
+                        <TableRow>
+                          <TableCell colSpan={3} align="center">
+                            <Typography
+                              variant="body2"
+                              sx={{
+                                py: 4,
+                                color: "text.disabled",
+                                fontStyle: "italic",
+                              }}
+                            >
+                              Žádné položky k dispozici
+                            </Typography>
                           </TableCell>
                         </TableRow>
-                      );
-                    })}
-                    {options.length === 0 && (
-                      <TableRow>
-                        <TableCell colSpan={3} align="center">
-                          <Typography
-                            variant="body2"
-                            sx={{
-                              py: 4,
-                              color: "text.disabled",
-                              fontStyle: "italic",
-                            }}
-                          >
-                            Žádné položky k dispozici
-                          </Typography>
-                        </TableCell>
-                      </TableRow>
-                    )}
-                  </TableBody>
-                </Table>
-              </TableContainer>
+                      )}
+                    </TableBody>
+                  </Table>
+                </TableContainer>
+              </>
             )}
           </Box>
         );

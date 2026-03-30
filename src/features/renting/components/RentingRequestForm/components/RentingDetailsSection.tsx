@@ -41,6 +41,7 @@ export const RentingDetailsSection = ({
         label="Co si chcete zapůjčit?"
         options={itemOptions}
         loading={isRentingItemsLoading}
+        required
       />
 
       <FormTableSelectField
@@ -50,6 +51,7 @@ export const RentingDetailsSection = ({
         options={themeOptions}
         disabled={!isDecorationSelected}
         loading={isDecorationThemesLoading}
+        required={isDecorationSelected}
       />
 
       {/* <Box sx={{ mt: 2 }}>
