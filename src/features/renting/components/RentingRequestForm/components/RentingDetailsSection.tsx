@@ -1,11 +1,13 @@
 import { Control, UseFormSetValue } from "react-hook-form";
+
+import { Box } from "@mui/material";
+
+import { useRentingDetails } from "../hooks/useRentingDetails";
 import { RentingRequestModel } from "../models/RentingRequestModel";
 import { FormDateField } from "./FormDateField";
 import { FormTableSelectField } from "./FormTableSelectField";
-import { useRentingDetails } from "../hooks/useRentingDetails";
-import { RentingTotalPrice } from "./RentingTotalPrice";
 import { FormTextField } from "./FormTextField";
-import { Box } from "@mui/material";
+import { RentingTotalPrice } from "./RentingTotalPrice";
 
 interface RentingDetailsSectionProps {
   control: Control<RentingRequestModel>;
@@ -50,7 +52,7 @@ export const RentingDetailsSection = ({
         loading={isDecorationThemesLoading}
       />
 
-      <Box sx={{ mt: 2 }}>
+      {/* <Box sx={{ mt: 2 }}>
         <FormTextField
           name="remark"
           control={control}
@@ -60,7 +62,7 @@ export const RentingDetailsSection = ({
           inputProps={{ maxLength: 1000 }}
           placeholder="Doplňující informace k vaší poptávce..."
         />
-      </Box>
+      </Box> */}
 
       <RentingTotalPrice totalPrice={totalPrice} />
     </>

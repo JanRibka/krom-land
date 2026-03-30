@@ -10,6 +10,8 @@ import {
   Typography,
   Box,
   CircularProgress,
+  useMediaQuery,
+  useTheme,
 } from "@mui/material";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 
@@ -38,6 +40,9 @@ export const FormTableSelectField = <T extends FieldValues>({
   disabled,
   loading,
 }: FormTableSelectFieldProps<T>) => {
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
   return (
     <Controller
       name={name}
@@ -88,17 +93,32 @@ export const FormTableSelectField = <T extends FieldValues>({
                             />
                           </TableCell>
                           <TableCell sx={{ py: 2 }}>
-                            <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
-                              <Typography
-                                variant="body1"
-                                className={`option-label ${isSelected ? "selected" : "not-selected"}`}
-                              >
-                                {option.label}
-                              </Typography>
-                              {option.remark && (
-                                <Tooltip title={option.remark} arrow placement="top">
-                                  <InfoOutlinedIcon className="remark-icon" />
-                                </Tooltip>
+                            <Box sx={{ display: "flex", flexDirection: "column" }}>
+                              <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
+                                <Typography
+                                  variant="body1"
+                                  className={`option-label ${isSelected ? "selected" : "not-selected"}`}
+                                >
+                                  {option.label}
+                                </Typography>
+                                {!isMobile && option.remark && (
+                                  <Tooltip title={option.remark} arrow placement="top">
+                                    <InfoOutlinedIcon className="remark-icon" />
+                                  </Tooltip>
+                                )}
+                              </Box>
+                              {isMobile && option.remark && (
+                                <Typography
+                                  variant="caption"
+                                  sx={{
+                                    color: "text.secondary",
+                                    mt: 0.5,
+                                    lineHeight: 1.2,
+                                    display: "block",
+                                  }}
+                                >
+                                  {option.remark}
+                                </Typography>
                               )}
                             </Box>
                           </TableCell>

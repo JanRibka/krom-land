@@ -164,7 +164,7 @@ const RentingRequestFormStyled = styled(Box)(({ theme }) => ({
               color: theme.palette.primary.main,
             },
             "&.not-selected": {
-              color: theme.palette.text.secondary,
+              color: alpha(theme.palette.text.primary, 0.8),
             },
           },
 
