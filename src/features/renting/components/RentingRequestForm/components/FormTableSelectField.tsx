@@ -49,7 +49,12 @@ export const FormTableSelectField = <T extends FieldValues>({
     <Controller
       name={name}
       control={control}
-      rules={{ required }}
+      rules={{
+        validate: (value) => {
+          if (!required) return true;
+          return Array.isArray(value) && value.length > 0;
+        },
+      }}
       render={({ field: { onChange, value } }) => {
         const currentValue = Array.isArray(value) ? (value as (string | number)[]) : [];
 

@@ -50,7 +50,8 @@ export const useRentingDetails = ({ control, setValue }: UseRentingDetailsProps)
         const option = options.find(
           (o) => String(o.value).toLowerCase() === String(selectedCode).toLowerCase()
         );
-        return option?.price || 0;
+        const price = Number(option?.price ?? 0);
+        return Number.isFinite(price) ? price : 0;
       })
       .reduce((acc, curr) => acc + curr, 0);
 
@@ -58,12 +59,15 @@ export const useRentingDetails = ({ control, setValue }: UseRentingDetailsProps)
   const selectedItemsForPrice = (rentedItems || [])
     .filter((code) => !String(code).toLowerCase().includes("decoration"));
 
-  const totalThemesPrice = sumSelectedOptionsPrice(
-    decorationThemesSelected || [],
-    themeOptions
-  );
-
   const totalItemsPrice = sumSelectedOptionsPrice(selectedItemsForPrice, itemOptions);
+  const decorationUnitPrice = Number(
+    itemOptions.find((option) => String(option.value).toLowerCase() === "decoration")
+      ?.price ?? 0
+  );
+  const safeDecorationUnitPrice = Number.isFinite(decorationUnitPrice)
+    ? decorationUnitPrice
+    : 0;
+  const totalThemesPrice = (decorationThemesSelected || []).length * safeDecorationUnitPrice;
   const totalPrice = totalItemsPrice + totalThemesPrice;
 
   // Logic for conditional theme selection
