@@ -41,20 +41,34 @@ export const useRentingDetails = ({ control, setValue }: UseRentingDetailsProps)
     remark: theme.remark,
   }));
 
+  const sumSelectedOptionsPrice = (
+    selectedCodes: Array<string | number>,
+    options: typeof itemOptions
+  ) =>
+    selectedCodes
+      .map((selectedCode) => {
+        const option = options.find(
+          (o) => String(o.value).toLowerCase() === String(selectedCode).toLowerCase()
+        );
+        return option?.price || 0;
+      })
+      .reduce((acc, curr) => acc + curr, 0);
+
   // Calculate total price
-  const totalItemsPrice = (rentedItems || [])
-    .map((code) => itemOptions.find((o) => o.value === code)?.price || 0)
-    .reduce((acc, curr) => acc + curr, 0);
+  const selectedItemsForPrice = (rentedItems || [])
+    .filter((code) => !String(code).toLowerCase().includes("decoration"));
 
-  const totalThemesPrice = (decorationThemesSelected || [])
-    .map((code) => themeOptions.find((o) => o.value === code)?.price || 0)
-    .reduce((acc, curr) => acc + curr, 0);
+  const totalThemesPrice = sumSelectedOptionsPrice(
+    decorationThemesSelected || [],
+    themeOptions
+  );
 
+  const totalItemsPrice = sumSelectedOptionsPrice(selectedItemsForPrice, itemOptions);
   const totalPrice = totalItemsPrice + totalThemesPrice;
 
   // Logic for conditional theme selection
   const isDecorationSelected = rentedItems?.some((itemCode) =>
-    itemCode.toLowerCase().includes("decoration")
+    String(itemCode).toLowerCase().includes("decoration")
   );
 
   // Side effect: Clear decorationThemes if 'decoration' is removed from rentedItems
