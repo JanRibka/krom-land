@@ -169,11 +169,25 @@ const RentingRequestFormStyled = styled(Box)(({ theme }) => ({
           },
 
           ".remark-icon": {
-            fontSize: "1.1rem",
-            color: theme.palette.text.disabled,
-            transition: "color 0.2s",
+            fontSize: "1.05rem",
+            color: theme.palette.primary.main,
+          },
+
+          ".remark-icon-button": {
+            width: 24,
+            height: 24,
+            marginLeft: theme.spacing(0.5),
+            borderRadius: theme.spacing(0.8),
+            border: `1px solid ${alpha(theme.palette.primary.main, 0.4)}`,
+            backgroundColor: alpha(theme.palette.primary.main, 0.08),
+            transition: "all 0.2s ease",
             "&:hover": {
-              color: theme.palette.primary.main,
+              backgroundColor: alpha(theme.palette.primary.main, 0.16),
+              borderColor: alpha(theme.palette.primary.main, 0.7),
+              transform: "scale(1.06)",
+            },
+            "&:active": {
+              transform: "scale(0.98)",
             },
           },
         },

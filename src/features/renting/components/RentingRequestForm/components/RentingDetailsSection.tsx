@@ -1,8 +1,9 @@
-import { Control, UseFormSetValue } from "react-hook-form";
+import { Control, UseFormClearErrors, UseFormSetValue } from "react-hook-form";
 
 import { Box } from "@mui/material";
 
 import { useRentingDetails } from "../hooks/useRentingDetails";
+import { useRentingDetailsSectionHandlers } from "../hooks/useRentingDetailsSectionHandlers";
 import { RentingRequestModel } from "../models/RentingRequestModel";
 import { FormDateField } from "./FormDateField";
 import { FormTableSelectField } from "./FormTableSelectField";
@@ -12,11 +13,13 @@ import { RentingTotalPrice } from "./RentingTotalPrice";
 interface RentingDetailsSectionProps {
   control: Control<RentingRequestModel>;
   setValue: UseFormSetValue<RentingRequestModel>;
+  clearErrors: UseFormClearErrors<RentingRequestModel>;
 }
 
 export const RentingDetailsSection = ({
   control,
   setValue,
+  clearErrors,
 }: RentingDetailsSectionProps) => {
   const {
     itemOptions,
@@ -26,6 +29,10 @@ export const RentingDetailsSection = ({
     isRentingItemsLoading,
     isDecorationThemesLoading,
   } = useRentingDetails({ control, setValue });
+  const {
+    handleRentedItemsSelectionChange,
+    handleDecorationThemesSelectionChange,
+  } = useRentingDetailsSectionHandlers({ clearErrors });
 
   return (
     <>
@@ -41,7 +48,7 @@ export const RentingDetailsSection = ({
         label="Co si chcete zapůjčit?"
         options={itemOptions}
         loading={isRentingItemsLoading}
-        required
+        onSelectionChange={handleRentedItemsSelectionChange}
       />
 
       <FormTableSelectField
@@ -51,10 +58,10 @@ export const RentingDetailsSection = ({
         options={themeOptions}
         disabled={!isDecorationSelected}
         loading={isDecorationThemesLoading}
-        required={isDecorationSelected}
+        onSelectionChange={handleDecorationThemesSelectionChange}
       />
 
-      {/* <Box sx={{ mt: 2 }}>
+      <Box sx={{ mt: 2 }}>
         <FormTextField
           name="remark"
           control={control}
@@ -64,7 +71,7 @@ export const RentingDetailsSection = ({
           inputProps={{ maxLength: 1000 }}
           placeholder="Doplňující informace k vaší poptávce..."
         />
-      </Box> */}
+      </Box>
 
       <RentingTotalPrice totalPrice={totalPrice} />
     </>

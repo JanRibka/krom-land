@@ -1,37 +1,17 @@
-import { Control, Controller, FieldValues, Path } from "react-hook-form";
+import { Controller, FieldValues } from "react-hook-form";
+
 import {
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableRow,
-  Checkbox,
-  Tooltip,
-  Typography,
+  Alert,
   Box,
   CircularProgress,
+  Typography,
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 
-export interface FormTableSelectOption {
-  value: string | number;
-  label: string;
-  isActive?: boolean;
-  price?: number;
-  remark?: string;
-}
-
-interface FormTableSelectFieldProps<T extends FieldValues> {
-  name: Path<T>;
-  control: Control<T>;
-  label: string;
-  options: FormTableSelectOption[];
-  disabled?: boolean;
-  loading?: boolean;
-  required?: boolean;
-}
+import { TABLE_FIELD_ERROR_ALERT_SX } from "../constants/FormTableSelectField.constants";
+import { FormTableSelectFieldProps } from "../types/FormTableSelectFieldProps";
+import { TableSelectOptionsTableContainer } from "./TableSelectOptionsTableContainer";
 
 export const FormTableSelectField = <T extends FieldValues>({
   name,
@@ -40,7 +20,7 @@ export const FormTableSelectField = <T extends FieldValues>({
   options,
   disabled,
   loading,
-  required,
+  onSelectionChange,
 }: FormTableSelectFieldProps<T>) => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
@@ -49,14 +29,10 @@ export const FormTableSelectField = <T extends FieldValues>({
     <Controller
       name={name}
       control={control}
-      rules={{
-        validate: (value) => {
-          if (!required) return true;
-          return Array.isArray(value) && value.length > 0;
-        },
-      }}
-      render={({ field: { onChange, value } }) => {
-        const currentValue = Array.isArray(value) ? (value as (string | number)[]) : [];
+      render={({ field: { onChange, value }, fieldState: { error } }) => {
+        const currentValue = Array.isArray(value)
+          ? (value as (string | number)[])
+          : [];
 
         const handleToggle = (optionValue: string | number) => {
           if (disabled) return;
@@ -65,6 +41,7 @@ export const FormTableSelectField = <T extends FieldValues>({
             ? currentValue.filter((v) => v !== optionValue)
             : [...currentValue, optionValue];
           onChange(newValue);
+          onSelectionChange?.(newValue);
         };
 
         return (
@@ -78,91 +55,22 @@ export const FormTableSelectField = <T extends FieldValues>({
               </Box>
             ) : (
               <>
-                <TableContainer className="table-container">
-                  <Table size="medium">
-                    <TableBody>
-                      {options.map((option) => {
-                        const isSelected = currentValue.includes(option.value);
-                        const isRowDisabled = disabled || option.isActive === false;
-
-                        return (
-                          <TableRow
-                            key={option.value}
-                            hover={!isRowDisabled}
-                            onClick={() => !isRowDisabled && handleToggle(option.value)}
-                            selected={isSelected}
-                            className={`table-row ${isRowDisabled ? "disabled-row" : ""}`}
-                          >
-                            <TableCell padding="checkbox" sx={{ width: 56, pl: 2 }}>
-                              <Checkbox
-                                checked={isSelected}
-                                disabled={isRowDisabled}
-                                size="small"
-                                color="primary"
-                              />
-                            </TableCell>
-                            <TableCell sx={{ py: 2 }}>
-                              <Box sx={{ display: "flex", flexDirection: "column" }}>
-                                <Box sx={{ display: "flex", alignItems: "center", gap: 1.5 }}>
-                                  <Typography
-                                    variant="body1"
-                                    className={`option-label ${isSelected ? "selected" : "not-selected"}`}
-                                  >
-                                    {option.label}
-                                  </Typography>
-                                  {!isMobile && option.remark && (
-                                    <Tooltip title={option.remark} arrow placement="top">
-                                      <InfoOutlinedIcon className="remark-icon" />
-                                    </Tooltip>
-                                  )}
-                                </Box>
-                                {isMobile && option.remark && (
-                                  <Typography
-                                    variant="caption"
-                                    sx={{
-                                      color: "text.secondary",
-                                      mt: 0.5,
-                                      lineHeight: 1.2,
-                                      display: "block",
-                                    }}
-                                  >
-                                    {option.remark}
-                                  </Typography>
-                                )}
-                              </Box>
-                            </TableCell>
-                            <TableCell align="right" sx={{ width: 120, pr: 3 }}>
-                              {option.price !== undefined && option.price > 0 && (
-                                <Typography
-                                  variant="body1"
-                                  className={`price-text ${isSelected ? "selected" : "not-selected"}`}
-                                >
-                                  {option.price.toLocaleString("cs-CZ")} Kč
-                                </Typography>
-                              )}
-                            </TableCell>
-                          </TableRow>
-                        );
-                      })}
-                      {options.length === 0 && (
-                        <TableRow>
-                          <TableCell colSpan={3} align="center">
-                            <Typography
-                              variant="body2"
-                              sx={{
-                                py: 4,
-                                color: "text.disabled",
-                                fontStyle: "italic",
-                              }}
-                            >
-                              Žádné položky k dispozici
-                            </Typography>
-                          </TableCell>
-                        </TableRow>
-                      )}
-                    </TableBody>
-                  </Table>
-                </TableContainer>
+                <TableSelectOptionsTableContainer
+                  options={options}
+                  currentValue={currentValue}
+                  disabled={disabled}
+                  isMobile={isMobile}
+                  onToggle={handleToggle}
+                />
+                {error?.message && (
+                  <Alert
+                    severity="error"
+                    variant="outlined"
+                    sx={TABLE_FIELD_ERROR_ALERT_SX}
+                  >
+                    {error.message}
+                  </Alert>
+                )}
               </>
             )}
           </Box>

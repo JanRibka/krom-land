@@ -21,8 +21,9 @@ import { useRentingRequestForm } from "./hooks/useRentingRequestForm";
 export const RentingRequestForm = () => {
   const {
     control,
-    handleSubmit,
+    handleFormSubmit,
     setValue,
+    clearErrors,
     isMobile,
     handleOpenTerms,
     handleCloseTerms,
@@ -33,11 +34,15 @@ export const RentingRequestForm = () => {
 
   return (
     <RentingRequestFormStyled>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleFormSubmit}>
         <Stack spacing={3} direction="column" className="form-inner-wrapper">
           <PersonalInfoSection control={control} isMobile={isMobile} />
 
-          <RentingDetailsSection control={control} setValue={setValue} />
+          <RentingDetailsSection
+            control={control}
+            setValue={setValue}
+            clearErrors={clearErrors}
+          />
 
           <TermsAndConditionsSection
             control={control}
