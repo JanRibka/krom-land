@@ -16,7 +16,7 @@ export const useRentingRequestForm = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
-  const { control, handleSubmit, reset, formState, setValue } =
+  const { control, handleSubmit, reset, formState, setValue, setError, clearErrors } =
     useForm<RentingRequestModel>({
       defaultValues: new RentingRequestModel(),
     });
@@ -27,6 +27,30 @@ export const useRentingRequestForm = () => {
   const [dialogOpen, setDialogOpen] = useState<boolean>(false);
 
   const onSubmit = async (data: RentingRequestModel) => {
+    const hasRentedItems = Array.isArray(data.rentedItems) && data.rentedItems.length > 0;
+    const isDecorationSelected = (data.rentedItems || []).some((itemCode) =>
+      String(itemCode).toLowerCase().includes("decoration")
+    );
+    const hasDecorationThemes =
+      Array.isArray(data.decorationThemes) && data.decorationThemes.length > 0;
+
+    if (!hasRentedItems) {
+      setError("rentedItems", { type: "required" });
+    } else {
+      clearErrors("rentedItems");
+    }
+
+    if (isDecorationSelected && !hasDecorationThemes) {
+      setError("decorationThemes", { type: "required" });
+    } else {
+      clearErrors("decorationThemes");
+    }
+
+    if (!hasRentedItems || (isDecorationSelected && !hasDecorationThemes)) {
+      AppNotification("Chyba", "Vyplňte povinné položky v tabulkách.", "danger");
+      return;
+    }
+
     try {
       await sendRentingRequest({ ...data }).unwrap(); // Spread zajistí převod na plain object
       reset(new RentingRequestModel());
