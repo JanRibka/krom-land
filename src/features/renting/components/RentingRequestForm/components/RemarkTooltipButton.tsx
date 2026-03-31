@@ -22,9 +22,8 @@ export const RemarkTooltipButton = ({
       title={remark}
       arrow
       placement={isMobile ? "top-start" : "top"}
-      open={isOpen ? true : undefined}
+      open={isMobile ? isOpen : undefined}
       disableFocusListener={isMobile}
-      disableHoverListener={isMobile}
       disableTouchListener
     >
       <IconButton
