@@ -1,6 +1,7 @@
 import { MouseEvent } from "react";
-import { IconButton, Tooltip } from "@mui/material";
+
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
+import { IconButton, Tooltip } from "@mui/material";
 
 interface RemarkTooltipButtonProps {
   optionValue: string | number;
@@ -37,4 +38,3 @@ export const RemarkTooltipButton = ({
     </Tooltip>
   );
 };
-
